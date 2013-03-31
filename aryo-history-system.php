@@ -5,7 +5,7 @@
  Description: Never mind.. Created by Yakir Sitbon.
  Author: Yakir Sitbon
  Version: 0.1
- Author URI: http://www.yakirs.met/
+ Author URI: http://www.yakirs.net/
 */
 
 
