@@ -8,6 +8,7 @@
  Author URI: http://www.yakirs.met/
 */
 
+
 if ( ! class_exists( 'Aryo_WordPress_History_System' ) ) {
 	
 	class Aryo_WordPress_History_System {
