@@ -1,0 +1,47 @@
+#aryo-history-system-wrap {
+	text-align: right;
+}
+
+#aryo-history-system-wrap .row {
+	border-bottom: 1px solid #EEEEEE;
+	float: left;
+	padding: 5px 0;
+	width: 100%;
+}
+
+#aryo-history-system-wrap .row:hover {
+	background: #EEEEEE;
+}
+
+#aryo-history-system-wrap .type {
+	direction: ltr;
+	float: right;
+	padding: 0 5px;
+	width: 150px;
+}
+
+#aryo-history-system-wrap .name {
+	float: right;
+	padding: 0 5px;
+	width: 300px;
+}
+
+#aryo-history-system-wrap .action {
+	direction: ltr;
+	float: right;
+	padding: 0 5px;
+	width: 120px;
+}
+
+#aryo-history-system-wrap .dateaction {
+	float: right;
+	padding: 0 5px;
+	width: 120px;
+}
+
+#aryo-history-system-wrap .user {
+	direction: ltr;
+	float: right;
+	padding: 0 5px;
+	width: 300px;
+}
