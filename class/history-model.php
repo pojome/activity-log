@@ -26,7 +26,7 @@ class HS_Model {
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
-		$this->_table = $wpdb->prefix . 'history_system';
+		$this->_table = $wpdb->prefix . 'history_timeline';
 
 
 		$this->_roles = array(
@@ -181,7 +181,7 @@ class HS_Model {
 			return false;
 
 		$output   = array();
-		$baseLink = get_bloginfo( 'wpurl' ) . '/wp-admin/index.php?page=history_system_page';
+		$baseLink = get_bloginfo( 'wpurl' ) . '/wp-admin/index.php?page=history_timeline_page';
 
 		if ( isset( $_GET['usershow'] ) ) {
 			$baseLink = add_query_arg( 'usershow', $_GET['usershow'], $baseLink );
@@ -216,7 +216,7 @@ class HS_Model {
 			return false;
 
 		$output   = array();
-		$baseLink = get_bloginfo( 'wpurl' ) . '/wp-admin/index.php?page=history_system_page';
+		$baseLink = get_bloginfo( 'wpurl' ) . '/wp-admin/index.php?page=history_timeline_page';
 
 		if ( isset( $_GET['typeshow'] ) ) {
 			$baseLink = add_query_arg( 'typeshow', $_GET['typeshow'], $baseLink );

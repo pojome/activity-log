@@ -1,6 +1,6 @@
 <?php
 /*
- Plugin Name: History System
+ Plugin Name: History Timeline
  Plugin URI: http://www.aryo.co.il/
  Description: Never mind.. Created by Yakir Sitbon.
  Author: Yakir Sitbon
@@ -9,14 +9,14 @@
 */
 
 
-class HS_History_System {
+class HT_History_Timeline {
 
 	public function activated() {
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
 		$wpdb->query(
-			"CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}history_system` (
+			"CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}history_timeline` (
 					  `histid` int(11) NOT NULL AUTO_INCREMENT,
 					  `userCaps` varchar(70) NOT NULL DEFAULT 'guest',
 					  `action` varchar(255) NOT NULL,
@@ -52,7 +52,7 @@ class HS_History_System {
 		add_action( 'edit_attachment', array( &$this, 'hooks_edit_attachment' ) );
 		add_action( 'delete_attachment', array( &$this, 'hooks_delete_attachment' ) );
 
-		wp_enqueue_style( 'history-system', plugins_url( '/admin-ui/', __FILE__ ) . 'history-system.css' );
+		wp_enqueue_style( 'history-timeline', plugins_url( '/admin-ui/', __FILE__ ) . 'history-timeline.css' );
 
 	}
 
@@ -296,10 +296,10 @@ class HS_History_System {
 	}
 
 	public function create_admin_menu() {
-		add_dashboard_page( 'History System', 'History System', 'edit_pages', 'history_system_page', array( &$this, 'history_system_page_func' ) );
+		add_dashboard_page( 'History Timeline', 'History Timeline', 'edit_pages', 'history_timeline_page', array( &$this, 'history_timeline_page_func' ) );
 	}
 
-	public function history_system_page_func() {
+	public function history_timeline_page_func() {
 		$history = new HS_Model();
 		$args    = array();
 
@@ -313,7 +313,7 @@ class HS_History_System {
 
 		?>
 		<div class="wrap">
-			<h2>History System:</h2>
+			<h2>History Timeline:</h2>
 
 			<div class="aryo-history-system-types">
 				Modules: <?php echo $history->getAllObjectTypes(); ?>
@@ -349,6 +349,6 @@ class HS_History_System {
 		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ) );
 	}
 
-} // end Aryo_WordPress_History_System class
+} // end class
 
-new HS_History_System();
+new HT_History_Timeline();
