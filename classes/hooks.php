@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class HS_Hooks {
 
 	private function _add_log_attachment( $action, $attachment_id ) {

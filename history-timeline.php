@@ -8,6 +8,8 @@
  Author URI: http://www.yakirs.net/
 */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 include( 'classes/maintenance.php' );
 include( 'classes/class-model.php' );
 include( 'classes/settings.php' );
