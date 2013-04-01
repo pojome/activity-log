@@ -9,7 +9,7 @@
 */
 
 include( 'classes/maintenance.php' );
-include( 'classes/history-model.php' );
+include( 'classes/class-model.php' );
 include( 'classes/settings.php' );
 include( 'classes/admin-ui.php' );
 include( 'classes/hooks.php' );
