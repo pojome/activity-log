@@ -2,14 +2,14 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class HS_Admin_Ui {
+class HT_Admin_Ui {
 	
 	public function admin_init() {
 		wp_enqueue_style( 'history-timeline', plugins_url( '/admin-ui/', __FILE__ ) . 'history-timeline.css' );
 	}
 
-	public function viewPartialHistory( $args = array(), HS_Model $history ) {
-		//$history = new HS_Model();
+	public function viewPartialHistory( $args = array(), HT_Model $history ) {
+		//$history = new HT_Model();
 
 		$rows = $history->getLastResult( $args );
 
@@ -61,7 +61,7 @@ class HS_Admin_Ui {
 	}
 
 	public function history_timeline_page_func() {
-		$history = new HS_Model();
+		$history = new HT_Model();
 		$args    = array();
 
 		if ( ! empty( $_GET['typeshow'] ) ) {
@@ -103,4 +103,4 @@ class HS_Admin_Ui {
 		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ) );
 	}
 }
-new HS_Admin_Ui();
+new HT_Admin_Ui();

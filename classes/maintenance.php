@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class HS_Maintenance {
+class HT_Maintenance {
 	
 	public function activated() {
 		/** @var $wpdb wpdb */
@@ -29,4 +29,4 @@ class HS_Maintenance {
 		add_action( 'activate_' . plugin_basename( __FILE__ ), array( &$this, 'activated' ) );
 	}
 }
-new HS_Maintenance();
+new HT_Maintenance();

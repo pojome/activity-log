@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class HS_Model {
+class HT_Model {
 
 	public $action;
 	public $object_type;

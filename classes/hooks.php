@@ -2,12 +2,12 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class HS_Hooks {
+class HT_Hooks {
 
 	private function _add_log_attachment( $action, $attachment_id ) {
 		$post = get_post( $attachment_id );
 
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$history->action         = $action;
 		$history->object_type    = 'Attachment';
@@ -52,7 +52,7 @@ class HS_Hooks {
 	}
 
 	public function hooks_deactivated_plugin( $plugin_name ) {
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$history->action      = 'deactivated';
 		$history->object_type = 'Plugin';
@@ -63,7 +63,7 @@ class HS_Hooks {
 	}
 
 	public function hooks_activated_plugin( $plugin_name ) {
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$history->action      = 'activated';
 		$history->object_type = 'Plugin';
@@ -74,7 +74,7 @@ class HS_Hooks {
 	}
 
 	public function hooks_profile_update( $user_id ) {
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$user = get_user_by( 'id', $user_id );
 
@@ -87,7 +87,7 @@ class HS_Hooks {
 	}
 
 	public function hooks_user_register( $user_id ) {
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$user = get_user_by( 'id', $user_id );
 
@@ -100,7 +100,7 @@ class HS_Hooks {
 	}
 
 	public function hooks_delete_user( $user_id ) {
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$user = get_user_by( 'id', $user_id );
 
@@ -113,7 +113,7 @@ class HS_Hooks {
 	}
 
 	public function hooks_wrong_password() {
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$history->action      = 'wrong_password';
 		$history->user_id     = 0;
@@ -127,7 +127,7 @@ class HS_Hooks {
 	public function hooks_wp_login( $user ) {
 		$user = get_user_by( 'login', $user );
 
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$history->action      = 'logged_in';
 		$history->user_id     = $user->ID;
@@ -141,7 +141,7 @@ class HS_Hooks {
 	public function hooks_wp_logout() {
 		$user = wp_get_current_user();
 
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$history->action      = 'logged_out';
 		$history->user_id     = $user->ID;
@@ -181,7 +181,7 @@ class HS_Hooks {
 			return;
 		}
 
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$history->action         = $action;
 		$history->user_id        = get_current_user_id();
@@ -204,7 +204,7 @@ class HS_Hooks {
 			return;
 		}
 
-		$history = new HS_Model();
+		$history = new HT_Model();
 
 		$history->action         = 'deleted';
 		$history->user_id        = get_current_user_id();
@@ -221,4 +221,4 @@ class HS_Hooks {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 	}
 }
-new HS_Hooks();
+new HT_Hooks();
