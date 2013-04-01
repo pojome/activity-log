@@ -74,7 +74,6 @@ class HS_Model {
 			$this->user_id  = $user->ID;
 		}
 
-
 		$this->histIP = $_SERVER['REMOTE_ADDR'];
 
 		$wpdb->insert( $this->_table,
