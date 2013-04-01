@@ -338,7 +338,11 @@ class HT_History_Timeline {
 	}
 
 	public function __construct() {
-		include( 'class/history-model.php' );
+		include( 'classes/maintenance.php' );
+		include( 'classes/history-model.php' );
+		include( 'classes/settings.php' );
+		include( 'classes/admin-ui.php' );
+		include( 'classes/hooks.php' );
 
 		// install
 		add_action( 'activate_' . plugin_basename( __FILE__ ), array( &$this, 'activated' ) );
