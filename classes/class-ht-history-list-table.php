@@ -183,7 +183,7 @@ class HT_History_List_Table extends WP_List_Table {
 		return $return;
 	}
 
-	public function column_module( $item ) {
+	public function column_type( $item ) {
 		$return = $item->object_type;
 		
 		if ( ! empty( $item->object_subtype ) )
