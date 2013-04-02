@@ -5,12 +5,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HT_Admin_Ui {
 	
 	public function admin_init() {
-		wp_enqueue_style( 'history-timeline', plugins_url( '/admin-ui/', __FILE__ ) . 'history-timeline.css' );
+		wp_enqueue_style( 'history-timeline', plugins_url( '/admin-ui/', HISTORY_TIMELINE_BASE ) . 'history-timeline.css' );
 	}
 
+	/**
+	 * @param array    $args
+	 * @param HT_Model $history
+	 * 
+	 * @deprecated
+	 */
 	public function viewPartialHistory( $args = array(), HT_Model $history ) {
-		//$history = new HT_Model();
-
 		$rows = $history->getLastResult( $args );
 
 		if ( ! $rows ) {
@@ -18,7 +22,6 @@ class HT_Admin_Ui {
 
 			return;
 		}
-
 
 		foreach ( $rows as $row ) {
 			$user       = false;
@@ -61,38 +64,28 @@ class HT_Admin_Ui {
 	}
 
 	public function history_timeline_page_func() {
-		$history = new HT_Model();
-		$args    = array();
-
-		if ( ! empty( $_GET['typeshow'] ) ) {
-			$args['byObjectType'] = $_GET['typeshow'];
-		}
-
-		if ( isset( $_GET['usershow'] ) ) {
-			$args['byUserID'] = $_GET['usershow'];
-		}
-
+		$history_table = new HT_History_List_Table();
+		$history_table->prepare_items();
+		
 		?>
 		<div class="wrap">
 			<h2>History Timeline:</h2>
 
 			<div class="aryo-history-system-types">
-				Modules: <?php echo $history->getAllObjectTypes(); ?>
+				Modules: <?php echo $history_table->get_all_object_types(); ?>
 			</div>
 
 			<div class="aryo-history-system-users">
-				Users: <?php echo $history->getAllUsers(); ?>
+				Users: <?php echo $history_table->get_all_users(); ?>
 			</div>
 
 			<hr />
 
-			<div id="aryo-history-system-wrap">
-				<?php $this->viewPartialHistory( $args, $history ); ?>
-			</div>
-
-			<div id="aryo-history-paginate-wrap">
-				<?php $history->thePaginate(); ?>
-			</div>
+			<form id="history-filter" method="get">
+				<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
+				<?php $history_table->display(); ?>
+			</form>
+			
 		</div>
 
 	<?php

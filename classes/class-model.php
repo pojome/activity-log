@@ -96,6 +96,9 @@ class HT_Model {
 		$this->_deleteOldItems();
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public function getLastResult( $args = array() ) {
 		/** @var $wpdb wpdb */
 		global $wpdb;
@@ -146,6 +149,9 @@ class HT_Model {
 		return $wpdb->get_results( $sql );
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public function thePaginate() {
 		$num_of_pages = ceil( $this->_paginateTotal / $this->_paginateLimit );
 
@@ -162,6 +168,11 @@ class HT_Model {
 		echo $page_links;
 	}
 
+	/**
+	 * @return bool|string
+	 * 
+	 * @deprecated
+	 */
 	public function getAllObjectTypes() {
 		/** @var $wpdb wpdb */
 		global $wpdb;
@@ -197,6 +208,11 @@ class HT_Model {
 		return implode( ' | ', $output );
 	}
 
+	/**
+	 * @return bool|string
+	 * 
+	 * @deprecated
+	 */
 	public function getAllUsers() {
 		/** @var $wpdb wpdb */
 		global $wpdb;
@@ -242,6 +258,9 @@ class HT_Model {
 		return implode( ' | ', $output );
 	}
 
+	/**
+	 * @deprecated
+	 */
 	private function _getWhereByRole() {
 		$allowModules = array();
 
