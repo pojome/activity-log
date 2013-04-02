@@ -227,7 +227,7 @@ class HT_History_List_Table extends WP_List_Table {
 		
 		$table                 = $wpdb->prefix . 'history_timeline';
 		/** @todo: add setting page with this value. */
-		$items_per_page        = 2;
+		$items_per_page        = 20;
 		$this->_column_headers = array( $this->get_columns(), array(), $this->get_sortable_columns() );
 		$where                 = ' WHERE 1=1';
 		
@@ -235,7 +235,7 @@ class HT_History_List_Table extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND `object_type` = \'%s\'', $_REQUEST['typeshow'] );
 		}
 
-		if ( isset( $_REQUEST['usershow'] ) ) {
+		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
 			$where .= $wpdb->prepare( ' AND `user_id` = %d', $_REQUEST['usershow'] );
 		}
 
