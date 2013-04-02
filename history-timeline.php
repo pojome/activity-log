@@ -27,13 +27,11 @@ class HT_Main {
 	public $ui;
 	public $hooks;
 	public $settings;
-	public $api;
 
 	public function __construct() {
 		$this->ui 			= new HT_Admin_Ui();
 		$this->hooks 		= new HT_Hooks();
 		$this->settings     = new HT_Settings();
-		$this->api          = new HT_Api();
 	}
 	
 }

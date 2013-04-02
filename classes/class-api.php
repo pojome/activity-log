@@ -2,9 +2,9 @@
 
 class HT_Api {
 
-	protected $_table = 'history_timeline';
+	protected static $_table;
 	
-	public function insert( $args ) {
+	public static function insert( $args ) {
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
@@ -27,7 +27,7 @@ class HT_Api {
 			$args['user_id']  = 0;
 		} 
 
-		$wpdb->insert( $this->_table,
+		$wpdb->insert( $wpdb->prefix . 'history_timeline',
 			array(
 				'action'         => $args['action'],
 				'object_type'    => $args['object_type'],
@@ -43,17 +43,8 @@ class HT_Api {
 		);
 	}
 	
-	public function __construct() {
-		/** @var $wpdb wpdb */
-		global $wpdb;
-		$this->_table = $wpdb->prefix . $this->_table;
-	}
-	
 }
 
 function ht_insert_log( $args = array() ) {
-	/** @var $ht_main_class HT_Main */
-	global $ht_main_class;
-	
-	$ht_main_class->api->insert( $args );
+	HT_Api::insert( $args );
 }
