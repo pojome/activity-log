@@ -1,6 +1,6 @@
 <?php
 
-class HT_Api {
+class HT_API {
 
 	public static function insert( $args ) {
 		/** @var $wpdb wpdb */
@@ -46,5 +46,5 @@ class HT_Api {
 }
 
 function ht_insert_log( $args = array() ) {
-	HT_Api::insert( $args );
+	HT_API::insert( $args );
 }
