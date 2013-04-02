@@ -166,6 +166,12 @@ class HT_History_List_Table extends WP_List_Table {
 
 		return $columns;
 	}
+	
+	public function extra_tablenav( $which ) {
+		echo '<div class="alignleft actions">';
+		echo 'testttttt';
+		echo '</div>';
+	}
 
 	public function column_default( $item, $column_name ) {
 		$return = '';
