@@ -14,7 +14,8 @@ class HT_Admin_Ui {
 		
 		?>
 		<div class="wrap">
-			<h2>History Timeline:</h2>
+			<?php screen_icon(); ?>
+			<h2>History Timeline</h2>
 
 			<form id="history-filter" method="get">
 				<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
