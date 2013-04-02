@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HT_Maintenance {
 	
-	public function activated() {
+	public static function activated() {
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
@@ -24,9 +24,6 @@ class HT_Maintenance {
 				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;"
 		);
 	}
-	
-	public function __construct() {
-		add_action( 'activate_' . plugin_basename( __FILE__ ), array( &$this, 'activated' ) );
-	}
 }
-new HT_Maintenance();
+
+register_activation_hook( HISTORY_TIMELINE_BASE, array( 'HT_Maintenance', 'activated' ) );
