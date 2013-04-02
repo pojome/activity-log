@@ -40,8 +40,6 @@ class HT_Api {
 			array( "%s", "%s", "%s", "%s", "%d", "%d", "%s", "%s", "%d" )
 		);
 	}
-	
-	public function __construct() { /* Do nothing here... */ }
 
 }
 
