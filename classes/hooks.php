@@ -221,4 +221,3 @@ class HT_Hooks {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 	}
 }
-new HT_Hooks();
