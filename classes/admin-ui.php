@@ -103,4 +103,3 @@ class HT_Admin_Ui {
 		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ) );
 	}
 }
-new HT_Admin_Ui();

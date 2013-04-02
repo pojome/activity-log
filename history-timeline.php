@@ -10,10 +10,25 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+define( 'HISTORY_TIMELINE_BASE', plugin_basename( __FILE__ ) );
+
 include( 'classes/maintenance.php' );
 include( 'classes/class-model.php' );
 include( 'classes/settings.php' );
 include( 'classes/admin-ui.php' );
 include( 'classes/hooks.php' );
+
+// Probably we should put this in a separate file
+class HT_Main {
+
+	public $ui;
+	public $hooks;
+
+	function __construct() {
+		$this->ui 			= new HT_Admin_Ui();
+		$this->hooks 		= new HT_Hooks();
+	}
+}
+new HT_Main;
 
 // EOF
