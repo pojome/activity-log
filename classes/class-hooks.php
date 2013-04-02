@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HT_Hooks {
 
-	private function _add_log_attachment( $action, $attachment_id ) {
+	protected function _add_log_attachment( $action, $attachment_id ) {
 		$post = get_post( $attachment_id );
 
 		$history = new HT_Model();
@@ -16,6 +16,15 @@ class HT_Hooks {
 		$history->object_name    = get_the_title( $post->ID );
 
 		$history->insert();
+	}
+	
+	protected function _add_log_plugin( $action, $plugin_name ) {
+		ht_insert_log( array(
+			'action'      => $action,
+			'object_type' => 'Plugin',
+			'object_id'   => 0,
+			'object_name' => $plugin_name,
+		) );
 	}
 	
 	public function init() {
@@ -52,76 +61,54 @@ class HT_Hooks {
 	}
 
 	public function hooks_deactivated_plugin( $plugin_name ) {
-		$history = new HT_Model();
-
-		$history->action      = 'deactivated';
-		$history->object_type = 'Plugin';
-		$history->object_id   = 0;
-		$history->object_name = $plugin_name;
-
-		$history->insert();
+		$this->_add_log_plugin( 'deactivated', $plugin_name );
 	}
 
 	public function hooks_activated_plugin( $plugin_name ) {
-		$history = new HT_Model();
-
-		$history->action      = 'activated';
-		$history->object_type = 'Plugin';
-		$history->object_id   = 0;
-		$history->object_name = $plugin_name;
-
-		$history->insert();
+		$this->_add_log_plugin( 'activated', $plugin_name );
 	}
 
 	public function hooks_profile_update( $user_id ) {
-		$history = new HT_Model();
-
 		$user = get_user_by( 'id', $user_id );
-
-		$history->action      = 'updated';
-		$history->object_type = 'User';
-		$history->object_id   = $user->ID;
-		$history->object_name = $user->user_nicename;
-
-		$history->insert();
+		
+		ht_insert_log( array(
+			'action'      => 'updated',
+			'object_type' => 'User',
+			'object_id'   => $user->ID,
+			'object_name' => $user->user_nicename,
+		) );
 	}
 
 	public function hooks_user_register( $user_id ) {
-		$history = new HT_Model();
-
 		$user = get_user_by( 'id', $user_id );
 
-		$history->action      = 'created';
-		$history->object_type = 'User';
-		$history->object_id   = $user->ID;
-		$history->object_name = $user->user_nicename;
-
-		$history->insert();
+		ht_insert_log( array(
+			'action'      => 'created',
+			'object_type' => 'User',
+			'object_id'   => $user->ID,
+			'object_name' => $user->user_nicename,
+		) );
 	}
 
 	public function hooks_delete_user( $user_id ) {
-		$history = new HT_Model();
-
 		$user = get_user_by( 'id', $user_id );
-
-		$history->action      = 'deleted';
-		$history->object_type = 'User';
-		$history->object_id   = $user->ID;
-		$history->object_name = $user->user_nicename;
-
-		$history->insert();
+		
+		ht_insert_log( array(
+			'action'      => 'deleted',
+			'object_type' => 'User',
+			'object_id'   => $user->ID,
+			'object_name' => $user->user_nicename,
+		) );
 	}
 
 	public function hooks_wrong_password() {
-		$history = new HT_Model();
-
-		$history->action      = 'wrong_password';
-		$history->user_id     = 0;
-		$history->object_id   = 0;
-		$history->object_type = 'User';
-		$history->object_name = $_REQUEST['log'];
-
-		$history->insert();
+		ht_insert_log( array(
+			'action'      => 'wrong_password',
+			'object_type' => 'User',
+			'user_id'     => 0,
+			'object_id'   => 0,
+			'object_name' => $_REQUEST['log'],
+		) );
 	}
 
 	public function hooks_wp_login( $user ) {
@@ -155,26 +142,21 @@ class HT_Hooks {
 	public function hooks_transition_post_status( $new_status, $old_status, $post ) {
 		$action = '';
 
-		if ( $old_status === 'auto-draft' && ( $new_status !== 'auto-draft' && $new_status !== 'inherit' ) ) {
+		if ( 'auto-draft' === $old_status && ( 'auto-draft' !== $new_status && 'inherit' !== $new_status ) ) {
 			// page created
 			$action = 'created';
 		}
-		elseif ( $new_status === 'auto-draft' || ( $old_status === 'new' && $new_status === 'inherit' ) ) {
+		elseif ( 'auto-draft' === $new_status || ( 'new' === $old_status && 'inherit' === $new_status ) ) {
 			// nvm.. ignore it.
 			return;
 		}
-		elseif ( $new_status === "trash" ) {
+		elseif ( "trash" === $new_status ) {
 			// page was deleted.
 			$action = 'deleted';
 		}
 		else {
 			// page updated. i guess.
 			$action = 'updated';
-		}
-
-		if ( $post->post_type === 'revision' ) {
-			// don't log revisions
-			return;
 		}
 
 		if ( wp_is_post_revision( $post->ID ) ) {
@@ -200,7 +182,7 @@ class HT_Hooks {
 
 		$post = get_post( $post_id );
 
-		if ( $post->post_status === 'auto-draft' || $post->post_status === 'inherit' ) {
+		if ( 'auto-draft' === $post->post_status || 'inherit' === $post->post_status ) {
 			return;
 		}
 

@@ -50,6 +50,9 @@ class HT_Model {
 		) );
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public function insert() {
 		/** @var $wpdb wpdb */
 		global $wpdb;
