@@ -14,14 +14,9 @@ class HT_Model {
 	public $histTime;
 	public $userCaps;
 
-	private $_table;
-
 	public function __construct() {
 		/** @var $wpdb wpdb */
 		global $wpdb;
-
-		$this->_table = $wpdb->prefix . 'history_timeline';
-
 
 		$this->_roles = array(
 			// admin
@@ -45,7 +40,7 @@ class HT_Model {
 		$wpdb->query( $wpdb->prepare(
 			'DELETE FROM `%1$s`
 				WHERE `histTime` < %2$d',
-			$this->_table,
+			$wpdb->history_timeline,
 			strtotime( '-30 days', current_time( 'timestamp' ) )
 		) );
 	}
@@ -73,7 +68,7 @@ class HT_Model {
 
 		$this->histIP = $_SERVER['REMOTE_ADDR'];
 
-		$wpdb->insert( $this->_table,
+		$wpdb->insert( $wpdb->history_timeline,
 			array(
 				'action'         => $this->action,
 				'object_type'    => $this->object_type,

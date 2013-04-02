@@ -8,8 +8,6 @@ if ( ! class_exists( 'WP_List_Table' ) )
 
 class HT_History_List_Table extends WP_List_Table {
 	
-	protected $_table = 'history_timeline';
-	
 	protected $_roles = array();
 	
 	protected $_caps = array();
@@ -60,8 +58,6 @@ class HT_History_List_Table extends WP_List_Table {
 		/** @var $wpdb wpdb */
 		global $wpdb;
 		
-		$this->_table = $wpdb->prefix . $this->_table;
-
 		$this->_roles = array(
 			// admin
 			'manage_options' => array( 'Post', 'User', 'Attachment', 'Plugin' ),
@@ -109,7 +105,7 @@ class HT_History_List_Table extends WP_List_Table {
 					GROUP BY `user_id`
 					ORDER BY `user_id`
 					;',
-			$this->_table
+			$wpdb->history_timeline
 		) );
 		
 		if ( $users ) {
@@ -145,7 +141,7 @@ class HT_History_List_Table extends WP_List_Table {
 				GROUP BY `object_type`
 				ORDER BY `object_type`
 				;',
-			$this->_table
+			$wpdb->history_timeline
 		) );
 
 		if ( $types ) {

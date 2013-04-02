@@ -8,8 +8,7 @@ class HT_Maintenance {
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
-		$wpdb->query(
-			"CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}history_timeline` (
+		$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}history_timeline` (
 					  `histid` int(11) NOT NULL AUTO_INCREMENT,
 					  `userCaps` varchar(70) NOT NULL DEFAULT 'guest',
 					  `action` varchar(255) NOT NULL,
@@ -21,8 +20,10 @@ class HT_Maintenance {
 					  `histIP` varchar(55) NOT NULL DEFAULT '127.0.0.1',
 					  `histTime` int(11) NOT NULL DEFAULT '0',
 					  PRIMARY KEY (`histid`)
-				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;"
-		);
+				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;";
+
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		dbDelta( $sql );
 	}
 }
 
