@@ -39,6 +39,8 @@ class HT_Api {
 			),
 			array( "%s", "%s", "%s", "%s", "%d", "%d", "%s", "%s", "%d" )
 		);
+
+		do_action( 'ht_insert_log', $args );
 	}
 
 }
