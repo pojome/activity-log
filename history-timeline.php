@@ -27,7 +27,6 @@ class HT_Main {
 	public $ui;
 	public $hooks;
 	public $settings;
-	public $api;
 
 	public function __construct() {
 		global $wpdb;
@@ -35,12 +34,11 @@ class HT_Main {
 		$this->ui 			= new HT_Admin_Ui();
 		$this->hooks 		= new HT_Hooks();
 		$this->settings     = new HT_Settings();
-		$this->api          = new HT_Api();
 
 		// set up our DB name
 		$wpdb->history_timeline = $wpdb->prefix . 'history_timeline';
 	}
-		
+	
 }
 global $ht_main_class;
 $ht_main_class = new HT_Main();

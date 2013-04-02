@@ -1,8 +1,8 @@
 <?php
 
 class HT_Api {
-	
-	public function insert( $args ) {
+
+	public static function insert( $args ) {
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
@@ -42,12 +42,9 @@ class HT_Api {
 	}
 	
 	public function __construct() { /* Do nothing here... */ }
-	
+
 }
 
 function ht_insert_log( $args = array() ) {
-	/** @var $ht_main_class HT_Main */
-	global $ht_main_class;
-	
-	$ht_main_class->api->insert( $args );
+	HT_Api::insert( $args );
 }
