@@ -159,9 +159,8 @@ class HT_Hooks {
 			$action = 'updated';
 		}
 
-		if ( wp_is_post_revision( $post->ID ) ) {
+		if ( wp_is_post_revision( $post->ID ) )
 			return;
-		}
 
 		$history = new HT_Model();
 
@@ -176,9 +175,8 @@ class HT_Hooks {
 	}
 
 	public function hooks_delete_post( $post_id ) {
-		if ( wp_is_post_revision( $post_id ) ) {
+		if ( wp_is_post_revision( $post_id ) )
 			return;
-		}
 
 		$post = get_post( $post_id );
 
