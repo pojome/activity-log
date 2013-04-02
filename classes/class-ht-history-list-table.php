@@ -168,9 +168,78 @@ class HT_History_List_Table extends WP_List_Table {
 	}
 	
 	public function extra_tablenav( $which ) {
+		/** @var $wpdb wpdb */
+		global $wpdb;
+		
+		if ( 'top' !== $which )
+			return;
+		
 		echo '<div class="alignleft actions">';
-		echo 'testttttt';
+
+		$users = $wpdb->get_results( $wpdb->prepare(
+			'SELECT * FROM `%1$s`
+				WHERE 1 = 1
+				' . $this->_get_where_by_role() . '
+					GROUP BY `user_id`
+					ORDER BY `user_id`
+					;',
+			$this->_table
+		) );
+		
+		if ( $users ) {
+			if ( ! isset( $_REQUEST['usershow'] ) )
+				$_REQUEST['usershow'] = '';
+			
+			$output = array();
+			foreach ( $users as $_user ) {
+				if ( 0 === (int) $_user->user_id ) {
+					$output[0] = __( 'Guest' );
+					continue;
+				}
+				
+				$user = get_user_by( 'id', $_user->user_id );
+				if ( $user )
+					$output[ $user->ID ] = $user->user_nicename;
+			}
+			
+			if ( ! empty( $output ) ) {
+				echo '<select name="usershow" id="hs-filter-usershow">';
+				printf( '<option value="">%s</option>', __( 'All Users' ) );
+				foreach ( $output as $key => $value ) {
+					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
+				}
+				echo '</select>';
+			}
+		}
+
+		$types = $wpdb->get_results( $wpdb->prepare(
+			'SELECT * FROM `%1$s`
+				WHERE 1 = 1
+				' . $this->_get_where_by_role() . '
+				GROUP BY `object_type`
+				ORDER BY `object_type`
+				;',
+			$this->_table
+		) );
+
+		if ( $types ) {
+			if ( ! isset( $_REQUEST['typeshow'] ) )
+				$_REQUEST['typeshow'] = '';
+
+			$output = array();
+			foreach ( $types as $type )
+				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ) );
+
+			echo '<select name="typeshow" id="hs-filter-typeshow">';
+			printf( '<option value="">%s</option>', __( 'All Types' ) );
+			echo implode( '', $output );
+			echo '</select>';
+		}
+
+		submit_button( __( 'Filter' ), 'button', false, false, array( 'id' => 'history-query-submit' ) );
+		
 		echo '</div>';
+		
 	}
 
 	public function column_default( $item, $column_name ) {
@@ -240,7 +309,7 @@ class HT_History_List_Table extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND `object_type` = \'%s\'', $_REQUEST['typeshow'] );
 		}
 
-		if ( ! empty( $_REQUEST['usershow'] ) ) {
+		if ( isset( $_REQUEST['usershow'] ) ) {
 			$where .= $wpdb->prepare( ' AND `user_id` = %d', $_REQUEST['usershow'] );
 		}
 

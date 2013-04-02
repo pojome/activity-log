@@ -71,16 +71,6 @@ class HT_Admin_Ui {
 		<div class="wrap">
 			<h2>History Timeline:</h2>
 
-			<div class="aryo-history-system-types">
-				Modules: <?php echo $history_table->get_all_object_types(); ?>
-			</div>
-
-			<div class="aryo-history-system-users">
-				Users: <?php echo $history_table->get_all_users(); ?>
-			</div>
-
-			<hr />
-
 			<form id="history-filter" method="get">
 				<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
 				<?php $history_table->display(); ?>
