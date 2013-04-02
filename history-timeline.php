@@ -23,10 +23,12 @@ class HT_Main {
 
 	public $ui;
 	public $hooks;
+	public $settings;
 
-	function __construct() {
+	public function __construct() {
 		$this->ui 			= new HT_Admin_Ui();
 		$this->hooks 		= new HT_Hooks();
+		$this->settings     = new HT_Settings();
 	}
 }
 new HT_Main;
