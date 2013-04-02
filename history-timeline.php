@@ -30,7 +30,8 @@ class HT_Main {
 		$this->hooks 		= new HT_Hooks();
 		$this->settings     = new HT_Settings();
 	}
+	
 }
-new HT_Main;
+new HT_Main();
 
 // EOF
