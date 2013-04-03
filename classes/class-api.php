@@ -10,7 +10,7 @@ class HT_API {
 
 		$wpdb->query( $wpdb->prepare(
 			'DELETE FROM `%1$s`
-				WHERE `histTime` < %2$d',
+				WHERE `hist_time` < %2$d',
 			$wpdb->history_timeline,
 			strtotime( '-30 days', current_time( 'timestamp' ) )
 		) );
@@ -26,17 +26,17 @@ class HT_API {
 			'object_subtype' => '',
 			'object_name'    => '',
 			'object_id'      => '',
-			'histIP'         => $_SERVER['REMOTE_ADDR'],
-			'histTime'       => current_time( 'timestamp' ),
+			'user_ip'        => $_SERVER['REMOTE_ADDR'],
+			'hist_time'      => current_time( 'timestamp' ),
 		) );
 
 		$user = get_user_by( 'id', get_current_user_id() );
 		if ( $user ) {
-			$args['userCaps'] = strtolower( key( $user->caps ) );
+			$args['user_caps'] = strtolower( key( $user->caps ) );
 			if ( empty( $args['user_id'] ) )
 				$args['user_id']  = $user->ID;
 		} else {
-			$args['userCaps'] = 'guest';
+			$args['user_caps'] = 'guest';
 			if ( empty( $args['user_id'] ) )
 				$args['user_id']  = 0;
 		} 
@@ -49,9 +49,9 @@ class HT_API {
 				'object_name'    => $args['object_name'],
 				'object_id'      => $args['object_id'],
 				'user_id'        => $args['user_id'],
-				'userCaps'       => $args['userCaps'],
-				'histIP'         => $args['histIP'],
-				'histTime'       => $args['histTime'],
+				'user_caps'      => $args['user_caps'],
+				'user_ip'        => $args['user_ip'],
+				'hist_time'      => $args['hist_time'],
 			),
 			array( "%s", "%s", "%s", "%s", "%d", "%d", "%s", "%s", "%d" )
 		);

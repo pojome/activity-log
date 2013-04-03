@@ -49,9 +49,9 @@ class HT_History_List_Table extends WP_List_Table {
 
 		$allow_caps = array_unique( $allow_caps );
 		foreach ( $allow_caps as $cap )
-			$where_caps[] .= '`userCaps` = \'' . $cap . '\'';
+			$where_caps[] .= '`user_caps` = \'' . $cap . '\'';
 
-		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ') AND `histTime` > ' . strtotime( '-30 days', current_time( 'timestamp' ) );
+		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ') AND `hist_time` > ' . strtotime( '-30 days', current_time( 'timestamp' ) );
 	}
 	
 	public function __construct() {
@@ -172,8 +172,8 @@ class HT_History_List_Table extends WP_List_Table {
 				$return = __( 'was ', 'histimeline' ) . __( $item->action, 'histimeline' );
 				break;
 			case 'date' :
-				$return = human_time_diff( $item->histTime, current_time( 'timestamp' ) );
-				$return .= '<br />' . date( 'd/m/Y H:i', $item->histTime );
+				$return = human_time_diff( $item->hist_time, current_time( 'timestamp' ) );
+				$return .= '<br />' . date( 'd/m/Y H:i', $item->hist_time );
 				break;
 			default :
 				if ( isset( $item->$column_name ) )
@@ -199,7 +199,7 @@ class HT_History_List_Table extends WP_List_Table {
 		else
 			$return .= __( 'Guest', 'histimeline' );
 		
-		$return .= ' (' . $item->histIP . ')';
+		$return .= ' (' . $item->user_ip . ')';
 		
 		return $return;
 	}
@@ -250,7 +250,7 @@ class HT_History_List_Table extends WP_List_Table {
 			'SELECT * FROM `%1$s`
 				' . $where . '
 					' . $this->_get_where_by_role() . '
-					ORDER BY `histTime` DESC
+					ORDER BY `hist_time` DESC
 					LIMIT %2$d, %3$d;',
 			$table,
 			$offset,
