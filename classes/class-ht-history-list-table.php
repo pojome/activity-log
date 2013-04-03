@@ -80,10 +80,10 @@ class HT_History_List_Table extends WP_List_Table {
 
 	public function get_columns() {
 		$columns = array(
-			'type'		=> _x( 'Type', 'main table', 'histimeline' ),
-			'name'		=> _x( 'Name', 'main table', 'histimeline' ),
-			'action'	=> _x( 'Action', 'main table', 'histimeline' ),
-			'date'		=> _x( 'Date', 'main table', 'histimeline' ),
+			'type'		=> _x( 'Type', 'main table', HT_TEXT_DOMAIN ),
+			'name'		=> _x( 'Name', 'main table', HT_TEXT_DOMAIN ),
+			'action'	=> _x( 'Action', 'main table', HT_TEXT_DOMAIN ),
+			'date'		=> _x( 'Date', 'main table', HT_TEXT_DOMAIN ),
 		);
 
 		return $columns;
