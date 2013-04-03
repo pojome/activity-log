@@ -115,7 +115,7 @@ class HT_History_List_Table extends WP_List_Table {
 			$output = array();
 			foreach ( $users as $_user ) {
 				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'Guest' );
+					$output[0] = __( 'Guest', 'histimeline' );
 					continue;
 				}
 				
@@ -126,7 +126,7 @@ class HT_History_List_Table extends WP_List_Table {
 			
 			if ( ! empty( $output ) ) {
 				echo '<select name="usershow" id="hs-filter-usershow">';
-				printf( '<option value="">%s</option>', __( 'All Users' ) );
+				printf( '<option value="">%s</option>', __( 'All Users', 'histimeline' ) );
 				foreach ( $output as $key => $value ) {
 					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
 				}
@@ -153,12 +153,12 @@ class HT_History_List_Table extends WP_List_Table {
 				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ) );
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
-			printf( '<option value="">%s</option>', __( 'All Types' ) );
+			printf( '<option value="">%s</option>', __( 'All Types', 'histimeline' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
 
-		submit_button( __( 'Filter' ), 'button', false, false, array( 'id' => 'history-query-submit' ) );
+		submit_button( __( 'Filter', 'histimeline' ), 'button', false, false, array( 'id' => 'history-query-submit' ) );
 		
 		echo '</div>';
 		
