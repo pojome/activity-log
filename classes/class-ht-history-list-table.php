@@ -169,7 +169,7 @@ class HT_History_List_Table extends WP_List_Table {
 		
 		switch ( $column_name ) {
 			case 'action' :
-				$return = 'was ' . $item->action;
+				$return = __( 'was ', 'histimeline' ) . __( $item->action, 'histimeline' );
 				break;
 			case 'date' :
 				$return = human_time_diff( $item->histTime, current_time( 'timestamp' ) );
@@ -190,14 +190,14 @@ class HT_History_List_Table extends WP_List_Table {
 			$return .= ' (' . $item->object_subtype . ')';
 
 		$user       = false;
-		$return     .= '<br />by ';
+		$return     .= '<br />' . __( 'by ', 'histimeline' );
 		if ( ! empty( $item->user_id ) )
 			$user = get_user_by( 'id', $item->user_id );
 
 		if ( $user )
 			$return .= '<a href="user-edit.php?user_id=' . $user->ID . '">' . $user->user_login . '</a>';
 		else
-			$return .= 'Guest';
+			$return .= __( 'Guest', 'histimeline' );
 		
 		$return .= ' (' . $item->histIP . ')';
 		
