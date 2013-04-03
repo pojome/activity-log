@@ -142,7 +142,7 @@ class HT_Hooks {
 			// nvm.. ignore it.
 			return;
 		}
-		elseif ( "trash" === $new_status ) {
+		elseif ( 'trash' === $new_status ) {
 			// page was deleted.
 			$action = 'deleted';
 		}

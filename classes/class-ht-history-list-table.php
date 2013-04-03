@@ -184,7 +184,7 @@ class HT_History_List_Table extends WP_List_Table {
 	}
 
 	public function column_type( $item ) {
-		$return = $item->object_type;
+		$return = __( $item->object_type, 'histimeline' );
 		
 		if ( ! empty( $item->object_subtype ) )
 			$return .= ' (' . $item->object_subtype . ')';
