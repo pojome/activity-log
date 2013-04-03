@@ -115,7 +115,7 @@ class HT_History_List_Table extends WP_List_Table {
 			$output = array();
 			foreach ( $users as $_user ) {
 				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'Guest', 'histimeline' );
+					$output[0] = __( 'Guest', HT_TEXT_DOMAIN );
 					continue;
 				}
 				
@@ -126,7 +126,7 @@ class HT_History_List_Table extends WP_List_Table {
 			
 			if ( ! empty( $output ) ) {
 				echo '<select name="usershow" id="hs-filter-usershow">';
-				printf( '<option value="">%s</option>', __( 'All Users', 'histimeline' ) );
+				printf( '<option value="">%s</option>', __( 'All Users', HT_TEXT_DOMAIN ) );
 				foreach ( $output as $key => $value ) {
 					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
 				}
@@ -153,12 +153,12 @@ class HT_History_List_Table extends WP_List_Table {
 				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ) );
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
-			printf( '<option value="">%s</option>', __( 'All Types', 'histimeline' ) );
+			printf( '<option value="">%s</option>', __( 'All Types', HT_TEXT_DOMAIN ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
 
-		submit_button( __( 'Filter', 'histimeline' ), 'button', false, false, array( 'id' => 'history-query-submit' ) );
+		submit_button( __( 'Filter', HT_TEXT_DOMAIN ), 'button', false, false, array( 'id' => 'history-query-submit' ) );
 		
 		echo '</div>';
 		
@@ -169,7 +169,7 @@ class HT_History_List_Table extends WP_List_Table {
 		
 		switch ( $column_name ) {
 			case 'action' :
-				$return = __( 'was ', 'histimeline' ) . __( $item->action, 'histimeline' );
+				$return = __( 'was ', HT_TEXT_DOMAIN ) . __( $item->action, HT_TEXT_DOMAIN );
 				break;
 			case 'date' :
 				$return = human_time_diff( $item->hist_time, current_time( 'timestamp' ) );
@@ -184,20 +184,20 @@ class HT_History_List_Table extends WP_List_Table {
 	}
 
 	public function column_type( $item ) {
-		$return = __( $item->object_type, 'histimeline' );
+		$return = __( $item->object_type, HT_TEXT_DOMAIN );
 		
 		if ( ! empty( $item->object_subtype ) )
 			$return .= ' (' . $item->object_subtype . ')';
 
 		$user       = false;
-		$return     .= '<br />' . __( 'by ', 'histimeline' );
+		$return     .= '<br />' . __( 'by ', HT_TEXT_DOMAIN );
 		if ( ! empty( $item->user_id ) )
 			$user = get_user_by( 'id', $item->user_id );
 
 		if ( $user )
 			$return .= '<a href="user-edit.php?user_id=' . $user->ID . '">' . $user->user_login . '</a>';
 		else
-			$return .= __( 'Guest', 'histimeline' );
+			$return .= __( 'Guest', HT_TEXT_DOMAIN );
 		
 		$return .= ' (' . $item->hist_ip . ')';
 		

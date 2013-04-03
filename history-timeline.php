@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 define( 'HISTORY_TIMELINE_BASE', plugin_basename( __FILE__ ) );
 
+define( 'HT_TEXT_DOMAIN', 'histimeline' );
+
 include( 'classes/class-maintenance.php' );
 include( 'classes/class-ht-history-list-table.php' );
 include( 'classes/class-settings.php' );

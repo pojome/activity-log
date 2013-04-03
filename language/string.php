@@ -1,22 +1,22 @@
 <?php
 
 // Post
-__( 'Post', 'histimeline' );
-__( 'created', 'histimeline' );
-__( 'updated', 'histimeline' );
-__( 'deleted', 'histimeline' );
+__( 'Post', HT_TEXT_DOMAIN );
+__( 'created', HT_TEXT_DOMAIN );
+__( 'updated', HT_TEXT_DOMAIN );
+__( 'deleted', HT_TEXT_DOMAIN );
 
 // Attachment
-__( 'Attachment', 'histimeline' );
-__( 'added', 'histimeline' );
+__( 'Attachment', HT_TEXT_DOMAIN );
+__( 'added', HT_TEXT_DOMAIN );
 
 // User
-__( 'User', 'histimeline' );
-__( 'logged_out', 'histimeline' );
-__( 'logged_in', 'histimeline' );
-__( 'wrong_password', 'histimeline' );
+__( 'User', HT_TEXT_DOMAIN );
+__( 'logged_out', HT_TEXT_DOMAIN );
+__( 'logged_in', HT_TEXT_DOMAIN );
+__( 'wrong_password', HT_TEXT_DOMAIN );
 
 // Plugin
-__( 'Plugin', 'histimeline' );
-__( 'activated', 'histimeline' );
-__( 'deactivated', 'histimeline' );
+__( 'Plugin', HT_TEXT_DOMAIN );
+__( 'activated', HT_TEXT_DOMAIN );
+__( 'deactivated', HT_TEXT_DOMAIN );
