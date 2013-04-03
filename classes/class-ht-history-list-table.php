@@ -199,7 +199,7 @@ class HT_History_List_Table extends WP_List_Table {
 		else
 			$return .= __( 'Guest', 'histimeline' );
 		
-		$return .= ' (' . $item->user_ip . ')';
+		$return .= ' (' . $item->hist_ip . ')';
 		
 		return $return;
 	}
