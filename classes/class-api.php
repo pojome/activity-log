@@ -19,10 +19,12 @@ class HT_API {
 		$user = get_user_by( 'id', get_current_user_id() );
 		if ( $user ) {
 			$args['userCaps'] = strtolower( key( $user->caps ) );
-			$args['user_id']  = $user->ID;
+			if ( empty( $args['user_id'] ) )
+				$args['user_id']  = $user->ID;
 		} else {
 			$args['userCaps'] = 'guest';
-			$args['user_id']  = 0;
+			if ( empty( $args['user_id'] ) )
+				$args['user_id']  = 0;
 		} 
 
 		$wpdb->insert( $wpdb->history_timeline,

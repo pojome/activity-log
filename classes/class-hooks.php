@@ -29,7 +29,7 @@ class HT_Hooks {
 	
 	public function init() {
 		add_filter( 'wp_login_failed', array( &$this, 'hooks_wrong_password' ) );
-		add_action( 'wp_login', array( &$this, 'hooks_wp_login' ) );
+		add_action( 'wp_login', array( &$this, 'hooks_wp_login' ), 10, 2 );
 		add_action( 'wp_logout', array( &$this, 'hooks_wp_logout' ) );
 		add_action( 'delete_user', array( &$this, 'hooks_delete_user' ) );
 		add_action( 'user_register', array( &$this, 'hooks_user_register' ) );
@@ -101,42 +101,37 @@ class HT_Hooks {
 		) );
 	}
 
-	public function hooks_wrong_password() {
+	public function hooks_wrong_password( $username ) {
 		ht_insert_log( array(
 			'action'      => 'wrong_password',
 			'object_type' => 'User',
 			'user_id'     => 0,
 			'object_id'   => 0,
-			'object_name' => $_REQUEST['log'],
+			//'object_name' => $_REQUEST['log'],
+			'object_name' => $username,
 		) );
 	}
 
-	public function hooks_wp_login( $user ) {
-		$user = get_user_by( 'login', $user );
-
-		$history = new HT_Model();
-
-		$history->action      = 'logged_in';
-		$history->user_id     = $user->ID;
-		$history->object_type = 'User';
-		$history->object_id   = $user->ID;
-		$history->object_name = $user->user_nicename;
-
-		$history->insert();
+	public function hooks_wp_login( $user_login, $user ) {
+		ht_insert_log( array(
+			'action'      => 'logged_in',
+			'object_type' => 'User',
+			'user_id'     => $user->ID,
+			'object_id'   => $user->ID,
+			'object_name' => $user->user_nicename,
+		) );
 	}
 
 	public function hooks_wp_logout() {
 		$user = wp_get_current_user();
 
-		$history = new HT_Model();
-
-		$history->action      = 'logged_out';
-		$history->user_id     = $user->ID;
-		$history->object_type = 'User';
-		$history->object_id   = $user->ID;
-		$history->object_name = $user->user_nicename;
-
-		$history->insert();
+		ht_insert_log( array(
+			'action'      => 'logged_out',
+			'object_type' => 'User',
+			'user_id'     => $user->ID,
+			'object_id'   => $user->ID,
+			'object_name' => $user->user_nicename,
+		) );
 	}
 
 	public function hooks_transition_post_status( $new_status, $old_status, $post ) {
