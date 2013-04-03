@@ -14,7 +14,6 @@ if ( ! defined( 'HISTORY_TIMELINE_BASE' ) )
 	define( 'HISTORY_TIMELINE_BASE', plugin_basename( __FILE__ ) );
 
 include( 'classes/class-maintenance.php' );
-include( 'classes/class-model.php' );
 include( 'classes/class-ht-history-list-table.php' );
 include( 'classes/class-settings.php' );
 include( 'classes/class-admin-ui.php' );

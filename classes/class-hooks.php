@@ -7,15 +7,13 @@ class HT_Hooks {
 	protected function _add_log_attachment( $action, $attachment_id ) {
 		$post = get_post( $attachment_id );
 
-		$history = new HT_Model();
-
-		$history->action         = $action;
-		$history->object_type    = 'Attachment';
-		$history->object_subtype = $post->post_type;
-		$history->object_id      = $attachment_id;
-		$history->object_name    = get_the_title( $post->ID );
-
-		$history->insert();
+		ht_insert_log( array(
+			'action'         => $action,
+			'object_type'    => 'Attachment',
+			'object_subtype' => $post->post_type,
+			'object_id'      => $attachment_id,
+			'object_name'    => get_the_title( $post->ID ),
+		) );
 	}
 	
 	protected function _add_log_plugin( $action, $plugin_name ) {
@@ -107,7 +105,6 @@ class HT_Hooks {
 			'object_type' => 'User',
 			'user_id'     => 0,
 			'object_id'   => 0,
-			//'object_name' => $_REQUEST['log'],
 			'object_name' => $username,
 		) );
 	}
@@ -156,17 +153,13 @@ class HT_Hooks {
 
 		if ( wp_is_post_revision( $post->ID ) )
 			return;
-
-		$history = new HT_Model();
-
-		$history->action         = $action;
-		$history->user_id        = get_current_user_id();
-		$history->object_type    = 'Post';
-		$history->object_subtype = $post->post_type;
-		$history->object_id      = $post->ID;
-		$history->object_name    = get_the_title( $post->ID );
-
-		$history->insert();
+		
+		ht_insert_log( array(
+			'action'      => $action,
+			'object_type' => 'Post',
+			'object_id'   => $post->ID,
+			'object_name' => get_the_title( $post->ID ),
+		) );
 	}
 
 	public function hooks_delete_post( $post_id ) {
@@ -175,20 +168,16 @@ class HT_Hooks {
 
 		$post = get_post( $post_id );
 
-		if ( 'auto-draft' === $post->post_status || 'inherit' === $post->post_status ) {
+		if ( 'auto-draft' === $post->post_status || 'inherit' === $post->post_status )
 			return;
-		}
 
-		$history = new HT_Model();
-
-		$history->action         = 'deleted';
-		$history->user_id        = get_current_user_id();
-		$history->object_type    = 'Post';
-		$history->object_subtype = $post->post_type;
-		$history->object_id      = $post->ID;
-		$history->object_name    = get_the_title( $post->ID );
-
-		$history->insert();
+		ht_insert_log( array(
+			'action'         => 'deleted',
+			'object_type'    => 'Post',
+			'object_subtype' => $post->post_type,
+			'object_id'      => $post->ID,
+			'object_name'    => get_the_title( $post->ID ),
+		) );
 	}
 	
 	public function __construct() {
