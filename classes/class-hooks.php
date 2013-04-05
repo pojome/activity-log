@@ -2,12 +2,12 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class HT_Hooks {
+class AAL_Hooks {
 
 	protected function _add_log_attachment( $action, $attachment_id ) {
 		$post = get_post( $attachment_id );
 
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'         => $action,
 			'object_type'    => 'Attachment',
 			'object_subtype' => $post->post_type,
@@ -17,7 +17,7 @@ class HT_Hooks {
 	}
 	
 	protected function _add_log_plugin( $action, $plugin_name ) {
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'      => $action,
 			'object_type' => 'Plugin',
 			'object_id'   => 0,
@@ -69,7 +69,7 @@ class HT_Hooks {
 	public function hooks_profile_update( $user_id ) {
 		$user = get_user_by( 'id', $user_id );
 		
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'      => 'updated',
 			'object_type' => 'User',
 			'object_id'   => $user->ID,
@@ -80,7 +80,7 @@ class HT_Hooks {
 	public function hooks_user_register( $user_id ) {
 		$user = get_user_by( 'id', $user_id );
 
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'      => 'created',
 			'object_type' => 'User',
 			'object_id'   => $user->ID,
@@ -91,7 +91,7 @@ class HT_Hooks {
 	public function hooks_delete_user( $user_id ) {
 		$user = get_user_by( 'id', $user_id );
 		
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'      => 'deleted',
 			'object_type' => 'User',
 			'object_id'   => $user->ID,
@@ -100,7 +100,7 @@ class HT_Hooks {
 	}
 
 	public function hooks_wrong_password( $username ) {
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'      => 'wrong_password',
 			'object_type' => 'User',
 			'user_id'     => 0,
@@ -110,7 +110,7 @@ class HT_Hooks {
 	}
 
 	public function hooks_wp_login( $user_login, $user ) {
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'      => 'logged_in',
 			'object_type' => 'User',
 			'user_id'     => $user->ID,
@@ -122,7 +122,7 @@ class HT_Hooks {
 	public function hooks_wp_logout() {
 		$user = wp_get_current_user();
 
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'      => 'logged_out',
 			'object_type' => 'User',
 			'user_id'     => $user->ID,
@@ -154,7 +154,7 @@ class HT_Hooks {
 		if ( wp_is_post_revision( $post->ID ) )
 			return;
 		
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'      => $action,
 			'object_type' => 'Post',
 			'object_id'   => $post->ID,
@@ -171,7 +171,7 @@ class HT_Hooks {
 		if ( 'auto-draft' === $post->post_status || 'inherit' === $post->post_status )
 			return;
 
-		ht_insert_log( array(
+		aal_insert_log( array(
 			'action'         => 'deleted',
 			'object_type'    => 'Post',
 			'object_subtype' => $post->post_type,

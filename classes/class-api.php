@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class HT_API {
+class AAL_API {
 
 	protected function _delete_old_items() {
 		global $wpdb;
@@ -58,11 +58,11 @@ class HT_API {
 
 		// Remove old items.
 		self::_delete_old_items();
-		do_action( 'ht_insert_log', $args );
+		do_action( 'aal_insert_log', $args );
 	}
 
 }
 
-function ht_insert_log( $args = array() ) {
-	HT_API::insert( $args );
+function aal_insert_log( $args = array() ) {
+	AAL_API::insert( $args );
 }

@@ -12,17 +12,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 define( 'ACTIVITY_LOG_BASE', plugin_basename( __FILE__ ) );
 
-define( 'HT_TEXT_DOMAIN', 'histimeline' );
+define( 'AAL_TEXT_DOMAIN', 'histimeline' );
 
 include( 'classes/class-maintenance.php' );
-include( 'classes/class-ht-history-list-table.php' );
+include( 'classes/class-aal-activity-log-list-table.php' );
 include( 'classes/class-settings.php' );
 include( 'classes/class-admin-ui.php' );
 include( 'classes/class-api.php' );
 include( 'classes/class-hooks.php' );
 
 // Probably we should put this in a separate file
-class HT_Main {
+class AAL_Main {
 
 	public $ui;
 	public $hooks;
@@ -31,16 +31,16 @@ class HT_Main {
 	public function __construct() {
 		global $wpdb;
 
-		$this->ui 			= new HT_Admin_Ui();
-		$this->hooks 		= new HT_Hooks();
-		$this->settings     = new HT_Settings();
+		$this->ui 			= new AAL_Admin_Ui();
+		$this->hooks 		= new AAL_Hooks();
+		$this->settings     = new AAL_Settings();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'activity_log';
 	}
 	
 }
-global $ht_main_class;
-$ht_main_class = new HT_Main();
+global $aal_main_class;
+$aal_main_class = new AAL_Main();
 
 // EOF

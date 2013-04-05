@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class HT_Maintenance {
+class AAL_Maintenance {
 	
 	public static function activate() {
 		global $wpdb;
@@ -24,7 +24,7 @@ class HT_Maintenance {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
 		
-		update_option( 'history_timeline_db_version', '0.1' );
+		update_option( 'activity_log_db_version', '0.1' );
 	}
 
 	public static function uninstall() {
@@ -32,9 +32,9 @@ class HT_Maintenance {
 
 		$wpdb->query( "DROP TABLE IF EXISTS $wpdb->activity_log" );
 
-		delete_option( 'history_timeline_db_version' );
+		delete_option( 'activity_log_db_version' );
 	}
 }
 
-register_activation_hook( ACTIVITY_LOG_BASE, array( 'HT_Maintenance', 'activate' ) );
-register_uninstall_hook( ACTIVITY_LOG_BASE, array( 'HT_Maintenance', 'uninstall' ) );
+register_activation_hook( ACTIVITY_LOG_BASE, array( 'AAL_Maintenance', 'activate' ) );
+register_uninstall_hook( ACTIVITY_LOG_BASE, array( 'AAL_Maintenance', 'uninstall' ) );

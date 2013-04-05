@@ -6,7 +6,7 @@ if ( ! class_exists( 'WP_List_Table' ) )
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 
 
-class HT_History_List_Table extends WP_List_Table {
+class AAL_Activity_Log_List_Table extends WP_List_Table {
 	
 	protected $_roles = array();
 	
@@ -70,16 +70,16 @@ class HT_History_List_Table extends WP_List_Table {
 		);
 		
 		parent::__construct( array(
-			'singular'  => 'history',
+			'singular'  => 'activity',
 		) );
 	}
 
 	public function get_columns() {
 		$columns = array(
-			'type'		=> _x( 'Type', 'main table', HT_TEXT_DOMAIN ),
-			'name'		=> _x( 'Name', 'main table', HT_TEXT_DOMAIN ),
-			'action'	=> _x( 'Action', 'main table', HT_TEXT_DOMAIN ),
-			'date'		=> _x( 'Date', 'main table', HT_TEXT_DOMAIN ),
+			'type'		=> _x( 'Type', 'main table', AAL_TEXT_DOMAIN ),
+			'name'		=> _x( 'Name', 'main table', AAL_TEXT_DOMAIN ),
+			'action'	=> _x( 'Action', 'main table', AAL_TEXT_DOMAIN ),
+			'date'		=> _x( 'Date', 'main table', AAL_TEXT_DOMAIN ),
 		);
 
 		return $columns;
@@ -110,7 +110,7 @@ class HT_History_List_Table extends WP_List_Table {
 			$output = array();
 			foreach ( $users as $_user ) {
 				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'Guest', HT_TEXT_DOMAIN );
+					$output[0] = __( 'Guest', AAL_TEXT_DOMAIN );
 					continue;
 				}
 				
@@ -121,7 +121,7 @@ class HT_History_List_Table extends WP_List_Table {
 			
 			if ( ! empty( $output ) ) {
 				echo '<select name="usershow" id="hs-filter-usershow">';
-				printf( '<option value="">%s</option>', __( 'All Users', HT_TEXT_DOMAIN ) );
+				printf( '<option value="">%s</option>', __( 'All Users', AAL_TEXT_DOMAIN ) );
 				foreach ( $output as $key => $value ) {
 					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
 				}
@@ -148,12 +148,12 @@ class HT_History_List_Table extends WP_List_Table {
 				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ) );
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
-			printf( '<option value="">%s</option>', __( 'All Types', HT_TEXT_DOMAIN ) );
+			printf( '<option value="">%s</option>', __( 'All Types', AAL_TEXT_DOMAIN ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
 
-		submit_button( __( 'Filter', HT_TEXT_DOMAIN ), 'button', false, false, array( 'id' => 'history-query-submit' ) );
+		submit_button( __( 'Filter', AAL_TEXT_DOMAIN ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
 		
 		echo '</div>';
 		
@@ -164,7 +164,7 @@ class HT_History_List_Table extends WP_List_Table {
 		
 		switch ( $column_name ) {
 			case 'action' :
-				$return = __( 'was ', HT_TEXT_DOMAIN ) . __( $item->action, HT_TEXT_DOMAIN );
+				$return = __( 'was ', AAL_TEXT_DOMAIN ) . __( $item->action, AAL_TEXT_DOMAIN );
 				break;
 			case 'date' :
 				$return = human_time_diff( $item->hist_time, current_time( 'timestamp' ) );
@@ -179,20 +179,20 @@ class HT_History_List_Table extends WP_List_Table {
 	}
 
 	public function column_type( $item ) {
-		$return = __( $item->object_type, HT_TEXT_DOMAIN );
+		$return = __( $item->object_type, AAL_TEXT_DOMAIN );
 		
 		if ( ! empty( $item->object_subtype ) )
 			$return .= ' (' . $item->object_subtype . ')';
 
 		$user       = false;
-		$return     .= '<br />' . __( 'by ', HT_TEXT_DOMAIN );
+		$return     .= '<br />' . __( 'by ', AAL_TEXT_DOMAIN );
 		if ( ! empty( $item->user_id ) )
 			$user = get_user_by( 'id', $item->user_id );
 
 		if ( $user )
 			$return .= '<a href="user-edit.php?user_id=' . $user->ID . '">' . $user->user_login . '</a>';
 		else
-			$return .= __( 'Guest', HT_TEXT_DOMAIN );
+			$return .= __( 'Guest', AAL_TEXT_DOMAIN );
 		
 		$return .= ' (' . $item->hist_ip . ')';
 		
@@ -214,8 +214,7 @@ class HT_History_List_Table extends WP_List_Table {
 	
 	public function prepare_items() {
 		global $wpdb;
-		
-		$table                 = $wpdb->prefix . 'history_timeline';
+	
 		/** @todo: add setting page with this value. */
 		$items_per_page        = 20;
 		$this->_column_headers = array( $this->get_columns(), array(), $this->get_sortable_columns() );
@@ -235,7 +234,7 @@ class HT_History_List_Table extends WP_List_Table {
 			'SELECT COUNT(`histid`) FROM `%1$s`
 				' . $where . '
 					' . $this->_get_where_by_role(),
-			$table,
+			$wpdb->activity_log,
 			$offset,
 			$items_per_page
 		) );
