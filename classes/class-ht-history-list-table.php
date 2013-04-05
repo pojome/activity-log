@@ -74,7 +74,6 @@ class HT_History_List_Table extends WP_List_Table {
 		
 		parent::__construct( array(
 			'singular'  => 'history',
-			'ajax'      => true,
 		) );
 	}
 
