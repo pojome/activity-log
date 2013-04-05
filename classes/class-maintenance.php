@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HT_Maintenance {
 	
 	public static function activate() {
-		/** @var $wpdb wpdb */
 		global $wpdb;
 
 		$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->history_timeline}` (
@@ -29,7 +28,6 @@ class HT_Maintenance {
 	}
 
 	public static function uninstall() {
-		/** @var $wpdb wpdb */
 		global $wpdb;
 
 		$wpdb->query( "DROP TABLE IF EXISTS $wpdb->history_timeline" );

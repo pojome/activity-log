@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HT_API {
 
 	protected function _delete_old_items() {
-		/** @var $wpdb wpdb */
 		global $wpdb;
 		
 		/** @todo: Add setting value for days. */
@@ -19,7 +18,6 @@ class HT_API {
 	}
 
 	public static function insert( $args ) {
-		/** @var $wpdb wpdb */
 		global $wpdb;
 
 		$args = wp_parse_args( $args, array(

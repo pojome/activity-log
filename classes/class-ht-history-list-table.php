@@ -55,9 +55,6 @@ class HT_History_List_Table extends WP_List_Table {
 	}
 	
 	public function __construct() {
-		/** @var $wpdb wpdb */
-		global $wpdb;
-		
 		$this->_roles = array(
 			// admin
 			'manage_options' => array( 'Post', 'User', 'Attachment', 'Plugin' ),
@@ -89,7 +86,6 @@ class HT_History_List_Table extends WP_List_Table {
 	}
 	
 	public function extra_tablenav( $which ) {
-		/** @var $wpdb wpdb */
 		global $wpdb;
 		
 		if ( 'top' !== $which )
@@ -217,7 +213,6 @@ class HT_History_List_Table extends WP_List_Table {
 	}
 	
 	public function prepare_items() {
-		/** @var $wpdb wpdb */
 		global $wpdb;
 		
 		$table                 = $wpdb->prefix . 'history_timeline';
