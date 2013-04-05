@@ -100,7 +100,7 @@ class HT_History_List_Table extends WP_List_Table {
 					GROUP BY `user_id`
 					ORDER BY `user_id`
 					;',
-			$wpdb->history_timeline
+			$wpdb->activity_log
 		) );
 		
 		if ( $users ) {
@@ -136,7 +136,7 @@ class HT_History_List_Table extends WP_List_Table {
 				GROUP BY `object_type`
 				ORDER BY `object_type`
 				;',
-			$wpdb->history_timeline
+			$wpdb->activity_log
 		) );
 
 		if ( $types ) {

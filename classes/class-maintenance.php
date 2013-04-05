@@ -7,7 +7,7 @@ class HT_Maintenance {
 	public static function activate() {
 		global $wpdb;
 
-		$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->history_timeline}` (
+		$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->activity_log}` (
 					  `histid` int(11) NOT NULL AUTO_INCREMENT,
 					  `user_caps` varchar(70) NOT NULL DEFAULT 'guest',
 					  `action` varchar(255) NOT NULL,
@@ -30,11 +30,11 @@ class HT_Maintenance {
 	public static function uninstall() {
 		global $wpdb;
 
-		$wpdb->query( "DROP TABLE IF EXISTS $wpdb->history_timeline" );
+		$wpdb->query( "DROP TABLE IF EXISTS $wpdb->activity_log" );
 
 		delete_option( 'history_timeline_db_version' );
 	}
 }
 
-register_activation_hook( HISTORY_TIMELINE_BASE, array( 'HT_Maintenance', 'activate' ) );
-register_uninstall_hook( HISTORY_TIMELINE_BASE, array( 'HT_Maintenance', 'uninstall' ) );
+register_activation_hook( ACTIVITY_LOG_BASE, array( 'HT_Maintenance', 'activate' ) );
+register_uninstall_hook( ACTIVITY_LOG_BASE, array( 'HT_Maintenance', 'uninstall' ) );

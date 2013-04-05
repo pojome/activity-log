@@ -12,7 +12,7 @@ class HT_API {
 		$wpdb->query( $wpdb->prepare(
 			'DELETE FROM `%1$s`
 				WHERE `hist_time` < %2$d',
-			$wpdb->history_timeline,
+			$wpdb->activity_log,
 			strtotime( '-30 days', current_time( 'timestamp' ) )
 		) );
 	}
@@ -41,7 +41,7 @@ class HT_API {
 				$args['user_id']  = 0;
 		} 
 
-		$wpdb->insert( $wpdb->history_timeline,
+		$wpdb->insert( $wpdb->activity_log,
 			array(
 				'action'         => $args['action'],
 				'object_type'    => $args['object_type'],

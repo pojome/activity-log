@@ -1,6 +1,6 @@
 <?php
 /*
- Plugin Name: History Timeline
+ Plugin Name: ARYO Activity Log
  Plugin URI: http://www.aryo.co.il/
  Description: Never mind.. Created by Yakir Sitbon.
  Author: Yakir Sitbon
@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'HISTORY_TIMELINE_BASE', plugin_basename( __FILE__ ) );
+define( 'ACTIVITY_LOG_BASE', plugin_basename( __FILE__ ) );
 
 define( 'HT_TEXT_DOMAIN', 'histimeline' );
 
@@ -36,7 +36,7 @@ class HT_Main {
 		$this->settings     = new HT_Settings();
 
 		// set up our DB name
-		$wpdb->history_timeline = $wpdb->prefix . 'history_timeline';
+		$wpdb->activity_log = $wpdb->prefix . 'activity_log';
 	}
 	
 }
