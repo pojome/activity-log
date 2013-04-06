@@ -22,8 +22,19 @@ include( 'classes/class-hooks.php' );
 // Probably we should put this in a separate file
 class AAL_Main {
 
+	/**
+	 * @var AAL_Admin_Ui
+	 */
 	public $ui;
+
+	/**
+	 * @var AAL_Hooks
+	 */
 	public $hooks;
+
+	/**
+	 * @var AAL_Settings
+	 */
 	public $settings;
 
 	public function __construct() {

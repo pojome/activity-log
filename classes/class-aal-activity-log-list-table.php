@@ -68,7 +68,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'editor'        => array( 'editor', 'author', 'guest' ),
 			'author'        => array( 'author', 'guest' ),
 		);
-		
+
 		parent::__construct( array(
 			'singular'  => 'activity',
 		) );
@@ -83,80 +83,6 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		);
 
 		return $columns;
-	}
-	
-	public function extra_tablenav( $which ) {
-		global $wpdb;
-		
-		if ( 'top' !== $which )
-			return;
-		
-		echo '<div class="alignleft actions">';
-
-		$users = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
-				WHERE 1 = 1
-				' . $this->_get_where_by_role() . '
-					GROUP BY `user_id`
-					ORDER BY `user_id`
-					;',
-			$wpdb->activity_log
-		) );
-		
-		if ( $users ) {
-			if ( ! isset( $_REQUEST['usershow'] ) )
-				$_REQUEST['usershow'] = '';
-			
-			$output = array();
-			foreach ( $users as $_user ) {
-				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'Guest', 'aryo-aal' );
-					continue;
-				}
-				
-				$user = get_user_by( 'id', $_user->user_id );
-				if ( $user )
-					$output[ $user->ID ] = $user->user_nicename;
-			}
-			
-			if ( ! empty( $output ) ) {
-				echo '<select name="usershow" id="hs-filter-usershow">';
-				printf( '<option value="">%s</option>', __( 'All Users', 'aryo-aal' ) );
-				foreach ( $output as $key => $value ) {
-					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
-				}
-				echo '</select>';
-			}
-		}
-
-		$types = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
-				WHERE 1 = 1
-				' . $this->_get_where_by_role() . '
-				GROUP BY `object_type`
-				ORDER BY `object_type`
-				;',
-			$wpdb->activity_log
-		) );
-
-		if ( $types ) {
-			if ( ! isset( $_REQUEST['typeshow'] ) )
-				$_REQUEST['typeshow'] = '';
-
-			$output = array();
-			foreach ( $types as $type )
-				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ) );
-
-			echo '<select name="typeshow" id="hs-filter-typeshow">';
-			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-aal' ) );
-			echo implode( '', $output );
-			echo '</select>';
-		}
-
-		submit_button( __( 'Filter', 'aryo-aal' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
-		
-		echo '</div>';
-		
 	}
 
 	public function column_default( $item, $column_name ) {
@@ -211,6 +137,79 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		
 		return $return;
 	}
+
+	public function extra_tablenav( $which ) {
+		global $wpdb;
+
+		if ( 'top' !== $which )
+			return;
+
+		echo '<div class="alignleft actions">';
+
+		$users = $wpdb->get_results( $wpdb->prepare(
+			'SELECT * FROM `%1$s`
+				WHERE 1 = 1
+				' . $this->_get_where_by_role() . '
+					GROUP BY `user_id`
+					ORDER BY `user_id`
+					;',
+			$wpdb->activity_log
+		) );
+
+		if ( $users ) {
+			if ( ! isset( $_REQUEST['usershow'] ) )
+				$_REQUEST['usershow'] = '';
+
+			$output = array();
+			foreach ( $users as $_user ) {
+				if ( 0 === (int) $_user->user_id ) {
+					$output[0] = __( 'Guest', 'aryo-aal' );
+					continue;
+				}
+
+				$user = get_user_by( 'id', $_user->user_id );
+				if ( $user )
+					$output[ $user->ID ] = $user->user_nicename;
+			}
+
+			if ( ! empty( $output ) ) {
+				echo '<select name="usershow" id="hs-filter-usershow">';
+				printf( '<option value="">%s</option>', __( 'All Users', 'aryo-aal' ) );
+				foreach ( $output as $key => $value ) {
+					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
+				}
+				echo '</select>';
+			}
+		}
+
+		$types = $wpdb->get_results( $wpdb->prepare(
+			'SELECT * FROM `%1$s`
+				WHERE 1 = 1
+				' . $this->_get_where_by_role() . '
+				GROUP BY `object_type`
+				ORDER BY `object_type`
+				;',
+			$wpdb->activity_log
+		) );
+
+		if ( $types ) {
+			if ( ! isset( $_REQUEST['typeshow'] ) )
+				$_REQUEST['typeshow'] = '';
+
+			$output = array();
+			foreach ( $types as $type )
+				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ) );
+
+			echo '<select name="typeshow" id="hs-filter-typeshow">';
+			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-aal' ) );
+			echo implode( '', $output );
+			echo '</select>';
+		}
+
+		submit_button( __( 'Filter', 'aryo-aal' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
+
+		echo '</div>';
+	}
 	
 	public function prepare_items() {
 		global $wpdb;
@@ -245,7 +244,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					' . $this->_get_where_by_role() . '
 					ORDER BY `hist_time` DESC
 					LIMIT %2$d, %3$d;',
-			$table,
+			$wpdb->activity_log,
 			$offset,
 			$items_per_page
 		) );
