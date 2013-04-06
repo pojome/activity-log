@@ -76,10 +76,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function get_columns() {
 		$columns = array(
-			'type'		=> _x( 'Type', 'main table', AAL_TEXT_DOMAIN ),
-			'name'		=> _x( 'Name', 'main table', AAL_TEXT_DOMAIN ),
-			'action'	=> _x( 'Action', 'main table', AAL_TEXT_DOMAIN ),
-			'date'		=> _x( 'Date', 'main table', AAL_TEXT_DOMAIN ),
+			'type'		=> _x( 'Type', 'main table', 'aryo-aal' ),
+			'name'		=> _x( 'Name', 'main table', 'aryo-aal' ),
+			'action'	=> _x( 'Action', 'main table', 'aryo-aal' ),
+			'date'		=> _x( 'Date', 'main table', 'aryo-aal' ),
 		);
 
 		return $columns;
@@ -110,7 +110,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$output = array();
 			foreach ( $users as $_user ) {
 				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'Guest', AAL_TEXT_DOMAIN );
+					$output[0] = __( 'Guest', 'aryo-aal' );
 					continue;
 				}
 				
@@ -121,7 +121,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			
 			if ( ! empty( $output ) ) {
 				echo '<select name="usershow" id="hs-filter-usershow">';
-				printf( '<option value="">%s</option>', __( 'All Users', AAL_TEXT_DOMAIN ) );
+				printf( '<option value="">%s</option>', __( 'All Users', 'aryo-aal' ) );
 				foreach ( $output as $key => $value ) {
 					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
 				}
@@ -148,12 +148,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ) );
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
-			printf( '<option value="">%s</option>', __( 'All Types', AAL_TEXT_DOMAIN ) );
+			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-aal' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
 
-		submit_button( __( 'Filter', AAL_TEXT_DOMAIN ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
+		submit_button( __( 'Filter', 'aryo-aal' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
 		
 		echo '</div>';
 		
@@ -164,7 +164,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		
 		switch ( $column_name ) {
 			case 'action' :
-				$return = __( 'was ', AAL_TEXT_DOMAIN ) . __( $item->action, AAL_TEXT_DOMAIN );
+				$return = __( 'was ', 'aryo-aal' ) . __( $item->action, 'aryo-aal' );
 				break;
 			case 'date' :
 				$return = human_time_diff( $item->hist_time, current_time( 'timestamp' ) );
@@ -179,20 +179,20 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 
 	public function column_type( $item ) {
-		$return = __( $item->object_type, AAL_TEXT_DOMAIN );
+		$return = __( $item->object_type, 'aryo-aal' );
 		
 		if ( ! empty( $item->object_subtype ) )
 			$return .= ' (' . $item->object_subtype . ')';
 
 		$user       = false;
-		$return     .= '<br />' . __( 'by ', AAL_TEXT_DOMAIN );
+		$return     .= '<br />' . __( 'by ', 'aryo-aal' );
 		if ( ! empty( $item->user_id ) )
 			$user = get_user_by( 'id', $item->user_id );
 
 		if ( $user )
 			$return .= '<a href="user-edit.php?user_id=' . $user->ID . '">' . $user->user_login . '</a>';
 		else
-			$return .= __( 'Guest', AAL_TEXT_DOMAIN );
+			$return .= __( 'Guest', 'aryo-aal' );
 		
 		$return .= ' (' . $item->hist_ip . ')';
 		

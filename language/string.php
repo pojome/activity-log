@@ -1,22 +1,22 @@
 <?php
 
 // Post
-__( 'Post', AAL_TEXT_DOMAIN );
-__( 'created', AAL_TEXT_DOMAIN );
-__( 'updated', AAL_TEXT_DOMAIN );
-__( 'deleted', AAL_TEXT_DOMAIN );
+__( 'Post', 'aryo-aal' );
+__( 'created', 'aryo-aal' );
+__( 'updated', 'aryo-aal' );
+__( 'deleted', 'aryo-aal' );
 
 // Attachment
-__( 'Attachment', AAL_TEXT_DOMAIN );
-__( 'added', AAL_TEXT_DOMAIN );
+__( 'Attachment', 'aryo-aal' );
+__( 'added', 'aryo-aal' );
 
 // User
-__( 'User', AAL_TEXT_DOMAIN );
-__( 'logged_out', AAL_TEXT_DOMAIN );
-__( 'logged_in', AAL_TEXT_DOMAIN );
-__( 'wrong_password', AAL_TEXT_DOMAIN );
+__( 'User', 'aryo-aal' );
+__( 'logged_out', 'aryo-aal' );
+__( 'logged_in', 'aryo-aal' );
+__( 'wrong_password', 'aryo-aal' );
 
 // Plugin
-__( 'Plugin', AAL_TEXT_DOMAIN );
-__( 'activated', AAL_TEXT_DOMAIN );
-__( 'deactivated', AAL_TEXT_DOMAIN );
+__( 'Plugin', 'aryo-aal' );
+__( 'activated', 'aryo-aal' );
+__( 'deactivated', 'aryo-aal' );

@@ -12,8 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 define( 'ACTIVITY_LOG_BASE', plugin_basename( __FILE__ ) );
 
-define( 'AAL_TEXT_DOMAIN', 'histimeline' );
-
 include( 'classes/class-maintenance.php' );
 include( 'classes/class-aal-activity-log-list-table.php' );
 include( 'classes/class-settings.php' );
