@@ -19,8 +19,8 @@ class AAL_Settings {
 	 */
 	public function action_admin_menu() {
 		$this->hook = add_options_page(
-			__( 'Activity Log Settings', 'histimeline' ), 	// <title> tag
-			__( 'Activity Log', 'histimeline' ), 			// menu label
+			__( 'Activity Log Settings', 'aryo-aal' ), 	// <title> tag
+			__( 'Activity Log', 'aryo-aal' ), 			// menu label
 			'manage_options', 								// required cap to view this page
 			$this->slug = 'activity-log-settings', 			// page slug
 			array( $this, 'display_settings_page' )			// callback
@@ -56,10 +56,10 @@ class AAL_Settings {
 				'id' => 'logs_lifespan',
 				'page' => $this->slug,
 				'options' => array(
-					'forever' => __( 'Forever', 'histimeline' ),
-					'365' => __( 'A year', 'histimeline' ),
-					'90' => __( '6 months', 'histimeline' ),
-					'30' => __( 'A month', 'histimeline' ),
+					'forever' => __( 'Forever', 'aryo-aal' ),
+					'365' => __( 'A year', 'aryo-aal' ),
+					'90' => __( '6 months', 'aryo-aal' ),
+					'30' => __( 'A month', 'aryo-aal' ),
 				),
 			)
 		);
@@ -76,7 +76,7 @@ class AAL_Settings {
 		<div class="wrap">
 		
 			<div id="icon-themes" class="icon32"></div>
-			<h2><?php _e( 'ARYO Activity Log Settings', 'histimeline' ); ?></h2>
+			<h2><?php _e( 'ARYO Activity Log Settings', 'aryo-aal' ); ?></h2>
 			<?php settings_errors(); ?>
 			
 			<form method="post" action="options.php">
@@ -100,7 +100,7 @@ final class AAL_Settings_Fields {
 
 	public static function description() {
 		?>
-		<p><?php _e( 'These are some basic settings for Activity Log.', 'histimeline' ); ?></p>
+		<p><?php _e( 'These are some basic settings for Activity Log.', 'aryo-aal' ); ?></p>
 		<?php
 	}
 
