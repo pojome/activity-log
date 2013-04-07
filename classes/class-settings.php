@@ -8,8 +8,8 @@ class AAL_Settings {
 	private $slug;
 	
 	public function __construct() {
-		add_action( 'admin_menu', array( $this, 'action_admin_menu' ) );
-		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'admin_menu', array( &$this, 'action_admin_menu' ) );
+		add_action( 'admin_init', array( &$this, 'register_settings' ) );
 	}
 
 	/**
@@ -23,7 +23,7 @@ class AAL_Settings {
 			__( 'Activity Log', 'aryo-aal' ), 			// menu label
 			'manage_options', 								// required cap to view this page
 			$this->slug = 'activity-log-settings', 			// page slug
-			array( $this, 'display_settings_page' )			// callback
+			array( &$this, 'display_settings_page' )			// callback
 		);
 
 		// this callback will initialize the settings for AAL
@@ -64,10 +64,7 @@ class AAL_Settings {
 			)
 		);
 
-		register_setting(
-			$this->slug,
-			'aal_options'
-		);
+		register_setting( $this->slug, 'aal_options' );
 	}
 
 	public function display_settings_page() {
@@ -81,12 +78,10 @@ class AAL_Settings {
 			
 			<form method="post" action="options.php">
 				<?php
-
 				settings_fields( $this->slug );
 				do_settings_sections( $this->slug );
 
 				submit_button();
-
 				?>
 			</form>
 			
