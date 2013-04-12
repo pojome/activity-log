@@ -37,6 +37,9 @@ class AAL_Hooks {
 		// Plugins
 		add_action( 'activated_plugin', array( &$this, 'hooks_activated_plugin' ) );
 		add_action( 'deactivated_plugin', array( &$this, 'hooks_deactivated_plugin' ) );
+		
+		// Theme
+		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
 	}
 
 	public function admin_init() {
@@ -208,6 +211,31 @@ class AAL_Hooks {
 
 		// We are need return the instance, for complete the filter.
 		return $instance;
+	}
+	
+	public function hooks_theme_modify( $location, $status ) {
+		if ( false !== strpos( $location, 'theme-editor.php?file=' ) ) {
+			if ( ! empty( $_POST ) && 'update' === $_POST['action'] ) {
+				$aal_args = array(
+					'action'         => 'file_updated',
+					'object_type'    => 'Theme',
+					'object_subtype' => 'theme_unknown',
+					'object_id'      => 0,
+					'object_name'    => 'file_unknown',
+				);
+				
+				if ( ! empty( $_POST['file'] ) )
+					$aal_args['object_name'] = $_POST['file'];
+				
+				if ( ! empty( $_POST['theme'] ) )
+					$aal_args['object_subtype'] = $_POST['theme'];
+					
+				aal_insert_log( $aal_args );
+			}
+		}
+		
+		// We are need return the instance, for complete the filter.
+		return $location;
 	}
 	
 	public function __construct() {

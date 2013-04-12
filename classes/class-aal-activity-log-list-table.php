@@ -57,7 +57,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	public function __construct() {
 		$this->_roles = array(
 			// admin
-			'manage_options' => array( 'Post', 'User', 'Attachment', 'Plugin', 'Widget' ),
+			'manage_options' => array( 'Post', 'User', 'Attachment', 'Plugin', 'Widget', 'Theme' ),
 			// editor
 			'edit_pages'     => array( 'Post', 'Attachment' ),
 		);
