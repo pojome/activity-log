@@ -36,7 +36,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		$user_cap   = strtolower( key( $user->caps ) );
 		$allow_caps = $where_caps = array();
-
+		
 		foreach ( $this->_caps as $key => $cap_allow ) {
 			if ( $key === $user_cap ) {
 				$allow_caps = array_merge( $allow_caps, $cap_allow );
@@ -51,17 +51,16 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		foreach ( $allow_caps as $cap )
 			$where_caps[] .= '`user_caps` = \'' . $cap . '\'';
 
-		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ') AND `hist_time` > ' . strtotime( '-30 days', current_time( 'timestamp' ) );
+		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ')';
 	}
 	
 	public function __construct() {
 		$this->_roles = array(
 			// admin
-			'manage_options' => array( 'Post', 'User', 'Attachment', 'Plugin' ),
+			'manage_options' => array( 'Post', 'User', 'Attachment', 'Plugin', 'Widget' ),
 			// editor
 			'edit_pages'     => array( 'Post', 'Attachment' ),
 		);
-
 
 		$this->_caps = array(
 			'administrator' => array( 'administrator', 'editor', 'author', 'guest' ),

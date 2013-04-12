@@ -45,7 +45,7 @@ class AAL_Main {
 		$this->settings     = new AAL_Settings();
 
 		// set up our DB name
-		$wpdb->activity_log = $wpdb->prefix . 'activity_log';
+		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
 	}
 	
 }

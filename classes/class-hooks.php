@@ -26,6 +26,7 @@ class AAL_Hooks {
 	}
 	
 	public function init() {
+		// User
 		add_filter( 'wp_login_failed', array( &$this, 'hooks_wrong_password' ) );
 		add_action( 'wp_login', array( &$this, 'hooks_wp_login' ), 10, 2 );
 		add_action( 'wp_logout', array( &$this, 'hooks_wp_logout' ) );
@@ -33,17 +34,23 @@ class AAL_Hooks {
 		add_action( 'user_register', array( &$this, 'hooks_user_register' ) );
 		add_action( 'profile_update', array( &$this, 'hooks_profile_update' ) );
 
+		// Plugins
 		add_action( 'activated_plugin', array( &$this, 'hooks_activated_plugin' ) );
 		add_action( 'deactivated_plugin', array( &$this, 'hooks_deactivated_plugin' ) );
 	}
 
 	public function admin_init() {
+		// Posts
 		add_action( 'transition_post_status', array( &$this, 'hooks_transition_post_status' ), 10, 3 );
 		add_action( 'delete_post', array( &$this, 'hooks_delete_post' ) );
 
+		// Attachments
 		add_action( 'add_attachment', array( &$this, 'hooks_add_attachment' ) );
 		add_action( 'edit_attachment', array( &$this, 'hooks_edit_attachment' ) );
 		add_action( 'delete_attachment', array( &$this, 'hooks_delete_attachment' ) );
+
+		// Widgets
+		add_filter( 'widget_update_callback', array( &$this, 'hooks_widget_update_callback' ), 9999, 4 );
 	}
 
 	public function hooks_delete_attachment( $attachment_id ) {
@@ -178,6 +185,29 @@ class AAL_Hooks {
 			'object_id'      => $post->ID,
 			'object_name'    => get_the_title( $post->ID ),
 		) );
+	}
+	
+	public function hooks_widget_update_callback( $instance, $new_instance, $old_instance, WP_Widget $widget ) {
+		$aal_args = array(
+			'action'         => 'updated',
+			'object_type'    => 'Widget',
+			'object_subtype' => 'sidebar_unknown',
+			'object_id'      => 0,
+			'object_name'    => $widget->id_base,
+		);
+		
+		if ( ! empty( $_REQUEST['sidebar'] ) )
+			$aal_args['object_subtype'] = strtolower( $_REQUEST['sidebar'] );
+		
+		/** @todo: find any way to widget deleted detected */
+		/*if ( isset( $_REQUEST['delete_widget'] ) && '1' === $_REQUEST['delete_widget'] ) {
+			$aal_args['action'] = 'deleted';
+		}*/
+		
+		aal_insert_log( $aal_args );
+
+		// We are need return the instance, for complete the filter.
+		return $instance;
 	}
 	
 	public function __construct() {

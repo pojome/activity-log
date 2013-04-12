@@ -13,7 +13,7 @@ class AAL_API {
 			'DELETE FROM `%1$s`
 				WHERE `hist_time` < %2$d',
 			$wpdb->activity_log,
-			strtotime( '-30 days', current_time( 'timestamp' ) )
+			strtotime( '-60 days', current_time( 'timestamp' ) )
 		) );
 	}
 
@@ -26,7 +26,7 @@ class AAL_API {
 			'object_subtype' => '',
 			'object_name'    => '',
 			'object_id'      => '',
-			'user_ip'        => $_SERVER['REMOTE_ADDR'],
+			'hist_ip'        => $_SERVER['REMOTE_ADDR'],
 			'hist_time'      => current_time( 'timestamp' ),
 		) );
 
@@ -50,14 +50,14 @@ class AAL_API {
 				'object_id'      => $args['object_id'],
 				'user_id'        => $args['user_id'],
 				'user_caps'      => $args['user_caps'],
-				'user_ip'        => $args['user_ip'],
+				'hist_ip'        => $args['hist_ip'],
 				'hist_time'      => $args['hist_time'],
 			),
 			array( "%s", "%s", "%s", "%s", "%d", "%d", "%s", "%s", "%d" )
 		);
 
 		// Remove old items.
-		self::_delete_old_items();
+		//self::_delete_old_items();
 		do_action( 'aal_insert_log', $args );
 	}
 
