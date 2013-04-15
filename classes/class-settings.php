@@ -108,7 +108,7 @@ final class AAL_Settings_Fields {
 		?>
 		<select id="<?php echo esc_attr( $id ); ?>" name="<?php printf( '%s[%s]', esc_attr( $page ), esc_attr( $id ) ); ?>">
 			<?php foreach ( $options as $name => $label ) : ?>
-			<option name="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) self::get_option( $id ) ); ?>>
+			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) self::get_option( $id ) ); ?>>
 				<?php echo esc_html( $label ); ?>
 			</option>
 			<?php endforeach; ?>
