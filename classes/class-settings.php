@@ -41,14 +41,14 @@ class AAL_Settings {
 		// First, we register a section. This is necessary since all future options must belong to a 
 		add_settings_section(
 			'general_settings_section',			// ID used to identify this section and with which to register options
-			__( 'Display Options', 'sandbox' ),	// Title to be displayed on the administration page
+			__( 'Display Options', 'aryo-aal' ),	// Title to be displayed on the administration page
 			array( 'AAL_Settings_Fields', 'description' ),	// Callback used to render the description of the section
 			$this->slug		// Page on which to add this section of options
 		);
 
 		add_settings_field(
 			'logs_lifespan',
-			__( 'Keep logs for', 'sandbox' ),
+			__( 'Keep logs for', 'aryo-aal' ),
 			array( 'AAL_Settings_Fields', 'select' ),
 			$this->slug,
 			'general_settings_section',
