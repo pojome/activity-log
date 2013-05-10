@@ -32,8 +32,8 @@ class AAL_Settings {
 
 	public function register_settings() {
 		// If no options exist, create them.
-		if ( ! get_option( 'aal_options' ) ) {
-			update_option( 'aal_options', apply_filters( 'aal_default_options', array(
+		if ( ! get_option( $this->slug ) ) {
+			update_option( $this->slug, apply_filters( 'aal_default_options', array(
 				'logs_lifespan' => 'forever',
 			) ) );
 		}
@@ -64,7 +64,7 @@ class AAL_Settings {
 			)
 		);
 
-		register_setting( $this->slug, 'aal_options' );
+		register_setting( 'aal-options', $this->slug );
 	}
 
 	public function display_settings_page() {
@@ -74,11 +74,10 @@ class AAL_Settings {
 		
 			<div id="icon-themes" class="icon32"></div>
 			<h2><?php _e( 'ARYO Activity Log Settings', 'aryo-aal' ); ?></h2>
-			<?php settings_errors(); ?>
 			
 			<form method="post" action="options.php">
 				<?php
-				settings_fields( $this->slug );
+				settings_fields( 'aal-options' );
 				do_settings_sections( $this->slug );
 
 				submit_button();
@@ -117,7 +116,7 @@ final class AAL_Settings_Fields {
 	}
 
 	public static function get_option( $key = '' ) {
-		$settings = get_option( 'aal_options' );
+		$settings = get_option( 'activity-log-settings' );
 		return ( ! empty( $settings[ $key ] ) ) ? $settings[ $key ] : false;
 	}
 
