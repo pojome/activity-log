@@ -59,7 +59,7 @@ class AAL_API {
 		);
 
 		// Remove old items.
-		//self::_delete_old_items();
+		self::_delete_old_items();
 		do_action( 'aal_insert_log', $args );
 	}
 
