@@ -87,6 +87,11 @@ class AAL_Settings {
 		</div><!-- /.wrap -->
 		<?php
 	}
+
+	public static function get_option( $key = '' ) {
+		$settings = get_option( 'activity-log-settings' );
+		return ( ! empty( $settings[ $key ] ) ) ? $settings[ $key ] : false;
+	}
 	
 }
 
@@ -107,17 +112,12 @@ final class AAL_Settings_Fields {
 		?>
 		<select id="<?php echo esc_attr( $id ); ?>" name="<?php printf( '%s[%s]', esc_attr( $page ), esc_attr( $id ) ); ?>">
 			<?php foreach ( $options as $name => $label ) : ?>
-			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) self::get_option( $id ) ); ?>>
+			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) AAL_Settings::get_option( $id ) ); ?>>
 				<?php echo esc_html( $label ); ?>
 			</option>
 			<?php endforeach; ?>
 		</select>
 		<?php
-	}
-
-	public static function get_option( $key = '' ) {
-		$settings = get_option( 'activity-log-settings' );
-		return ( ! empty( $settings[ $key ] ) ) ? $settings[ $key ] : false;
 	}
 
 }
