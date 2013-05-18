@@ -7,13 +7,15 @@ class AAL_API {
 	protected function _delete_old_items() {
 		global $wpdb;
 		
-		/** @todo: Add setting value for days. */
-
+		$logs_lifespan = absint( AAL_Settings::get_option( 'logs_lifespan' ) );
+		if ( empty( $logs_lifespan ) )
+			return;
+		
 		$wpdb->query( $wpdb->prepare(
 			'DELETE FROM `%1$s`
 				WHERE `hist_time` < %2$d',
 			$wpdb->activity_log,
-			strtotime( '-60 days', current_time( 'timestamp' ) )
+			strtotime( '-' . $logs_lifespan . ' days', current_time( 'timestamp' ) )
 		) );
 	}
 
