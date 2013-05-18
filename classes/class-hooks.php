@@ -179,7 +179,7 @@ class AAL_Hooks {
 
 		$post = get_post( $post_id );
 
-		if ( 'auto-draft' === $post->post_status || 'inherit' === $post->post_status )
+		if ( in_array( $post->post_status, array( 'auto-draft', 'inherit' ) ) )
 			return;
 
 		aal_insert_log( array(
