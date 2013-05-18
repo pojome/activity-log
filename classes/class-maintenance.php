@@ -24,7 +24,7 @@ class AAL_Maintenance {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
 		
-		update_option( 'activity_log_db_version', '0.1' );
+		update_option( 'activity_log_db_version', '1.0' );
 	}
 
 	public static function uninstall() {

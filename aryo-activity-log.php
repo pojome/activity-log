@@ -4,7 +4,7 @@
  Plugin URI: http://www.aryo.co.il/
  Description: Never mind.. Created by Yakir Sitbon.
  Author: Yakir Sitbon
- Version: 0.1
+ Version: 1.0
  Author URI: http://www.yakirs.net/
 */
 
