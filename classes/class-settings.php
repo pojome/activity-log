@@ -90,7 +90,7 @@ class AAL_Settings {
 
 	public static function get_option( $key = '' ) {
 		$settings = get_option( 'activity-log-settings' );
-		return ( ! empty( $settings[ $key ] ) ) ? $settings[ $key ] : false;
+		return ! empty( $settings[ $key ] ) ? $settings[ $key ] : false;
 	}
 	
 }
