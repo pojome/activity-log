@@ -53,13 +53,13 @@ class AAL_Settings {
 			$this->slug,
 			'general_settings_section',
 			array(
-				'id' => 'logs_lifespan',
-				'page' => $this->slug,
+				'id'      => 'logs_lifespan',
+				'page'    => $this->slug,
 				'options' => array(
-					'forever' => __( 'Forever', 'aryo-aal' ),
+					''    => __( 'Forever', 'aryo-aal' ),
 					'365' => __( 'A year', 'aryo-aal' ),
-					'90' => __( '6 months', 'aryo-aal' ),
-					'30' => __( 'A month', 'aryo-aal' ),
+					'90'  => __( '6 months', 'aryo-aal' ),
+					'30'  => __( 'A month', 'aryo-aal' ),
 				),
 			)
 		);
