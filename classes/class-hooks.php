@@ -165,10 +165,11 @@ class AAL_Hooks {
 			return;
 		
 		aal_insert_log( array(
-			'action'      => $action,
-			'object_type' => 'Post',
-			'object_id'   => $post->ID,
-			'object_name' => get_the_title( $post->ID ),
+			'action'         => $action,
+			'object_type'    => 'Post',
+			'object_subtype' => $post->post_type,
+			'object_id'      => $post->ID,
+			'object_name'    => get_the_title( $post->ID ),
 		) );
 	}
 
