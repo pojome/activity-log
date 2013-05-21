@@ -48,6 +48,8 @@ We’re planning to add a lot more features in the upcoming releases. If you thi
 
 Developed by [Yakir Sitbon](http://www.yakirs.net/) and [Ariel Klikstein](http://www.arielk.net/) and [Maor Chasen](http://maorchasen.com/).
 
+Brought to you by [ARYO Digital](http://www.aryodigital.com/).
+
 
 ## Screenshots
 
