@@ -1,7 +1,7 @@
 WordPress ARYO Activity Log
 ===============
 
-Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all these for you to see.
+Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all there for you to see.
 
 
 We all know that it’s relatively easy to analyze what your visitors are looking for while browsing your site. But there is really no easy way to know what registered users (say, with an Administrator account or even Editors) are doing on the dashboard of your site. How can you know if a post was deleted? or if a plugin was activated/deactivated? or if the active theme was changed?

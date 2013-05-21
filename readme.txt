@@ -5,7 +5,7 @@ Tested up to: 3.5.1
 Stable tag: trunk
 Contributors: kingyes, maor
 
-Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all these for you to see.
+Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all there for you to see.
 
 == Description ==
 
