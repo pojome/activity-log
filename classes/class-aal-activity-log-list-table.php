@@ -92,7 +92,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$return = __( 'was ', 'aryo-aal' ) . __( $item->action, 'aryo-aal' );
 				break;
 			case 'date' :
-				$return = sprintf( __( '%s ago', 'aryo-aal' ), human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
+				$return = sprintf( '<strong>' . __( '%s ago', 'aryo-aal' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
 				$return .= '<br />' . date( 'd/m/Y H:i', $item->hist_time );
 				break;
 			default :
@@ -106,8 +106,11 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	public function column_type( $item ) {
 		$return = __( $item->object_type, 'aryo-aal' );
 		
-		if ( ! empty( $item->object_subtype ) )
-			$return .= ' (' . $item->object_subtype . ')';
+		if ( ! empty( $item->object_subtype ) ) {
+			$pt = get_post_type_object( $item->object_subtype );
+			$label = ! empty( $pt->label ) ? $pt->label : $item->object_subtype;
+			$return .= sprintf( '<span class="aal-pt" title="%s">%s</span>', $label, $item->object_subtype );
+		}
 
 		$user       = false;
 		$return     .= '<br />' . __( 'by ', 'aryo-aal' );
@@ -119,7 +122,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		else
 			$return .= __( 'Guest', 'aryo-aal' );
 		
-		$return .= ' (' . $item->hist_ip . ')';
+		$return .= ' (<code>' . $item->hist_ip . '</code>)';
 		
 		return $return;
 	}
