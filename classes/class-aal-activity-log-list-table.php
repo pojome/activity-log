@@ -118,7 +118,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$user = get_user_by( 'id', $item->user_id );
 
 		if ( $user )
-			$return .= '<a href="user-edit.php?user_id=' . $user->ID . '">' . $user->user_login . '</a>';
+			$return .= '<a href="user-edit.php?user_id=' . absint( $user->ID ) . '">' . esc_html( $user->user_login ) . '</a>';
 		else
 			$return .= __( 'Guest', 'aryo-aal' );
 		
