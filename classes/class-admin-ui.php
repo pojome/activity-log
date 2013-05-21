@@ -28,10 +28,12 @@ class AAL_Admin_Ui {
 
 			.aal-pt {
 				color: white;
-				padding: 1px 7px;
+				padding: 1px 5px;
 				margin-left: 5px;
+				font-size: 0.8em;
 				border-radius: 3px;
 				background: #1e5799;
+				font-family: Consolas,Monaco,monospace;
 				background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
 				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
 				background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
