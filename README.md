@@ -57,3 +57,4 @@ Here are some screenshots of this awesome plugin.
 
 ![Main Panel](https://raw.github.com/KingYes/wordpress-aryo-activity-log/master/screenshot-1.jpg)
 ![Settings Page](https://raw.github.com/KingYes/wordpress-aryo-activity-log/master/screenshot-2.jpg)
+![Settings Page](https://raw.github.com/KingYes/wordpress-aryo-activity-log/master/screenshot-3.jpg)
