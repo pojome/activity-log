@@ -1,4 +1,4 @@
-WordPress ARYO Activity Log
+[WordPress ARYO Activity Log](http://wordpress.org/plugins/aryo-activity-log/)
 ===============
 
 Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all there for you to see.
