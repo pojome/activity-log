@@ -40,6 +40,11 @@ class AAL_Hooks {
 		
 		// Theme
 		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
+
+		//Theme customizer
+		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
+		add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
+		
 	}
 
 	public function admin_init() {
@@ -237,6 +242,21 @@ class AAL_Hooks {
 		
 		// We are need return the instance, for complete the filter.
 		return $location;
+	}
+
+	public function hooks_theme_customizer_modified($obj){
+		$aal_args = array(
+			'action'         => 'updated',
+			'object_type'    => 'Theme',
+			'object_subtype' => $obj->theme()->display('Name'),
+			'object_id'      => 0,
+			'object_name'    => 'theme customizer',
+		);
+		
+		if ('customize_preview_init' === current_filter())
+			$aal_args['action'] = 'accessed';
+
+		aal_insert_log($aal_args);
 	}
 	
 	public function __construct() {
