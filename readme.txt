@@ -1,11 +1,12 @@
 === ARYO Activity Log ===
-Tags: activity, logging, logger, user control
+Contributors: KingYes, ArielK, maor
+Tags: activity, logging, logger, user, madeinisrael
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: trunk
-Contributors: kingyes, maor
+Stable tag: 1.0
+License: GPLv2 or later
 
-Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all there for you to see.
+Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
 
 == Description ==
 
@@ -18,6 +19,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 
 
 Users
+
 * A user logs in
 * A user logs out
 * A login has failed due to incorrect credentials
@@ -26,30 +28,40 @@ Users
 * An existing user account is being deleted
 
 Plugins
+
 * A plugin is being activated
 * A plugin is being deactivated
 
 Themes
+
 * A theme is being changed
 
 Content
+
 * A new post is being created
 * A post is being updated
 * A post changes status (draft, pending review, publish)
 * A post is being deleted
 
 Media
+
 * An attachment is being uploaded
 * An attachment is being edited
 * An attachment is being deleted
 
 Widgets
+
 * A widget is being added to a sidebar
 
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
 We’re planning to add a lot more features in the upcoming releases. If you think we’re missing something big time, please post your suggestions in the plugin’s forum.
+
+<strong>Contributions:</strong><br />
+
+Would you like to like to cotribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/KingYes/wordpress-aryo-activity-log). Also, if you have any notes about the code, please open a ticket on ths issue tracker.
+
 
 == Installation ==
 
@@ -62,6 +74,7 @@ We’re planning to add a lot more features in the upcoming releases. If you thi
 
 1. The log viewer page
 2. The settings page
+2. Looks as nicely in MP6
 
 == Frequently Asked Questions ==
 
