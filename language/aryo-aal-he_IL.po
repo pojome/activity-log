@@ -8,35 +8,36 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-05-24 09:21+0200\n"
+"PO-Revision-Date: 2013-05-24 09:25+0200\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Yakir Sitbon <aryodigital@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_x;_n:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
+"Language: he_IL\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: classes/class-aal-activity-log-list-table.php:78
 msgctxt "main table"
 msgid "Type"
-msgstr ""
+msgstr "סוג"
 
 #: classes/class-aal-activity-log-list-table.php:79
 msgctxt "main table"
 msgid "Name"
-msgstr ""
+msgstr "שם"
 
 #: classes/class-aal-activity-log-list-table.php:80
 msgctxt "main table"
 msgid "Action"
-msgstr ""
+msgstr "פעולה"
 
 #: classes/class-aal-activity-log-list-table.php:81
 msgctxt "main table"
 msgid "Date"
-msgstr ""
+msgstr "תאריך"
 
 #: classes/class-aal-activity-log-list-table.php:92
 msgid "was "
@@ -48,24 +49,24 @@ msgstr ""
 
 #: classes/class-aal-activity-log-list-table.php:116
 msgid "by "
-msgstr ""
+msgstr "ע\"י"
 
 #: classes/class-aal-activity-log-list-table.php:123
 #: classes/class-aal-activity-log-list-table.php:168
 msgid "Guest"
-msgstr ""
+msgstr "אורח"
 
 #: classes/class-aal-activity-log-list-table.php:179
 msgid "All Users"
-msgstr ""
+msgstr "כל המשתמשים"
 
 #: classes/class-aal-activity-log-list-table.php:206
 msgid "All Types"
-msgstr ""
+msgstr "כל המודולים"
 
 #: classes/class-aal-activity-log-list-table.php:211
 msgid "Filter"
-msgstr ""
+msgstr "סינון"
 
 #: classes/class-admin-ui.php:8 classes/class-admin-ui.php:18
 #: classes/class-settings.php:23
@@ -82,23 +83,23 @@ msgstr ""
 
 #: classes/class-settings.php:51
 msgid "Keep logs for"
-msgstr ""
+msgstr "שמור היסטוריה עד"
 
 #: classes/class-settings.php:59
 msgid "Forever"
-msgstr ""
+msgstr "לתמיד"
 
 #: classes/class-settings.php:60
 msgid "A year"
-msgstr ""
+msgstr "שנה"
 
 #: classes/class-settings.php:61
 msgid "6 months"
-msgstr ""
+msgstr "6 חודשים"
 
 #: classes/class-settings.php:62
 msgid "A month"
-msgstr ""
+msgstr "חודש"
 
 #: classes/class-settings.php:76
 msgid "ARYO Activity Log Settings"
@@ -110,27 +111,27 @@ msgstr ""
 
 #: language/strings.php:4
 msgid "Post"
-msgstr ""
+msgstr "פוסט"
 
 #: language/strings.php:5
 msgid "created"
-msgstr ""
+msgstr "נוצר"
 
 #: language/strings.php:6
 msgid "updated"
-msgstr ""
+msgstr "עודכן"
 
 #: language/strings.php:7
 msgid "deleted"
-msgstr ""
+msgstr "נמחק"
 
 #: language/strings.php:10
 msgid "Attachment"
-msgstr ""
+msgstr "מדיה"
 
 #: language/strings.php:11
 msgid "added"
-msgstr ""
+msgstr "נוסף"
 
 #: language/strings.php:14
 msgid "User"
@@ -138,19 +139,19 @@ msgstr ""
 
 #: language/strings.php:15
 msgid "logged_out"
-msgstr ""
+msgstr "התנתק"
 
 #: language/strings.php:16
 msgid "logged_in"
-msgstr ""
+msgstr "התחבר"
 
 #: language/strings.php:17
 msgid "wrong_password"
-msgstr ""
+msgstr "סיסמה שגויה"
 
 #: language/strings.php:20
 msgid "Plugin"
-msgstr ""
+msgstr "תוסף"
 
 #: language/strings.php:21
 msgid "activated"

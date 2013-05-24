@@ -52,6 +52,10 @@ class AAL_Main {
 	 * @var AAL_Settings
 	 */
 	public $settings;
+	
+	public function load_textdomain() {
+		load_textdomain( 'aryo-aal', false, basename( dirname( __FILE__ ) ) . '/language' );
+	}
 
 	public function __construct() {
 		global $wpdb;
@@ -62,6 +66,8 @@ class AAL_Main {
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
+		
+		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
 	}
 	
 }
