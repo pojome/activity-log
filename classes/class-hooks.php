@@ -217,7 +217,7 @@ class AAL_Hooks {
 		if ( ! empty( $_REQUEST['sidebar'] ) )
 			$aal_args['object_subtype'] = strtolower( $_REQUEST['sidebar'] );
 
-			* * * * /** @todo: find any way to widget deleted detected */
+		/** @todo: find any way to widget deleted detected */
 		/*if ( isset( $_REQUEST['delete_widget'] ) && '1' === $_REQUEST['delete_widget'] ) {
 			$aal_args['action'] = 'deleted';
 		}*/
