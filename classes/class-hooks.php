@@ -50,7 +50,7 @@ class AAL_Hooks {
 		// Theme
 		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
 
-		//Theme customizer
+		// Theme customizer
 		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
 		add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
 
@@ -266,13 +266,11 @@ class AAL_Hooks {
 
 				if ( ! empty( $_REQUEST['file'] ) ) {
 					$aal_args['object_name'] = $_REQUEST['file'];
-					//get plugin name
-					$plugin_dir  = explode( "/", $_REQUEST['file'] );
-					$plugin_data = get_plugins( "/".$plugin_dir[0] );
-					var_dump( $plugin_data );
-					foreach ( (array)$plugin_data as $file => $data ) {
-						$aal_args['object_subtype'] = $data['Name'];
-					}
+					// Get plugin name
+					$plugin_dir  = explode( '/', $_REQUEST['file'] );
+					$plugin_data = array_shift( array_values( get_plugins( '/' . $plugin_dir[0] ) ) );
+					
+					$aal_args['object_subtype'] = $plugin_data['Name'];
 				}
 				aal_insert_log( $aal_args );
 			}
