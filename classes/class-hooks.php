@@ -51,8 +51,8 @@ class AAL_Hooks {
 		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
 
 		// Theme customizer
-		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
-		//add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
+		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ) );
+		//add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ) );
 
 	}
 
