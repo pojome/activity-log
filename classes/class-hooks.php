@@ -40,7 +40,7 @@ class AAL_Hooks {
 		add_action( 'delete_user', array( &$this, 'hooks_delete_user' ) );
 		add_action( 'user_register', array( &$this, 'hooks_user_register' ) );
 		add_action( 'profile_update', array( &$this, 'hooks_profile_update' ) );
-
+		
 		// Plugins
 		add_action( 'activated_plugin', array( &$this, 'hooks_activated_plugin' ) );
 		add_action( 'deactivated_plugin', array( &$this, 'hooks_deactivated_plugin' ) );
@@ -52,6 +52,9 @@ class AAL_Hooks {
 		// Theme customizer
 		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ) );
 		//add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ) );
+		
+		// Options
+		add_action( 'updated_option', array( &$this, 'hooks_updated_option' ), 10, 3 );
 
 	}
 
@@ -292,6 +295,27 @@ class AAL_Hooks {
 			$aal_args['action'] = 'accessed';
 
 		aal_insert_log( $aal_args );
+	}
+	
+	public function hooks_updated_option( $option, $oldvalue, $_newvalue ) {
+		$whitelist_options = apply_filters( 'aal_whitelist_options', array(
+			'siteurl',
+			'home',
+			'blogname',
+			'blogdescription',
+			'admin_email',
+			'avatar_default',
+		) );
+		
+		if ( ! in_array( $option, $whitelist_options ) )
+			return;
+
+		// TODO: need to think about save old & new values.
+		aal_insert_log( array(
+			'action'         => 'updated',
+			'object_type'    => 'Options',
+			'object_name'    => $option,
+		) );
 	}
 
 	public function __construct() {
