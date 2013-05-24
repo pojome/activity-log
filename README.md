@@ -15,15 +15,16 @@ Users
 * A user logs out
 * A login has failed due to incorrect credentials
 * A user updates their profile
-* A new user account is being registerd
+* A new user account is being registered
 * An existing user account is being deleted
 
 Plugins
 * A plugin is being activated
 * A plugin is being deactivated
+* A plugin is being changed
 
 Themes
-* A theme is being changed
+* A theme is being changed (Editor and Customizer)
 
 Content
 * A new post is being created
