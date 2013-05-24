@@ -176,13 +176,13 @@ class AAL_Hooks {
 
 		if ( wp_is_post_revision( $post->ID ) )
 			return;
-
+		
 		aal_insert_log( array(
 				'action'         => $action,
 				'object_type'    => 'Post',
 				'object_subtype' => $post->post_type,
 				'object_id'      => $post->ID,
-				'object_name'    => get_the_title( $post->ID ),
+				'object_name'    => _draft_or_post_title( $post->ID ),
 			) );
 	}
 
@@ -200,7 +200,7 @@ class AAL_Hooks {
 				'object_type'    => 'Post',
 				'object_subtype' => $post->post_type,
 				'object_id'      => $post->ID,
-				'object_name'    => get_the_title( $post->ID ),
+				'object_name'    => _draft_or_post_title( $post->ID ),
 			) );
 	}
 
