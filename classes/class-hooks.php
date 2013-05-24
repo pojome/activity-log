@@ -52,7 +52,7 @@ class AAL_Hooks {
 
 		// Theme customizer
 		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
-		add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
+		//add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ), 10 );
 
 	}
 
