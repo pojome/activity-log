@@ -28,11 +28,13 @@ Users
 * An existing user account is being deleted
 
 Plugins
+
 * A plugin is being activated
 * A plugin is being deactivated
 * A plugin is being changed
 
 Themes
+
 * A theme is being changed (Editor and Customizer)
 
 Content
