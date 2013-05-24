@@ -17,14 +17,13 @@ class AAL_Hooks {
 	}
 
 	protected function _add_log_plugin( $action, $plugin_name ) {
-		//get plugin name if is a path
-		if ( false !== strpos( $plugin_name, "/" ) ) {
-			$plugin_dir = explode( "/", $plugin_name );
-			$data = get_plugins( "/".$plugin_dir[0] );
-			foreach ( (array)$data as $file => $p ) {
-				$plugin_name = $p['Name'];
-			}
+		// Get plugin name if is a path
+		if ( false !== strpos( $plugin_name, '/' ) ) {
+			$plugin_dir = explode( '/', $plugin_name );
+			$plugin_data = array_shift( array_values( get_plugins( '/' . $plugin_dir[0] ) ) );
+			$plugin_name = $plugin_data['Name'];
 		}
+		
 		aal_insert_log( array(
 				'action'      => $action,
 				'object_type' => 'Plugin',
