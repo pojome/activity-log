@@ -56,6 +56,10 @@ Widgets
 * A widget is being deleted from a sidebar
 
 
+<strong>__Translators:</strong><br />
+Hebrew (he_IL) - ARYO Digital
+German (de_DE) - Robert Harm
+
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
 We’re planning to add a lot more features in the upcoming releases. If you think we’re missing something big time, please post your suggestions in the plugin’s forum.
