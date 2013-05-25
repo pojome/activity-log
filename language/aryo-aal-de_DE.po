@@ -1,0 +1,157 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: ARYO Activity Log\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
+"POT-Creation-Date: 2013-05-23 07:35:20+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-05-25 23:52+0200\n"
+"Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
+"Language-Team: Robert Harm <LL@li.org>\n"
+"X-Generator: Poedit 1.5.5\n"
+"Language: de_DE\n"
+
+#: classes/class-aal-activity-log-list-table.php:78
+msgctxt "main table"
+msgid "Type"
+msgstr "Typ"
+
+#: classes/class-aal-activity-log-list-table.php:79
+msgctxt "main table"
+msgid "Name"
+msgstr "Name"
+
+#: classes/class-aal-activity-log-list-table.php:80
+msgctxt "main table"
+msgid "Action"
+msgstr "Aktion"
+
+#: classes/class-aal-activity-log-list-table.php:81
+msgctxt "main table"
+msgid "Date"
+msgstr "Datum"
+
+#: classes/class-aal-activity-log-list-table.php:92
+msgid "was "
+msgstr "war"
+
+#: classes/class-aal-activity-log-list-table.php:95
+msgid "%s ago"
+msgstr "vor %s"
+
+#: classes/class-aal-activity-log-list-table.php:116
+msgid "by "
+msgstr "von"
+
+#: classes/class-aal-activity-log-list-table.php:123
+#: classes/class-aal-activity-log-list-table.php:168
+msgid "Guest"
+msgstr "Gast"
+
+#: classes/class-aal-activity-log-list-table.php:179
+msgid "All Users"
+msgstr "Alle Benutzer"
+
+#: classes/class-aal-activity-log-list-table.php:206
+msgid "All Types"
+msgstr "Alle Typen"
+
+#: classes/class-aal-activity-log-list-table.php:211
+msgid "Filter"
+msgstr "Filter"
+
+#: classes/class-admin-ui.php:8 classes/class-admin-ui.php:18
+#: classes/class-settings.php:23
+msgid "Activity Log"
+msgstr "Aktivitätslog"
+
+#: classes/class-settings.php:22
+msgid "Activity Log Settings"
+msgstr "Aktivitätslog-Einstellungen"
+
+#: classes/class-settings.php:44
+msgid "Display Options"
+msgstr "Anzeigeoptionen"
+
+#: classes/class-settings.php:51
+msgid "Keep logs for"
+msgstr "Logs aufbewahren für"
+
+#: classes/class-settings.php:59
+msgid "Forever"
+msgstr "Für immer"
+
+#: classes/class-settings.php:60
+msgid "A year"
+msgstr "1 Jahr"
+
+#: classes/class-settings.php:61
+msgid "6 months"
+msgstr "6 Monate"
+
+#: classes/class-settings.php:62
+msgid "A month"
+msgstr "1 Monat"
+
+#: classes/class-settings.php:76
+msgid "ARYO Activity Log Settings"
+msgstr "ARYO Aktivitätslog-Einstellungen"
+
+#: classes/class-settings.php:102
+msgid "These are some basic settings for Activity Log."
+msgstr "Basis-Einstellungen für das Aktivitätslog"
+
+#: language/strings.php:4
+msgid "Post"
+msgstr "Beitrag"
+
+#: language/strings.php:5
+msgid "created"
+msgstr "erstellt"
+
+#: language/strings.php:6
+msgid "updated"
+msgstr "aktualisiert"
+
+#: language/strings.php:7
+msgid "deleted"
+msgstr "gelöscht"
+
+#: language/strings.php:10
+msgid "Attachment"
+msgstr "Anhang"
+
+#: language/strings.php:11
+msgid "added"
+msgstr "hinzugefügt"
+
+#: language/strings.php:14
+msgid "User"
+msgstr "Benutzer"
+
+#: language/strings.php:15
+msgid "logged_out"
+msgstr "ausgeloggt"
+
+#: language/strings.php:16
+msgid "logged_in"
+msgstr "eingeloggt"
+
+#: language/strings.php:17
+msgid "wrong_password"
+msgstr "falsches_Passwort"
+
+#: language/strings.php:20
+msgid "Plugin"
+msgstr "Plugin"
+
+#: language/strings.php:21
+msgid "activated"
+msgstr "aktiviert"
+
+#: language/strings.php:22
+msgid "deactivated"
+msgstr "deaktiviert"
