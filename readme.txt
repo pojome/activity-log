@@ -53,6 +53,7 @@ Media
 Widgets
 
 * A widget is being added to a sidebar
+* A widget is being deleted from a sidebar
 
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
