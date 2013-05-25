@@ -190,7 +190,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				' . $this->_get_where_by_role() . '
 				GROUP BY `object_type`
 				ORDER BY `object_type`
-				;',
+			;',
 			$wpdb->activity_log
 		) );
 

@@ -54,7 +54,7 @@ class AAL_Main {
 	public $settings;
 	
 	public function load_textdomain() {
-		load_textdomain( 'aryo-aal', false, basename( dirname( __FILE__ ) ) . '/language' );
+		load_plugin_textdomain( 'aryo-aal', false, basename( dirname( __FILE__ ) ) . '/language' );
 	}
 
 	public function __construct() {
