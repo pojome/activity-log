@@ -44,7 +44,7 @@ Widgets
 
 __Translators:__
 
-* Hebrew (he_IL) - [ARYO Digital)(http://www.aryodigital.com/)
+* Hebrew (he_IL) - [ARYO Digital](http://www.aryodigital.com/)
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
 
 
