@@ -210,6 +210,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		if ( $users || $types )
 			submit_button( __( 'Filter', 'aryo-aal' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
+		
 
 		echo '</div>';
 	}
