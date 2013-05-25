@@ -20,3 +20,9 @@ __( 'wrong_password', 'aryo-aal' );
 __( 'Plugin', 'aryo-aal' );
 __( 'activated', 'aryo-aal' );
 __( 'deactivated', 'aryo-aal' );
+
+// Widget
+__( 'Widget', 'aryo-aal' );
+
+// Options
+__( 'Options', 'aryo-aal' );
