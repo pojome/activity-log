@@ -70,6 +70,7 @@ class AAL_Hooks {
 
 		// Widgets
 		add_filter( 'widget_update_callback', array( &$this, 'hooks_widget_update_callback' ), 9999, 4 );
+		add_filter( 'sidebar_admin_setup', array( &$this, 'hooks_widget_delete' ) ); // Widget delete.
 	}
 
 	public function hooks_delete_attachment( $attachment_id ) {
@@ -228,6 +229,21 @@ class AAL_Hooks {
 
 		// We are need return the instance, for complete the filter.
 		return $instance;
+	}
+	
+	public function hooks_widget_delete() {
+		// A reference: http://grinninggecko.com/hooking-into-widget-delete-action-in-wordpress/
+		if ( 'post' == strtolower( $_SERVER['REQUEST_METHOD'] ) && ! empty( $_REQUEST['widget-id'] ) ) {
+			if ( isset( $_REQUEST['delete_widget'] ) && 1 === (int) $_REQUEST['delete_widget'] ) {
+				aal_insert_log( array(
+					'action'         => 'deleted',
+					'object_type'    => 'Widget',
+					'object_subtype' => strtolower( $_REQUEST['sidebar'] ),
+					'object_id'      => 0,
+					'object_name'    => $_REQUEST['id_base'],
+				) );
+			}
+		}
 	}
 
 	public function hooks_theme_modify( $location, $status ) {
