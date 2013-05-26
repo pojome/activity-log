@@ -1,6 +1,6 @@
 === ARYO Activity Log ===
 Contributors: KingYes, Ariel.K, maor
-Tags: activity, logging, logger, user, madeinisrael
+Tags: admin, administration, activity, multisite, logging, logger, login, tracking, user, madeinisrael
 Requires at least: 3.5
 Tested up to: 3.5.1
 Stable tag: 1.0
