@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: ARYO Activity Log
-Plugin URI: http://wordpress.org/extend/plugins/activity-log
+Plugin URI: http://wordpress.org/plugins/aryo-activity-log/
 Description: Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all these for you to see.
 Author: Yakir Sitbon, Maor Chasen, Ariel Klikstein
 Version: 1.0.2
