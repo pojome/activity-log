@@ -3,7 +3,7 @@ Contributors: KingYes, Ariel.K, maor
 Tags: admin, administration, activity, multisite, logging, logger, login, tracking, user, madeinisrael
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -93,6 +93,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 
 == Changelog ==
+
+= 1.0.2 =
+* Forget remove old .pot file
 
 = 1.0.1 =
 * Added translate: German (de_DE) - Thanks to [Robert Harm](http://www.mapsmarker.com/)
