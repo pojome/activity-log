@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2013-05-25 23:28+0200\n"
-"PO-Revision-Date: 2013-05-25 23:28+0200\n"
+"POT-Creation-Date: 2013-05-27 22:28+0200\n"
+"PO-Revision-Date: 2013-05-27 22:28+0200\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,10 +34,6 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:92
-msgid "was "
-msgstr ""
-
 #: ../classes/class-aal-activity-log-list-table.php:95
 #, php-format
 msgid "%s ago"
@@ -60,7 +56,7 @@ msgstr ""
 msgid "All Types"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:211
+#: ../classes/class-aal-activity-log-list-table.php:212
 msgid "Filter"
 msgstr ""
 
