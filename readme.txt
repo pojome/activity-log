@@ -95,8 +95,8 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 == Changelog ==
 
 = 1.0.1 =
+* Added translate: German (de_DE) - Thanks to [Robert Harm](http://www.mapsmarker.com/)
 * Added translate: Hebrew (he_IL)
-* Added translate: German (de_DE) - Thanks to Robert Harm
 * Plugin name instead of file name on activation/deactivation
 * <strong>New Hooks:</strong>
 * A widget is being deleted from a sidebar
