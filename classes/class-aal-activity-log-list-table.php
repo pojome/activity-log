@@ -89,7 +89,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		
 		switch ( $column_name ) {
 			case 'action' :
-				$return = __( 'was ', 'aryo-aal' ) . __( $item->action, 'aryo-aal' );
+				$return = __( $item->action, 'aryo-aal' );
 				break;
 			case 'date' :
 				$return = sprintf( '<strong>' . __( '%s ago', 'aryo-aal' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
