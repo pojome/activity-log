@@ -94,5 +94,14 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 == Changelog ==
 
+= 1.0.1 =
+* Added translate: Hebrew (he_IL)
+* Added translate: German (de_DE) - Thanks to Robert Harm
+* Plugin name instead of file name on activation/deactivation
+* <strong>New Hooks:</strong>
+* A widget is being deleted from a sidebar
+* A plugin is being changed
+* Theme Customizer (Thanks to Ohad Raz)
+
 = 1.0 =
 * Blastoff!
