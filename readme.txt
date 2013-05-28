@@ -57,8 +57,8 @@ Widgets
 
 
 <strong>__Translators:</strong><br />
-Hebrew (he_IL) - ARYO Digital
-German (de_DE) - Robert Harm
+* German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
+* Hebrew (he_IL) - ARYO Digital
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
