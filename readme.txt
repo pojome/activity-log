@@ -56,7 +56,8 @@ Widgets
 * A widget is being deleted from a sidebar
 
 
-<strong>__Translators:</strong><br />
+<strong>Translators:</strong>
+
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
 * Hebrew (he_IL) - ARYO Digital
 
