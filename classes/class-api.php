@@ -41,7 +41,11 @@ class AAL_API {
 			$args['user_caps'] = 'guest';
 			if ( empty( $args['user_id'] ) )
 				$args['user_id']  = 0;
-		} 
+		}
+		
+		// TODO: Find better way to Multisite compatibility.
+		if ( empty( $args['user_caps'] ) )
+			$args['user_caps'] = 'administrator';
 
 		$wpdb->insert( $wpdb->activity_log,
 			array(
