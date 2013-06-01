@@ -44,6 +44,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			}
 		}
 
+		// TODO: Find better way to Multisite compatibility.
+		if ( is_super_admin() )
+			$allow_caps = $this->_caps['administrator'];
+
 		if ( empty( $allow_caps ) )
 			wp_die( 'No allowed here.' );
 
