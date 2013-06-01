@@ -95,6 +95,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 == Changelog ==
 
+= 1.0.3 =
+* Added Multisite compatibility.
+
 = 1.0.2 =
 * Forget remove old .pot file
 
