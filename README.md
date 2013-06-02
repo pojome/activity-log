@@ -41,6 +41,12 @@ Widgets
 * A widget is being added to a sidebar
 * A widget is being deleted from a sidebar
 
+Options
+* A option is being updated (can be extend by east filter).
+
+Menu
+* A menu is being updated.
+
 
 __Translators:__
 

@@ -55,6 +55,14 @@ Widgets
 * A widget is being added to a sidebar
 * A widget is being deleted from a sidebar
 
+Options
+
+* A option is being updated (can be extend by east filter).
+
+Menu
+
+* A menu is being updated.
+
 
 <strong>Translators:</strong>
 
@@ -97,6 +105,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 = 1.0.3 =
 * Added Multisite compatibility.
+* Added Options hooks (limit list, you can extend by simple filter).
+* Added Menu hooks.
+* Tweak - Ensure no duplicate logs.. 
 
 = 1.0.2 =
 * Forget remove old .pot file
