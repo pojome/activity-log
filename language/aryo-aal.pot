@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2013-05-27 22:28+0200\n"
-"PO-Revision-Date: 2013-05-27 22:28+0200\n"
+"POT-Creation-Date: 2013-06-03 00:27+0200\n"
+"PO-Revision-Date: 2013-06-03 00:27+0200\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,45 +18,45 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../classes/class-aal-activity-log-list-table.php:78
+#: ../classes/class-aal-activity-log-list-table.php:82
 msgid "Type"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:79
+#: ../classes/class-aal-activity-log-list-table.php:83
 msgid "Name"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:80
+#: ../classes/class-aal-activity-log-list-table.php:84
 msgid "Action"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:81
+#: ../classes/class-aal-activity-log-list-table.php:85
 msgid "Date"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:95
+#: ../classes/class-aal-activity-log-list-table.php:99
 #, php-format
 msgid "%s ago"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:116
+#: ../classes/class-aal-activity-log-list-table.php:120
 msgid "by "
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:123
-#: ../classes/class-aal-activity-log-list-table.php:168
+#: ../classes/class-aal-activity-log-list-table.php:127
+#: ../classes/class-aal-activity-log-list-table.php:172
 msgid "Guest"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:179
+#: ../classes/class-aal-activity-log-list-table.php:183
 msgid "All Users"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:206
+#: ../classes/class-aal-activity-log-list-table.php:210
 msgid "All Types"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:212
+#: ../classes/class-aal-activity-log-list-table.php:216
 msgid "Filter"
 msgstr ""
 
@@ -159,4 +159,8 @@ msgstr ""
 
 #: ../language/strings.php:28
 msgid "Options"
+msgstr ""
+
+#: ../language/strings.php:31
+msgid "Menu"
 msgstr ""
