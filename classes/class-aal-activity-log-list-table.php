@@ -59,12 +59,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 	
 	public function __construct() {
-		$this->_roles = array(
+		$this->_roles = apply_filters( 'aal_init_roles', array(
 			// admin
 			'manage_options' => array( 'Post', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme' ),
 			// editor
 			'edit_pages'     => array( 'Post', 'Attachment' ),
-		);
+		) );
 
 		$this->_caps = array(
 			'administrator' => array( 'administrator', 'editor', 'author', 'guest' ),
