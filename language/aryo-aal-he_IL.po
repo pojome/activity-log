@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2013-05-27 22:28+0200\n"
-"PO-Revision-Date: 2013-05-27 22:31+0200\n"
+"POT-Creation-Date: 2013-06-03 00:27+0200\n"
+"PO-Revision-Date: 2013-06-03 00:28+0200\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
 "Language-Team: Yakir Sitbon & Arie Klikstein <aryodigital@gmail.com>\n"
 "Language: he_IL\n"
@@ -19,49 +19,45 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../classes/class-aal-activity-log-list-table.php:78
-#, fuzzy
+#: ../classes/class-aal-activity-log-list-table.php:82
 msgid "Type"
 msgstr "סוג"
 
-#: ../classes/class-aal-activity-log-list-table.php:79
-#, fuzzy
+#: ../classes/class-aal-activity-log-list-table.php:83
 msgid "Name"
 msgstr "שם"
 
-#: ../classes/class-aal-activity-log-list-table.php:80
-#, fuzzy
+#: ../classes/class-aal-activity-log-list-table.php:84
 msgid "Action"
 msgstr "פעולה"
 
-#: ../classes/class-aal-activity-log-list-table.php:81
-#, fuzzy
+#: ../classes/class-aal-activity-log-list-table.php:85
 msgid "Date"
 msgstr "תאריך"
 
-#: ../classes/class-aal-activity-log-list-table.php:95
+#: ../classes/class-aal-activity-log-list-table.php:99
 #, php-format
 msgid "%s ago"
 msgstr "לפני %s"
 
-#: ../classes/class-aal-activity-log-list-table.php:116
+#: ../classes/class-aal-activity-log-list-table.php:120
 msgid "by "
 msgstr "ע\"י"
 
-#: ../classes/class-aal-activity-log-list-table.php:123
-#: ../classes/class-aal-activity-log-list-table.php:168
+#: ../classes/class-aal-activity-log-list-table.php:127
+#: ../classes/class-aal-activity-log-list-table.php:172
 msgid "Guest"
 msgstr "אורח"
 
-#: ../classes/class-aal-activity-log-list-table.php:179
+#: ../classes/class-aal-activity-log-list-table.php:183
 msgid "All Users"
 msgstr "כל המשתמשים"
 
-#: ../classes/class-aal-activity-log-list-table.php:206
+#: ../classes/class-aal-activity-log-list-table.php:210
 msgid "All Types"
 msgstr "כל הסוגים"
 
-#: ../classes/class-aal-activity-log-list-table.php:212
+#: ../classes/class-aal-activity-log-list-table.php:216
 msgid "Filter"
 msgstr "סינון"
 
@@ -165,3 +161,7 @@ msgstr "וידג'טים"
 #: ../language/strings.php:28
 msgid "Options"
 msgstr "הגדרות"
+
+#: ../language/strings.php:31
+msgid "Menu"
+msgstr "תפריט"
