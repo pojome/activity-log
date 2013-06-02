@@ -55,7 +55,9 @@ class AAL_Hooks {
 		
 		// Options
 		add_action( 'updated_option', array( &$this, 'hooks_updated_option' ), 10, 3 );
-
+		
+		// Menu
+		add_action( 'wp_update_nav_menu', array( &$this, 'hooks_menu_updated' ) );
 	}
 
 	public function admin_init() {
@@ -179,6 +181,10 @@ class AAL_Hooks {
 		}
 
 		if ( wp_is_post_revision( $post->ID ) )
+			return;
+		
+		// Skip for menu items.
+		if ( 'nav_menu_item' === get_post_type( $post->ID ) )
 			return;
 		
 		aal_insert_log( array(
@@ -332,6 +338,16 @@ class AAL_Hooks {
 			'object_type'    => 'Options',
 			'object_name'    => $option,
 		) );
+	}
+	
+	public function hooks_menu_updated( $nav_menu_selected_id ) {
+		if ( $menu_object = wp_get_nav_menu_object( $nav_menu_selected_id ) ) {
+			aal_insert_log( array(
+				'action'         => 'updated',
+				'object_type'    => 'Menu',
+				'object_name'    => $menu_object->name,
+			) );
+		}
 	}
 
 	public function __construct() {
