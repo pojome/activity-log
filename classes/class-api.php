@@ -46,6 +46,32 @@ class AAL_API {
 		// TODO: Find better way to Multisite compatibility.
 		if ( empty( $args['user_caps'] ) )
 			$args['user_caps'] = 'administrator';
+		
+		// Make sure for non duplicate.
+		$check_duplicate = $wpdb->get_row( $wpdb->prepare(
+			'SELECT `histid` FROM %1$s
+				WHERE `user_caps` = \'%2$s\'
+					AND `action` = \'%3$s\'
+					AND `object_type` = \'%4$s\'
+					AND `object_subtype` = \'%5$s\'
+					AND `object_name` = \'%6$s\'
+					AND `user_id` = \'%7$s\'
+					AND `hist_ip` = \'%8$s\'
+					AND `hist_time` = \'%9$s\'
+			;',
+			$wpdb->activity_log,
+			$args['user_caps'],
+			$args['action'],
+			$args['object_type'],
+			$args['object_subtype'],
+			$args['object_name'],
+			$args['user_id'],
+			$args['hist_ip'],
+			$args['hist_time']
+		) );
+		
+		if ( $check_duplicate )
+			return;
 
 		$wpdb->insert( $wpdb->activity_log,
 			array(
