@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2013-05-27 22:28+0200\n"
-"PO-Revision-Date: 2013-05-27 22:29+0200\n"
+"POT-Creation-Date: 2013-06-18 13:56+0200\n"
+"PO-Revision-Date: 2013-06-18 14:00+0200\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
 "Language-Team: Robert Harm <LL@li.org>\n"
 "Language: de_DE\n"
@@ -14,49 +14,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
-#: ../classes/class-aal-activity-log-list-table.php:78
+#: ../classes/class-aal-activity-log-list-table.php:82
 #, fuzzy
 msgid "Type"
 msgstr "Typ"
 
-#: ../classes/class-aal-activity-log-list-table.php:79
+#: ../classes/class-aal-activity-log-list-table.php:83
 #, fuzzy
 msgid "Name"
 msgstr "Name"
 
-#: ../classes/class-aal-activity-log-list-table.php:80
+#: ../classes/class-aal-activity-log-list-table.php:84
 #, fuzzy
 msgid "Action"
 msgstr "Aktion"
 
-#: ../classes/class-aal-activity-log-list-table.php:81
+#: ../classes/class-aal-activity-log-list-table.php:85
 #, fuzzy
 msgid "Date"
 msgstr "Datum"
 
-#: ../classes/class-aal-activity-log-list-table.php:95
+#: ../classes/class-aal-activity-log-list-table.php:99
 #, php-format
 msgid "%s ago"
 msgstr "vor %s"
 
-#: ../classes/class-aal-activity-log-list-table.php:116
+#: ../classes/class-aal-activity-log-list-table.php:120
 msgid "by "
 msgstr "von"
 
-#: ../classes/class-aal-activity-log-list-table.php:123
-#: ../classes/class-aal-activity-log-list-table.php:168
+#: ../classes/class-aal-activity-log-list-table.php:127
+#: ../classes/class-aal-activity-log-list-table.php:176
 msgid "Guest"
 msgstr "Gast"
 
-#: ../classes/class-aal-activity-log-list-table.php:179
+#: ../classes/class-aal-activity-log-list-table.php:187
 msgid "All Users"
 msgstr "Alle Benutzer"
 
-#: ../classes/class-aal-activity-log-list-table.php:206
+#: ../classes/class-aal-activity-log-list-table.php:214
 msgid "All Types"
 msgstr "Alle Typen"
 
-#: ../classes/class-aal-activity-log-list-table.php:212
+#: ../classes/class-aal-activity-log-list-table.php:220
 msgid "Filter"
 msgstr "Filter"
 
@@ -161,6 +161,14 @@ msgstr "Widget"
 #, fuzzy
 msgid "Options"
 msgstr "Anzeigeoptionen"
+
+#: ../language/strings.php:31
+msgid "Menu"
+msgstr "Menü"
+
+#: ../language/strings.php:34
+msgid "Taxonomy"
+msgstr "Taxonomie"
 
 #~ msgid "was "
 #~ msgstr "war"

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2013-06-03 00:27+0200\n"
-"PO-Revision-Date: 2013-06-03 00:28+0200\n"
+"POT-Creation-Date: 2013-06-18 13:56+0200\n"
+"PO-Revision-Date: 2013-06-18 14:00+0200\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
 "Language-Team: Yakir Sitbon & Arie Klikstein <aryodigital@gmail.com>\n"
 "Language: he_IL\n"
@@ -45,19 +45,19 @@ msgid "by "
 msgstr "ע\"י"
 
 #: ../classes/class-aal-activity-log-list-table.php:127
-#: ../classes/class-aal-activity-log-list-table.php:172
+#: ../classes/class-aal-activity-log-list-table.php:176
 msgid "Guest"
 msgstr "אורח"
 
-#: ../classes/class-aal-activity-log-list-table.php:183
+#: ../classes/class-aal-activity-log-list-table.php:187
 msgid "All Users"
 msgstr "כל המשתמשים"
 
-#: ../classes/class-aal-activity-log-list-table.php:210
+#: ../classes/class-aal-activity-log-list-table.php:214
 msgid "All Types"
 msgstr "כל הסוגים"
 
-#: ../classes/class-aal-activity-log-list-table.php:216
+#: ../classes/class-aal-activity-log-list-table.php:220
 msgid "Filter"
 msgstr "סינון"
 
@@ -165,3 +165,7 @@ msgstr "הגדרות"
 #: ../language/strings.php:31
 msgid "Menu"
 msgstr "תפריט"
+
+#: ../language/strings.php:34
+msgid "Taxonomy"
+msgstr "טקסונומי"
