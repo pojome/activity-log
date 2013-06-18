@@ -61,9 +61,9 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	public function __construct() {
 		$this->_roles = apply_filters( 'aal_init_roles', array(
 			// admin
-			'manage_options' => array( 'Post', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu' ),
+			'manage_options' => array( 'Post', 'Taxonomy', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu' ),
 			// editor
-			'edit_pages'     => array( 'Post', 'Attachment' ),
+			'edit_pages'     => array( 'Post', 'Taxonomy', 'Attachment' ),
 		) );
 
 		$this->_caps = array(
@@ -132,13 +132,17 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 	
 	public function column_name( $item ) {
+		$return = $item->object_name;
+		
 		switch ( $item->object_type ) {
 			case 'Post' :
 				$return = '<a href="post.php?post=' . $item->object_id . '&action=edit">' . $item->object_name . '</a>';
 				break;
 			
-			default :
-				$return = $item->object_name;
+			case 'Taxonomy' :
+				if ( ! empty( $item->object_id ) )
+					$return = sprintf( '<a href="edit-tags.php?action=edit&taxonomy=%s&tag_ID=%d">%s</a>', $item->object_subtype, $item->object_id, $item->object_name );
+				break;
 		}
 		
 		return $return;

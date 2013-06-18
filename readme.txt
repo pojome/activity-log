@@ -63,6 +63,12 @@ Menu
 
 * A menu is being updated.
 
+Taxonomy
+
+* An term is being uploaded
+* An term is being edited
+* An term is being deleted
+
 
 <strong>Translators:</strong>
 
