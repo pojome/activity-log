@@ -11,35 +11,35 @@ __As of this moment, the plugin logs things when:__
 
 
 Users
-* A user logs in
-* A user logs out
-* A login has failed due to incorrect credentials
-* A user updates their profile
-* A new user account is being registered
-* An existing user account is being deleted
+* A user logs in.
+* A user logs out.
+* A login has failed due to incorrect credentials.
+* A user updates their profile.
+* A new user account is being registered.
+* An existing user account is being deleted.
 
 Plugins
-* A plugin is being activated
-* A plugin is being deactivated
-* A plugin is being changed
+* A plugin is being activated.
+* A plugin is being deactivated.
+* A plugin is being changed.
 
 Themes
-* A theme is being changed (Editor and Customizer)
+* A theme is being changed (Editor and Customizer).
 
 Content
-* A new post is being created
-* A post is being updated
-* A post changes status (draft, pending review, publish)
-* A post is being deleted
+* A new post is being created.
+* A post is being updated.
+* A post changes status (draft, pending review, publish).
+* A post is being deleted.
 
 Media
-* An attachment is being uploaded
-* An attachment is being edited
-* An attachment is being deleted
+* An attachment is being uploaded.
+* An attachment is being edited.
+* An attachment is being deleted.
 
 Widgets
-* A widget is being added to a sidebar
-* A widget is being deleted from a sidebar
+* A widget is being added to a sidebar.
+* A widget is being deleted from a sidebar.
 
 Options
 * A option is being updated (can be extend by east filter).
@@ -48,9 +48,9 @@ Menu
 * A menu is being updated.
 
 Taxonomy
-* An term is being uploaded
-* An term is being edited
-* An term is being deleted
+* An term is being created.
+* An term is being edited.
+* An term is being deleted.
 
 
 __Translators:__
