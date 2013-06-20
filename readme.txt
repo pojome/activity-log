@@ -109,6 +109,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 == Changelog ==
 
+= 1.0.4 =
+* Added Taxonomy type (created, updated, deleted).
+
 = 1.0.3 =
 * Added Multisite compatibility.
 * Added Options hooks (limit list, you can extend by simple filter).
