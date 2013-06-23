@@ -10,7 +10,7 @@ class AAL_Maintenance {
 		if ( function_exists( 'is_multisite') && is_multisite() && $network_wide ) {
 			$old_blog_id = $wpdb->blogid;
 
-			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
+			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs}" );
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				self::_create_tables();
@@ -28,7 +28,7 @@ class AAL_Maintenance {
 		if ( function_exists( 'is_multisite') && is_multisite() && $network_deactivating ) {
 			$old_blog_id = $wpdb->blogid;
 
-			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs;" );
+			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs};" );
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				self::_remove_tables();
@@ -75,7 +75,7 @@ class AAL_Maintenance {
 					  `hist_ip` varchar(55) NOT NULL DEFAULT '127.0.0.1',
 					  `hist_time` int(11) NOT NULL DEFAULT '0',
 					  PRIMARY KEY (`histid`)
-				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;";
+				) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
