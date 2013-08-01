@@ -2,7 +2,7 @@
 Contributors: KingYes, ariel.k, maor
 Tags: access, admin, administration, activity, community, event, monitor, multisite, multi-users, log, logging, logger, login, network, stats, security, tracking, user, madeinisrael
 Requires at least: 3.5
-Tested up to: 3.6
+Tested up to: 3.6.0
 Stable tag: 1.0.5
 License: GPLv2 or later
 
