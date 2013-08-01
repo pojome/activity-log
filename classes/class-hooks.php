@@ -210,6 +210,10 @@ class AAL_Hooks {
 		if ( in_array( $post->post_status, array( 'auto-draft', 'inherit' ) ) )
 			return;
 
+		// Skip for menu items.
+		if ( 'nav_menu_item' === get_post_type( $post->ID ) )
+			return;
+
 		aal_insert_log( array(
 				'action'         => 'deleted',
 				'object_type'    => 'Post',
@@ -356,6 +360,10 @@ class AAL_Hooks {
 	}
 	
 	public function hooks_created_edited_deleted_term( $term_id, $tt_id, $taxonomy, $deleted_term = null ) {
+		// Make sure do not action nav menu taxonomy.
+		if ( 'nav_menu' === $taxonomy )
+			return;
+		
 		if ( 'delete_term' === current_filter() )
 			$term = $deleted_term;
 		else
