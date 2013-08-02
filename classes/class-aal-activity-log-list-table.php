@@ -79,10 +79,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function get_columns() {
 		$columns = array(
-			'type'		=> _x( 'Type', 'main table', 'aryo-aal' ),
-			'name'		=> _x( 'Name', 'main table', 'aryo-aal' ),
-			'action'	=> _x( 'Action', 'main table', 'aryo-aal' ),
-			'date'		=> _x( 'Date', 'main table', 'aryo-aal' ),
+			'type'   => __( 'Type', 'aryo-aal' ),
+			'name'   => __( 'Name', 'aryo-aal' ),
+			'action' => __( 'Action', 'aryo-aal' ),
+			'date'   => __( 'Date', 'aryo-aal' ),
 		);
 
 		return $columns;

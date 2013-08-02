@@ -28,12 +28,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 define( 'ACTIVITY_LOG_BASE', plugin_basename( __FILE__ ) );
 
-include( 'classes/class-maintenance.php' );
+include( 'classes/class-aal-maintenance.php' );
 include( 'classes/class-aal-activity-log-list-table.php' );
-include( 'classes/class-settings.php' );
-include( 'classes/class-admin-ui.php' );
-include( 'classes/class-api.php' );
-include( 'classes/class-hooks.php' );
+include( 'classes/class-aal-settings.php' );
+include( 'classes/class-aal-admin-ui.php' );
+include( 'classes/class-aal-api.php' );
+include( 'classes/class-aal-hooks.php' );
+
+// Integrations
+include( 'classes/class-aal-integration-woocommerce.php' );
 
 // Probably we should put this in a separate file
 class AAL_Main {
