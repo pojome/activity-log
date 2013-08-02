@@ -18,6 +18,10 @@ class AAL_Integration_WooCommerce {
 			'woocommerce_weight_unit',
 			'woocommerce_dimension_unit',
 			'woocommerce_enable_sku',
+			'woocommerce_default_gateway',
+			'woocommerce_gateway_order',
+			'woocommerce_calc_shipping',
+			'woocommerce_default_shipping_method',
 		);
 		
 		return array_unique( array_merge( $whitelist_options, $wc_options ) );
