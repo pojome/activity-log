@@ -69,6 +69,10 @@ Taxonomy
 * An term is being edited.
 * An term is being deleted.
 
+WooCommerce
+
+* Few options updated (will be more soon).
+
 
 <strong>Translators:</strong>
 
@@ -108,6 +112,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 
 == Changelog ==
+
+= 1.0.6 =
+* Added WooCommerce integration (very basic).
 
 = 1.0.5 =
 * Fix - Make sure no save double lines (menu taxonomy / post).

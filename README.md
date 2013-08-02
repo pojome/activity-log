@@ -52,6 +52,9 @@ Taxonomy
 * An term is being edited.
 * An term is being deleted.
 
+WooCommerce
+* Few options updated (will be more soon).
+
 
 __Translators:__
 
