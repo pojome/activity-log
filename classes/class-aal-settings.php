@@ -10,6 +10,13 @@ class AAL_Settings {
 	public function __construct() {
 		add_action( 'admin_menu', array( &$this, 'action_admin_menu' ) );
 		add_action( 'admin_init', array( &$this, 'register_settings' ) );
+		add_filter( 'plugin_action_links_' . ACTIVITY_LOG_BASE, array( &$this, 'plugin_action_links' ) );
+	}
+	
+	public function plugin_action_links( $links ) {
+		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=activity-log-settings' ), __( 'Settings', 'aryo-aal' ) );
+		array_unshift( $links, $settings_link );
+		return $links;
 	}
 
 	/**
