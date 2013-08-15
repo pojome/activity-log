@@ -115,6 +115,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 = 1.0.6 =
 * Added WooCommerce integration (very basic).
+* Added Settings link in plugins page.
 
 = 1.0.5 =
 * Fix - Make sure no save double lines (menu taxonomy / post).
