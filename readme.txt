@@ -113,6 +113,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 == Changelog ==
 
+= 1.0.7 =
+* Added 'view_all_aryo_activity_log' user capability ([topic](http://wordpress.org/support/topic/capability-to-access-the-activity-log)).
+
 = 1.0.6 =
 * Added WooCommerce integration (very basic).
 * Added Settings link in plugins page.

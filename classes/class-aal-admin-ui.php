@@ -5,7 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class AAL_Admin_Ui {
 
 	public function create_admin_menu() {
-		add_dashboard_page( __( 'Activity Log', 'aryo-aal' ), __( 'Activity Log', 'aryo-aal' ), 'edit_pages', 'activity_log_page', array( &$this, 'activity_log_page_func' ) );
+		$menu_capability = current_user_can( 'view_all_aryo_activity_log' ) ? 'view_all_aryo_activity_log' : 'edit_pages';
+		add_dashboard_page( __( 'Activity Log', 'aryo-aal' ), __( 'Activity Log', 'aryo-aal' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ) );
 	}
 
 	public function activity_log_page_func() {
@@ -23,9 +24,8 @@ class AAL_Admin_Ui {
 			</form>
 		</div>
 
-		<?php /* @todo move to a separate file */ ?>
+		<?php // TODO: move to a separate file. ?>
 		<style>
-
 			.aal-pt {
 				color: white;
 				padding: 1px 4px;
@@ -35,7 +35,6 @@ class AAL_Admin_Ui {
 				background: gray;
 				font-family: inherit;
 			}
-
 		</style>
 		<?php
 	}

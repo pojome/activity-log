@@ -80,6 +80,10 @@ class AAL_Maintenance {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
 
+		$admin_role = get_role( 'administrator' );
+		if ( ! $admin_role->has_cap( 'view_all_aryo_activity_log' ) )
+			$admin_role->add_cap( 'view_all_aryo_activity_log' );
+		
 		update_option( 'activity_log_db_version', '1.0' );
 	}
 
@@ -87,6 +91,10 @@ class AAL_Maintenance {
 		global $wpdb;
 
 		$wpdb->query( "DROP TABLE IF EXISTS `{$wpdb->prefix}aryo_activity_log`;" );
+
+		$admin_role = get_role( 'administrator' );
+		if ( $admin_role->has_cap( 'view_all_aryo_activity_log' ) )
+			$admin_role->remove_cap( 'view_all_aryo_activity_log' );
 
 		delete_option( 'activity_log_db_version' );
 	}
