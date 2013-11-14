@@ -3,7 +3,7 @@ Contributors: KingYes, ariel.k, maor
 Tags: access, admin, administration, activity, community, event, monitor, multisite, multi-users, log, logging, logger, login, network, stats, security, tracking, user, madeinisrael, woocommerce
 Requires at least: 3.5
 Tested up to: 3.6.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -77,6 +77,7 @@ WooCommerce
 <strong>Translators:</strong>
 
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
+* Serbo-Croatian (sr_RS) - Borisa Djuraskovic
 * Hebrew (he_IL) - ARYO Digital
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
@@ -112,6 +113,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 
 == Changelog ==
+
+= 1.0.8 =
+* Added translate: Serbo-Croatian (sr_RS) - Thanks to Borisa Djuraskovic.
 
 = 1.0.7 =
 * Added 'view_all_aryo_activity_log' user capability ([topic](http://wordpress.org/support/topic/capability-to-access-the-activity-log)).
