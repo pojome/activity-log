@@ -77,7 +77,7 @@ WooCommerce
 <strong>Translators:</strong>
 
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
-* Serbo-Croatian (sr_RS) - Borisa Djuraskovic
+* Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
 * Hebrew (he_IL) - ARYO Digital
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
@@ -115,7 +115,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 == Changelog ==
 
 = 1.0.8 =
-* Added translate: Serbo-Croatian (sr_RS) - Thanks to Borisa Djuraskovic.
+* Added translate: Serbo-Croatian (sr_RS) - Thanks to [Borisa Djuraskovic](http://www.webhostinghub.com/).
 
 = 1.0.7 =
 * Added 'view_all_aryo_activity_log' user capability ([topic](http://wordpress.org/support/topic/capability-to-access-the-activity-log)).
