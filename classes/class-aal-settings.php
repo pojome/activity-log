@@ -67,6 +67,7 @@ class AAL_Settings {
 					'365' => __( 'A year', 'aryo-aal' ),
 					'90'  => __( '6 months', 'aryo-aal' ),
 					'30'  => __( 'A month', 'aryo-aal' ),
+					'7'   => __( 'A week', 'aryo-aal' ),
 				),
 			)
 		);
