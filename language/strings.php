@@ -1,4 +1,7 @@
 <?php
+__( 'ARYO Activity Log', 'aryo-aal' );
+__( 'Yakir Sitbon, Maor Chasen, Ariel Klikstein', 'aryo-aal' );
+__( 'Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all these for you to see.', 'aryo-aal' );
 
 // Post
 __( 'Post', 'aryo-aal' );

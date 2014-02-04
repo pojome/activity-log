@@ -4,8 +4,10 @@ Plugin Name: ARYO Activity Log
 Plugin URI: http://wordpress.org/plugins/aryo-activity-log/
 Description: Get aware of the activities that are taking place on your dashboard! Weather a post was deleted or a plugin was activated, it’s all these for you to see.
 Author: Yakir Sitbon, Maor Chasen, Ariel Klikstein
-Version: 1.0.8
 Author URI: http://www.aryodigital.com
+Version: 1.0.8
+Text Domain: aryo-aal
+Domain Path: /languages/
 License: GPLv2 or later
 
 
@@ -63,9 +65,9 @@ class AAL_Main {
 	public function __construct() {
 		global $wpdb;
 
-		$this->ui 			= new AAL_Admin_Ui();
-		$this->hooks 		= new AAL_Hooks();
-		$this->settings     = new AAL_Settings();
+		$this->ui       = new AAL_Admin_Ui();
+		$this->hooks    = new AAL_Hooks();
+		$this->settings = new AAL_Settings();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
