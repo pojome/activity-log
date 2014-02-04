@@ -10,7 +10,11 @@ class AAL_Settings {
 	public function __construct() {
 		add_action( 'admin_menu', array( &$this, 'action_admin_menu' ) );
 		add_action( 'admin_init', array( &$this, 'register_settings' ) );
+		add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
+		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
 		add_filter( 'plugin_action_links_' . ACTIVITY_LOG_BASE, array( &$this, 'plugin_action_links' ) );
+
+		add_action( 'wp_ajax_aal_reset_stream', array( &$this, 'ajax_aal_reset_stream' ) );
 	}
 	
 	public function plugin_action_links( $links ) {
@@ -41,7 +45,7 @@ class AAL_Settings {
 		// If no options exist, create them.
 		if ( ! get_option( $this->slug ) ) {
 			update_option( $this->slug, apply_filters( 'aal_default_options', array(
-				'logs_lifespan' => 'forever',
+				'logs_lifespan' => '30',
 			) ) );
 		}
 
@@ -56,22 +60,34 @@ class AAL_Settings {
 		add_settings_field(
 			'logs_lifespan',
 			__( 'Keep logs for', 'aryo-aal' ),
-			array( 'AAL_Settings_Fields', 'select' ),
+			array( 'AAL_Settings_Fields', 'number_field' ),
 			$this->slug,
 			'general_settings_section',
 			array(
 				'id'      => 'logs_lifespan',
 				'page'    => $this->slug,
-				'options' => array(
-					''    => __( 'Forever', 'aryo-aal' ),
-					'365' => __( 'A year', 'aryo-aal' ),
-					'90'  => __( '6 months', 'aryo-aal' ),
-					'30'  => __( 'A month', 'aryo-aal' ),
-					'7'   => __( 'A week', 'aryo-aal' ),
-				),
+				'classes' => array( 'small-text' ),
+				'type'    => 'number',
+				'sub_desc'    => __( 'days.', 'aryo-aal' ),
+				'desc'    => __( 'Maximum number of days to keep activity records. Leave blank to keep records forever (not recommended).', 'aryo-aal' ),
 			)
 		);
-
+		
+		add_settings_field(
+			'raw_delete_log_activities',
+			__( 'Delete Log Activities', 'aryo-aal' ),
+			array( 'AAL_Settings_Fields', 'raw_html' ),
+			$this->slug,
+			'general_settings_section',
+			array(
+				'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
+						'action' => 'aal_reset_stream',
+						'_nonce' => wp_create_nonce( 'aal_reset_stream' ),
+					), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
+				'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-aal' ),
+			)
+		);
+		
 		register_setting( 'aal-options', $this->slug );
 	}
 
@@ -95,6 +111,42 @@ class AAL_Settings {
 		</div><!-- /.wrap -->
 		<?php
 	}
+	
+	public function admin_notices() {
+		switch ( filter_input( INPUT_GET, 'message' ) ) {
+			case 'data_erased':
+				printf( '<div class="updated"><p>%s</p></div>', __( 'All activities have been successfully deleted.', 'aryo-aal' ) );
+				break;
+		}
+	}
+	
+	public function admin_footer() {
+		// TODO: move to JS file.
+		?>
+		<script type="text/javascript">
+			jQuery( document ).ready( function( $ ) {
+				$( '#aal-delete-log-activities' ).on( 'click', function( e ) {
+					if ( ! confirm( '<?php echo __( 'Are you sure you want to do this action?', 'aryo-aal' ); ?>' ) ) {
+						e.preventDefault();
+					}
+				} );
+			} );
+		</script>
+		<?php
+	}
+	
+	public function ajax_aal_reset_stream() {
+		if ( ! check_ajax_referer( 'aal_reset_stream', '_nonce', false ) || ! current_user_can( 'manage_options' ) ) {
+			wp_die( 'You do not have sufficient permissions to access this page.', 'aryo-aal' );
+		}
+		
+		AAL_API::erase_all_items();
+		wp_redirect( add_query_arg( array(
+				'page' => 'activity-log-settings',
+				'message' => 'data_erased',
+		), admin_url( 'options-general.php' ) ) );
+		die();
+	}
 
 	public static function get_option( $key = '' ) {
 		$settings = get_option( 'activity-log-settings' );
@@ -103,6 +155,7 @@ class AAL_Settings {
 	
 }
 
+// TODO: Need rewrite this class to useful tool.
 final class AAL_Settings_Fields {
 
 	public static function description() {
@@ -110,8 +163,48 @@ final class AAL_Settings_Fields {
 		<p><?php _e( 'These are some basic settings for Activity Log.', 'aryo-aal' ); ?></p>
 		<?php
 	}
+	
+	public static function raw_html( $args ) {
+		if ( empty( $args['html'] ) )
+			return;
+		
+		echo $args['html'];
+		if ( ! empty( $args['desc'] ) ) : ?>
+			<p class="description"><?php echo $args['desc']; ?></p>
+		<?php endif;
+	}
+	
+	public static function text_field( $args ) {
+		$args = wp_parse_args( $args, array(
+			'classes' => array(),
+		) );
+		if ( empty( $args['id'] ) || empty( $args['page'] ) )
+			return;
+		
+		?>
+		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Settings::get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
+		<?php
+	}
+	
+	public static function number_field( $args ) {
+		$args = wp_parse_args( $args, array(
+			'classes' => array(),
+			'min' => '1',
+			'step' => '1',
+			'desc' => '',
+		) );
+		if ( empty( $args['id'] ) || empty( $args['page'] ) )
+			return;
 
-	public static function select( $args ) {
+		?>
+		<input type="number" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Settings::get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" min="<?php echo $args['min']; ?>" step="<?php echo $args['step']; ?>" />
+		<?php if ( ! empty( $args['sub_desc'] ) ) echo $args['sub_desc']; ?>
+		<?php if ( ! empty( $args['desc'] ) ) : ?>
+			<p class="description"><?php echo $args['desc']; ?></p>
+		<?php endif;
+	}
+
+	public static function select_field( $args ) {
 		extract( $args, EXTR_SKIP );
 
 		if ( empty( $options ) || empty( $id ) || empty( $page ) )

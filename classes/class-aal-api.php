@@ -18,6 +18,15 @@ class AAL_API {
 			strtotime( '-' . $logs_lifespan . ' days', current_time( 'timestamp' ) )
 		) );
 	}
+	
+	public static function erase_all_items() {
+		global $wpdb;
+		
+		$wpdb->query( $wpdb->prepare(
+			'TRUNCATE %1$s',
+			$wpdb->activity_log
+		) );
+	}
 
 	public static function insert( $args ) {
 		global $wpdb;

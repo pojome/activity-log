@@ -115,7 +115,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 == Changelog ==
 
 = 1.0.9 =
-* Added store data in one week.
+* Added delete all log activities.
 
 = 1.0.8 =
 * Added translate: Serbo-Croatian (sr_RS) - Thanks to [Borisa Djuraskovic](http://www.webhostinghub.com/).
