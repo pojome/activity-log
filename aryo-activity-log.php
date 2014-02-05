@@ -32,8 +32,8 @@ define( 'ACTIVITY_LOG_BASE', plugin_basename( __FILE__ ) );
 
 include( 'classes/class-aal-maintenance.php' );
 include( 'classes/class-aal-activity-log-list-table.php' );
-include( 'classes/class-aal-settings.php' );
 include( 'classes/class-aal-admin-ui.php' );
+include( 'classes/class-aal-settings.php' );
 include( 'classes/class-aal-api.php' );
 include( 'classes/class-aal-hooks.php' );
 

@@ -6,13 +6,14 @@ class AAL_Admin_Ui {
 
 	public function create_admin_menu() {
 		$menu_capability = current_user_can( 'view_all_aryo_activity_log' ) ? 'view_all_aryo_activity_log' : 'edit_pages';
-		add_dashboard_page( __( 'Activity Log', 'aryo-aal' ), __( 'Activity Log', 'aryo-aal' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ) );
+		
+		add_menu_page( __( 'Activity Log', 'aryo-aal' ), __( 'Activity Log', 'aryo-aal' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
+		//add_dashboard_page( __( 'Activity Log', 'aryo-aal' ), __( 'Activity Log', 'aryo-aal' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ) );
 	}
 
 	public function activity_log_page_func() {
 		$activity_table = new AAL_Activity_Log_List_Table();
 		$activity_table->prepare_items();
-		
 		?>
 		<div class="wrap">
 			<h2><?php _e( 'Activity Log', 'aryo-aal' ); ?></h2>
@@ -22,7 +23,7 @@ class AAL_Admin_Ui {
 				<?php $activity_table->display(); ?>
 			</form>
 		</div>
-
+		
 		<?php // TODO: move to a separate file. ?>
 		<style>
 			.aal-pt {
@@ -34,11 +35,25 @@ class AAL_Admin_Ui {
 				background: #808080;
 				font-family: inherit;
 			}
+			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image:before {
+				content: "\f321";
+			}
 		</style>
 		<?php
 	}
 	
+	public function admin_header() {
+		// TODO: move to a separate file.
+		?><style>
+			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image:before {
+				content: "\f321";
+			}
+		</style>
+	<?php
+	}
+	
 	public function __construct() {
-		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ) );
+		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ), 20 );
+		add_action( 'admin_head', array( &$this, 'admin_header' ) );
 	}
 }

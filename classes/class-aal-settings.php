@@ -8,7 +8,7 @@ class AAL_Settings {
 	private $slug;
 	
 	public function __construct() {
-		add_action( 'admin_menu', array( &$this, 'action_admin_menu' ) );
+		add_action( 'admin_menu', array( &$this, 'action_admin_menu' ), 30 );
 		add_action( 'admin_init', array( &$this, 'register_settings' ) );
 		add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
 		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
@@ -29,9 +29,10 @@ class AAL_Settings {
 	 * @since 1.0
 	 */
 	public function action_admin_menu() {
-		$this->hook = add_options_page(
+		$this->hook = add_submenu_page(
+			'activity_log_page',
 			__( 'Activity Log Settings', 'aryo-aal' ), 	// <title> tag
-			__( 'Activity Log', 'aryo-aal' ), 			// menu label
+			__( 'Settings', 'aryo-aal' ), 			// menu label
 			'manage_options', 								// required cap to view this page
 			$this->slug = 'activity-log-settings', 			// page slug
 			array( &$this, 'display_settings_page' )			// callback
@@ -144,7 +145,7 @@ class AAL_Settings {
 		wp_redirect( add_query_arg( array(
 				'page' => 'activity-log-settings',
 				'message' => 'data_erased',
-		), admin_url( 'options-general.php' ) ) );
+		), admin_url( 'admin.php' ) ) );
 		die();
 	}
 
