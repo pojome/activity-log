@@ -18,67 +18,36 @@ If you have tens of users or more, you really can’t know who did it. This plug
 <strong>As of this moment, the plugin logs things when:</strong><br />
 
 
-Users
+<strong>Post, Page or any Custom Post Type</strong>
+Created, Updated, Status (draft, pending review, publish), Deleted.
 
-* A user logs in.
-* A user logs out.
-* A login has failed due to incorrect credentials.
-* A user updates their profile.
-* A new user account is being registered.
-* An existing user account is being deleted.
+<strong>Taxonomy</strong>
+Created, Edited, Deleted.
 
-Plugins
+<strong>Media</strong>
+Uploaded, Edited, Deleted.
 
-* A plugin is being activated.
-* A plugin is being deactivated.
-* A plugin is being changed.
+<strong>Users</strong>
+Login, Logout, Login has failed, Update profile, Registered and Deleted.
 
-Themes
+<strong>Plugins</strong>
+Activated, Deactivated, Changed.
 
-* A theme is being changed (Editor and Customizer).
+<strong>Themes</strong>
+Changed (Editor and Customizer).
 
-Content
+<strong>Widgets</strong>
+Added to a sidebar / Deleted from a sidebar.
 
-* A new post is being created.
-* A post is being updated.
-* A post changes status (draft, pending review, publish).
-* A post is being deleted.
-
-Media
-
-* An attachment is being uploaded.
-* An attachment is being edited.
-* An attachment is being deleted.
-
-Widgets
-
-* A widget is being added to a sidebar.
-* A widget is being deleted from a sidebar.
-
-Options
-
-* A option is being updated (can be extend by east filter).
-
-Menu
-
-* A menu is being updated.
-
-Taxonomy
-
-* An term is being created.
-* An term is being edited.
-* An term is being deleted.
-
-WooCommerce
-
-* Few options updated (will be more soon).
-
+<strong>Many more</strong>
+* Menu - A menu is being updated.
+* Setting (Options) - A option is being updated (can be extend by east filter).
+* WooCommerce -* Few options updated (will be more soon)
 
 <strong>Translators:</strong>
-
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
 * Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
-* Hebrew (he_IL) - ARYO Digital
+* Hebrew (he_IL) - ARYO Digital (http://www.aryodigital.com/)
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
