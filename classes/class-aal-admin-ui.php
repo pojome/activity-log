@@ -15,7 +15,6 @@ class AAL_Admin_Ui {
 		
 		?>
 		<div class="wrap">
-			<?php screen_icon(); ?>
 			<h2><?php _e( 'Activity Log', 'aryo-aal' ); ?></h2>
 
 			<form id="activity-filter" method="get">
@@ -32,7 +31,7 @@ class AAL_Admin_Ui {
 				margin: 0 5px;
 				font-size: 1em;
 				border-radius: 3px;
-				background: gray;
+				background: #808080;
 				font-family: inherit;
 			}
 		</style>

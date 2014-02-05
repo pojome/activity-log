@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2013-08-16 01:53+0200\n"
-"PO-Revision-Date: 2013-08-16 01:54+0200\n"
+"POT-Creation-Date: 2014-02-05 08:56-0000\n"
+"PO-Revision-Date: 2014-02-05 08:57-0000\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
 "Language-Team: Yakir Sitbon & Arie Klikstein <aryodigital@gmail.com>\n"
 "Language: he_IL\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.6.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_x;_n:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
@@ -61,115 +61,162 @@ msgstr "כל הסוגים"
 msgid "Filter"
 msgstr "סינון"
 
-#: ../classes/class-aal-admin-ui.php:8 ../classes/class-aal-admin-ui.php:18
-#: ../classes/class-aal-settings.php:30
+#: ../classes/class-aal-admin-ui.php:9 ../classes/class-aal-admin-ui.php:19
+#: ../classes/class-aal-settings.php:34
 msgid "Activity Log"
 msgstr "יומן פעילות"
 
-#: ../classes/class-aal-settings.php:17
+#: ../classes/class-aal-settings.php:21
 msgid "Settings"
 msgstr "הגדרות"
 
-#: ../classes/class-aal-settings.php:29
+#: ../classes/class-aal-settings.php:33
 msgid "Activity Log Settings"
 msgstr "הגדרות יומן פעילות"
 
-#: ../classes/class-aal-settings.php:51
+#: ../classes/class-aal-settings.php:55
 msgid "Display Options"
 msgstr "אפשרויות תצוגה"
 
-#: ../classes/class-aal-settings.php:58
+#: ../classes/class-aal-settings.php:62
 msgid "Keep logs for"
 msgstr "שמירת היסטוריית פעילות למשך"
 
-#: ../classes/class-aal-settings.php:66
-msgid "Forever"
-msgstr "לתמיד"
+#: ../classes/class-aal-settings.php:71
+msgid "days."
+msgstr "ימים"
 
-#: ../classes/class-aal-settings.php:67
-msgid "A year"
-msgstr "שנה"
+#: ../classes/class-aal-settings.php:72
+#, fuzzy
+msgid ""
+"Maximum number of days to keep activity records. Leave blank to keep records "
+"forever (not recommended)."
+msgstr "תשאיר תגובה"
 
-#: ../classes/class-aal-settings.php:68
-msgid "6 months"
-msgstr "6 חודשים"
-
-#: ../classes/class-aal-settings.php:69
-msgid "A month"
-msgstr "חודש"
+#: ../classes/class-aal-settings.php:78
+#, fuzzy
+msgid "Delete Log Activities"
+msgstr "מחיקה"
 
 #: ../classes/class-aal-settings.php:83
+#, fuzzy, php-format
+msgid "<a href=\"%s\" id=\"%s\">Reset Database</a>"
+msgstr "באמצעות <a href=\"%s\">%s</a> / %s"
+
+#: ../classes/class-aal-settings.php:87
+#, fuzzy
+msgid "Warning: Clicking this will delete all activities from the database."
+msgstr "מחיקה"
+
+#: ../classes/class-aal-settings.php:100
 msgid "ARYO Activity Log Settings"
 msgstr "הגדרות יומן פעילות"
 
-#: ../classes/class-aal-settings.php:109
+#: ../classes/class-aal-settings.php:118
+#, fuzzy
+msgid "All activities have been successfully deleted."
+msgstr "שדות מיוחדים נמחקו"
+
+#: ../classes/class-aal-settings.php:129
+#, fuzzy
+msgid "Are you sure you want to do this action?"
+msgstr "בטוח למחוק את השורה הזאת?"
+
+#: ../classes/class-aal-settings.php:163
 msgid "These are some basic settings for Activity Log."
 msgstr "אלו חלק מההגרות הבסיסיות של יומן הפעילות."
 
+#: ../language/strings.php:2
+msgid "ARYO Activity Log"
+msgstr "יומן פעילות"
+
+#: ../language/strings.php:3
+msgid "Yakir Sitbon, Maor Chasen, Ariel Klikstein"
+msgstr "יקיר סיטבון, מאור חסן, אריאל קליקשטיין"
+
 #: ../language/strings.php:4
+#, fuzzy
+msgid ""
+"Get aware of the activities that are taking place on your dashboard! Weather "
+"a post was deleted or a plugin was activated, it’s all these for you to see."
+msgstr "<a href=\"%s\">התחברות</a> למשתמשים רשומים"
+
+#: ../language/strings.php:7
 msgid "Post"
 msgstr "פוסט"
 
-#: ../language/strings.php:5
+#: ../language/strings.php:8
 msgid "created"
 msgstr "נוצר"
 
-#: ../language/strings.php:6
+#: ../language/strings.php:9
 msgid "updated"
 msgstr "עודכן"
 
-#: ../language/strings.php:7
+#: ../language/strings.php:10
 msgid "deleted"
 msgstr "נמחק"
 
-#: ../language/strings.php:10
+#: ../language/strings.php:13
 msgid "Attachment"
 msgstr "מדיה"
 
-#: ../language/strings.php:11
+#: ../language/strings.php:14
 msgid "added"
 msgstr "נוסף"
 
-#: ../language/strings.php:14
+#: ../language/strings.php:17
 msgid "User"
 msgstr "משתמש"
 
-#: ../language/strings.php:15
+#: ../language/strings.php:18
 msgid "logged_out"
 msgstr "התנתק"
 
-#: ../language/strings.php:16
+#: ../language/strings.php:19
 msgid "logged_in"
 msgstr "התחבר"
 
-#: ../language/strings.php:17
+#: ../language/strings.php:20
 msgid "wrong_password"
 msgstr "סיסמה שגויה"
 
-#: ../language/strings.php:20
+#: ../language/strings.php:23
 msgid "Plugin"
 msgstr "תוסף"
 
-#: ../language/strings.php:21
+#: ../language/strings.php:24
 msgid "activated"
 msgstr "מופעל"
 
-#: ../language/strings.php:22
+#: ../language/strings.php:25
 msgid "deactivated"
 msgstr "מכובה"
 
-#: ../language/strings.php:25
+#: ../language/strings.php:28
 msgid "Widget"
 msgstr "וידג'טים"
 
-#: ../language/strings.php:28
+#: ../language/strings.php:31
 msgid "Options"
 msgstr "הגדרות"
 
-#: ../language/strings.php:31
+#: ../language/strings.php:34
 msgid "Menu"
 msgstr "תפריט"
 
-#: ../language/strings.php:34
+#: ../language/strings.php:37
 msgid "Taxonomy"
 msgstr "טקסונומי"
+
+#~ msgid "Forever"
+#~ msgstr "לתמיד"
+
+#~ msgid "A year"
+#~ msgstr "שנה"
+
+#~ msgid "6 months"
+#~ msgstr "6 חודשים"
+
+#~ msgid "A month"
+#~ msgstr "חודש"

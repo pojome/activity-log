@@ -121,7 +121,7 @@ class AAL_Settings {
 	}
 	
 	public function admin_footer() {
-		// TODO: move to JS file.
+		// TODO: move to a separate file.
 		?>
 		<script type="text/javascript">
 			jQuery( document ).ready( function( $ ) {
