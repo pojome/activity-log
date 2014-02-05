@@ -26,7 +26,7 @@ class AAL_Admin_Ui {
 		<?php // TODO: move to a separate file. ?>
 		<style>
 			.aal-pt {
-				color: white;
+				color: #ffffff;
 				padding: 1px 4px;
 				margin: 0 5px;
 				font-size: 1em;
