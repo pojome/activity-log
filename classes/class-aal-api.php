@@ -37,7 +37,7 @@ class AAL_API {
 			'object_subtype' => '',
 			'object_name'    => '',
 			'object_id'      => '',
-			'hist_ip'        => filter_input( INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP ),
+			'hist_ip'        => $_SERVER['REMOTE_ADDR'],
 			'hist_time'      => current_time( 'timestamp' ),
 		) );
 
