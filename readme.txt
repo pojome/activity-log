@@ -47,7 +47,7 @@ Added to a sidebar / Deleted from a sidebar.
 <strong>Translators:</strong>
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
 * Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
-* Hebrew (he_IL) - ARYO Digital (http://www.aryodigital.com/)
+* Hebrew (he_IL) - [ARYO Digital](http://www.aryodigital.com/)
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
