@@ -57,8 +57,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ')';
 	}
-	
-	public function __construct() {
+
+	public function __construct( $args = array() ) {
+		parent::__construct( array(
+			'singular'  => 'activity',
+			'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
+		) );
+		
 		$this->_roles = apply_filters( 'aal_init_roles', array(
 			// admin
 			'manage_options' => array( 'Post', 'Taxonomy', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu' ),
@@ -72,21 +77,34 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'author'        => array( 'author', 'guest' ),
 		);
 
-		parent::__construct( array(
-			'singular'  => 'activity',
+		add_screen_option( 'per_page', array(
+			'default' => 20,
+			'label'   => __( 'Items', 'aryo-aal' ),
+			'option'  => 'edit_aal_logs_per_page',
 		) );
+
+		add_filter( 'set-screen-option', array( &$this, 'set_screen_option' ), 10, 3 );
+		set_screen_options();
 	}
 
 	public function get_columns() {
 		$columns = array(
-			'date'   => __( 'Date', 'aryo-aal' ),
-			'author' => __( 'Author', 'aryo-aal' ),
-			'type'   => __( 'Type', 'aryo-aal' ),
-			'action' => __( 'Action', 'aryo-aal' ),
-			'name'   => __( 'Description', 'aryo-aal' ),
+			'date'        => __( 'Date', 'aryo-aal' ),
+			'author'      => __( 'Author', 'aryo-aal' ),
+			'ip'          => __( 'IP', 'aryo-aal' ),
+			'type'        => __( 'Type', 'aryo-aal' ),
+			'label'       => __( 'Label', 'aryo-aal' ),
+			'action'      => __( 'Action', 'aryo-aal' ),
+			'description' => __( 'Description', 'aryo-aal' ),
 		);
 
 		return $columns;
+	}
+	
+	public function get_sortable_columns() {
+		return array(
+			'date' => array( 'hist_time', true ),
+		);
 	}
 
 	public function column_default( $item, $column_name ) {
@@ -94,12 +112,15 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		
 		switch ( $column_name ) {
 			case 'action' :
-				$return = __( $item->action, 'aryo-aal' );
+				$return = ucwords( str_replace( '_', ' ', __( $item->action, 'aryo-aal' ) ) );
 				break;
 			case 'date' :
 				$return = sprintf( '<strong>' . __( '%s ago', 'aryo-aal' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
 				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
 				$return .= '<br />' . date( 'H:i', $item->hist_time );
+				break;
+			case 'ip' :
+				$return = $item->hist_ip;
 				break;
 			default :
 				if ( isset( $item->$column_name ) )
@@ -117,34 +138,35 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			if ( $user instanceof WP_User && 0 !== $user->ID ) {
 				//$user->display_name
 				return sprintf(
-					'<a href="%s">%s <span class="aal-author-name">%s</span></a><br /><small>%s</small><br /><small>%s</small>',
+					'<a href="%s">%s <span class="aal-author-name">%s</span></a><br /><small>%s</small>',
 					get_edit_user_link( $user->ID ),
 					get_avatar( $user->ID, 40 ),
 					$user->display_name,
-					isset( $user->roles[0] ) && isset( $wp_roles->role_names[ $user->roles[0] ] ) ? $wp_roles->role_names[ $user->roles[0] ] : __( 'Unknown', 'aryo-aal' ),
-					$item->hist_ip
+					isset( $user->roles[0] ) && isset( $wp_roles->role_names[ $user->roles[0] ] ) ? $wp_roles->role_names[ $user->roles[0] ] : __( 'Unknown', 'aryo-aal' )
 				);
 			}
 		}
 		return sprintf(
-			'<span class="aal-author-name">%s</span><br /><code>%s</code>',
-			__( 'Guest', 'aryo-aal' ),
-			$item->hist_ip
+			'<span class="aal-author-name">%s</span>',
+			__( 'Guest', 'aryo-aal' )
 		);
 	}
 
 	public function column_type( $item ) {
 		$return = __( $item->object_type, 'aryo-aal' );
-		
+		return $return;
+	}
+
+	public function column_label( $item ) {
+		$return = '';
 		if ( ! empty( $item->object_subtype ) ) {
 			$pt = get_post_type_object( $item->object_subtype );
-			$label = ! empty( $pt->label ) ? $pt->label : $item->object_subtype;
-			$return .= sprintf( '<span class="aal-pt" title="%s">%s</span>', $label, $item->object_subtype );
+			$return = ! empty( $pt->label ) ? $pt->label : $item->object_subtype;
 		}
 		return $return;
 	}
 	
-	public function column_name( $item ) {
+	public function column_description( $item ) {
 		$return = $item->object_name;
 		
 		switch ( $item->object_type ) {
@@ -159,6 +181,20 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 		
 		return $return;
+	}
+	
+	public function display_tablenav( $which ) {
+		if ( 'top' == $which )
+			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
+		?>
+		<div class="tablenav <?php echo esc_attr( $which ); ?>">
+			<?php
+			$this->extra_tablenav( $which );
+			$this->pagination( $which );
+			?>
+			<br class="clear" />
+		</div>
+		<?php
 	}
 
 	public function extra_tablenav( $which ) {
@@ -238,10 +274,16 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	public function prepare_items() {
 		global $wpdb;
 	
-		/** @todo: add setting page with this value. */
-		$items_per_page        = 20;
-		$this->_column_headers = array( $this->get_columns(), array(), $this->get_sortable_columns() );
+		$items_per_page        = $this->get_items_per_page( 'edit_aal_logs_per_page', 20 );
+		$this->_column_headers = array( $this->get_columns(), get_hidden_columns( $this->screen ), $this->get_sortable_columns() );
 		$where                 = ' WHERE 1=1';
+
+		if ( ! isset( $_REQUEST['order'] ) || ! in_array( $_REQUEST['order'], array( 'desc', 'asc' ) ) ) {
+			$_REQUEST['order'] = 'DESC';
+		}
+		if ( ! isset( $_REQUEST['orderby'] ) || ! in_array( $_REQUEST['orderby'], array( 'hist_time' ) ) ) {
+			$_REQUEST['orderby'] = 'hist_time';
+		}
 		
 		if ( ! empty( $_REQUEST['typeshow'] ) ) {
 			$where .= $wpdb->prepare( ' AND `object_type` = \'%s\'', $_REQUEST['typeshow'] );
@@ -266,9 +308,11 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'SELECT * FROM `%1$s`
 				' . $where . '
 					' . $this->_get_where_by_role() . '
-					ORDER BY `hist_time` DESC
-					LIMIT %2$d, %3$d;',
+					ORDER BY `%2$s` %3$s
+					LIMIT %4$d, %5$d;',
 			$wpdb->activity_log,
+			$_REQUEST['orderby'],
+			$_REQUEST['order'],
 			$offset,
 			$items_per_page
 		) );
@@ -278,6 +322,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'per_page'    => $items_per_page,
 			'total_pages' => ceil( $total_items / $items_per_page )
 		) );
+	}
+	
+	public function set_screen_option( $status, $option, $value ) {
+		if ( 'edit_aal_logs_per_page' === $option )
+			return $value;
+		return $status;
 	}
 	
 }

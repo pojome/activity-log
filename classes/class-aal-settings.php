@@ -37,7 +37,6 @@ class AAL_Settings {
 			$this->slug = 'activity-log-settings', 			// page slug
 			array( &$this, 'display_settings_page' )			// callback
 		);
-
 		// this callback will initialize the settings for AAL
 		// add_action( "load-$this->hook", array( $this, 'register_settings' ) );
 	}
@@ -98,7 +97,7 @@ class AAL_Settings {
 		<div class="wrap">
 		
 			<div id="icon-themes" class="icon32"></div>
-			<h2><?php _e( 'ARYO Activity Log Settings', 'aryo-aal' ); ?></h2>
+			<h2><?php _e( 'Activity Log Settings', 'aryo-aal' ); ?></h2>
 			
 			<form method="post" action="options.php">
 				<?php
