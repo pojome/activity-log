@@ -79,10 +79,11 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function get_columns() {
 		$columns = array(
-			'type'   => __( 'Type', 'aryo-aal' ),
-			'name'   => __( 'Name', 'aryo-aal' ),
-			'action' => __( 'Action', 'aryo-aal' ),
 			'date'   => __( 'Date', 'aryo-aal' ),
+			'author' => __( 'Author', 'aryo-aal' ),
+			'type'   => __( 'Type', 'aryo-aal' ),
+			'action' => __( 'Action', 'aryo-aal' ),
+			'name'   => __( 'Description', 'aryo-aal' ),
 		);
 
 		return $columns;
@@ -97,7 +98,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				break;
 			case 'date' :
 				$return = sprintf( '<strong>' . __( '%s ago', 'aryo-aal' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
-				$return .= '<br />' . date( 'd/m/Y H:i', $item->hist_time );
+				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
+				$return .= '<br />' . date( 'H:i', $item->hist_time );
 				break;
 			default :
 				if ( isset( $item->$column_name ) )
@@ -105,6 +107,30 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 		
 		return $return;
+	}
+	
+	public function column_author( $item ) {
+		global $wp_roles;
+		
+		if ( ! empty( $item->user_id ) && 0 !== (int) $item->user_id ) {
+			$user = get_user_by( 'id', $item->user_id );
+			if ( $user instanceof WP_User && 0 !== $user->ID ) {
+				//$user->display_name
+				return sprintf(
+					'<a href="%s">%s <span class="aal-author-name">%s</span></a><br /><small>%s</small><br /><small>%s</small>',
+					get_edit_user_link( $user->ID ),
+					get_avatar( $user->ID, 40 ),
+					$user->display_name,
+					isset( $user->roles[0] ) && isset( $wp_roles->role_names[ $user->roles[0] ] ) ? $wp_roles->role_names[ $user->roles[0] ] : __( 'Unknown', 'aryo-aal' ),
+					$item->hist_ip
+				);
+			}
+		}
+		return sprintf(
+			'<span class="aal-author-name">%s</span><br /><code>%s</code>',
+			__( 'Guest', 'aryo-aal' ),
+			$item->hist_ip
+		);
 	}
 
 	public function column_type( $item ) {
@@ -115,19 +141,6 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$label = ! empty( $pt->label ) ? $pt->label : $item->object_subtype;
 			$return .= sprintf( '<span class="aal-pt" title="%s">%s</span>', $label, $item->object_subtype );
 		}
-
-		$user       = false;
-		$return     .= '<br />' . __( 'by ', 'aryo-aal' );
-		if ( ! empty( $item->user_id ) )
-			$user = get_user_by( 'id', $item->user_id );
-
-		if ( $user )
-			$return .= '<a href="user-edit.php?user_id=' . absint( $user->ID ) . '">' . esc_html( $user->user_login ) . '</a>';
-		else
-			$return .= __( 'Guest', 'aryo-aal' );
-		
-		$return .= ' (<code>' . $item->hist_ip . '</code>)';
-		
 		return $return;
 	}
 	

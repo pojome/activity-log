@@ -35,6 +35,9 @@ class AAL_Admin_Ui {
 				background: #808080;
 				font-family: inherit;
 			}
+			.toplevel_page_activity_log_page .column-author {
+				width: 15%;
+			}
 			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image:before {
 				content: "\f321";
 			}
