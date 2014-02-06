@@ -22,7 +22,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Media</strong><br />Uploaded, Edited, Deleted.
 * <strong>Users</strong><br />Login, Logout, Login has failed, Update profile, Registered and Deleted.
 * <strong>Plugins</strong><br />Activated, Deactivated, Changed.
-* <strong>Themes</strong><br />Changed (Editor and Customizer).
+* <strong>Themes</strong><br />Activeted, Changed (Editor and Customizer).
 * <strong>Widgets</strong><br />Added to a sidebar / Deleted from a sidebar.
 * <strong>Many more</strong><br /><strong>Menu</strong> - A menu is being updated. <strong>Setting (Options)</strong> - A option is being updated (can be extend by east filter). <strong>WooCommerce</strong>- Few options updated (will be more soon)
 
@@ -56,7 +56,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 1. The log viewer page
 2. The settings page
-2. Looks as nicely in MP6
+3. Screen Options
 
 == Frequently Asked Questions ==
 
@@ -71,8 +71,20 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 == Changelog ==
 
 = 2.0 =
-* Added delete all log activities.
-* New UI ideas.
+* Added Screen Options
+* New! Ability to select a number of activity items per page
+* New! Columns are now sortable
+* Added filter by date - All Time, Today, Yesterday, Week, Month
+* Added Avatar to author
+* Added role for author
+* Added log for activeted theme
+* Re-order Culomns
+* Compatible up to 3.8.1
+* Settings page is now accessible directly from Activity Log's menu
+* Keep your log for any time your wants
+* Delete Log Activities from Database.
+* Bugs fixed
+
 
 = 1.0.8 =
 * Added translate: Serbo-Croatian (sr_RS) - Thanks to [Borisa Djuraskovic](http://www.webhostinghub.com/).
