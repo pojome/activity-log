@@ -271,7 +271,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$_REQUEST['dateshow'] = '';
 			
 			$date_options = array(
-				'' => __( 'All Dates', 'aryo-aal' ),
+				'' => __( 'All Time', 'aryo-aal' ),
 				'today' => __( 'Today', 'aryo-aal' ),
 				'yesterday' => __( 'Yesterday', 'aryo-aal' ),
 				'week' => __( 'Week', 'aryo-aal' ),
@@ -318,7 +318,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$end_time = mktime( 23, 59, 59, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
 			
 			if ( 'yesterday' === $_REQUEST['dateshow'] ) {
-				$start_time    = strtotime( 'yesterday', $start_time );
+				$start_time = strtotime( 'yesterday', $start_time );
 				$end_time = mktime( 23, 59, 59, date( 'm', $start_time ), date( 'd', $start_time ), date( 'Y', $start_time ) );
 			} elseif ( 'week' === $_REQUEST['dateshow'] ) {
 				$start_time = strtotime( '-1 week', $start_time );
