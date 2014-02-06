@@ -3,7 +3,7 @@
 **Tags:** access, admin, administration, activity, community, event, monitor, multisite, multi-users, log, logging, logger, login, network, stats, security, tracking, user, madeinisrael, woocommerce  
 **Requires at least:** 3.5  
 **Tested up to:** 3.8.1  
-**Stable tag:** 2.0  
+**Stable tag:** 2.0.1  
 **License:** GPLv2 or later  
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -79,7 +79,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 ## Changelog ##
 
-### 2.0 ###
+### 2.0.0 ###
 * Added Screen Options
 * New! Ability to select a number of activity items per page
 * New! Columns are now sortable

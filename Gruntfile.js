@@ -44,7 +44,14 @@ module.exports = function(grunt) {
 			}
 		},
 
-		bumpup: [ 'package.json' ],
+		bumpup: {
+			options: {
+				updateProps: {
+					pkg: 'package.json'
+				}
+			},
+			file: 'package.json'
+		},
 
 		replace: {
 			plugin_main: {
@@ -70,12 +77,22 @@ module.exports = function(grunt) {
 			}
 		},
 
+		shell: {
+			git_add_all : {
+				command: [
+					'git add --all',
+					'git commit -m "Bump to <%= pkg.version %>"'
+				].join( '&&' )
+			}
+		},
+
 		release: {
 			options: {
 				bump: false,
+				npm: false,
 				tagName: 'v<%= version %>',
-				commitMessage: 'release v<%= version %>',
-				tagMessage: 'tagging version v<%= version %>'
+				commitMessage: 'released v<%= version %>',
+				tagMessage: 'Tagged as v<%= version %>'
 			}
 		},
 
@@ -100,6 +117,7 @@ module.exports = function(grunt) {
 		'bumpup',
 		'replace',
 		'wp_readme_to_markdown',
+		'shell:git_add_all',
 		'release'
 	] );
 };
