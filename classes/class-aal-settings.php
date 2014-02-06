@@ -77,20 +77,22 @@ class AAL_Settings {
 			)
 		);
 		
-		add_settings_field(
-			'raw_delete_log_activities',
-			__( 'Delete Log Activities', 'aryo-aal' ),
-			array( 'AAL_Settings_Fields', 'raw_html' ),
-			$this->slug,
-			'general_settings_section',
-			array(
-				'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
-						'action' => 'aal_reset_stream',
-						'_nonce' => wp_create_nonce( 'aal_reset_stream' ),
-					), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
-				'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-aal' ),
-			)
-		);
+		if ( apply_filters( 'aal_allow_option_erase_logs', true ) ) {
+			add_settings_field(
+				'raw_delete_log_activities',
+				__( 'Delete Log Activities', 'aryo-aal' ),
+				array( 'AAL_Settings_Fields', 'raw_html' ),
+				$this->slug,
+				'general_settings_section',
+				array(
+					'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
+							'action' => 'aal_reset_stream',
+							'_nonce' => wp_create_nonce( 'aal_reset_stream' ),
+						), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
+					'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-aal' ),
+				)
+			);
+		}
 		
 		register_setting( 'aal-options', $this->slug );
 	}
