@@ -23,6 +23,10 @@ __( 'Plugin', 'aryo-aal' );
 __( 'activated', 'aryo-aal' );
 __( 'deactivated', 'aryo-aal' );
 
+// Theme
+__( 'Theme', 'aryo-aal' );
+__( 'Theme Customizer', 'aryo-aal' );
+
 // Widget
 __( 'Widget', 'aryo-aal' );
 

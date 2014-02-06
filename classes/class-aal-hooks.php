@@ -48,7 +48,8 @@ class AAL_Hooks {
 
 		// Theme
 		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
-
+		add_action( 'switch_theme', array( &$this, 'hooks_switch_theme' ), 10, 2 );
+		
 		// Theme customizer
 		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ) );
 		//add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ) );
@@ -260,6 +261,16 @@ class AAL_Hooks {
 			}
 		}
 	}
+	
+	public function hooks_switch_theme( $new_name, WP_Theme $new_theme ) {
+		aal_insert_log( array(
+			'action'         => 'activated',
+			'object_type'    => 'Theme',
+			'object_subtype' => $new_theme->get_stylesheet(),
+			'object_id'      => 0,
+			'object_name'    => $new_name,
+		) );
+	}
 
 	public function hooks_theme_modify( $location, $status ) {
 		if ( false !== strpos( $location, 'theme-editor.php?file=' ) ) {
@@ -319,7 +330,7 @@ class AAL_Hooks {
 			'object_type'    => 'Theme',
 			'object_subtype' => $obj->theme()->display( 'Name' ),
 			'object_id'      => 0,
-			'object_name'    => 'theme customizer',
+			'object_name'    => 'Theme Customizer',
 		);
 
 		if ( 'customize_preview_init' === current_filter() )
