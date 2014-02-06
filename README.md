@@ -79,6 +79,10 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 ## Changelog ##
 
+### 2.0.1 ###
+* New! filter for disable erase all the log
+* Bugs fixed
+
 ### 2.0.0 ###
 * Added Screen Options
 * New! Ability to select a number of activity items per page
