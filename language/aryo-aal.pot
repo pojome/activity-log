@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2014-02-06 11:22+0200\n"
-"PO-Revision-Date: 2014-02-06 11:22+0200\n"
+"POT-Creation-Date: 2014-02-06 15:53+0200\n"
+"PO-Revision-Date: 2014-02-06 15:53+0200\n"
 "Last-Translator: Ariel K <a@arielk.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgid "All Types"
 msgstr ""
 
 #: ../classes/class-aal-activity-log-list-table.php:274
-msgid "All Dates"
+msgid "All Time"
 msgstr ""
 
 #: ../classes/class-aal-activity-log-list-table.php:275
@@ -156,80 +156,84 @@ msgid "ARYO Activity Log"
 msgstr ""
 
 #: ../language/strings.php:3
-msgid "Yakir Sitbon, Maor Chasen, Ariel Klikstein"
-msgstr ""
-
-#: ../language/strings.php:4
 msgid ""
 "Get aware of any activities that are taking place on your dashboard! Imagine "
 "it like a black-box for your WordPress site. e.g. post was deleted, plugin "
 "was activated, user logged in or logged out - it’s all these for you to see."
 msgstr ""
 
-#: ../language/strings.php:7
+#: ../language/strings.php:6
 msgid "Post"
 msgstr ""
 
-#: ../language/strings.php:8
+#: ../language/strings.php:7
 msgid "created"
 msgstr ""
 
-#: ../language/strings.php:9
+#: ../language/strings.php:8
 msgid "updated"
 msgstr ""
 
-#: ../language/strings.php:10
+#: ../language/strings.php:9
 msgid "deleted"
 msgstr ""
 
-#: ../language/strings.php:13
+#: ../language/strings.php:12
 msgid "Attachment"
 msgstr ""
 
-#: ../language/strings.php:14
+#: ../language/strings.php:13
 msgid "added"
 msgstr ""
 
-#: ../language/strings.php:17
+#: ../language/strings.php:16
 msgid "User"
 msgstr ""
 
-#: ../language/strings.php:18
+#: ../language/strings.php:17
 msgid "logged_out"
 msgstr ""
 
-#: ../language/strings.php:19
+#: ../language/strings.php:18
 msgid "logged_in"
 msgstr ""
 
-#: ../language/strings.php:20
+#: ../language/strings.php:19
 msgid "wrong_password"
 msgstr ""
 
-#: ../language/strings.php:23
+#: ../language/strings.php:22
 msgid "Plugin"
 msgstr ""
 
-#: ../language/strings.php:24
+#: ../language/strings.php:23
 msgid "activated"
 msgstr ""
 
-#: ../language/strings.php:25
+#: ../language/strings.php:24
 msgid "deactivated"
 msgstr ""
 
+#: ../language/strings.php:27
+msgid "Theme"
+msgstr ""
+
 #: ../language/strings.php:28
-msgid "Widget"
+msgid "Theme Customizer"
 msgstr ""
 
 #: ../language/strings.php:31
-msgid "Options"
+msgid "Widget"
 msgstr ""
 
 #: ../language/strings.php:34
-msgid "Menu"
+msgid "Options"
 msgstr ""
 
 #: ../language/strings.php:37
+msgid "Menu"
+msgstr ""
+
+#: ../language/strings.php:40
 msgid "Taxonomy"
 msgstr ""

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2014-02-06 11:14+0200\n"
-"PO-Revision-Date: 2014-02-06 11:22+0200\n"
+"POT-Creation-Date: 2014-02-06 15:56+0200\n"
+"PO-Revision-Date: 2014-02-06 15:56+0200\n"
 "Last-Translator: Ariel K <a@arielk.net>\n"
 "Language-Team: Yakir Sitbon & Arie Klikstein <aryodigital@gmail.com>\n"
 "Language: he_IL\n"
@@ -74,7 +74,7 @@ msgid "All Types"
 msgstr "כל הסוגים"
 
 #: ../classes/class-aal-activity-log-list-table.php:274
-msgid "All Dates"
+msgid "All Time"
 msgstr "כל הזמן"
 
 #: ../classes/class-aal-activity-log-list-table.php:275
@@ -159,87 +159,96 @@ msgid "ARYO Activity Log"
 msgstr "יומן פעילות"
 
 #: ../language/strings.php:3
-msgid "Yakir Sitbon, Maor Chasen, Ariel Klikstein"
-msgstr "יקיר סיטבון, מאור חסן, אריאל קליקשטיין"
-
-#: ../language/strings.php:4
 msgid ""
 "Get aware of any activities that are taking place on your dashboard! Imagine "
-"it like a black-box for your WordPress site. e.g. post was deleted or a "
-"plugin was activated, user logged in or logged out - it’s all these for you "
-"to see."
+"it like a black-box for your WordPress site. e.g. post was deleted, plugin "
+"was activated, user logged in or logged out - it’s all these for you to see."
 msgstr ""
-"תיעוד כל הפעילויות המתרחשות בלוח הבקרה שלך! יומן הפעילות של מערכת וורדפרס. "
-"לדוגמא: פוסט נמחק, תוסף הופעל, משתמש התחבר או התנתק מהמערכת - כל זה מתועד "
-"בתוסף."
+"תיעוד כל הפעילויות המתרחשות בלוח הבקרה של מערכת וורדפרס. לדוגמא: פוסט נמחק, "
+"תוסף הופעל, משתמש התחבר או התנתק מהמערכת - כל זה מתועד בלוח בקרה של התוסף "
+"יומן פעילות."
 
-#: ../language/strings.php:7
+#: ../language/strings.php:6
 msgid "Post"
 msgstr "פוסט"
 
-#: ../language/strings.php:8
+#: ../language/strings.php:7
 msgid "created"
 msgstr "נוצר"
 
-#: ../language/strings.php:9
+#: ../language/strings.php:8
 msgid "updated"
 msgstr "עודכן"
 
-#: ../language/strings.php:10
+#: ../language/strings.php:9
 msgid "deleted"
 msgstr "נמחק"
 
-#: ../language/strings.php:13
+#: ../language/strings.php:12
 msgid "Attachment"
 msgstr "מדיה"
 
-#: ../language/strings.php:14
+#: ../language/strings.php:13
 msgid "added"
 msgstr "נוסף"
 
-#: ../language/strings.php:17
+#: ../language/strings.php:16
 msgid "User"
 msgstr "משתמש"
 
-#: ../language/strings.php:18
+#: ../language/strings.php:17
 msgid "logged_out"
 msgstr "התנתק"
 
-#: ../language/strings.php:19
+#: ../language/strings.php:18
 msgid "logged_in"
 msgstr "התחבר"
 
-#: ../language/strings.php:20
+#: ../language/strings.php:19
 msgid "wrong_password"
 msgstr "סיסמה שגויה"
 
-#: ../language/strings.php:23
+#: ../language/strings.php:22
 msgid "Plugin"
 msgstr "תוסף"
 
-#: ../language/strings.php:24
+#: ../language/strings.php:23
 msgid "activated"
 msgstr "מופעל"
 
-#: ../language/strings.php:25
+#: ../language/strings.php:24
 msgid "deactivated"
 msgstr "מכובה"
 
+#: ../language/strings.php:27
+msgid "Theme"
+msgstr "ערכת עיצוב"
+
 #: ../language/strings.php:28
+msgid "Theme Customizer"
+msgstr "התאמה אישית"
+
+#: ../language/strings.php:31
 msgid "Widget"
 msgstr "וידג'טים"
 
-#: ../language/strings.php:31
+#: ../language/strings.php:34
 msgid "Options"
 msgstr "הגדרות"
 
-#: ../language/strings.php:34
+#: ../language/strings.php:37
 msgid "Menu"
 msgstr "תפריט"
 
-#: ../language/strings.php:37
+#: ../language/strings.php:40
 msgid "Taxonomy"
 msgstr "טקסונומי"
+
+#~ msgid "All Dates"
+#~ msgstr "כל הזמן"
+
+#~ msgid "Yakir Sitbon, Maor Chasen, Ariel Klikstein"
+#~ msgstr "יקיר סיטבון, מאור חסן, אריאל קליקשטיין"
 
 #~ msgid "Name"
 #~ msgstr "שם"
