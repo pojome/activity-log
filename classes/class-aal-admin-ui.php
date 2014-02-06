@@ -43,11 +43,32 @@ class AAL_Admin_Ui {
 				background: #808080;
 				font-family: inherit;
 			}
-			.toplevel_page_activity_log_page .column-author {
-				width: 15%;
+			.toplevel_page_activity_log_page .manage-column {
+				width: auto;
+			}
+			.toplevel_page_activity_log_page .column-description {
+				width: 20%;
 			}
 			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image:before {
 				content: "\f321";
+			}
+			@media (max-width: 767px) {
+				.toplevel_page_activity_log_page .manage-column {
+					width: auto;
+				}
+				.toplevel_page_activity_log_page .column-date,
+				.toplevel_page_activity_log_page .column-author {
+					display: table-cell;
+					width: auto;
+				}
+				.toplevel_page_activity_log_page .column-ip,
+				.toplevel_page_activity_log_page .column-description,
+				.toplevel_page_activity_log_page .column-label {
+					display: none;
+				}
+				.toplevel_page_activity_log_page .column-author .avatar {
+					display: none;
+				}
 			}
 		</style>
 		<?php
