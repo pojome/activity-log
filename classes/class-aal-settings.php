@@ -69,7 +69,7 @@ class AAL_Settings {
 				'classes' => array( 'small-text' ),
 				'type'    => 'number',
 				'sub_desc'    => __( 'days.', 'aryo-aal' ),
-				'desc'    => __( 'Maximum number of days to keep activity records. Leave blank to keep records forever (not recommended).', 'aryo-aal' ),
+				'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
 			)
 		);
 		
