@@ -1,5 +1,5 @@
 <?php
-__( 'Activity Log', 'aryo-aal' );
+__( 'ARYO Activity Log', 'aryo-aal' );
 __( 'Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site. e.g. post was deleted, plugin was activated, user logged in or logged out - it’s all these for you to see.', 'aryo-aal' );
 
 // Post
