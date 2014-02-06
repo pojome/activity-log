@@ -44,6 +44,41 @@ module.exports = function(grunt) {
 			}
 		},
 
+		bumpup: [ 'package.json' ],
+
+		replace: {
+			plugin_main: {
+				src: [ 'aryo-activity-log.php' ],
+				overwrite: true,
+				replacements: [
+					{
+						from: /Version: \d{1,1}\.\d{1,2}\.\d{1,2}/g,
+						to: 'Version: <%= pkg.version %>'
+					}
+				]
+			},
+			
+			readme: {
+				src: [ 'readme.txt' ],
+				overwrite: true,
+				replacements: [
+					{
+						from: /Stable tag: \d{1,1}\.\d{1,2}\.\d{1,2}/g,
+						to: 'Stable tag: <%= pkg.version %>'
+					}
+				]
+			}
+		},
+
+		release: {
+			options: {
+				bump: false,
+				tagName: 'v<%= version %>',
+				commitMessage: 'release v<%= version %>',
+				tagMessage: 'tagging version v<%= version %>'
+			}
+		},
+
 		wp_readme_to_markdown: {
 			github: {
 				files: {
@@ -58,5 +93,13 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'default', [
 		'checktextdomain',
 		'wp_readme_to_markdown'
+	] );
+	
+	grunt.registerTask( 'publish', [
+		'checktextdomain',
+		'bumpup',
+		'replace',
+		'wp_readme_to_markdown',
+		'release'
 	] );
 };
