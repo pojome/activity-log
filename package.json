@@ -3,12 +3,13 @@
 	"slug": "aryo-activity-log",
 	"homepage": "http://www.aryodigital.com/",
 	"description": "ARYO Activity Log",
-	"version": "2.0.1",
+	"version": "2.0.0",
 	"devDependencies": {
 		"grunt": "~0.4.1",
 		"grunt-checktextdomain": "~0.1.1",
 		"grunt-wp-readme-to-markdown": "~0.6.0",
 		"grunt-bumpup": "~0.4.1",
+		"grunt-shell": "~0.6.4",
 		"grunt-text-replace": "~0.3.6",
 		"grunt-release": "~0.6.0",
 		"matchdep": "~0.1.2"
