@@ -265,8 +265,25 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			echo '</select>';
 		}
 
-		if ( $users || $types )
+		// Make sure we get items for filter.
+		if ( $users || $types ) {
+			if ( ! isset( $_REQUEST['dateshow'] ) )
+				$_REQUEST['dateshow'] = '';
+			
+			$date_options = array(
+				'' => __( 'All Dates', 'aryo-aal' ),
+				'today' => __( 'Today', 'aryo-aal' ),
+				'yesterday' => __( 'Yesterday', 'aryo-aal' ),
+				'week' => __( 'Week', 'aryo-aal' ),
+				'month' => __( 'Month', 'aryo-aal' ),
+			);
+			echo '<select name="dateshow" id="hs-filter-date">';
+			foreach ( $date_options as $key => $value )
+				printf( '<option value="%1$s"%2$s>%3$s</option>', $key, selected( $_REQUEST['dateshow'], $key, false ), $value );
+			echo '</select>';
+			
 			submit_button( __( 'Filter', 'aryo-aal' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
+		}
 
 		echo '</div>';
 	}
@@ -291,6 +308,25 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
 			$where .= $wpdb->prepare( ' AND `user_id` = %d', $_REQUEST['usershow'] );
+		}
+
+		if ( isset( $_REQUEST['dateshow'] ) && in_array( $_REQUEST['dateshow'], array( 'today', 'yesterday', 'week', 'month' ) ) ) {
+			$current_time = current_time( 'timestamp' );
+			
+			// Today
+			$start_time = mktime( 0, 0, 0, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );;
+			$end_time = mktime( 23, 59, 59, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
+			
+			if ( 'yesterday' === $_REQUEST['dateshow'] ) {
+				$start_time    = strtotime( 'yesterday', $start_time );
+				$end_time = mktime( 23, 59, 59, date( 'm', $start_time ), date( 'd', $start_time ), date( 'Y', $start_time ) );
+			} elseif ( 'week' === $_REQUEST['dateshow'] ) {
+				$start_time = strtotime( '-1 week', $start_time );
+			} elseif ( 'month' === $_REQUEST['dateshow'] ) {
+				$start_time = strtotime( '-1 month', $start_time );
+			}
+			
+			$where .= $wpdb->prepare( ' AND `hist_time` > %1$d AND `hist_time` < %2$d', $start_time, $end_time );
 		}
 
 		$offset = ( $this->get_pagenum() - 1 ) * $items_per_page;
