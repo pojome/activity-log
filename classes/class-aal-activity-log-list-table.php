@@ -171,7 +171,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		
 		switch ( $item->object_type ) {
 			case 'Post' :
-				$return = '<a href="post.php?post=' . $item->object_id . '&action=edit">' . $item->object_name . '</a>';
+				$return = sprintf( '<a href="%s">%s</a>', get_edit_post_link( $item->object_id ), $item->object_name );
 				break;
 			
 			case 'Taxonomy' :
