@@ -24,10 +24,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Plugins</strong><br />Activated, Deactivated, Changed.
 * <strong>Themes</strong><br />Changed (Editor and Customizer).
 * <strong>Widgets</strong><br />Added to a sidebar / Deleted from a sidebar.
-* <strong>Many more</strong>
-** Menu - A menu is being updated.
-** Setting (Options) - A option is being updated (can be extend by east filter).
-** WooCommerce -* Few options updated (will be more soon)
+* <strong>Many more</strong><br /><strong>Menu</strong> - A menu is being updated. <strong>Setting (Options)</strong> - A option is being updated (can be extend by east filter). <strong>WooCommerce</strong>- Few options updated (will be more soon)
 
 <h4>What people are saying</h4>
 * <em>“Optimized code - The plugin itself is blazing fast and leaves almost no footprint on the server.”</em><br />[freshtechtips.com](http://www.freshtechtips.com/2014/01/best-audit-trail-plugins-for-wordpress.html)
