@@ -1,9 +1,9 @@
-=== ARYO Activity Log ===
+=== Activity Log ===
 Contributors: KingYes, ariel.k, maor
 Tags: access, admin, administration, activity, community, event, monitor, multisite, multi-users, log, logging, logger, login, network, stats, security, tracking, user, madeinisrael, woocommerce
 Requires at least: 3.5
-Tested up to: 3.6.1
-Stable tag: 1.0.8
+Tested up to: 3.8.1
+Stable tag: 2.0
 License: GPLv2 or later
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -17,34 +17,25 @@ If you have tens of users or more, you really can’t know who did it. This plug
 
 <strong>As of this moment, the plugin logs things when:</strong><br />
 
+* <strong>Post, Page or any Custom Post Type</strong><br />Created, Updated, Status (draft, pending review, publish), Deleted.
+* <strong>Taxonomy</strong><br />Created, Edited, Deleted.
+* <strong>Media</strong><br />Uploaded, Edited, Deleted.
+* <strong>Users</strong><br />Login, Logout, Login has failed, Update profile, Registered and Deleted.
+* <strong>Plugins</strong><br />Activated, Deactivated, Changed.
+* <strong>Themes</strong><br />Changed (Editor and Customizer).
+* <strong>Widgets</strong><br />Added to a sidebar / Deleted from a sidebar.
+* <strong>Many more</strong>
+** Menu - A menu is being updated.
+** Setting (Options) - A option is being updated (can be extend by east filter).
+** WooCommerce -* Few options updated (will be more soon)
 
-<strong>Post, Page or any Custom Post Type</strong>
-Created, Updated, Status (draft, pending review, publish), Deleted.
+<h4>What people are saying</h4>
+* <em>“Optimized code - The plugin itself is blazing fast and leaves almost no footprint on the server.”</em><br />[freshtechtips.com](http://www.freshtechtips.com/2014/01/best-audit-trail-plugins-for-wordpress.html)
+* <em>“The plugin successful for activity log for wordpress.”</em><br />[wp-tricks.co.il](http://www.wp-tricks.co.il/2013/08/%D7%99%D7%95%D7%9E%D7%9F-%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA-%D7%9C%D7%95%D7%95%D7%A8%D7%93%D7%A4%D7%A8%D7%A1-aryo-activity-log/)
+* <em>“This is a pretty simple yet quite effective plugin for keeping track of what your admins and users do on your sites.”</em><br />[shadowdragonunlimited.com](http://shadowdragonunlimited.com/plugin-of-the-week-9302013-aryo-activity-log/plugin-of-the-week/)
+* Thanks
 
-<strong>Taxonomy</strong>
-Created, Edited, Deleted.
-
-<strong>Media</strong>
-Uploaded, Edited, Deleted.
-
-<strong>Users</strong>
-Login, Logout, Login has failed, Update profile, Registered and Deleted.
-
-<strong>Plugins</strong>
-Activated, Deactivated, Changed.
-
-<strong>Themes</strong>
-Changed (Editor and Customizer).
-
-<strong>Widgets</strong>
-Added to a sidebar / Deleted from a sidebar.
-
-<strong>Many more</strong>
-* Menu - A menu is being updated.
-* Setting (Options) - A option is being updated (can be extend by east filter).
-* WooCommerce -* Few options updated (will be more soon)
-
-<strong>Translators:</strong>
+<h4>Translators:</h4>
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
 * Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
 * Hebrew (he_IL) - [ARYO Digital](http://www.aryodigital.com/)
@@ -62,8 +53,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 1. Upload plugin files to your plugins folder, or install using WordPress' built-in Add New Plugin installer
 1. Activate the plugin
-1. Go to the plugin settings page (under Settings > Activity Log)
-1. Go to the log viewer page (under Dashboard > Activity Log)
+1. Go to the plugin page (under Dashboard > Activity Log)
 
 == Screenshots ==
 
@@ -83,7 +73,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 == Changelog ==
 
-= 1.0.9 =
+= 2.0 =
 * Added delete all log activities.
 * New UI ideas.
 
