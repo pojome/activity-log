@@ -1,9 +1,9 @@
-=== ARYO Activity Log ===
+=== Activity Log ===
 Contributors: KingYes, ariel.k, maor
 Tags: access, admin, administration, activity, community, event, monitor, multisite, multi-users, log, logging, logger, login, network, stats, security, tracking, user, madeinisrael, woocommerce
 Requires at least: 3.5
-Tested up to: 3.6.1
-Stable tag: 1.0.8
+Tested up to: 3.8.1
+Stable tag: 2.0
 License: GPLv2 or later
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -17,32 +17,17 @@ If you have tens of users or more, you really can’t know who did it. This plug
 
 <strong>As of this moment, the plugin logs things when:</strong><br />
 
-
-<strong>Post, Page or any Custom Post Type</strong>
-Created, Updated, Status (draft, pending review, publish), Deleted.
-
-<strong>Taxonomy</strong>
-Created, Edited, Deleted.
-
-<strong>Media</strong>
-Uploaded, Edited, Deleted.
-
-<strong>Users</strong>
-Login, Logout, Login has failed, Update profile, Registered and Deleted.
-
-<strong>Plugins</strong>
-Activated, Deactivated, Changed.
-
-<strong>Themes</strong>
-Changed (Editor and Customizer).
-
-<strong>Widgets</strong>
-Added to a sidebar / Deleted from a sidebar.
-
-<strong>Many more</strong>
-* Menu - A menu is being updated.
-* Setting (Options) - A option is being updated (can be extend by east filter).
-* WooCommerce -* Few options updated (will be more soon)
+*<strong>Post, Page or any Custom Post Type</strong><br />Created, Updated, Status (draft, pending review, publish), Deleted.
+*<strong>Taxonomy</strong><br />Created, Edited, Deleted.
+*<strong>Media</strong><br />Uploaded, Edited, Deleted.
+*<strong>Users</strong><br />Login, Logout, Login has failed, Update profile, Registered and Deleted.
+*<strong>Plugins</strong><br />Activated, Deactivated, Changed.
+*<strong>Themes</strong><br />Changed (Editor and Customizer).
+*<strong>Widgets</strong><br />Added to a sidebar / Deleted from a sidebar.
+*<strong>Many more</strong>
+**Menu - A menu is being updated.
+**Setting (Options) - A option is being updated (can be extend by east filter).
+**WooCommerce -* Few options updated (will be more soon)
 
 <strong>Translators:</strong>
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
@@ -62,8 +47,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 1. Upload plugin files to your plugins folder, or install using WordPress' built-in Add New Plugin installer
 1. Activate the plugin
-1. Go to the plugin settings page (under Settings > Activity Log)
-1. Go to the log viewer page (under Dashboard > Activity Log)
+1. Go to the plugin page (under Dashboard > Activity Log)
 
 == Screenshots ==
 
@@ -83,7 +67,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 == Changelog ==
 
-= 1.0.9 =
+= 2.0 =
 * Added delete all log activities.
 * New UI ideas.
 
