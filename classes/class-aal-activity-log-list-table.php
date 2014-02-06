@@ -176,7 +176,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			
 			case 'Taxonomy' :
 				if ( ! empty( $item->object_id ) )
-					$return = sprintf( '<a href="edit-tags.php?action=edit&taxonomy=%s&tag_ID=%d">%s</a>', $item->object_subtype, $item->object_id, $item->object_name );
+					$return = sprintf( '<a href="%s">%s</a>', get_edit_term_link( $item->object_id, $item->object_subtype ), $item->object_name );
 				break;
 		}
 		
