@@ -78,8 +78,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		);
 
 		add_screen_option( 'per_page', array(
-			'default' => 20,
-			'label'   => __( 'Items', 'aryo-aal' ),
+			'default' => 50,
+			'label'   => __( 'Activities', 'aryo-aal' ),
 			'option'  => 'edit_aal_logs_per_page',
 		) );
 
