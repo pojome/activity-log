@@ -74,6 +74,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 == Changelog ==
 
 = 2.0.1 =
+* ...
+
+= 2.0.1 =
 * New! filter for disable erase all the log
 * Bugs fixed
 
