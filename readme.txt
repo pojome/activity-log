@@ -17,15 +17,19 @@ If you have tens of users or more, you really can’t know who did it. This plug
 
 <strong>As of this moment, the plugin logs things when:</strong><br />
 
-* <strong>Post, Page or any Custom Post Type</strong><br />Created, Updated, Status (draft, pending review, publish), Deleted.
-* <strong>Taxonomy</strong><br />Created, Edited, Deleted.
-* <strong>Media</strong><br />Uploaded, Edited, Deleted.
-* <strong>Users</strong><br />Login, Logout, Login has failed, Update profile, Registered and Deleted.
-* <strong>Plugins</strong><br />Activated, Deactivated, Changed.
-* <strong>Themes</strong><br />Activeted, Changed (Editor and Customizer).
-* <strong>Widgets</strong><br />Added to a sidebar / Deleted from a sidebar.
-* <strong>Menu</strong><br />A menu is being updated.
-* <strong>Setting (Options)</strong><br />A option is being updated (can be extend by east filter).
+* <strong>Posts</strong> - Created, Updated, Deleted.
+* <strong>Pages</strong> - Created, Updated, Deleted.
+* <strong>Custom Post Type</strong> - Created, Updated, Deleted.
+* <strong>Tags</strong> - Created, Edited, Deleted.
+* <strong>Categories</strong - Created, Edited, Deleted.
+* <strong>Taxonomies</strong> - Created, Edited, Deleted.
+* <strong>Media</strong> - Uploaded, Edited, Deleted.
+* <strong>Users</strong> - Login, Logout, Login has failed, Update profile, Registered and Deleted.
+* <strong>Plugins</strong> - Activated, Deactivated, Changed.
+* <strong>Themes</strong> - Activeted, Changed (Editor and Customizer).
+* <strong>Widgets</strong> - Added to a sidebar / Deleted from a sidebar.
+* <strong>Menus</strong> - A menu is being updated.
+* <strong>Setting</strong> (Options) - A option is being updated (can be extend by east filter).
 * <strong>WooCommerce</strong> - Few options updated (will be more soon)
 * and much more..
 
