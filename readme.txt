@@ -1,6 +1,6 @@
 === ARYO Activity Log ===
 Contributors: KingYes, ariel.k, maor
-Tags: access, admin, administration, activity, community, event, monitor, multisite, multi-users, log, logging, logger, login, network, stats, security, tracking, user, madeinisrael, woocommerce
+Tags: access, administration, activity, community, event, monitor, multisite, multi-users, log, logger, login, network, stats, security, tracking, madeinisrael, woocommerce
 Requires at least: 3.5
 Tested up to: 3.8.1
 Stable tag: 2.0.1
