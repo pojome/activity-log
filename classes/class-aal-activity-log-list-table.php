@@ -178,6 +178,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				if ( ! empty( $item->object_id ) )
 					$return = sprintf( '<a href="%s">%s</a>', get_edit_term_link( $item->object_id, $item->object_subtype ), $item->object_name );
 				break;
+			
+			case 'Options' :
+				$return = __( $item->object_name, 'aryo-aal' );
+				break;
 		}
 		
 		return $return;

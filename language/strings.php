@@ -38,3 +38,78 @@ __( 'Menu', 'aryo-aal' );
 
 // Taxonomy
 __( 'Taxonomy', 'aryo-aal' );
+
+
+
+// Translate Options?
+__( 'blogname', 'aryo-aal' );
+__( 'blogdescription', 'aryo-aal' );
+__( 'siteurl', 'aryo-aal' );
+__( 'home', 'aryo-aal' );
+__( 'admin_email', 'aryo-aal' );
+__( 'users_can_register', 'aryo-aal' );
+__( 'default_role', 'aryo-aal' );
+__( 'timezone_string', 'aryo-aal' );
+__( 'date_format', 'aryo-aal' );
+__( 'time_format', 'aryo-aal' );
+__( 'start_of_week', 'aryo-aal' );
+
+// Writing
+__( 'use_smilies', 'aryo-aal' );
+__( 'use_balanceTags', 'aryo-aal' );
+__( 'default_category', 'aryo-aal' );
+__( 'default_post_format', 'aryo-aal' );
+__( 'mailserver_url', 'aryo-aal' );
+__( 'mailserver_login', 'aryo-aal' );
+__( 'mailserver_pass', 'aryo-aal' );
+__( 'default_email_category', 'aryo-aal' );
+__( 'ping_sites', 'aryo-aal' );
+
+// Reading
+__( 'show_on_front', 'aryo-aal' );
+__( 'page_on_front', 'aryo-aal' );
+__( 'page_for_posts', 'aryo-aal' );
+__( 'posts_per_page', 'aryo-aal' );
+__( 'posts_per_rss', 'aryo-aal' );
+__( 'rss_use_excerpt', 'aryo-aal' );
+__( 'blog_public', 'aryo-aal' );
+
+// Discussion
+__( 'default_pingback_flag', 'aryo-aal' );
+__( 'default_ping_status', 'aryo-aal' );
+__( 'default_comment_status', 'aryo-aal' );
+__( 'require_name_email', 'aryo-aal' );
+__( 'comment_registration', 'aryo-aal' );
+__( 'close_comments_for_old_posts', 'aryo-aal' );
+__( 'close_comments_days_old', 'aryo-aal' );
+__( 'thread_comments', 'aryo-aal' );
+__( 'thread_comments_depth', 'aryo-aal' );
+__( 'page_comments', 'aryo-aal' );
+__( 'comments_per_page', 'aryo-aal' );
+__( 'default_comments_page', 'aryo-aal' );
+__( 'comment_order', 'aryo-aal' );
+__( 'comments_notify', 'aryo-aal' );
+__( 'moderation_notify', 'aryo-aal' );
+__( 'comment_moderation', 'aryo-aal' );
+__( 'comment_whitelist', 'aryo-aal' );
+__( 'comment_max_links', 'aryo-aal' );
+__( 'moderation_keys', 'aryo-aal' );
+__( 'blacklist_keys', 'aryo-aal' );
+__( 'show_avatars', 'aryo-aal' );
+__( 'avatar_rating', 'aryo-aal' );
+__( 'avatar_default', 'aryo-aal' );
+
+// Media
+__( 'thumbnail_size_w', 'aryo-aal' );
+__( 'thumbnail_size_h', 'aryo-aal' );
+__( 'thumbnail_crop', 'aryo-aal' );
+__( 'medium_size_w', 'aryo-aal' );
+__( 'medium_size_h', 'aryo-aal' );
+__( 'large_size_w', 'aryo-aal' );
+__( 'large_size_h', 'aryo-aal' );
+__( 'uploads_use_yearmonth_folders', 'aryo-aal' );
+
+// Permalinks
+__( 'permalink_structure', 'aryo-aal' );
+__( 'category_base', 'aryo-aal' );
+__( 'tag_base', 'aryo-aal' );
