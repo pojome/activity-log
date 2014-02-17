@@ -21,7 +21,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Pages</strong> - Created, Updated, Deleted.
 * <strong>Custom Post Type</strong> - Created, Updated, Deleted.
 * <strong>Tags</strong> - Created, Edited, Deleted.
-* <strong>Categories</strong - Created, Edited, Deleted.
+* <strong>Categories</strong> - Created, Edited, Deleted.
 * <strong>Taxonomies</strong> - Created, Edited, Deleted.
 * <strong>Media</strong> - Uploaded, Edited, Deleted.
 * <strong>Users</strong> - Login, Logout, Login has failed, Update profile, Registered and Deleted.
