@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ARYO Activity Log\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2014-02-17 19:15-0000\n"
-"PO-Revision-Date: 2014-02-17 19:15-0000\n"
+"POT-Creation-Date: 2014-02-17 19:22-0000\n"
+"PO-Revision-Date: 2014-02-17 19:22-0000\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
 "Language-Team: Yakir Sitbon & Arie Klikstein <aryodigital@gmail.com>\n"
 "Language: he_IL\n"
@@ -174,13 +174,6 @@ msgstr ""
 "יומן פעילות."
 
 #: ../language/strings.php:6
-#: ../node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:4
-#: ../node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:5
-#: ../node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:4
-#: ../node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:4
-#: ../node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:4
-#: ../node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:4
-#: ../node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:5
 msgid "Post"
 msgstr "פוסט"
 
@@ -549,58 +542,9 @@ msgstr ":קטגוריה"
 msgid "tag_base"
 msgstr "תגית: \"%s\""
 
-#: ../node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:3
-#: ../node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:5
-#: ../node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:4
-#: ../node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:6
-#: ../node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:3
-#: ../node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:5
-#: ../node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:3
-#: ../node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:5
-#: ../node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:3
-#: ../node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:5
-#: ../node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:3
-#: ../node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:5
-#: ../node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:4
-#: ../node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:6
-msgid "Hello World"
-msgstr ""
-
-#: ../node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:20
-#: ../node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:21
-#: ../node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:20
-#: ../node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:20
-#: ../node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:20
-#: ../node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:20
-#: ../node_modules/grunt-checktextdomain/test/fixtures/plurals.php:3
-#: ../node_modules/grunt-checktextdomain/test/fixtures/plurals.php:8
-#: ../node_modules/grunt-checktextdomain/test/fixtures/plurals.php:15
-#: ../node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:21
-#, php-format
-msgid "%d apple"
-msgid_plural "%d apples"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../node_modules/grunt-pot/test/fixtures/some-file.php:3
-msgid "I'm a translatable string."
-msgstr ""
-
-#: ../node_modules/grunt-pot/test/fixtures/some-other-file.php:4
 #, fuzzy
-msgid "Me too"
-msgstr "שלח אלי אימייל בכל פעם"
-
-#: ../node_modules/grunt-pot/test/fixtures/some-other-file.php:7
-#, php-format
-msgid "I have %d apple"
-msgid_plural "I have %d apples"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../node_modules/grunt-pot/test/fixtures/some-other-file.php:16
-msgid "yyyy-mm-dd"
-msgstr ""
+#~ msgid "Me too"
+#~ msgstr "שלח אלי אימייל בכל פעם"
 
 #~ msgid "Items"
 #~ msgstr "פריטים"

@@ -92,7 +92,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 * Added Avatar to author
 * Added role for author
 * Added log for activeted theme
-* Re-order Culomns
+* Re-order Culoumns
 * Compatible up to 3.8.1
 * Settings page is now accessible directly from Activity Log's menu
 * Keep your log for any time your wants
