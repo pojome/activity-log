@@ -21,7 +21,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Pages</strong> - Created, Updated, Deleted.
 * <strong>Custom Post Type</strong> - Created, Updated, Deleted.
 * <strong>Tags</strong> - Created, Edited, Deleted.
-* <strong>Categories</strong - Created, Edited, Deleted.
+* <strong>Categories</strong> - Created, Edited, Deleted.
 * <strong>Taxonomies</strong> - Created, Edited, Deleted.
 * <strong>Media</strong> - Uploaded, Edited, Deleted.
 * <strong>Users</strong> - Login, Logout, Login has failed, Update profile, Registered and Deleted.
@@ -30,7 +30,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Widgets</strong> - Added to a sidebar / Deleted from a sidebar.
 * <strong>Menus</strong> - A menu is being updated.
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks.
-* <strong>Options</strong> - A option is being updated (can be extend by east filter).
+* <strong>Options</strong> - Can be extend by east filter.
 * <strong>WooCommerce</strong> - Few options updated (will be more soon)
 * and much more..
 
