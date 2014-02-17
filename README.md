@@ -85,7 +85,13 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 ## Changelog ##
 
 ### 2.0.2 ###
-* New! Save more Options
+* New! Save more Options:
+* General
+* Writing
+* Reading
+* Discussion
+* Media
+* Permalinks
 
 ### 2.0.1 ###
 * New! filter for disable erase all the log
