@@ -413,6 +413,9 @@ class AAL_Hooks {
 			'permalink_structure',
 			'category_base',
 			'tag_base',
+			
+			// Widgets
+			'sidebars_widgets',
 		) );
 		
 		if ( ! in_array( $option, $whitelist_options ) )
