@@ -84,6 +84,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 ## Changelog ##
 
+### 2.0.4 ###
+* Teak! don't allowed to access in direct files.
+
 ### 2.0.3 ###
 * New! record when widgets change orders.
 
