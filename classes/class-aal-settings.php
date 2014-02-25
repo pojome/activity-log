@@ -77,20 +77,6 @@ class AAL_Settings {
 			)
 		);
 		
-		add_settings_field(
-			'email_notification',
-			__( 'Email notification', 'aryo-aal' ),
-			array( 'AAL_Settings_Fields', 'text_field' ),
-			$this->slug,
-			'general_settings_section',
-			array(
-				'id'      => 'email_notification',
-				'page'    => $this->slug,
-				'type'    => 'text',
-				'desc'    => __( 'Enter an email address which will receive notifications upon new activities.' ),
-			)
-		);
-		
 		if ( apply_filters( 'aal_allow_option_erase_logs', true ) ) {
 			add_settings_field(
 				'raw_delete_log_activities',
@@ -203,10 +189,7 @@ final class AAL_Settings_Fields {
 		
 		?>
 		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Settings::get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
-		<?php if ( ! empty( $args['sub_desc'] ) ) echo $args['sub_desc']; ?>
-		<?php if ( ! empty( $args['desc'] ) ) : ?>
-			<p class="description"><?php echo $args['desc']; ?></p>
-		<?php endif;
+		<?php
 	}
 	
 	public static function number_field( $args ) {
