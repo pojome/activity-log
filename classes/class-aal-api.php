@@ -113,7 +113,7 @@ class AAL_API {
 			$message .= '<h2>' . __( 'Label', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_label($item) . '<br />';
 			$message .= '<h2>' . __( 'Action', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_default($item, 'action') . '<br />';
 			$message .= '<h2>' . __( 'Description', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_description($item) . '<br />';
-			var_dump($message);exit;
+
 			wp_mail($email, __('ARYO Activity Log') . ' - ' . __('Notification'), $message);
 		}
 
