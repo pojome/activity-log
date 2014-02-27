@@ -80,14 +80,16 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 == Changelog ==
 
 = 2.0.5 =
-* New! register `aal_init_caps` filter.
+* New! Register `aal_init_caps` filter.
+* Tweak! Change all methods to non-static.
+* Tweak! Some improved coding standards and PHPDoc.
 
 = 2.0.4 =
-* Tweak! don't allowed to access in direct files.
+* Tweak! Don't allowed to access in direct files.
 * New! Added translate: Danish (da_DK) - Thanks to [Morten Dalgaard Johansen](http://www.iosoftgame.com/)
 
 = 2.0.3 =
-* New! record when widgets change orders.
+* New! Record when widgets change orders.
 
 = 2.0.2 =
 * New! Save more Options:
