@@ -4,6 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_API {
 
+	/**
+	 * @since 1.0.0
+	 * 
+	 * @return void
+	 */
 	protected function _delete_old_items() {
 		global $wpdb;
 		
@@ -18,7 +23,11 @@ class AAL_API {
 			strtotime( '-' . $logs_lifespan . ' days', current_time( 'timestamp' ) )
 		) );
 	}
-	
+
+	/**
+	 * @since 2.0.0
+	 * @return void
+	 */
 	public function erase_all_items() {
 		global $wpdb;
 		
@@ -28,6 +37,12 @@ class AAL_API {
 		) );
 	}
 
+	/**
+	 * @since 1.0.0
+	 * 
+	 * @param array $args
+	 * @return void
+	 */
 	public function insert( $args ) {
 		global $wpdb;
 
@@ -104,6 +119,14 @@ class AAL_API {
 
 }
 
+/**
+ * @since 1.0.0
+ *        
+ * @see AAL_API::insert
+ *
+ * @param array $args
+ * @return void
+ */
 function aal_insert_log( $args = array() ) {
 	AAL_Main::instance()->api->insert( $args );
 }
