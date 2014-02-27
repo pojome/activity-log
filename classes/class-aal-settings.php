@@ -14,7 +14,7 @@ class AAL_Settings {
 		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
 		add_filter( 'plugin_action_links_' . ACTIVITY_LOG_BASE, array( &$this, 'plugin_action_links' ) );
 
-		add_action( 'wp_ajax_aal_reset_stream', array( &$this, 'ajax_aal_reset_stream' ) );
+		add_action( 'wp_ajax_aal_reset_items', array( &$this, 'ajax_aal_reset_items' ) );
 	}
 	
 	public function plugin_action_links( $links ) {
@@ -86,8 +86,8 @@ class AAL_Settings {
 				'general_settings_section',
 				array(
 					'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
-							'action' => 'aal_reset_stream',
-							'_nonce' => wp_create_nonce( 'aal_reset_stream' ),
+							'action' => 'aal_reset_items',
+							'_nonce' => wp_create_nonce( 'aal_reset_items' ),
 						), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
 					'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-aal' ),
 				)
@@ -141,8 +141,8 @@ class AAL_Settings {
 		<?php
 	}
 	
-	public function ajax_aal_reset_stream() {
-		if ( ! check_ajax_referer( 'aal_reset_stream', '_nonce', false ) || ! current_user_can( 'manage_options' ) ) {
+	public function ajax_aal_reset_items() {
+		if ( ! check_ajax_referer( 'aal_reset_items', '_nonce', false ) || ! current_user_can( 'manage_options' ) ) {
 			wp_die( 'You do not have sufficient permissions to access this page.', 'aryo-aal' );
 		}
 		
