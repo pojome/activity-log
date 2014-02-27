@@ -71,11 +71,11 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'edit_pages'     => array( 'Post', 'Taxonomy', 'Attachment' ),
 		) );
 
-		$this->_caps = array(
+		$this->_caps = apply_filters( 'aal_init_caps', array(
 			'administrator' => array( 'administrator', 'editor', 'author', 'guest' ),
 			'editor'        => array( 'editor', 'author', 'guest' ),
 			'author'        => array( 'author', 'guest' ),
-		);
+		) );
 
 		add_screen_option( 'per_page', array(
 			'default' => 50,
