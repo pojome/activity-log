@@ -146,7 +146,8 @@ class AAL_Settings {
 			wp_die( 'You do not have sufficient permissions to access this page.', 'aryo-aal' );
 		}
 		
-		AAL_API::erase_all_items();
+		AAL_Main::instance()->api->erase_all_items();
+		
 		wp_redirect( add_query_arg( array(
 				'page' => 'activity-log-settings',
 				'message' => 'data_erased',

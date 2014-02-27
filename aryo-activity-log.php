@@ -45,11 +45,13 @@ class AAL_Main {
 
 	/**
 	 * @var AAL_Main The one true AAL_Main
+	 * @since 2.0.5
 	 */
 	private static $_instance = null;
 
 	/**
 	 * @var AAL_Admin_Ui
+	 * @since 1.0.0
 	 */
 	public $ui;
 
@@ -60,8 +62,15 @@ class AAL_Main {
 
 	/**
 	 * @var AAL_Settings
+	 * @since 1.0.0
 	 */
 	public $settings;
+
+	/**
+	 * @var AAL_API
+	 * @since 2.0.5
+	 */
+	public $api;
 	
 	public function load_textdomain() {
 		load_plugin_textdomain( 'aryo-aal', false, basename( dirname( __FILE__ ) ) . '/language' );
@@ -73,6 +82,7 @@ class AAL_Main {
 		$this->ui       = new AAL_Admin_Ui();
 		$this->hooks    = new AAL_Hooks();
 		$this->settings = new AAL_Settings();
+		$this->api      = new AAL_API();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
