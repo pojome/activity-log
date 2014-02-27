@@ -97,6 +97,26 @@ class AAL_API {
 			array( "%s", "%s", "%s", "%s", "%d", "%d", "%s", "%s", "%d" )
 		);
 
+		//Notification	
+		$email = AAL_Settings::get_option('email_notification');
+		
+		if(is_email($email)) {
+			$item = new stdClass();
+			$item = json_decode(json_encode($args), FALSE);
+			
+			$message = '<h1>' . __('ARYO Activity Log') . '</h1>';
+			
+			$message .= '<h2>' . __( 'Date', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_default($item, 'date') . '<br />';
+			$message .= '<h2>' . __( 'Author', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_author($item) . '<br />';
+			$message .= '<h2>' . __( 'IP', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_default($item, 'ip') . '<br />';
+			$message .= '<h2>' . __( 'Type', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_type($item) . '<br />';
+			$message .= '<h2>' . __( 'Label', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_label($item) . '<br />';
+			$message .= '<h2>' . __( 'Action', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_default($item, 'action') . '<br />';
+			$message .= '<h2>' . __( 'Description', 'aryo-aal' ) . ':</h2><br /> ' . AAL_Activity_Log_List_Table::column_description($item) . '<br />';
+
+			wp_mail($email, __('ARYO Activity Log') . ' - ' . __('Notification'), $message);
+		}
+
 		// Remove old items.
 		self::_delete_old_items();
 		do_action( 'aal_insert_log', $args );
