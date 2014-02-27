@@ -44,6 +44,11 @@ include( 'classes/class-aal-integration-woocommerce.php' );
 class AAL_Main {
 
 	/**
+	 * @var AAL_Main The one true AAL_Main
+	 */
+	private static $_instance = null;
+
+	/**
 	 * @var AAL_Admin_Ui
 	 */
 	public $ui;
@@ -74,9 +79,17 @@ class AAL_Main {
 		
 		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
 	}
+
+	/**
+	 * @return AAL_Main
+	 */
+	public static function instance() {
+		if ( is_null( self::$_instance ) )
+			self::$_instance = new AAL_Main();
+		return self::$_instance;
+	}
 	
 }
-global $aal_main_class;
-$aal_main_class = new AAL_Main();
+AAL_Main::instance();
 
 // EOF
