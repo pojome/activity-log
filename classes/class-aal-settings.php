@@ -155,7 +155,7 @@ class AAL_Settings {
 		die();
 	}
 
-	public static function get_option( $key = '' ) {
+	public function get_option( $key = '' ) {
 		$settings = get_option( 'activity-log-settings' );
 		return ! empty( $settings[ $key ] ) ? $settings[ $key ] : false;
 	}
@@ -189,7 +189,7 @@ final class AAL_Settings_Fields {
 			return;
 		
 		?>
-		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Settings::get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
+		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Main::instance()->settings->get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
 		<?php
 	}
 	
@@ -204,7 +204,7 @@ final class AAL_Settings_Fields {
 			return;
 
 		?>
-		<input type="number" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Settings::get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" min="<?php echo $args['min']; ?>" step="<?php echo $args['step']; ?>" />
+		<input type="number" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Main::instance()->settings->get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" min="<?php echo $args['min']; ?>" step="<?php echo $args['step']; ?>" />
 		<?php if ( ! empty( $args['sub_desc'] ) ) echo $args['sub_desc']; ?>
 		<?php if ( ! empty( $args['desc'] ) ) : ?>
 			<p class="description"><?php echo $args['desc']; ?></p>
@@ -220,7 +220,7 @@ final class AAL_Settings_Fields {
 		?>
 		<select id="<?php echo esc_attr( $id ); ?>" name="<?php printf( '%s[%s]', esc_attr( $page ), esc_attr( $id ) ); ?>">
 			<?php foreach ( $options as $name => $label ) : ?>
-			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) AAL_Settings::get_option( $id ) ); ?>>
+			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) AAL_Main::instance()->settings->get_option( $id ) ); ?>>
 				<?php echo esc_html( $label ); ?>
 			</option>
 			<?php endforeach; ?>
