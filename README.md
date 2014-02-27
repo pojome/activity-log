@@ -85,11 +85,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 ## Changelog ##
 
-### 2.0.5 ###
-* New! Added translate: Danish (da_DK) - Thanks to [Morten Dalgaard Johansen](http://www.iosoftgame.com/)
-
 ### 2.0.4 ###
 * Tweak! don't allowed to access in direct files.
+* New! Added translate: Danish (da_DK) - Thanks to [Morten Dalgaard Johansen](http://www.iosoftgame.com/)
 
 ### 2.0.3 ###
 * New! record when widgets change orders.
