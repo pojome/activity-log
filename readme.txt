@@ -45,6 +45,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
 * Danish (da_DK) - [Morten Dalgaard Johansen](http://www.iosoftgame.com/)
 * Hebrew (he_IL) + RTL Support - [ARYO Digital](http://www.aryodigital.com/)
+* Armenia (hy_AM) - Hayk Jomardyan
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
@@ -84,6 +85,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 * Tweak! Change all methods to non-static.
 * Tweak! Some improved coding standards and PHPDoc.
 * Tweak! Split `AAL_Hooks` class to multiple classes.
+* New! Added translate: Armenia (hy_AM) - Thanks to Hayk Jomardyan.
 
 = 2.0.4 =
 * Tweak! Don't allowed to access in direct files.
