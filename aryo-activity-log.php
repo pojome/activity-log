@@ -28,7 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'ACTIVITY_LOG_BASE', plugin_basename( __FILE__ ) );
+define( 'ACTIVITY_LOG__FILE__', __FILE__ );
+define( 'ACTIVITY_LOG_BASE', plugin_basename( ACTIVITY_LOG__FILE__ ) );
 
 include( 'classes/class-aal-maintenance.php' );
 include( 'classes/class-aal-activity-log-list-table.php' );

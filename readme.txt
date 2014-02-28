@@ -83,6 +83,7 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 * New! Register `aal_init_caps` filter.
 * Tweak! Change all methods to non-static.
 * Tweak! Some improved coding standards and PHPDoc.
+* Tweak! Split `AAL_Hooks` class to multiple classes.
 
 = 2.0.4 =
 * Tweak! Don't allowed to access in direct files.
