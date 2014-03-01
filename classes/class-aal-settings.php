@@ -100,7 +100,6 @@ class AAL_Settings {
 				array(
 					'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
 							'action' => 'aal_reset_items',
-							'action' => 'aal_reset_items',
 							'_nonce' => wp_create_nonce( 'aal_reset_items' ),
 						), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
 					'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-aal' ),
