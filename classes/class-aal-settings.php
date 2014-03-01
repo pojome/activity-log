@@ -57,7 +57,7 @@ class AAL_Settings {
 		add_settings_section(
 			'general_settings_section',			// ID used to identify this section and with which to register options
 			__( 'Display Options', 'aryo-aal' ),	// Title to be displayed on the administration page
-			array( 'AAL_Settings_Fields', 'description' ),	// Callback used to render the description of the section
+			array( 'AAL_Settings_Fields', 'general_settings_section_header' ),	// Callback used to render the description of the section
 			$this->slug		// Page on which to add this section of options
 		);
 
@@ -93,6 +93,27 @@ class AAL_Settings {
 				)
 			);
 		}
+
+		// Email Notifications Settings
+		add_settings_section(
+			'email_notifications', // ID used to identify this section and with which to register options
+			__( 'Email Notifications', 'aryo-aal' ),	// Title to be displayed on the administration page
+			array( 'AAL_Settings_Fields', 'email_notifications_section_header' ),	// Callback used to render the description of the section
+			$this->slug		// Page on which to add this section of options
+		);
+
+		add_settings_field(
+			'logs_email_notification',
+			__( 'Notifcation Events', 'aryo-aal' ),
+			array( 'AAL_Settings_Fields', 'email_notification_buffer_field' ),
+			$this->slug,
+			'email_notifications',
+			array(
+				'id'      => 'logs_email_notification',
+				'page'    => $this->slug,
+				'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
+			)
+		);
 		
 		register_setting( 'aal-options', $this->slug );
 	}
@@ -165,9 +186,15 @@ class AAL_Settings {
 // TODO: Need rewrite this class to useful tool.
 final class AAL_Settings_Fields {
 
-	public static function description() {
+	public static function general_settings_section_header() {
 		?>
 		<p><?php _e( 'These are some basic settings for Activity Log.', 'aryo-aal' ); ?></p>
+		<?php
+	}
+
+	public static function email_notifications_section_header() {
+		?>
+		<p><?php _e( 'Serve yourself with personally-flavored/tailored email notifications', 'aryo-aal' ); ?></p>
 		<?php
 	}
 	
@@ -228,4 +255,36 @@ final class AAL_Settings_Fields {
 		<?php
 	}
 
+	public static function email_notification_buffer_field( $args ) {
+		$args = wp_parse_args( $args, array(
+			'classes' => array(),
+		) );
+		if ( empty( $args['id'] ) || empty( $args['page'] ) )
+			return;
+		
+		?>
+		<div class="aal-notifier-settings">
+			<ul>
+				<li>
+					<select>
+						<option>User</option>
+						<option>Action Type</option>
+						<option>Action Performed</option>
+					</select>
+					<select>
+						<option>equals to</option>
+						<option>not equals to</option>
+					</select>
+					<select>
+						<option>Post</option>
+						<option>Plugin</option>
+					</select>
+					<a href="#" class="button">+</a>
+				</li>
+			</ul>
+		</div>
+
+		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Main::instance()->settings->get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
+		<?php
+	}
 }

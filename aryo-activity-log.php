@@ -37,6 +37,7 @@ include( 'classes/class-aal-admin-ui.php' );
 include( 'classes/class-aal-settings.php' );
 include( 'classes/class-aal-api.php' );
 include( 'classes/class-aal-hooks.php' );
+include( 'classes/class-aal-notifications.php' );
 
 // Integrations
 include( 'classes/class-aal-integration-woocommerce.php' );
