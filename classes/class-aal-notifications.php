@@ -3,6 +3,9 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_Notifications {
+	/* @todo public for debugging now, change to private/protected l8r */
+	public $handlers = array();
+	public $handlers_loaded = array();
 	
 	public function __construct() {
 		// Load abstract class.
@@ -12,5 +15,95 @@ class AAL_Notifications {
 		include( plugin_dir_path( ACTIVITY_LOG__FILE__ ) . '/notifications/class-aal-notification-email.php' );
 
 		new AAL_Notification_Email();
+
+		// Run handlers loader
+		add_action( 'init', array( &$this, 'load_handlers' ) );
+	}
+
+	public function get_object_types() {
+		// TODO: include filter?
+		$opts = array(
+			'Attachment',
+			'Menu',
+			'Options',
+			'Plugin',
+			'Post',
+			'Taxonomy',
+			'Theme',
+			'User',
+			'Widget',
+		);
+		return array_combine( $opts, $opts );
+	}
+
+	public function get_actions() {
+		$opts = array(
+			'created',
+			'deleted',
+			'updated',
+			'added',
+			'activated',
+			'deactivated',
+			'accessed',
+			'file_updated',
+			'logged_in',
+			'logged_out',
+			'wrong_password',
+		);
+		$ready = array();
+
+		// make key => value pairs (where slug in key)
+		foreach ( $opts as $opt ) {
+			$ready[ $opt ] = ucwords( str_replace( '_', ' ', __( $opt, 'aryo-aal' ) ) );
+		}
+
+		return $ready;
+	}
+
+	/**
+	 * Runs during aal_load_notification_handlers, 
+	 * includes the necessary files to register default notification handlers.
+	 */
+	public function load_default_handlers() {
+		$default_handlers = apply_filters( 'aal_default_addons', array(
+			'email' => $this->get_default_handler_path( 'class-aal-notification-email.php' ),
+			/* @todo work on multiple notification handlers */
+			// 'atlassian-hipchat' => $this->get_default_handler_path( 'class-aal-notification-email.php' ),
+		) );
+
+		foreach ( $default_addons as $filename )
+			include_once $filename;
+	}
+
+	public function get_default_handler_path( $filename ) {
+		return plugin_dir_path( ACTIVITY_LOG__FILE__ ) . "notifications/$filename";
+	}
+
+	/**
+	 * Fired before $this->init()
+	 *
+	 * @todo maybe check $classname's inheritance tree and signal if it's not a AAL_Notification_Base
+	 */
+	public function load_handlers() {
+		do_action( 'aal_load_notification_handlers' );
+
+		foreach ( $this->handlers as $handler_classname ) {
+			if ( class_exists( $handler_classname ) ) {
+				$this->handlers_loaded[] = new $handler_classname;
+			}
+		}
+	}
+
+	/**
+	 * Registers a handler class, which is then loaded in $this->load_handlers
+	 */
+	public function register_handler( $classname ) {
+		if ( ! class_exists( $classname ) ) {
+			trigger_error( __( 'The AAL notification handler you are trying to register does not exist.', 'aryo-aal' ) );
+			return false;
+		}
+
+		$this->handlers[] = $classname;
+		return true;
 	}
 }

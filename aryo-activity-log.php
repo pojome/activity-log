@@ -81,10 +81,11 @@ class AAL_Main {
 	public function __construct() {
 		global $wpdb;
 
-		$this->ui       = new AAL_Admin_Ui();
-		$this->hooks    = new AAL_Hooks();
-		$this->settings = new AAL_Settings();
-		$this->api      = new AAL_API();
+		$this->ui       	 = new AAL_Admin_Ui();
+		$this->hooks    	 = new AAL_Hooks();
+		$this->settings 	 = new AAL_Settings();
+		$this->api      	 = new AAL_API();
+		$this->notifications = new AAL_Notifications();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';

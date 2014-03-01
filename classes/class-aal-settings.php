@@ -15,6 +15,7 @@ class AAL_Settings {
 		add_filter( 'plugin_action_links_' . ACTIVITY_LOG_BASE, array( &$this, 'plugin_action_links' ) );
 
 		add_action( 'wp_ajax_aal_reset_items', array( &$this, 'ajax_aal_reset_items' ) );
+		add_action( 'wp_ajax_aal_get_properties', array( &$this, 'ajax_aal_get_properties' ) );
 	}
 	
 	public function plugin_action_links( $links ) {
@@ -41,8 +42,20 @@ class AAL_Settings {
 			$this->slug = 'activity-log-settings', 			// page slug
 			array( &$this, 'display_settings_page' )			// callback
 		);
+
+		// register scripts & styles, specific for the settings page
+		add_action( "admin_print_scripts-{$this->hook}", array( &$this, 'scripts_n_styles' ) );
 		// this callback will initialize the settings for AAL
 		// add_action( "load-$this->hook", array( $this, 'register_settings' ) );
+	}
+
+	/**
+	 * Register scripts & styles
+	 *
+	 * @since 1.0
+	 */
+	public function scripts_n_styles() {
+		wp_enqueue_script( 'aal-settings', plugins_url( 'assets/js/settings.js', ACTIVITY_LOG__FILE__ ), array( 'jquery' ) );
 	}
 
 	public function register_settings() {
@@ -86,6 +99,7 @@ class AAL_Settings {
 				'general_settings_section',
 				array(
 					'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
+							'action' => 'aal_reset_items',
 							'action' => 'aal_reset_items',
 							'_nonce' => wp_create_nonce( 'aal_reset_items' ),
 						), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
@@ -164,7 +178,7 @@ class AAL_Settings {
 	
 	public function ajax_aal_reset_items() {
 		if ( ! check_ajax_referer( 'aal_reset_items', '_nonce', false ) || ! current_user_can( 'manage_options' ) ) {
-			wp_die( 'You do not have sufficient permissions to access this page.', 'aryo-aal' );
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'aryo-aal' ) );
 		}
 		
 		AAL_Main::instance()->api->erase_all_items();
@@ -174,6 +188,30 @@ class AAL_Settings {
 				'message' => 'data_erased',
 		), admin_url( 'admin.php' ) ) );
 		die();
+	}
+
+	public function ajax_aal_get_properties() {
+		$action_category = isset( $_REQUEST['action_category'] ) ? $_REQUEST['action_category'] : false;
+
+		if ( $action_category ) {
+			$options = array();
+
+			switch ( $action_category ) {
+				case 'action-type':
+					$options = AAL_Main::instance()->notifications->get_object_types();
+					break;
+				case 'action-value':
+					$options = AAL_Main::instance()->notifications->get_actions();
+					break;
+				case 'user':
+					$options = get_users();
+					break;
+			}
+
+			wp_send_json_success( $options );
+		}
+
+		wp_send_json_error();
 	}
 
 	public function get_option( $key = '' ) {
@@ -261,30 +299,49 @@ final class AAL_Settings_Fields {
 		) );
 		if ( empty( $args['id'] ) || empty( $args['page'] ) )
 			return;
-		
+
+		// available action categories
+		$keys = array(
+			'user' 			=> __( 'User', 'aryo-aal' ),
+			'action-type' 	=> __( 'Action Type', 'aryo-aal' ),
+			'action-value'  => __( 'Action Performed', 'aryo-aal' ),
+		);
+		// available condition types
+		$conditions = array(
+			'equals' => __( 'equals to', 'aryo-aal' ),
+			'not_equals' => __( 'not equals to', 'aryo-aal' ),
+		);
+
+		$common_name = sprintf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) );
+
+		// get all rows
+		$rows = AAL_Main::instance()->settings->get_option( $args['id'] );
+		// if empty, reset to one element with the key of 1
+		$rows = empty( $rows ) ? array( array( 'key' => 1 ) ) : $rows;
 		?>
 		<div class="aal-notifier-settings">
 			<ul>
-				<li>
-					<select>
-						<option>User</option>
-						<option>Action Type</option>
-						<option>Action Performed</option>
+			<?php foreach ( $rows as $rid => $row ) : ?>
+				<li data-id="<?php echo $rid; ?>">
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
+						<?php foreach ( $keys as $k => $v ) : ?>
+						<option value="<?php echo $k; ?>" <?php selected( $row['key'], $k ); ?>><?php echo $v; ?></option>
+						<?php endforeach; ?>
 					</select>
-					<select>
-						<option>equals to</option>
-						<option>not equals to</option>
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
+						<?php foreach ( $conditions as $k => $v ) : ?>
+						<option value="<?php echo $k; ?>" <?php selected( $row['condition'], $k ); ?>><?php echo $v; ?></option>
+						<?php endforeach; ?>
 					</select>
-					<select>
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
 						<option>Post</option>
 						<option>Plugin</option>
 					</select>
-					<a href="#" class="button">+</a>
+					<a href="#" class="aal-new-rule button"><small>+</small> and</a>
 				</li>
+			<?php endforeach; ?>
 			</ul>
 		</div>
-
-		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Main::instance()->settings->get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
 		<?php
 	}
 }
