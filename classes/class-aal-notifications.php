@@ -54,6 +54,61 @@ class AAL_Notifications {
 
 		return $ready;
 	}
+	
+	/**
+	 * Returns values for the dropdown in the settings page (the last dropdown in each conditions row)
+	 * 
+	 * @param string $row_key type
+	 * @return array
+	 */
+	public function get_settings_dropdown_values( $row_key ) {
+		$results = array();
+		
+		/**
+		 * @todo allow this switch to be extensible by other plugins (see example)
+		 */
+		switch ( $row_key ) {
+			case 'user':
+				// cache all data in case we need the same data twice on the same/upcoming pageloads
+				if ( false === ( $results = wp_cache_get( $cache_key = 'notifications-users', 'aal' ) ) ) {
+					// get all users
+					$all_users = get_users();
+					$preped_users = array();
+					
+					// prepare users
+					foreach ( $all_users as $user ) {
+						$user_role = $user->roles;
+							
+						// if user has no role (shouldn't happen, but just in case)
+						if ( empty( $user_role ) )
+							continue;
+						
+						$user_role_obj = get_role( $user_role[0] );
+						$user_role_name = isset( $user_role_obj->name ) ? $user_role_obj->name : $user_role[0];
+							
+						$preped_users[ $user->ID ] = apply_filters( 'aal_notifications_user_format', sprintf( '%s - %s (ID #%d)', $user->display_name, $user_role_name, $user->ID ), $user );
+					}
+					
+					wp_cache_set( $cache_key, $results = $preped_users, 'aal' ); // no need for expiration time
+				}
+				break;
+				
+			case 'action-type':
+				$results = $this->get_object_types();
+				break;
+				
+			case 'action-value':
+				$results = $this->get_actions();
+				break;
+				
+			default:
+				// @todo allow plugins to extend and handle custom field types 
+				$results = apply_filters( 'aal_settings_dropdown_values', $results, $row_key );
+				break;
+		}
+		
+		return $results;
+	}
 
 	/**
 	 * Runs during aal_load_notification_handlers, 
@@ -70,6 +125,12 @@ class AAL_Notifications {
 			include_once $filename;
 	}
 
+	/**
+	 * Returns path to notification handler file
+	 * 
+	 * @param string $filename
+	 * @return string
+	 */
 	public function get_default_handler_path( $filename ) {
 		return plugin_dir_path( ACTIVITY_LOG__FILE__ ) . "notifications/$filename";
 	}
@@ -91,6 +152,9 @@ class AAL_Notifications {
 
 	/**
 	 * Registers a handler class, which is then loaded in $this->load_handlers
+	 * 
+	 * @param string The name of the class to create an instance for
+	 * @return bool
 	 */
 	public function register_handler( $classname ) {
 		if ( ! class_exists( $classname ) ) {

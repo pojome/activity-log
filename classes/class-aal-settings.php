@@ -110,7 +110,7 @@ class AAL_Settings {
 		// Email Notifications Settings
 		add_settings_section(
 			'email_notifications', // ID used to identify this section and with which to register options
-			__( 'Email Notifications', 'aryo-aal' ),	// Title to be displayed on the administration page
+			__( 'Notifications', 'aryo-aal' ),	// Title to be displayed on the administration page
 			array( 'AAL_Settings_Fields', 'email_notifications_section_header' ),	// Callback used to render the description of the section
 			$this->slug		// Page on which to add this section of options
 		);
@@ -191,22 +191,10 @@ class AAL_Settings {
 
 	public function ajax_aal_get_properties() {
 		$action_category = isset( $_REQUEST['action_category'] ) ? $_REQUEST['action_category'] : false;
+		
+		$options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $action_category );
 
-		if ( $action_category ) {
-			$options = array();
-
-			switch ( $action_category ) {
-				case 'action-type':
-					$options = AAL_Main::instance()->notifications->get_object_types();
-					break;
-				case 'action-value':
-					$options = AAL_Main::instance()->notifications->get_actions();
-					break;
-				case 'user':
-					$options = get_users();
-					break;
-			}
-
+		if ( ! empty( $options ) ) {
 			wp_send_json_success( $options );
 		}
 
@@ -231,7 +219,7 @@ final class AAL_Settings_Fields {
 
 	public static function email_notifications_section_header() {
 		?>
-		<p><?php _e( 'Serve yourself with personally-flavored/tailored email notifications', 'aryo-aal' ); ?></p>
+		<p><?php _e( 'Serve yourself with personally-flavored/tailored notifications', 'aryo-aal' ); ?></p>
 		<?php
 	}
 	
@@ -321,10 +309,11 @@ final class AAL_Settings_Fields {
 		<div class="aal-notifier-settings">
 			<ul>
 			<?php foreach ( $rows as $rid => $row ) : ?>
+				<?php $row_key = $row['key']; ?>
 				<li data-id="<?php echo $rid; ?>">
 					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
 						<?php foreach ( $keys as $k => $v ) : ?>
-						<option value="<?php echo $k; ?>" <?php selected( $row['key'], $k ); ?>><?php echo $v; ?></option>
+						<option value="<?php echo $k; ?>" <?php selected( $row_key, $k ); ?>><?php echo $v; ?></option>
 						<?php endforeach; ?>
 					</select>
 					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
@@ -332,11 +321,14 @@ final class AAL_Settings_Fields {
 						<option value="<?php echo $k; ?>" <?php selected( $row['condition'], $k ); ?>><?php echo $v; ?></option>
 						<?php endforeach; ?>
 					</select>
+					<?php $value_options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
 					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
-						<option>Post</option>
-						<option>Plugin</option>
+						<?php foreach ( $value_options as $option_key => $option_value ) : ?>
+						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row['value'] ); ?>><?php echo esc_html( $option_value ); ?></option>
+						<?php endforeach; ?>
 					</select>
 					<a href="#" class="aal-new-rule button"><small>+</small> and</a>
+					<a href="#" class="aal-delete-rule button">&times;</a>
 				</li>
 			<?php endforeach; ?>
 			</ul>
