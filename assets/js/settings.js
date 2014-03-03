@@ -17,6 +17,11 @@
 				e.preventDefault();
 				_this.addRule( $( this ).closest( 'li' ) );
 			});
+			
+			this.$container.on( 'click', '.aal-delete-rule', function ( e ) {
+				e.preventDefault();
+				_this.deleteRule( $( this ).closest( 'li' ) );
+			});
 
 			// handle change on action category selectbox
 			this.$container.on( 'change', '.aal-category', function ( e ) {
@@ -38,7 +43,6 @@
 							text: v,
 							value: k
 						} ) );
-						console.log( 'AAL appending', v, k );
 					});
 
 					// restore disabled selectboxes
@@ -60,6 +64,9 @@
 
 			$copy.attr( 'data-id', newID );
 			$el.after( $copy );
+		},
+		deleteRule: function ( $el ) {
+			$el.remove();
 		},
 		getData: function ( type, cb ) {
 			var payload = {
