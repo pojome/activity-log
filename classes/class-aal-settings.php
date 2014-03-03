@@ -128,6 +128,21 @@ class AAL_Settings {
 			)
 		);
 		
+		
+		add_settings_field(
+			'notification_transport',
+			__( 'Notification Transport', 'aryo-aal' ),
+			array( 'AAL_Settings_Fields', 'select_field' ),
+			$this->slug,
+			'email_notifications',
+			array(
+				'id'      => 'notification_transport',
+				'page'    => $this->slug,
+				'options' => AAL_Main::instance()->notifications->get_handlers(),
+				'desc'    => __( 'How would you like to get recieve notifications?', 'aryo-aal' ),
+			)
+		);
+		
 		register_setting( 'aal-options', $this->slug );
 	}
 
@@ -143,7 +158,6 @@ class AAL_Settings {
 				<?php
 				settings_fields( 'aal-options' );
 				do_settings_sections( $this->slug );
-
 				submit_button();
 				?>
 			</form>
@@ -277,6 +291,9 @@ final class AAL_Settings_Fields {
 			</option>
 			<?php endforeach; ?>
 		</select>
+		<?php if ( ! empty( $desc ) ) : ?>
+		<p class="description"><?php echo $desc; ?></p>
+		<?php endif; ?>
 		<?php
 	}
 
@@ -306,6 +323,7 @@ final class AAL_Settings_Fields {
 		// if empty, reset to one element with the key of 1
 		$rows = empty( $rows ) ? array( array( 'key' => 1 ) ) : $rows;
 		?>
+		<p class="description"><?php _e( 'A notification will be sent upon a successful match with the following conditions:', 'aryo-aal' ); ?></p>
 		<div class="aal-notifier-settings">
 			<ul>
 			<?php foreach ( $rows as $rid => $row ) : ?>

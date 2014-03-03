@@ -13,6 +13,7 @@ class AAL_Notifications {
 		
 		// Run handlers loader
 		add_action( 'init', array( &$this, 'load_handlers' ) );
+		add_action( 'aal_load_notification_handlers', array( &$this, 'load_default_handlers' ) );
 	}
 
 	public function get_object_types() {
@@ -109,6 +110,32 @@ class AAL_Notifications {
 		
 		return $results;
 	}
+	
+	/**
+	 * Returns a list of handlers, in a key-value format.
+	 * Key holds the classname, value holds the name of the transport.
+	 */
+	public function get_handlers() {
+		if ( empty( $this->handlers ) || ! did_action( 'aal_load_notification_handlers' ) )
+			return array();
+		
+		$handlers = array();
+		
+		foreach ( $this->handlers as $handler ) {
+			$handler_obj = $this->handlers_loaded[ $handler ];
+			
+			// is this handler extending AAL_Notification_Base?
+			if ( ! is_a( $handler_obj, 'AAL_Notification_Base' ) )
+				continue;
+			
+			// if we got the name of the handler, use it. otherwise, use the classname.
+			$handler_name = isset( $handler_obj->name ) ? $handler_obj->name : $handler;
+			
+			$handlers[ $handler ] = $handler_name; 
+		}
+		
+		return $handlers;
+	}
 
 	/**
 	 * Runs during aal_load_notification_handlers, 
@@ -116,12 +143,12 @@ class AAL_Notifications {
 	 */
 	public function load_default_handlers() {
 		$default_handlers = apply_filters( 'aal_default_addons', array(
-			'email' => $this->get_default_handler_path( 'class-aal-notification-email.php' ),
+			'email' 			=> $this->get_default_handler_path( 'class-aal-notification-email.php' ),
+			'atlassian-hipchat' => $this->get_default_handler_path( 'class-aal-notification-hipchat.php' ),
 			/* @todo work on multiple notification handlers */
-			// 'atlassian-hipchat' => $this->get_default_handler_path( 'class-aal-notification-email.php' ),
 		) );
 
-		foreach ( $default_addons as $filename )
+		foreach ( $default_handlers as $filename )
 			include_once $filename;
 	}
 
@@ -145,7 +172,7 @@ class AAL_Notifications {
 
 		foreach ( $this->handlers as $handler_classname ) {
 			if ( class_exists( $handler_classname ) ) {
-				$this->handlers_loaded[] = new $handler_classname;
+				$this->handlers_loaded[ $handler_classname ] = new $handler_classname;
 			}
 		}
 	}
