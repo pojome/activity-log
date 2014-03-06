@@ -42,7 +42,7 @@ include( 'classes/class-aal-hooks.php' );
 include( 'classes/class-aal-integration-woocommerce.php' );
 
 // Probably we should put this in a separate file
-class AAL_Main {
+final class AAL_Main {
 
 	/**
 	 * @var AAL_Main The one true AAL_Main
@@ -58,6 +58,7 @@ class AAL_Main {
 
 	/**
 	 * @var AAL_Hooks
+	 * @since 1.0.1
 	 */
 	public $hooks;
 
