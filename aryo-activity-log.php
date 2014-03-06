@@ -78,7 +78,7 @@ final class AAL_Main {
 		load_plugin_textdomain( 'aryo-aal', false, basename( dirname( __FILE__ ) ) . '/language' );
 	}
 
-	public function __construct() {
+	protected function __construct() {
 		global $wpdb;
 
 		$this->ui       = new AAL_Admin_Ui();
@@ -90,6 +90,31 @@ final class AAL_Main {
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
 		
 		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
+	}
+
+	/**
+	 * Throw error on object clone
+	 *
+	 * The whole idea of the singleton design pattern is that there is a single
+	 * object therefore, we don't want the object to be cloned.
+	 *
+	 * @since 2.0.7
+	 * @return void
+	 */
+	public function __clone() {
+		// Cloning instances of the class is forbidden
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'aryo-aal' ), '2.0.7' );
+	}
+
+	/**
+	 * Disable unserializing of the class
+	 *
+	 * @since 2.0.7
+	 * @return void
+	 */
+	public function __wakeup() {
+		// Unserializing instances of the class is forbidden
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'aryo-aal' ), '2.0.7' );
 	}
 
 	/**
