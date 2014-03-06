@@ -86,6 +86,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 ## Changelog ##
 
+### 2.0.6 ###
+* Fixed! Random fatal error ([topic](https://github.com/KingYes/wordpress-aryo-activity-log/issues/32)
+
 ### 2.0.5 ###
 * New! Register `aal_init_caps` filter.
 * Tweak! Change all methods to non-static.
