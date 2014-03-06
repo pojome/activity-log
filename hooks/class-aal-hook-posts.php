@@ -2,6 +2,13 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_Hook_Posts extends AAL_Hook_Base {
+	
+	protected function _draft_or_post_title( $post = 0 ) {
+		$title = get_the_title( $post );
+		if ( empty( $title ) )
+			$title = __( '(no title)', 'aryo-aal' );
+		return $title;
+	}
 
 	public function hooks_transition_post_status( $new_status, $old_status, $post ) {
 		$action = '';
@@ -35,7 +42,7 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 			'object_type'    => 'Post',
 			'object_subtype' => $post->post_type,
 			'object_id'      => $post->ID,
-			'object_name'    => _draft_or_post_title( $post->ID ),
+			'object_name'    => $this->_draft_or_post_title( $post->ID ),
 		) );
 	}
 
@@ -57,7 +64,7 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 			'object_type'    => 'Post',
 			'object_subtype' => $post->post_type,
 			'object_id'      => $post->ID,
-			'object_name'    => _draft_or_post_title( $post->ID ),
+			'object_name'    => $this->_draft_or_post_title( $post->ID ),
 		) );
 	}
 	
