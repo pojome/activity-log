@@ -31,7 +31,7 @@ abstract class AAL_Notification_Base {
 	/**
 	 * Exectutes when notification is due
 	 */
-	public function trigger() {}
+	public function trigger( $args ) {}
 	
 	public function _settings_section_callback() {
 		echo '<p>' . $this->description . '</p>';

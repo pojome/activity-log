@@ -19,6 +19,44 @@ class AAL_Notifications {
 		// Run handlers loader
 		add_action( 'init', array( &$this, 'load_handlers' ), 20 );
 		add_action( 'aal_load_notification_handlers', array( &$this, 'load_default_handlers' ) );
+		add_action( 'aal_insert_log', array( &$this, 'process_notifications' ) );
+	}
+	
+	public function process_notifications( $args ) {
+		$enabled_handlers = $this->get_enabled_handlers();
+		
+		// if we can't find any enabled event handlers, bail.
+		if ( empty( $enabled_handlers ) )
+			return;
+		
+		// calculate if this type event is set in the rules
+		$options = AAL_Main::instance()->settings->get_options();
+		
+		// if there are no rules set, bail.
+		if ( empty( $options['notification_rules'] ) || ! is_array( $options['notification_rules'] ) )
+			return;
+		
+		$notification_matched_rules = array();
+		
+		// loop through the set of rules, and figure out if this current action meets a set rule
+		foreach ( $options['notification_rules'] as $notification_rule ) {
+			list( $n_key, $n_condition, $n_value ) = array_values( $notification_rule );
+			
+			switch ( $n_key ) {
+				case 'action-type':
+					if ( $n_value == $args['object_type'] )
+						$notification_matched_rules[] = $notification_rule;
+					break;
+			}
+		}
+		
+		// did we find any matches? if not, let's pretend as if nothing has happened here ;)
+		if ( ! empty( $notification_matched_rules ) ) {
+			// cycle through enabled handlers and trigger them
+			foreach ( $enabled_handlers as $enabled_handler ) {
+				$enabled_handler->trigger( $args );
+			}
+		}
 	}
 
 	public function get_object_types() {
@@ -148,6 +186,10 @@ class AAL_Notifications {
 		return isset( $this->handlers_loaded[ $id ] ) ? $this->handlers_loaded[ $id ] : false;
 	}
 	
+	/**
+	 * Returns all available handlers
+	 * @return array
+	 */
 	public function get_available_handlers() {
 		$handlers = array();
 		
@@ -155,7 +197,26 @@ class AAL_Notifications {
 			$handlers[ $handler_obj->id ] = $handler_obj;
 		}
 		
-		return $handlers;
+		return apply_filters( 'aal_available_handlers', $handlers );
+	}
+	
+	/**
+	 * Returns the active handlers that were activated through the settings page
+	 * 
+	 * @return array
+	 */
+	public function get_enabled_handlers() {
+		$enabled = array();
+		$options = AAL_Main::instance()->settings->get_options();
+		
+		foreach ( $this->get_available_handlers() as $id => $handler_obj ) {
+			// make sure handler is active
+			if ( isset( $options['notification_handlers'][ $id ] ) && 1 == $options['notification_handlers'][ $id ] ) {
+				$enabled[ $id ] = $handler_obj;
+			}
+		}
+		
+		return $enabled;
 	}
 
 	/**

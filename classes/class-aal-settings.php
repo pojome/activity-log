@@ -121,13 +121,13 @@ class AAL_Settings {
 		);
 
 		add_settings_field(
-			'logs_email_notification',
+			'notification_rules',
 			__( 'Notifcation Events', 'aryo-aal' ),
 			array( 'AAL_Settings_Fields', 'email_notification_buffer_field' ),
 			$this->slug,
 			'email_notifications',
 			array(
-				'id'      => 'logs_email_notification',
+				'id'      => 'notification_rules',
 				'page'    => $this->slug,
 				'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
 			)
@@ -407,8 +407,11 @@ final class AAL_Settings_Fields {
 		<p class="description"><?php _e( 'A notification will be sent upon a successful match with the following conditions:', 'aryo-aal' ); ?></p>
 		<div class="aal-notifier-settings">
 			<ul>
-			<?php foreach ( $rows as $rid => $row ) : ?>
-				<?php $row_key = $row['key']; ?>
+			<?php foreach ( $rows as $rid => $row ) :
+				$row_key 		= $row['key']; 
+				$row_condition 	= isset( $row['condition'] ) ? $row['condition'] : '';
+				$row_value 		= isset( $row['value'] ) ? $row['value'] : '';
+				?>
 				<li data-id="<?php echo $rid; ?>">
 					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
 						<?php foreach ( $keys as $k => $v ) : ?>
@@ -417,13 +420,13 @@ final class AAL_Settings_Fields {
 					</select>
 					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
 						<?php foreach ( $conditions as $k => $v ) : ?>
-						<option value="<?php echo $k; ?>" <?php selected( $row['condition'], $k ); ?>><?php echo $v; ?></option>
+						<option value="<?php echo $k; ?>" <?php selected( $row_condition, $k ); ?>><?php echo $v; ?></option>
 						<?php endforeach; ?>
 					</select>
 					<?php $value_options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
 					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
 						<?php foreach ( $value_options as $option_key => $option_value ) : ?>
-						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row['value'] ); ?>><?php echo esc_html( $option_value ); ?></option>
+						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
 						<?php endforeach; ?>
 					</select>
 					<a href="#" class="aal-new-rule button"><small>+</small> and</a>

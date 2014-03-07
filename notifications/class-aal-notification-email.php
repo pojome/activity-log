@@ -17,8 +17,8 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 		), $this->get_handler_options() );
 	}
 	
-	public function trigger() {
-		
+	public function trigger( $args ) {
+		error_log( 'AAL: ' . var_export($args, true));
 	}
 	
 	public function settings_fields() {
