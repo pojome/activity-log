@@ -2,6 +2,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Notifications API main class
+ * 
+ * @since 2.0.6
+ */
 class AAL_Notifications {
 	/* @todo public for debugging now, change to private/protected l8r */
 	public $handlers = array();
@@ -12,7 +17,7 @@ class AAL_Notifications {
 		include( plugin_dir_path( ACTIVITY_LOG__FILE__ ) . '/notifications/abstract-class-aal-notification-base.php' );
 		
 		// Run handlers loader
-		add_action( 'init', array( &$this, 'load_handlers' ) );
+		add_action( 'init', array( &$this, 'load_handlers' ), 20 );
 		add_action( 'aal_load_notification_handlers', array( &$this, 'load_default_handlers' ) );
 	}
 
@@ -124,14 +129,30 @@ class AAL_Notifications {
 		foreach ( $this->handlers as $handler ) {
 			$handler_obj = $this->handlers_loaded[ $handler ];
 			
-			// is this handler extending AAL_Notification_Base?
-			if ( ! is_a( $handler_obj, 'AAL_Notification_Base' ) )
-				continue;
-			
 			// if we got the name of the handler, use it. otherwise, use the classname.
 			$handler_name = isset( $handler_obj->name ) ? $handler_obj->name : $handler;
 			
-			$handlers[ $handler ] = $handler_name; 
+			$handlers[ $handler_obj->id ] = $handler_name; 
+		}
+		
+		return $handlers;
+	}
+	
+	/**
+	 * Returns a handler object
+	 * 
+	 * @param string $id
+	 * @return AAL_Notification_Base|bool
+	 */
+	public function get_handler_object( $id ) {
+		return isset( $this->handlers_loaded[ $id ] ) ? $this->handlers_loaded[ $id ] : false;
+	}
+	
+	public function get_available_handlers() {
+		$handlers = array();
+		
+		foreach ( $this->handlers_loaded as $handler_classname => $handler_obj ) {
+			$handlers[ $handler_obj->id ] = $handler_obj;
 		}
 		
 		return $handlers;
@@ -172,7 +193,13 @@ class AAL_Notifications {
 
 		foreach ( $this->handlers as $handler_classname ) {
 			if ( class_exists( $handler_classname ) ) {
-				$this->handlers_loaded[ $handler_classname ] = new $handler_classname;
+				$obj = new $handler_classname;
+				
+				// is this handler extending AAL_Notification_Base?
+				if ( ! is_a( $obj, 'AAL_Notification_Base' ) )
+					continue;
+				
+				$this->handlers_loaded[ $handler_classname ] = $obj;
 			}
 		}
 	}

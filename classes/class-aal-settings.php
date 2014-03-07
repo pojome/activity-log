@@ -3,11 +3,12 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_Settings {
-
 	private $hook;
-	private $slug;
+	public $slug = 'activity-log-settings';
+	protected $options;
 	
 	public function __construct() {
+		add_action( 'init', array( &$this, 'init' ) );
 		add_action( 'admin_menu', array( &$this, 'action_admin_menu' ), 30 );
 		add_action( 'admin_init', array( &$this, 'register_settings' ) );
 		add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
@@ -16,6 +17,10 @@ class AAL_Settings {
 
 		add_action( 'wp_ajax_aal_reset_items', array( &$this, 'ajax_aal_reset_items' ) );
 		add_action( 'wp_ajax_aal_get_properties', array( &$this, 'ajax_aal_get_properties' ) );
+	}
+	
+	public function init() {
+		$this->options = $this->get_options();
 	}
 	
 	public function plugin_action_links( $links ) {
@@ -39,7 +44,7 @@ class AAL_Settings {
 			__( 'Activity Log Settings', 'aryo-aal' ), 	// <title> tag
 			__( 'Settings', 'aryo-aal' ), 			// menu label
 			'manage_options', 								// required cap to view this page
-			$this->slug = 'activity-log-settings', 			// page slug
+			$this->slug, 			// page slug
 			array( &$this, 'display_settings_page' )			// callback
 		);
 
@@ -128,6 +133,8 @@ class AAL_Settings {
 			)
 		);
 		
+		$notification_handlers = AAL_Main::instance()->notifications->get_available_handlers();
+		$enabled_notification_handlers = AAL_Main::instance()->settings->get_option( 'notification_handlers' );
 		
 		add_settings_field(
 			'notification_transport',
@@ -143,7 +150,41 @@ class AAL_Settings {
 			)
 		);
 		
-		register_setting( 'aal-options', $this->slug );
+		// Loop through custom notification handlers
+		foreach ( $notification_handlers as $handler_id => $handler_obj  ) {
+			add_settings_section( 
+				"notification_$handler_id", 
+				$handler_obj->name, 
+				array( $handler_obj, '_settings_section_callback' ), 
+				$this->slug
+			);
+			
+			add_settings_field( 
+				"notification_handler_{$handler_id}_enabled", 
+				__( 'Enabled', 'camptix' ), 
+				array( $handler_obj, '_settings_enabled_field_callback' ), 
+				$this->slug,
+				"notification_$handler_id",
+				array(
+					'id'      => 'notification_transport',
+					'page'    => $this->slug,
+					'name' => "{$this->slug}[notification_handlers][{$handler_id}]",
+					'value' => (bool) ( 1 == $enabled_notification_handlers[ $handler_id ] ),
+				) 
+			);
+			
+			$handler_obj->settings_fields();
+		}
+		
+		register_setting( 'aal-options', $this->slug, array( $this, 'validate_options' ) );
+	}
+	
+	public function validate_options( $input ) {
+		$options = $this->options; // CTX,L1504
+		
+		// @todo some data validation/sanitization should go here
+		
+		return apply_filters( 'aal_validate_options', $input, $options );
 	}
 
 	public function display_settings_page() {
@@ -216,10 +257,27 @@ class AAL_Settings {
 	}
 
 	public function get_option( $key = '' ) {
-		$settings = get_option( 'activity-log-settings' );
+		$settings = $this->get_options();
 		return ! empty( $settings[ $key ] ) ? $settings[ $key ] : false;
 	}
 	
+	/**
+	 * Returns all options
+	 * 
+	 * @since 2.0.7
+	 * @return array
+	 */
+	public function get_options() {
+		// Allow other plugins to get AAL's options.
+		if ( isset( $this->options ) && is_array( $this->options ) && ! empty( $this->options ) )
+			return $this->options;
+		
+		return apply_filters( 'aal_options', get_option( $this->slug, array() ) );
+	}
+	
+	public function slug() {
+		return $this->slug;
+	}
 }
 
 // TODO: Need rewrite this class to useful tool.
@@ -248,6 +306,9 @@ final class AAL_Settings_Fields {
 	}
 	
 	public static function text_field( $args ) {
+		self::_set_name_and_value( $args );
+		extract( $args, EXTR_SKIP );
+		
 		$args = wp_parse_args( $args, array(
 			'classes' => array(),
 		) );
@@ -255,11 +316,16 @@ final class AAL_Settings_Fields {
 			return;
 		
 		?>
-		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Main::instance()->settings->get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
-		<?php
+		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
+		<?php if ( ! empty( $desc ) ) : ?>
+		<p class="description"><?php echo $desc; ?></p>
+		<?php endif;
 	}
 	
 	public static function number_field( $args ) {
+		self::_set_name_and_value( $args );
+		extract( $args, EXTR_SKIP );
+		
 		$args = wp_parse_args( $args, array(
 			'classes' => array(),
 			'min' => '1',
@@ -270,7 +336,7 @@ final class AAL_Settings_Fields {
 			return;
 
 		?>
-		<input type="number" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php printf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) ); ?>" value="<?php echo AAL_Main::instance()->settings->get_option( $args['id'] ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" min="<?php echo $args['min']; ?>" step="<?php echo $args['step']; ?>" />
+		<input type="number" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" min="<?php echo $args['min']; ?>" step="<?php echo $args['step']; ?>" />
 		<?php if ( ! empty( $args['sub_desc'] ) ) echo $args['sub_desc']; ?>
 		<?php if ( ! empty( $args['desc'] ) ) : ?>
 			<p class="description"><?php echo $args['desc']; ?></p>
@@ -278,6 +344,7 @@ final class AAL_Settings_Fields {
 	}
 
 	public static function select_field( $args ) {
+		self::_set_name_and_value( $args );
 		extract( $args, EXTR_SKIP );
 
 		if ( empty( $options ) || empty( $id ) || empty( $page ) )
@@ -286,13 +353,27 @@ final class AAL_Settings_Fields {
 		?>
 		<select id="<?php echo esc_attr( $id ); ?>" name="<?php printf( '%s[%s]', esc_attr( $page ), esc_attr( $id ) ); ?>">
 			<?php foreach ( $options as $name => $label ) : ?>
-			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) AAL_Main::instance()->settings->get_option( $id ) ); ?>>
+			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) $value ); ?>>
 				<?php echo esc_html( $label ); ?>
 			</option>
 			<?php endforeach; ?>
 		</select>
 		<?php if ( ! empty( $desc ) ) : ?>
 		<p class="description"><?php echo $desc; ?></p>
+		<?php endif; ?>
+		<?php
+	}
+	
+	public static function yesno_field( $args ) {
+		self::_set_name_and_value( $args );
+		extract( $args, EXTR_SKIP );
+		
+		?>
+		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="1" <?php checked( $value, true ); ?>> <?php _e( 'Yes', 'aryo-aal' ); ?></label>
+		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="0" <?php checked( $value, false ); ?>> <?php _e( 'No', 'aryo-aal' ); ?></label>
+
+		<?php if ( isset( $args['description'] ) ) : ?>
+		<p class="description"><?php echo $args['description']; ?></p>
 		<?php endif; ?>
 		<?php
 	}
@@ -352,5 +433,15 @@ final class AAL_Settings_Fields {
 			</ul>
 		</div>
 		<?php
+	}
+	
+	private static function _set_name_and_value( &$args ) {
+		if ( ! isset( $args['name'] ) ) {
+			$args['name'] = sprintf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) );
+		}
+		
+		if ( ! isset( $args['value'] ) ) {
+			$args['value'] = AAL_Main::instance()->settings->get_option( $args['id'] );
+		}
 	}
 }
