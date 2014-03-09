@@ -37,6 +37,7 @@ include( 'classes/class-aal-admin-ui.php' );
 include( 'classes/class-aal-settings.php' );
 include( 'classes/class-aal-api.php' );
 include( 'classes/class-aal-hooks.php' );
+include( 'classes/class-aal-notifications.php' );
 
 // Integrations
 include( 'classes/class-aal-integration-woocommerce.php' );
@@ -81,10 +82,11 @@ final class AAL_Main {
 	protected function __construct() {
 		global $wpdb;
 
-		$this->ui       = new AAL_Admin_Ui();
-		$this->hooks    = new AAL_Hooks();
-		$this->settings = new AAL_Settings();
-		$this->api      = new AAL_API();
+		$this->ui       	 = new AAL_Admin_Ui();
+		$this->hooks    	 = new AAL_Hooks();
+		$this->settings 	 = new AAL_Settings();
+		$this->api      	 = new AAL_API();
+		$this->notifications = new AAL_Notifications();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
