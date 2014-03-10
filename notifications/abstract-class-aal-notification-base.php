@@ -14,6 +14,8 @@ abstract class AAL_Notification_Base {
 	public $name = '';
 	public $description = '';
 	
+	public $aal_options;
+	
 	public function __construct() {
 		$this->aal_options = AAL_Main::instance()->settings->get_options();
 		
@@ -44,7 +46,7 @@ abstract class AAL_Notification_Base {
 	public function add_settings_field_helper( $option_name, $title, $callback, $description = '' ) {
 		$settings_page_slug = AAL_Main::instance()->settings->slug();
 		
-		return add_settings_field( 
+		add_settings_field( 
 			"notification_handler_{$this->id}_{$option_name}", 
 			$title, 
 			$callback, 
@@ -52,7 +54,7 @@ abstract class AAL_Notification_Base {
 			"notification_{$this->id}",
 			array(
 				'name' 		=> $this->settings_field_name_attr( $option_name ),
-				'value' 	=> isset( $this->options[ $option_name ] ) ? $this->options[ $option_name ] : '',
+				'value' 	=> isset( $this->aal_options[ $option_name ] ) ? $this->aal_options[ $option_name ] : '',
 				'desc' 		=> $description,
 				'id'      	=> $option_name,
 				'page'    	=> $settings_page_slug,
