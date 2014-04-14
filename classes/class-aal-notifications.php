@@ -268,7 +268,7 @@ class AAL_Notifications {
 	/**
 	 * Registers a handler class, which is then loaded in $this->load_handlers
 	 * 
-	 * @param string The name of the class to create an instance for
+	 * @param string $classname The name of the class to create an instance for
 	 * @return bool
 	 */
 	public function register_handler( $classname ) {
