@@ -7,7 +7,8 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 		// Get plugin name if is a path
 		if ( false !== strpos( $plugin_name, '/' ) ) {
 			$plugin_dir = explode( '/', $plugin_name );
-			$plugin_data = array_shift( array_values( get_plugins( '/' . $plugin_dir[0] ) ) );
+			$plugin_data = array_values( get_plugins( '/' . $plugin_dir[0] ) );
+			$plugin_data = array_shift( $plugin_data );
 			$plugin_name = $plugin_data['Name'];
 		}
 
