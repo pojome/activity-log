@@ -2,14 +2,16 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_Notification_HipChat extends AAL_Notification_Base {
-	public $id = 'atlassian-hipchat';
-	public $name = 'Atlassian HipChat';
-	public $description = 'Notify users on channels.';
-	
 	/**
 	 * Store options in a class locally
 	 */
 	protected $options = array();
+	
+	public function __construct() {
+		$this->id = 'atlassian-hipchat';
+		$this->name = __( 'Atlassian HipChat', 'aryo-aal' );
+		$this->description = __( 'Notify users on channels.', 'aryo-aal' );
+	}
 	
 	public function init() {
 		$this->options = array_merge( array(

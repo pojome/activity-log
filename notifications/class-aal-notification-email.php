@@ -2,14 +2,17 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_Notification_Email extends AAL_Notification_Base {
-	public $id = 'email';
-	public $name = 'Email';
-	public $description = 'Notify your users by email';
 	
 	/**
 	 * Store options in a class locally
 	 */
 	protected $options = array();
+	
+	public function __construct() {
+		$this->id = 'email';
+		$this->name = __( 'Email', 'aryo-aal' );
+		$this->description = __( 'Notify your users by email', 'aryo-aal' );
+	}
 	
 	public function init() {
 		$this->options = array_merge( array(
