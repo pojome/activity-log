@@ -19,7 +19,7 @@ class AAL_Notifications {
 		// Run handlers loader
 		add_action( 'init', array( &$this, 'load_handlers' ), 20 );
 		add_action( 'aal_load_notification_handlers', array( &$this, 'load_default_handlers' ) );
-		add_action( 'aal_insert_log', array( &$this, 'process_notifications' ) );
+		add_action( 'aal_insert_log', array( &$this, 'process_notifications' ), 20 );
 	}
 	
 	public function process_notifications( $args ) {
