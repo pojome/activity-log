@@ -29,8 +29,7 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 	public function validate_options( $input ) {
 		$output = $this->options;
 		
-		// @todo validate email
-		if ( isset( $input['target_email'] ) )
+		if ( isset( $input['target_email'] ) && is_email( $input['target_email'] ) )
 			$output['target_email'] = $input['target_email'];
 		
 		return $output;
