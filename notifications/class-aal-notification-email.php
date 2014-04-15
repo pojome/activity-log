@@ -9,6 +9,8 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 	protected $options = array();
 	
 	public function __construct() {
+		parent::__construct();
+		
 		$this->id = 'email';
 		$this->name = __( 'Email', 'aryo-aal' );
 		$this->description = __( 'Notify your users by email', 'aryo-aal' );

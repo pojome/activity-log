@@ -71,120 +71,151 @@ class AAL_Settings {
 			) ) );
 		}
 
-		// First, we register a section. This is necessary since all future options must belong to a 
-		add_settings_section(
-			'general_settings_section',			// ID used to identify this section and with which to register options
-			__( 'Display Options', 'aryo-aal' ),	// Title to be displayed on the administration page
-			array( 'AAL_Settings_Fields', 'general_settings_section_header' ),	// Callback used to render the description of the section
-			$this->slug		// Page on which to add this section of options
-		);
-
-		add_settings_field(
-			'logs_lifespan',
-			__( 'Keep logs for', 'aryo-aal' ),
-			array( 'AAL_Settings_Fields', 'number_field' ),
-			$this->slug,
-			'general_settings_section',
-			array(
-				'id'      => 'logs_lifespan',
-				'page'    => $this->slug,
-				'classes' => array( 'small-text' ),
-				'type'    => 'number',
-				'sub_desc'    => __( 'days.', 'aryo-aal' ),
-				'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
-			)
-		);
-		
-		if ( apply_filters( 'aal_allow_option_erase_logs', true ) ) {
-			add_settings_field(
-				'raw_delete_log_activities',
-				__( 'Delete Log Activities', 'aryo-aal' ),
-				array( 'AAL_Settings_Fields', 'raw_html' ),
-				$this->slug,
-				'general_settings_section',
-				array(
-					'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
-							'action' => 'aal_reset_items',
-							'_nonce' => wp_create_nonce( 'aal_reset_items' ),
-						), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
-					'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-aal' ),
-				)
-			);
-		}
-
-		// Email Notifications Settings
-		add_settings_section(
-			'email_notifications', // ID used to identify this section and with which to register options
-			__( 'Notifications', 'aryo-aal' ),	// Title to be displayed on the administration page
-			array( 'AAL_Settings_Fields', 'email_notifications_section_header' ),	// Callback used to render the description of the section
-			$this->slug		// Page on which to add this section of options
-		);
-
-		add_settings_field(
-			'notification_rules',
-			__( 'Notifcation Events', 'aryo-aal' ),
-			array( 'AAL_Settings_Fields', 'email_notification_buffer_field' ),
-			$this->slug,
-			'email_notifications',
-			array(
-				'id'      => 'notification_rules',
-				'page'    => $this->slug,
-				'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
-			)
-		);
-		
-		$notification_handlers = AAL_Main::instance()->notifications->get_available_handlers();
-		$enabled_notification_handlers = AAL_Main::instance()->settings->get_option( 'notification_handlers' );
-		
-		add_settings_field(
-			'notification_transport',
-			__( 'Notification Transport', 'aryo-aal' ),
-			array( 'AAL_Settings_Fields', 'select_field' ),
-			$this->slug,
-			'email_notifications',
-			array(
-				'id'      => 'notification_transport',
-				'page'    => $this->slug,
-				'options' => AAL_Main::instance()->notifications->get_handlers(),
-				'desc'    => __( 'How would you like to get recieve notifications?', 'aryo-aal' ),
-			)
-		);
-		
-		// Loop through custom notification handlers
-		foreach ( $notification_handlers as $handler_id => $handler_obj  ) {
-			add_settings_section( 
-				"notification_$handler_id", 
-				$handler_obj->name, 
-				array( $handler_obj, '_settings_section_callback' ), 
-				$this->slug
-			);
-			
-			add_settings_field( 
-				"notification_handler_{$handler_id}_enabled", 
-				__( 'Enabled', 'camptix' ), 
-				array( $handler_obj, '_settings_enabled_field_callback' ), 
-				$this->slug,
-				"notification_$handler_id",
-				array(
-					'id'      => 'notification_transport',
-					'page'    => $this->slug,
-					'name' => "{$this->slug}[notification_handlers][{$handler_id}]",
-					'value' => (bool) ( 1 == $enabled_notification_handlers[ $handler_id ] ),
-				) 
-			);
-			
-			$handler_obj->settings_fields();
-		}
-		
 		register_setting( 'aal-options', $this->slug, array( $this, 'validate_options' ) );
+		$section = $this->get_setup_section();
+
+		switch ( $section ) {
+			case 'general':
+				// First, we register a section. This is necessary since all future options must belong to a
+				add_settings_section(
+					'general_settings_section',			// ID used to identify this section and with which to register options
+					__( 'Display Options', 'aryo-aal' ),	// Title to be displayed on the administration page
+					array( 'AAL_Settings_Fields', 'general_settings_section_header' ),	// Callback used to render the description of the section
+					$this->slug		// Page on which to add this section of options
+				);
+
+				add_settings_field(
+					'logs_lifespan',
+					__( 'Keep logs for', 'aryo-aal' ),
+					array( 'AAL_Settings_Fields', 'number_field' ),
+					$this->slug,
+					'general_settings_section',
+					array(
+						'id'      => 'logs_lifespan',
+						'page'    => $this->slug,
+						'classes' => array( 'small-text' ),
+						'type'    => 'number',
+						'sub_desc'    => __( 'days.', 'aryo-aal' ),
+						'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
+					)
+				);
+
+				if ( apply_filters( 'aal_allow_option_erase_logs', true ) ) {
+					add_settings_field(
+						'raw_delete_log_activities',
+						__( 'Delete Log Activities', 'aryo-aal' ),
+						array( 'AAL_Settings_Fields', 'raw_html' ),
+						$this->slug,
+						'general_settings_section',
+						array(
+							'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
+								'action' => 'aal_reset_items',
+								'_nonce' => wp_create_nonce( 'aal_reset_items' ),
+							), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
+							'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-aal' ),
+						)
+					);
+				}
+				break;
+
+			case 'notifications':
+				// Email Notifications Settings
+				add_settings_section(
+					'email_notifications', // ID used to identify this section and with which to register options
+					__( 'Notifications', 'aryo-aal' ),	// Title to be displayed on the administration page
+					array( 'AAL_Settings_Fields', 'email_notifications_section_header' ),	// Callback used to render the description of the section
+					$this->slug		// Page on which to add this section of options
+				);
+
+				add_settings_field(
+					'notification_rules',
+					__( 'Notifcation Events', 'aryo-aal' ),
+					array( 'AAL_Settings_Fields', 'email_notification_buffer_field' ),
+					$this->slug,
+					'email_notifications',
+					array(
+						'id'      => 'notification_rules',
+						'page'    => $this->slug,
+						'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
+					)
+				);
+
+				$notification_handlers = AAL_Main::instance()->notifications->get_available_handlers();
+				$enabled_notification_handlers = AAL_Main::instance()->settings->get_option( 'notification_handlers' );
+
+				// Loop through custom notification handlers
+				foreach ( $notification_handlers as $handler_id => $handler_obj  ) {
+					if ( ! is_object( $handler_obj ) )
+						continue;
+
+					add_settings_section(
+						"notification_$handler_id",
+						$handler_obj->name,
+						array( $handler_obj, '_settings_section_callback' ),
+						$this->slug
+					);
+
+					add_settings_field(
+						"notification_handler_{$handler_id}_enabled",
+						__( 'Enabled', 'camptix' ),
+						array( $handler_obj, '_settings_enabled_field_callback' ),
+						$this->slug,
+						"notification_$handler_id",
+						array(
+							'id'      => 'notification_transport',
+							'page'    => $this->slug,
+							'name' => "{$this->slug}[notification_handlers][{$handler_id}]",
+							'value' => (bool) ( 1 == $enabled_notification_handlers[ $handler_id ] ),
+						)
+					);
+
+					$handler_obj->settings_fields();
+				}
+				break;
+		}
+	}
+
+	/**
+	 * Returns the current section within AAL's setting pages
+	 *
+	 * @return string
+	 */
+	public function get_setup_section() {
+		if ( isset( $_REQUEST['aal_section'] ) )
+			return strtolower( $_REQUEST['aal_section'] );
+
+		return 'general';
+	}
+
+	/**
+	 * Prints section tabs within the settings area
+	 */
+	private function menu_print_tabs() {
+		$current_section = $this->get_setup_section();
+		$sections = array(
+			'general'       => __( 'General', 'aryo-aal' ),
+			'notifications' => __( 'Notifications', 'aryo-aal' ),
+		);
+
+		$sections = apply_filters( 'aal_setup_sections', $sections );
+
+		foreach ( $sections as $section_key => $section_caption ) {
+			$active = $current_section === $section_key ? 'nav-tab-active' : '';
+			$url = add_query_arg( 'aal_section', $section_key );
+			echo '<a class="nav-tab ' . $active . '" href="' . esc_url( $url ) . '">' . esc_html( $section_caption ) . '</a>';
+		}
 	}
 	
 	public function validate_options( $input ) {
 		$options = $this->options; // CTX,L1504
 		
 		// @todo some data validation/sanitization should go here
+		$output = apply_filters( 'aal_validate_options', $input, $options );
+
+		// merge with current settings
+		$output = array_merge( $options, $output );
 		
-		return apply_filters( 'aal_validate_options', $input, $options );
+		return $output;
 	}
 
 	public function display_settings_page() {
@@ -193,7 +224,20 @@ class AAL_Settings {
 		<div class="wrap">
 		
 			<div id="icon-themes" class="icon32"></div>
-			<h2><?php _e( 'Activity Log Settings', 'aryo-aal' ); ?></h2>
+			<h2 class="aal-page-title"><i class="aal-symbol"></i><?php _e( 'Activity Log Settings', 'aryo-aal' ); ?></h2>
+			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
+
+			<style>
+				body.activity-log_page_activity-log-settings #wpbody h2.aal-page-title::before {
+					content: "\f321";
+					font: 400 25px/1 dashicons !important;
+					speak: none; /* accessibility thing. do not read the contents of this icon */
+					color: #030303;
+					display: inline-block;
+					padding-right: .2em;
+					vertical-align: -18%;
+				}
+			</style>
 			
 			<form method="post" action="options.php">
 				<?php

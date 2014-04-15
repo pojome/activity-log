@@ -45,6 +45,8 @@ abstract class AAL_Notification_Base {
 	
 	public function add_settings_field_helper( $option_name, $title, $callback, $description = '' ) {
 		$settings_page_slug = AAL_Main::instance()->settings->slug();
+		$handler_options = isset( $this->aal_options["handler_options_{$this->id}"] )
+			? $this->aal_options["handler_options_{$this->id}"] : array();
 		
 		add_settings_field( 
 			"notification_handler_{$this->id}_{$option_name}", 
@@ -54,7 +56,7 @@ abstract class AAL_Notification_Base {
 			"notification_{$this->id}",
 			array(
 				'name' 		=> $this->settings_field_name_attr( $option_name ),
-				'value' 	=> isset( $this->aal_options[ $option_name ] ) ? $this->aal_options[ $option_name ] : '',
+				'value' 	=> isset( $handler_options[ $option_name ] ) ? $handler_options[ $option_name ] : '',
 				'desc' 		=> $description,
 				'id'      	=> $option_name,
 				'page'    	=> $settings_page_slug,
@@ -70,19 +72,10 @@ abstract class AAL_Notification_Base {
 			return $form_data;
 	
 		$input = $_POST[ $post_key ];
-		$output = $this->validate_options( $input );
+		$output = ( method_exists( $this, 'validate_options' ) ) ? $this->validate_options( $input ) : array();
 		$form_data[ $option_key ] = $output;
 	
 		return $form_data;
-	}
-	
-	/**
-	 * This method is supposed to be overriden by the extending class
-	 * @param array $input The formdata
-	 * @return array
-	 */
-	private function validate_options( $input ) {
-		return $input;
 	}
 	
 	private function settings_field_name_attr( $name ) {

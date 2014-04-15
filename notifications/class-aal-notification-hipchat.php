@@ -8,6 +8,8 @@ class AAL_Notification_HipChat extends AAL_Notification_Base {
 	protected $options = array();
 	
 	public function __construct() {
+		parent::__construct();
+
 		$this->id = 'atlassian-hipchat';
 		$this->name = __( 'Atlassian HipChat', 'aryo-aal' );
 		$this->description = __( 'Notify users on channels.', 'aryo-aal' );
@@ -15,7 +17,7 @@ class AAL_Notification_HipChat extends AAL_Notification_Base {
 	
 	public function init() {
 		$this->options = array_merge( array(
-				'target_email' => get_option( 'admin_email' ),
+				'api_token' => '',
 		), $this->get_handler_options() );
 	}
 	
@@ -25,6 +27,11 @@ class AAL_Notification_HipChat extends AAL_Notification_Base {
 	
 	public function settings_fields() {
 		$this->add_settings_field_helper( 'api_token', __( 'API access token', 'aryo-aal' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The API token is accessible at Account Settings &rarr; API access' ) );
+	}
+
+	public function validate_options( $input ) {
+		$output = array();
+		return $input;
 	}
 }
 
