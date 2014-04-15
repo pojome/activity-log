@@ -355,6 +355,27 @@ final class AAL_Settings_Fields {
 		<p class="description"><?php echo $desc; ?></p>
 		<?php endif;
 	}
+
+	public static function textarea_field( $args ) {
+		self::_set_name_and_value( $args );
+		extract( $args, EXTR_SKIP );
+
+		$args = wp_parse_args( $args, array(
+			'classes' => array(),
+			'rows'    => 5,
+			'cols'    => 50,
+		) );
+
+		if ( empty( $args['id'] ) || empty( $args['page'] ) )
+			return;
+
+		?>
+		<textarea id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $name ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" rows="<?php echo absint( $args['rows'] ); ?>" cols="<?php echo absint( $args['cols'] ); ?>"><?php echo esc_textarea( $value ); ?></textarea>
+
+		<?php if ( ! empty( $desc ) ) : ?>
+			<p class="description"><?php echo $desc; ?></p>
+		<?php endif;
+	}
 	
 	public static function number_field( $args ) {
 		self::_set_name_and_value( $args );
