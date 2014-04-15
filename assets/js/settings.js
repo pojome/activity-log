@@ -7,24 +7,43 @@
 		init: function () {
 			var _this = this;
 
-			this.$wrapper = $( ".aal-notifier-settings" );
-			this.$container = $( "ul", this.$wrapper );
+			AAL.$wrapper = $( ".aal-notifier-settings" );
+            AAL.$container = $( "ul", this.$wrapper );
 
-			this.counter = this.$container.children().size();
+            AAL.counter = AAL.$container.children().size();
+
+            // check if there's only one option
+            if ( 1 === AAL.counter ) {
+                var $temp_el = AAL.$container.children().first();
+                // check if the "value" select box has no options
+                if ( 0 === $temp_el.find( ".aal-value option" ).size() ) {
+                    // click the button with a timeout. Note that this is a hack that will need
+                    // to be solved server-side
+                    setTimeout( function () {
+                        $temp_el.find( ".aal-category" ).change();
+                    }, 300 );
+                }
+            }
 
 			// when the "add" button is clicked
-			this.$container.on( 'click', '.aal-new-rule', function ( e ) {
+            AAL.$container.on( 'click', '.aal-new-rule', function ( e ) {
 				e.preventDefault();
 				_this.addRule( $( this ).closest( 'li' ) );
 			});
-			
-			this.$container.on( 'click', '.aal-delete-rule', function ( e ) {
+
+            AAL.$container.on( 'click', '.aal-delete-rule', function ( e ) {
 				e.preventDefault();
+
+                // do not delete item if it's the only one left in the list
+                if ( 1 === AAL.$container.children().size() ) {
+                    return;
+                }
+
 				_this.deleteRule( $( this ).closest( 'li' ) );
 			});
 
 			// handle change on action category selectbox
-			this.$container.on( 'change', '.aal-category', function ( e ) {
+            AAL.$container.on( 'change', '.aal-category', function ( e ) {
 				e.preventDefault();
 
 				var $select = $( this ),
