@@ -18,7 +18,7 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 	
 	public function init() {
 		$this->options = array_merge( array(
-			'target_email'   => get_option( 'admin_email' ),
+			'from_email'   => get_option( 'admin_email' ),
 //			'message_format' => __( "Hi there!\n\nA notification condition on [sitename] was matched. Here are the details:\n\n[action-details]\n\nSent by ARYO Activity Log", 'aryo-aal' )
 		), $this->get_handler_options() );
 	}
@@ -37,6 +37,9 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 
 		$email_contents = str_replace( array( '[sitename]', '[action-details]' ), array( $site_name, $body ), $format );
 
+		// set the content type
+		add_filter( 'wp_mail_content_type', array( &$this, 'email_content_type' ) );
+
 		wp_mail(
 			$to_email,
 			__( 'New notification from Activity Log', 'aryo-aal' ),
@@ -46,8 +49,12 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 			)
 		);
 
-		error_log( 'AAL: ' . var_export($args, true));
+		// reset back to how it was before
+		remove_filter( 'wp_mail_content_type', array( &$this, 'email_content_type' ) );
+	}
 
+	public function email_content_type() {
+		return apply_filters( 'aal_notification_email_content_type', 'text/html' );
 	}
 	
 	public function settings_fields() {
