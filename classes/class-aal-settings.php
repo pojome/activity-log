@@ -324,7 +324,7 @@ final class AAL_Settings_Fields {
 
 	public static function email_notifications_section_header() {
 		?>
-		<p><?php _e( 'Serve yourself with custom-tailored notifications.', 'aryo-aal' ); ?></p>
+		<p><?php _e( 'Serve yourself with custom-tailored notifications. First, define your conditions. Then, choose how the notifications will be sent.', 'aryo-aal' ); ?></p>
 		<?php
 	}
 	
