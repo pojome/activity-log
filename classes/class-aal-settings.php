@@ -61,6 +61,7 @@ class AAL_Settings {
 	 */
 	public function scripts_n_styles() {
 		wp_enqueue_script( 'aal-settings', plugins_url( 'assets/js/settings.js', ACTIVITY_LOG__FILE__ ), array( 'jquery' ) );
+		wp_enqueue_style( 'aal-settings', plugins_url( 'assets/css/settings.css', ACTIVITY_LOG__FILE__ ) );
 	}
 
 	public function register_settings() {
@@ -129,7 +130,7 @@ class AAL_Settings {
 
 				add_settings_field(
 					'notification_rules',
-					__( 'Notifcation Events', 'aryo-aal' ),
+					__( 'Notification Events', 'aryo-aal' ),
 					array( 'AAL_Settings_Fields', 'email_notification_buffer_field' ),
 					$this->slug,
 					'email_notifications',
@@ -157,7 +158,7 @@ class AAL_Settings {
 
 					add_settings_field(
 						"notification_handler_{$handler_id}_enabled",
-						__( 'Enabled', 'camptix' ),
+						__( 'Enable?', 'aryo-aal' ),
 						array( $handler_obj, '_settings_enabled_field_callback' ),
 						$this->slug,
 						"notification_$handler_id",
@@ -226,18 +227,6 @@ class AAL_Settings {
 			<div id="icon-themes" class="icon32"></div>
 			<h2 class="aal-page-title"><i class="aal-symbol"></i><?php _e( 'Activity Log Settings', 'aryo-aal' ); ?></h2>
 			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
-
-			<style>
-				body.activity-log_page_activity-log-settings #wpbody h2.aal-page-title::before {
-					content: "\f321";
-					font: 400 25px/1 dashicons !important;
-					speak: none; /* accessibility thing. do not read the contents of this icon */
-					color: #030303;
-					display: inline-block;
-					padding-right: .2em;
-					vertical-align: -18%;
-				}
-			</style>
 			
 			<form method="post" action="options.php">
 				<?php
@@ -335,7 +324,7 @@ final class AAL_Settings_Fields {
 
 	public static function email_notifications_section_header() {
 		?>
-		<p><?php _e( 'Serve yourself with personally-flavored/tailored notifications', 'aryo-aal' ); ?></p>
+		<p><?php _e( 'Serve yourself with custom-tailored notifications.', 'aryo-aal' ); ?></p>
 		<?php
 	}
 	
