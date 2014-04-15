@@ -13,7 +13,7 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 		
 		$this->id = 'email';
 		$this->name = __( 'Email', 'aryo-aal' );
-		$this->description = __( 'Notify your users by email', 'aryo-aal' );
+		$this->description = __( 'Get notified by Email.', 'aryo-aal' );
 	}
 	
 	public function init() {
@@ -32,11 +32,14 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 	}
 	
 	public function validate_options( $input ) {
-		$output = $this->options;
-		
-		if ( isset( $input['target_email'] ) && is_email( $input['target_email'] ) )
-			$output['target_email'] = $input['target_email'];
-		
+		$output = array();
+		$email_fields = array( 'to_email', 'from_email' );
+
+		foreach ( $email_fields as $email_field ) {
+			if ( isset( $input[ $email_field ] ) && is_email( $input[ $email_field ] ) )
+				$output[ $email_field ] = $input[ $email_field ];
+		}
+
 		return $output;
 	}
 }
