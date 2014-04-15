@@ -43,7 +43,7 @@ abstract class AAL_Notification_Base {
 		AAL_Settings_Fields::yesno_field( $args );
 	}
 	
-	public function add_settings_field_helper( $option_name, $title, $callback, $description = '' ) {
+	public function add_settings_field_helper( $option_name, $title, $callback, $description = '', $default_value = '' ) {
 		$settings_page_slug = AAL_Main::instance()->settings->slug();
 		$handler_options = isset( $this->aal_options["handler_options_{$this->id}"] )
 			? $this->aal_options["handler_options_{$this->id}"] : array();
@@ -56,7 +56,7 @@ abstract class AAL_Notification_Base {
 			"notification_{$this->id}",
 			array(
 				'name' 		=> $this->settings_field_name_attr( $option_name ),
-				'value' 	=> isset( $handler_options[ $option_name ] ) ? $handler_options[ $option_name ] : '',
+				'value' 	=> isset( $handler_options[ $option_name ] ) ? $handler_options[ $option_name ] : $default_value,
 				'desc' 		=> $description,
 				'id'      	=> $option_name,
 				'page'    	=> $settings_page_slug,
@@ -91,6 +91,41 @@ abstract class AAL_Notification_Base {
 		}
 		
 		return $handler_options;
+	}
+
+	public function prep_notification_body( $args ) {
+		$details_to_provide = array(
+			'user_id'     => __( 'User', 'aryo-aal' ),
+			'object_type' => __( 'Object Type', 'aryo-aal' ),
+			'object_name' => __( 'Object Name', 'aryo-aal' ),
+			'action'      => __( 'Action Type', 'aryo-aal' ),
+			'hist_ip'     => __( 'IP Address', 'aryo-aal' ),
+		);
+		$message = '';
+
+		foreach ( $details_to_provide as $detail_key => $detail_title ) {
+			$detail_val = '';
+
+			switch ( $detail_key ) {
+				case 'user_id':
+					if ( is_numeric( $args[ $detail_key ] ) ) {
+						// this is a user ID
+						$user = new WP_User( $args[ $detail_key ] );
+
+						if ( ! is_wp_error( $user ) ) {
+							$detail_val = sprintf( '<a href="%s">%s</a>', esc_url( get_edit_user_link( $user->ID ) ), esc_html( $user->display_name ) );
+						}
+					}
+					break;
+				default:
+					$detail_val = isset( $args[ $detail_key ] ) ? $args[ $detail_key ] : __( 'N/A', 'aryo-aal' );
+					break;
+			}
+
+			$message .= sprintf( "<strong>%s</strong> - %s<br>\n", $detail_title, $detail_val );
+		}
+
+		return $message;
 	}
 }
 
