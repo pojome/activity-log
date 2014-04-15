@@ -1,8 +1,11 @@
 <?php
 $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
 
-// Create our own test case to prevent repeating ourself
-require_once getenv( 'WP_DEVELOP_DIR' ) . '/tests/phpunit/includes/functions.php';
+$_tests_dir = getenv( 'WP_TESTS_DIR' );
+if ( ! $_tests_dir )
+	$_tests_dir = '/tmp/wordpress-tests-lib';
+
+require_once $_tests_dir . '/includes/functions.php';
 
 tests_add_filter(
 	'muplugins_loaded',
@@ -19,4 +22,4 @@ tests_add_filter(
 // Do this action last
 tests_add_filter( 'shutdown', 'drop_tables', 999999 );
 
-require getenv( 'WP_DEVELOP_DIR' ) . '/tests/phpunit/includes/bootstrap.php';
+require $_tests_dir . '/includes/bootstrap.php';
