@@ -34,8 +34,9 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 		$format = isset( $this->options['message_format'] ) ? $this->options['message_format'] : '';
 		$body = $this->prep_notification_body( $args );
 		$site_name = get_bloginfo( 'name' );
+		$site_name_link = sprintf( '<a href="%s">%s</a>', home_url(), $site_name );
 
-		$email_contents = str_replace( array( '[sitename]', '[action-details]' ), array( $site_name, $body ), $format );
+		$email_contents = str_replace( array( '[sitename]', '[action-details]' ), array( $site_name_link, $body ), $format );
 
 		// set the content type
 		add_filter( 'wp_mail_content_type', array( &$this, 'email_content_type' ) );
