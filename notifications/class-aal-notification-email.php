@@ -24,8 +24,8 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 	}
 	
 	public function trigger( $args ) {
-		$from_email = isset( $this->options['from_email'] ) ? $this->options['from_email'] : '';
-		$to_email   = isset( $this->options['to_email'] ) ? $this->options['to_email'] : '';
+		$from_email = isset( $this->options['from_email'] ) && is_email( $this->options['from_email'] ) ? $this->options['from_email'] : '';
+		$to_email   = isset( $this->options['to_email'] ) && is_email( $this->options['to_email'] ) ? $this->options['to_email'] : '';
 
 		// if no from email or to email provided, quit.
 		if ( ! ( $from_email || $to_email ) )
