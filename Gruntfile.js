@@ -102,6 +102,46 @@ module.exports = function(grunt) {
 					'README.md': 'readme.txt'
 				}
 			}
+		},
+
+		copy: {
+			main: {
+				src: [
+					'**',
+					'!node_modules/**',
+					'!build/**',
+					'!bin/**',
+					'!.git/**',
+					'!tests/**',
+					'!.travis.yml',
+					'!README.md',
+					'!phpunit.xml',
+					'!vendor/**',
+					'!Gruntfile.js',
+					'!package.json',
+					'!.gitignore',
+					'!.gitmodules',
+					'!*~'
+				],
+				dest: 'build/'
+			}
+		},
+		
+		clean: {
+			//Clean up build folder
+			main: [
+				'build'
+			]
+		},
+
+		wp_deploy: {
+			deploy:{
+				options: {
+					plugin_slug: '<%= pkg.name %>',
+					svn_user: 'kingyes',
+					build_dir: 'build/'
+				}
+			}
 		}
 		
 	} );
@@ -111,7 +151,13 @@ module.exports = function(grunt) {
 		'checktextdomain',
 		'wp_readme_to_markdown'
 	] );
-	
+
+	grunt.registerTask( 'build', [
+		'default',
+		'clean',
+		'copy'
+	] );
+
 	grunt.registerTask( 'publish', [
 		'checktextdomain',
 		'bumpup',
