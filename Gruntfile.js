@@ -142,6 +142,17 @@ module.exports = function(grunt) {
 					build_dir: 'build/'
 				}
 			}
+		},
+
+		phpunit: {
+			classes: {
+				dir: ''
+			},
+			options: {
+				bin: 'phpunit',
+				bootstrap: 'tests/bootstrap.php',
+				colors: true
+			}
 		}
 		
 	} );
