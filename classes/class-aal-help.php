@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Contextual help texts
+ *
+ * Class AAL_Help
+ */
+class AAL_Help {
+    public function __construct() {
+        add_action( 'in_admin_header', array( $this, 'contextual_help' ) );
+    }
+
+    public function contextual_help() {
+        $screen = get_current_screen();
+
+        switch ( $screen->id ) {
+            case 'activity-log_page_activity-log-settings':
+                $screen->add_help_tab( array(
+                    'title' => __( 'Overview', 'aryo-aal' ),
+                    'id' => 'aal-overview',
+                    'content' => '
+                    <h3>Notifications</h3>
+                    <p>This screen lets you control what will happen once a user on your site does something you define. For instance, let us assume that you have created a user on your site
+                    for your content editor. Now, let\'s say that every time that user updates a post, you want to know about it. You can easily do it from this page.</p>',
+                ) );
+                break;
+        }
+    }
+}
