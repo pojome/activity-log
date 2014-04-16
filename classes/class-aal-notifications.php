@@ -226,8 +226,6 @@ class AAL_Notifications {
 	public function load_default_handlers() {
 		$default_handlers = apply_filters( 'aal_default_addons', array(
 			'email' 			=> $this->get_default_handler_path( 'class-aal-notification-email.php' ),
-			'atlassian-hipchat' => $this->get_default_handler_path( 'class-aal-notification-hipchat.php' ),
-			/* @todo work on multiple notification handlers */
 		) );
 
 		foreach ( $default_handlers as $filename )
