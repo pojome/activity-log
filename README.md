@@ -2,7 +2,7 @@
 **Contributors:** KingYes, ariel.k, maor  
 **Tags:** access, administration, activity, community, event, monitor, multisite, multi-users, log, logger, audit log, login, network, stats, security, tracking, madeinisrael, woocommerce  
 **Requires at least:** 3.5  
-**Tested up to:** 3.8.1  
+**Tested up to:** 3.9  
 **Stable tag:** 2.0.6  
 **License:** GPLv2 or later  
 
@@ -85,6 +85,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 
 ## Changelog ##
+
+### 2.1.0 ###
+* Tested up to WordPress v3.9.
 
 ### 2.0.6 ###
 * Fixed! Random fatal error ([topic](https://github.com/KingYes/wordpress-aryo-activity-log/issues/32))

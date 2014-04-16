@@ -80,6 +80,9 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 
 == Changelog ==
 
+= 2.1.0 =
+* Tested up to WordPress v3.9.
+
 = 2.0.6 =
 * Fixed! Random fatal error ([topic](https://github.com/KingYes/wordpress-aryo-activity-log/issues/32))
 
