@@ -225,7 +225,7 @@ class AAL_Settings {
 		<div class="wrap">
 		
 			<div id="icon-themes" class="icon32"></div>
-			<h2 class="aal-page-title"><i class="aal-symbol"></i><?php _e( 'Activity Log Settings', 'aryo-aal' ); ?></h2>
+			<h2 class="aal-page-title"><?php _e( 'Activity Log Settings', 'aryo-aal' ); ?></h2>
 			<?php settings_errors(); ?>
 			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
 			
