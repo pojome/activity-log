@@ -98,6 +98,9 @@ module.exports = function(grunt) {
 
 		wp_readme_to_markdown: {
 			github: {
+				options: {
+					test: true
+				},
 				files: {
 					'README.md': 'readme.txt'
 				}
