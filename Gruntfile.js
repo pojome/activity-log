@@ -99,7 +99,8 @@ module.exports = function(grunt) {
 		wp_readme_to_markdown: {
 			github: {
 				options: {
-					test: true
+					travisUrlRepo: 'https://travis-ci.org/KingYes/wordpress-aryo-activity-log',
+					gruntDependencyStatusUrl: 'https://david-dm.org/KingYes/wordpress-aryo-activity-log'
 				},
 				files: {
 					'README.md': 'readme.txt'
