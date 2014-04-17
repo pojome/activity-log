@@ -1,487 +1,635 @@
-# Copyright (C) 2013 
-# This file is distributed under the same license as the  package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ARYO Activity Log\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/activity-log\n"
-"POT-Creation-Date: 2014-02-17 19:21-0000\n"
-"PO-Revision-Date: 2014-02-17 19:22-0000\n"
-"Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
+"Project-Id-Version: aryo-activity-log 2.0.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-17 17:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.6.4\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_x;_n:1,2;_c,_nc:4c,1,2\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ..\n"
 
-#: ../classes/class-aal-activity-log-list-table.php:82
+#: aryo-activity-log.php:110 aryo-activity-log.php:121
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: classes/class-aal-activity-log-list-table.php:82
 msgid "Activities"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:92
+#: classes/class-aal-activity-log-list-table.php:92
 msgid "Date"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:93
+#: classes/class-aal-activity-log-list-table.php:93
 msgid "Author"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:94
+#: classes/class-aal-activity-log-list-table.php:94
 msgid "IP"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:95
+#: classes/class-aal-activity-log-list-table.php:95
 msgid "Type"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:96
+#: classes/class-aal-activity-log-list-table.php:96
 msgid "Label"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:97
+#: classes/class-aal-activity-log-list-table.php:97
 msgid "Action"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:98
+#: classes/class-aal-activity-log-list-table.php:98
 msgid "Description"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:118
+#: classes/class-aal-activity-log-list-table.php:118
 #, php-format
 msgid "%s ago"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:145
+#: classes/class-aal-activity-log-list-table.php:145
 msgid "Unknown"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:151
-#: ../classes/class-aal-activity-log-list-table.php:229
+#: classes/class-aal-activity-log-list-table.php:151
+#: classes/class-aal-activity-log-list-table.php:229
 msgid "Guest"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:240
+#: classes/class-aal-activity-log-list-table.php:240
 msgid "All Users"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:267
+#: classes/class-aal-activity-log-list-table.php:267
 msgid "All Types"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:278
+#: classes/class-aal-activity-log-list-table.php:278
 msgid "All Time"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:279
+#: classes/class-aal-activity-log-list-table.php:279
 msgid "Today"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:280
+#: classes/class-aal-activity-log-list-table.php:280
 msgid "Yesterday"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:281
+#: classes/class-aal-activity-log-list-table.php:281
 msgid "Week"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:282
+#: classes/class-aal-activity-log-list-table.php:282
 msgid "Month"
 msgstr ""
 
-#: ../classes/class-aal-activity-log-list-table.php:289
+#: classes/class-aal-activity-log-list-table.php:289
 msgid "Filter"
 msgstr ""
 
-#: ../classes/class-aal-admin-ui.php:17 ../classes/class-aal-admin-ui.php:27
+#: classes/class-aal-admin-ui.php:17 classes/class-aal-admin-ui.php:27
 msgid "Activity Log"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:21
+#: classes/class-aal-help.php:21
+msgid "Overview"
+msgstr ""
+
+#: classes/class-aal-help.php:24 classes/class-aal-settings.php:126
+#: classes/class-aal-settings.php:198
+msgid "Notifications"
+msgstr ""
+
+#: classes/class-aal-help.php:25
+msgid ""
+"This screen lets you control what will happen once a user on your site does "
+"something you define. For instance, let us assume that you have created a "
+"user on your site\n"
+"                    for your content editor. Now, let's say that every time "
+"that user updates a post, you want to know about it. You can easily do it "
+"from this page."
+msgstr ""
+
+#: classes/class-aal-notifications.php:274
+msgid "The AAL notification handler you are trying to register does not exist."
+msgstr ""
+
+#: classes/class-aal-settings.php:27
 msgid "GitHub"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:24 ../classes/class-aal-settings.php:39
+#: classes/class-aal-settings.php:30 classes/class-aal-settings.php:45
 msgid "Settings"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:38 ../classes/class-aal-settings.php:106
+#: classes/class-aal-settings.php:44 classes/class-aal-settings.php:228
 msgid "Activity Log Settings"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:59
+#: classes/class-aal-settings.php:83
 msgid "Display Options"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:66
+#: classes/class-aal-settings.php:90
 msgid "Keep logs for"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:75
+#: classes/class-aal-settings.php:99
 msgid "days."
 msgstr ""
 
-#: ../classes/class-aal-settings.php:76
+#: classes/class-aal-settings.php:100 classes/class-aal-settings.php:140
 msgid ""
 "Maximum number of days to keep activity log. Leave blank to keep activity "
 "log forever (not recommended)."
 msgstr ""
 
-#: ../classes/class-aal-settings.php:83
+#: classes/class-aal-settings.php:107
 msgid "Delete Log Activities"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:88
+#: classes/class-aal-settings.php:112
 #, php-format
 msgid "<a href=\"%s\" id=\"%s\">Reset Database</a>"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:92
+#: classes/class-aal-settings.php:116
 msgid "Warning: Clicking this will delete all activities from the database."
 msgstr ""
 
-#: ../classes/class-aal-settings.php:124
+#: classes/class-aal-settings.php:133
+msgid "Notification Events"
+msgstr ""
+
+#: classes/class-aal-settings.php:161
+msgid "Enable?"
+msgstr ""
+
+#: classes/class-aal-settings.php:197
+msgid "General"
+msgstr ""
+
+#: classes/class-aal-settings.php:247
 msgid "All activities have been successfully deleted."
 msgstr ""
 
-#: ../classes/class-aal-settings.php:135
+#: classes/class-aal-settings.php:258
 msgid "Are you sure you want to do this action?"
 msgstr ""
 
-#: ../classes/class-aal-settings.php:169
+#: classes/class-aal-settings.php:269
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: classes/class-aal-settings.php:322
 msgid "These are some basic settings for Activity Log."
 msgstr ""
 
-#: ../language/strings.php:2
-msgid "ARYO Activity Log"
-msgstr ""
-
-#: ../language/strings.php:3
+#: classes/class-aal-settings.php:328
 msgid ""
-"Get aware of any activities that are taking place on your dashboard! Imagine "
-"it like a black-box for your WordPress site. e.g. post was deleted, plugin "
-"was activated, user logged in or logged out - it’s all these for you to see."
+"Serve yourself with custom-tailored notifications. First, define your "
+"conditions. Then, choose how the notifications will be sent."
 msgstr ""
 
-#: ../language/strings.php:6
-msgid "Post"
+#: classes/class-aal-settings.php:427
+msgid "Yes"
 msgstr ""
 
-#: ../language/strings.php:7
-msgid "created"
+#: classes/class-aal-settings.php:428
+msgid "No"
 msgstr ""
 
-#: ../language/strings.php:8
-msgid "updated"
-msgstr ""
-
-#: ../language/strings.php:9
-msgid "deleted"
-msgstr ""
-
-#: ../language/strings.php:12
-msgid "Attachment"
-msgstr ""
-
-#: ../language/strings.php:13
-msgid "added"
-msgstr ""
-
-#: ../language/strings.php:16
+#: classes/class-aal-settings.php:445 language/strings.php:19
+#: notifications/abstract-class-aal-notification-base.php:98
 msgid "User"
 msgstr ""
 
-#: ../language/strings.php:17
+#: classes/class-aal-settings.php:446
+#: notifications/abstract-class-aal-notification-base.php:101
+msgid "Action Type"
+msgstr ""
+
+#: classes/class-aal-settings.php:447
+msgid "Action Performed"
+msgstr ""
+
+#: classes/class-aal-settings.php:451
+msgid "equals to"
+msgstr ""
+
+#: classes/class-aal-settings.php:452
+msgid "not equals to"
+msgstr ""
+
+#: classes/class-aal-settings.php:462
+msgid ""
+"A notification will be sent upon a successful match with the following "
+"conditions:"
+msgstr ""
+
+#: hooks/class-aal-hook-posts.php:9
+msgid "(no title)"
+msgstr ""
+
+#: language/strings.php:5
+msgid "ARYO Activity Log"
+msgstr ""
+
+#: language/strings.php:6
+msgid ""
+"Get aware of any activities that are taking place on your dashboard! Imagine "
+"it like a black-box for your WordPress site. e.g. post was deleted, plugin "
+"was activated, user logged in or logged out - it's all these for you to see."
+msgstr ""
+
+#: language/strings.php:9
+msgid "Post"
+msgstr ""
+
+#: language/strings.php:10
+msgid "created"
+msgstr ""
+
+#: language/strings.php:11
+msgid "updated"
+msgstr ""
+
+#: language/strings.php:12
+msgid "deleted"
+msgstr ""
+
+#: language/strings.php:15
+msgid "Attachment"
+msgstr ""
+
+#: language/strings.php:16
+msgid "added"
+msgstr ""
+
+#: language/strings.php:20
 msgid "logged_out"
 msgstr ""
 
-#: ../language/strings.php:18
+#: language/strings.php:21
 msgid "logged_in"
 msgstr ""
 
-#: ../language/strings.php:19
+#: language/strings.php:22
 msgid "wrong_password"
 msgstr ""
 
-#: ../language/strings.php:22
+#: language/strings.php:25
 msgid "Plugin"
 msgstr ""
 
-#: ../language/strings.php:23
+#: language/strings.php:26
 msgid "activated"
 msgstr ""
 
-#: ../language/strings.php:24
+#: language/strings.php:27
 msgid "deactivated"
 msgstr ""
 
-#: ../language/strings.php:27
+#: language/strings.php:30
 msgid "Theme"
 msgstr ""
 
-#: ../language/strings.php:28
+#: language/strings.php:31
 msgid "Theme Customizer"
 msgstr ""
 
-#: ../language/strings.php:31
+#: language/strings.php:34
 msgid "Widget"
 msgstr ""
 
-#: ../language/strings.php:34
+#: language/strings.php:37
 msgid "Options"
 msgstr ""
 
-#: ../language/strings.php:37
+#: language/strings.php:40
 msgid "Menu"
 msgstr ""
 
-#: ../language/strings.php:40
+#: language/strings.php:43
 msgid "Taxonomy"
 msgstr ""
 
-#: ../language/strings.php:45
+#: language/strings.php:48
 msgid "blogname"
 msgstr ""
 
-#: ../language/strings.php:46
+#: language/strings.php:49
 msgid "blogdescription"
 msgstr ""
 
-#: ../language/strings.php:47
+#: language/strings.php:50
 msgid "siteurl"
 msgstr ""
 
-#: ../language/strings.php:48
+#: language/strings.php:51
 msgid "home"
 msgstr ""
 
-#: ../language/strings.php:49
+#: language/strings.php:52
 msgid "admin_email"
 msgstr ""
 
-#: ../language/strings.php:50
+#: language/strings.php:53
 msgid "users_can_register"
 msgstr ""
 
-#: ../language/strings.php:51
+#: language/strings.php:54
 msgid "default_role"
 msgstr ""
 
-#: ../language/strings.php:52
+#: language/strings.php:55
 msgid "timezone_string"
 msgstr ""
 
-#: ../language/strings.php:53
+#: language/strings.php:56
 msgid "date_format"
 msgstr ""
 
-#: ../language/strings.php:54
+#: language/strings.php:57
 msgid "time_format"
 msgstr ""
 
-#: ../language/strings.php:55
+#: language/strings.php:58
 msgid "start_of_week"
 msgstr ""
 
-#: ../language/strings.php:58
+#: language/strings.php:61
 msgid "use_smilies"
 msgstr ""
 
-#: ../language/strings.php:59
+#: language/strings.php:62
 msgid "use_balanceTags"
 msgstr ""
 
-#: ../language/strings.php:60
+#: language/strings.php:63
 msgid "default_category"
 msgstr ""
 
-#: ../language/strings.php:61
+#: language/strings.php:64
 msgid "default_post_format"
 msgstr ""
 
-#: ../language/strings.php:62
+#: language/strings.php:65
 msgid "mailserver_url"
 msgstr ""
 
-#: ../language/strings.php:63
+#: language/strings.php:66
 msgid "mailserver_login"
 msgstr ""
 
-#: ../language/strings.php:64
+#: language/strings.php:67
 msgid "mailserver_pass"
 msgstr ""
 
-#: ../language/strings.php:65
+#: language/strings.php:68
 msgid "default_email_category"
 msgstr ""
 
-#: ../language/strings.php:66
+#: language/strings.php:69
 msgid "ping_sites"
 msgstr ""
 
-#: ../language/strings.php:69
+#: language/strings.php:72
 msgid "show_on_front"
 msgstr ""
 
-#: ../language/strings.php:70
+#: language/strings.php:73
 msgid "page_on_front"
 msgstr ""
 
-#: ../language/strings.php:71
+#: language/strings.php:74
 msgid "page_for_posts"
 msgstr ""
 
-#: ../language/strings.php:72
+#: language/strings.php:75
 msgid "posts_per_page"
 msgstr ""
 
-#: ../language/strings.php:73
+#: language/strings.php:76
 msgid "posts_per_rss"
 msgstr ""
 
-#: ../language/strings.php:74
+#: language/strings.php:77
 msgid "rss_use_excerpt"
 msgstr ""
 
-#: ../language/strings.php:75
+#: language/strings.php:78
 msgid "blog_public"
 msgstr ""
 
-#: ../language/strings.php:78
+#: language/strings.php:81
 msgid "default_pingback_flag"
 msgstr ""
 
-#: ../language/strings.php:79
+#: language/strings.php:82
 msgid "default_ping_status"
 msgstr ""
 
-#: ../language/strings.php:80
+#: language/strings.php:83
 msgid "default_comment_status"
 msgstr ""
 
-#: ../language/strings.php:81
+#: language/strings.php:84
 msgid "require_name_email"
 msgstr ""
 
-#: ../language/strings.php:82
+#: language/strings.php:85
 msgid "comment_registration"
 msgstr ""
 
-#: ../language/strings.php:83
+#: language/strings.php:86
 msgid "close_comments_for_old_posts"
 msgstr ""
 
-#: ../language/strings.php:84
+#: language/strings.php:87
 msgid "close_comments_days_old"
 msgstr ""
 
-#: ../language/strings.php:85
+#: language/strings.php:88
 msgid "thread_comments"
 msgstr ""
 
-#: ../language/strings.php:86
+#: language/strings.php:89
 msgid "thread_comments_depth"
 msgstr ""
 
-#: ../language/strings.php:87
+#: language/strings.php:90
 msgid "page_comments"
 msgstr ""
 
-#: ../language/strings.php:88
+#: language/strings.php:91
 msgid "comments_per_page"
 msgstr ""
 
-#: ../language/strings.php:89
+#: language/strings.php:92
 msgid "default_comments_page"
 msgstr ""
 
-#: ../language/strings.php:90
+#: language/strings.php:93
 msgid "comment_order"
 msgstr ""
 
-#: ../language/strings.php:91
+#: language/strings.php:94
 msgid "comments_notify"
 msgstr ""
 
-#: ../language/strings.php:92
+#: language/strings.php:95
 msgid "moderation_notify"
 msgstr ""
 
-#: ../language/strings.php:93
+#: language/strings.php:96
 msgid "comment_moderation"
 msgstr ""
 
-#: ../language/strings.php:94
+#: language/strings.php:97
 msgid "comment_whitelist"
 msgstr ""
 
-#: ../language/strings.php:95
+#: language/strings.php:98
 msgid "comment_max_links"
 msgstr ""
 
-#: ../language/strings.php:96
+#: language/strings.php:99
 msgid "moderation_keys"
 msgstr ""
 
-#: ../language/strings.php:97
+#: language/strings.php:100
 msgid "blacklist_keys"
 msgstr ""
 
-#: ../language/strings.php:98
+#: language/strings.php:101
 msgid "show_avatars"
 msgstr ""
 
-#: ../language/strings.php:99
+#: language/strings.php:102
 msgid "avatar_rating"
 msgstr ""
 
-#: ../language/strings.php:100
+#: language/strings.php:103
 msgid "avatar_default"
 msgstr ""
 
-#: ../language/strings.php:103
+#: language/strings.php:106
 msgid "thumbnail_size_w"
 msgstr ""
 
-#: ../language/strings.php:104
+#: language/strings.php:107
 msgid "thumbnail_size_h"
 msgstr ""
 
-#: ../language/strings.php:105
+#: language/strings.php:108
 msgid "thumbnail_crop"
 msgstr ""
 
-#: ../language/strings.php:106
+#: language/strings.php:109
 msgid "medium_size_w"
 msgstr ""
 
-#: ../language/strings.php:107
+#: language/strings.php:110
 msgid "medium_size_h"
 msgstr ""
 
-#: ../language/strings.php:108
+#: language/strings.php:111
 msgid "large_size_w"
 msgstr ""
 
-#: ../language/strings.php:109
+#: language/strings.php:112
 msgid "large_size_h"
 msgstr ""
 
-#: ../language/strings.php:110
+#: language/strings.php:113
 msgid "uploads_use_yearmonth_folders"
 msgstr ""
 
-#: ../language/strings.php:113
+#: language/strings.php:116
 msgid "permalink_structure"
 msgstr ""
 
-#: ../language/strings.php:114
+#: language/strings.php:117
 msgid "category_base"
 msgstr ""
 
-#: ../language/strings.php:115
+#: language/strings.php:118
 msgid "tag_base"
+msgstr ""
+
+#: notifications/abstract-class-aal-notification-base.php:99
+msgid "Object Type"
+msgstr ""
+
+#: notifications/abstract-class-aal-notification-base.php:100
+msgid "Object Name"
+msgstr ""
+
+#: notifications/abstract-class-aal-notification-base.php:102
+msgid "IP Address"
+msgstr ""
+
+#: notifications/abstract-class-aal-notification-base.php:121
+msgid "N/A"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:15
+msgid "Email"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:16
+msgid "Get notified by Email."
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:49
+msgid "New notification from Activity Log"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:65
+msgid ""
+"Hi there!\n"
+"\n"
+"A notification condition on [sitename] was matched. Here are the details:\n"
+"\n"
+"[action-details]\n"
+"\n"
+"Sent by ARYO Activity Log"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:67
+msgid "From Email"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:67
+msgid "The source Email address"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:68
+msgid "To Email"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:68
+msgid "The Email address notifications will be sent to"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:69
+msgid "Message"
+msgstr ""
+
+#: notifications/class-aal-notification-email.php:69
+#, php-format
+msgid "Customize the message using the following placeholders: %s"
 msgstr ""
