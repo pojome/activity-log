@@ -1,4 +1,4 @@
-# ARYO Activity Log [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log) #
+# ARYO Activity Log [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log) #
 **Contributors:** KingYes, ariel.k, maor  
 **Tags:** access, administration, activity, community, event, monitor, multisite, multi-users, log, logger, audit log, login, network, stats, security, tracking, madeinisrael, woocommerce  
 **Requires at least:** 3.5  
@@ -65,13 +65,13 @@ Would you like to like to cotribute to Activity Log? You are more than welcome t
 ## Screenshots ##
 
 ### 1. The log viewer page ###
-![The log viewer page](http://s.wordpress.org/extend/plugins/aryo-activity-log-[![build-status](https://travis-ci.org/kingyes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/kingyes/wordpress-aryo-activity-log)-[![built-with-grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)-[![dependency-status](https://david-dm.org/kingyes/wordpress-aryo-activity-log.svg)](https://david-dm.org/kingyes/wordpress-aryo-activity-log)/screenshot-1.png)
+![The log viewer page](http://s.wordpress.org/extend/plugins/aryo-activity-log-[![build-status](https://travis-ci.org/kingyes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/kingyes/wordpress-aryo-activity-log)-[![built-with-grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)-[![dependency-status](https://david-dm.org/kingyes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/kingyes/wordpress-aryo-activity-log)/screenshot-1.png)
 
 ### 2. The settings page ###
-![The settings page](http://s.wordpress.org/extend/plugins/aryo-activity-log-[![build-status](https://travis-ci.org/kingyes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/kingyes/wordpress-aryo-activity-log)-[![built-with-grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)-[![dependency-status](https://david-dm.org/kingyes/wordpress-aryo-activity-log.svg)](https://david-dm.org/kingyes/wordpress-aryo-activity-log)/screenshot-2.png)
+![The settings page](http://s.wordpress.org/extend/plugins/aryo-activity-log-[![build-status](https://travis-ci.org/kingyes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/kingyes/wordpress-aryo-activity-log)-[![built-with-grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)-[![dependency-status](https://david-dm.org/kingyes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/kingyes/wordpress-aryo-activity-log)/screenshot-2.png)
 
 ### 3. Screen Options ###
-![Screen Options](http://s.wordpress.org/extend/plugins/aryo-activity-log-[![build-status](https://travis-ci.org/kingyes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/kingyes/wordpress-aryo-activity-log)-[![built-with-grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)-[![dependency-status](https://david-dm.org/kingyes/wordpress-aryo-activity-log.svg)](https://david-dm.org/kingyes/wordpress-aryo-activity-log)/screenshot-3.png)
+![Screen Options](http://s.wordpress.org/extend/plugins/aryo-activity-log-[![build-status](https://travis-ci.org/kingyes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/kingyes/wordpress-aryo-activity-log)-[![built-with-grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)-[![dependency-status](https://david-dm.org/kingyes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/kingyes/wordpress-aryo-activity-log)/screenshot-3.png)
 
 
 ## Frequently Asked Questions ##
