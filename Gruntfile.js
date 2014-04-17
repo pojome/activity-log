@@ -48,7 +48,9 @@ module.exports = function(grunt) {
 			options:{
 				text_domain: 'aryo-aal',
 				dest: 'language/',
-				keywords: ['__:1',
+				keywords: [
+					// WordPress keywords
+					'__:1',
 					'_e:1',
 					'_x:1,2c',
 					'esc_html__:1',
