@@ -8,7 +8,7 @@
 		"grunt": "~0.4.1",
 		"grunt-checktextdomain": "~0.1.1",
 		"grunt-phpunit": "~0.3.3",
-		"grunt-wp-readme-to-markdown": "~0.6.0",
+		"grunt-wp-readme-to-markdown-with-extra": "~0.6.0",
 		"grunt-bumpup": "~0.4.1",
 		"grunt-shell": "~0.6.4",
 		"grunt-text-replace": "~0.3.6",
