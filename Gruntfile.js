@@ -44,6 +44,39 @@ module.exports = function(grunt) {
 			}
 		},
 
+		pot: {
+			options:{
+				text_domain: 'aryo-aal',
+				dest: 'language/',
+				keywords: ['__:1',
+					'_e:1',
+					'_x:1,2c',
+					'esc_html__:1',
+					'esc_html_e:1',
+					'esc_html_x:1,2c',
+					'esc_attr__:1',
+					'esc_attr_e:1',
+					'esc_attr_x:1,2c',
+					'_ex:1,2c',
+					'_n:1,2',
+					'_nx:1,2,4c',
+					'_n_noop:1,2',
+					'_nx_noop:1,2,3c'
+				]
+			},
+			files:{
+				src: [
+					'**/*.php',
+					'!node_modules/**',
+					'!build/**',
+					'!tests/**',
+					'!vendor/**',
+					'!*~'
+				],
+				expand: true
+			}
+		},
+
 		bumpup: {
 			options: {
 				updateProps: {
@@ -164,6 +197,7 @@ module.exports = function(grunt) {
 	// Default task(s).
 	grunt.registerTask( 'default', [
 		'checktextdomain',
+		'pot',
 		'phpunit',
 		'wp_readme_to_markdown'
 	] );
@@ -176,6 +210,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask( 'publish', [
 		'checktextdomain',
+		'pot',
 		'phpunit',
 		'bumpup',
 		'replace',
