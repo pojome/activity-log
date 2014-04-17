@@ -7,7 +7,7 @@ Author: Yakir Sitbon, Maor Chasen, Ariel Klikstein
 Author URI: http://www.aryodigital.com
 Version: 2.0.6
 Text Domain: aryo-aal
-Domain Path: /languages/
+Domain Path: /language/
 License: GPLv2 or later
 
 
