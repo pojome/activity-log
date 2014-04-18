@@ -79,7 +79,7 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 		}
 
 		// email template message
-		if ( '' !== $input['message_format'] ) {
+		if ( ! empty( $input['message_format'] ) ) {
 			$output['message_format'] = $input['message_format'];
 		}
 
