@@ -35,9 +35,12 @@ module.exports = function(grunt) {
 				},
 				files: [ {
 					src: [
-						'classes/*.php',
-						'language/*.php',
-						'*.php'
+						'**/*.php',
+						'!node_modules/**',
+						'!build/**',
+						'!tests/**',
+						'!vendor/**',
+						'!*~'
 					],
 					expand: true
 				} ]
