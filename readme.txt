@@ -54,7 +54,7 @@ We’re planning to add a lot more features in the upcoming releases. If you thi
 
 <strong>Contributions:</strong><br />
 
-Would you like to like to cotribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/KingYes/wordpress-aryo-activity-log). Also, if you have any notes about the code, please open a ticket on ths issue tracker.
+Would you like to like to contribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/KingYes/wordpress-aryo-activity-log). Also, if you have any notes about the code, please open a ticket on ths issue tracker.
 
 
 == Installation ==

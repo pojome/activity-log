@@ -37,6 +37,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * and much more..
 
 <h4>What people are saying</h4>
+* <em>“Thanks to this step, we’ve discovered that our site was undergoing a brute force attack”</em> - [artdriver.com](http://www.artdriver.com/wordpress-site-hacked-solution-time/)
 * <em>“Optimized code - The plugin itself is blazing fast and leaves almost no footprint on the server.”</em> - [freshtechtips.com](http://www.freshtechtips.com/2014/01/best-audit-trail-plugins-for-wordpress.html)
 * <em>“The plugin successful for activity log for wordpress.”</em> - [wp-tricks.co.il](http://www.wp-tricks.co.il/2013/08/%D7%99%D7%95%D7%9E%D7%9F-%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA-%D7%9C%D7%95%D7%95%D7%A8%D7%93%D7%A4%D7%A8%D7%A1-aryo-activity-log/)
 * <em>“This is a pretty simple yet quite effective plugin for keeping track of what your admins and users do on your sites.”</em> - [shadowdragonunlimited.com](http://shadowdragonunlimited.com/plugin-of-the-week-9302013-aryo-activity-log/plugin-of-the-week/)
@@ -55,7 +56,7 @@ We’re planning to add a lot more features in the upcoming releases. If you thi
 
 <strong>Contributions:</strong><br />
 
-Would you like to like to cotribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/KingYes/wordpress-aryo-activity-log). Also, if you have any notes about the code, please open a ticket on ths issue tracker.
+Would you like to like to contribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/KingYes/wordpress-aryo-activity-log). Also, if you have any notes about the code, please open a ticket on ths issue tracker.
 
 
 ## Installation ##
