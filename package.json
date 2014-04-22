@@ -3,7 +3,7 @@
 	"slug": "aryo-activity-log",
 	"homepage": "http://www.aryodigital.com/",
 	"description": "ARYO Activity Log",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"devDependencies": {
 		"grunt": "~0.4.1",
 		"grunt-checktextdomain": "~0.1.1",
