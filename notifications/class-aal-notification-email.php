@@ -64,7 +64,7 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 	public function settings_fields() {
 		$default_email_message = __( "Hi there!\n\nA notification condition on [sitename] was matched. Here are the details:\n\n[action-details]\n\nSent by ARYO Activity Log", 'aryo-aal' );
 
-		$this->add_settings_field_helper( 'from_email', __( 'From Email', 'aryo-aal' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The source Email address' ) );
+		$this->add_settings_field_helper( 'from_email', __( 'From Email', 'aryo-aal' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The source Email address', 'aryo-aal' ) );
 		$this->add_settings_field_helper( 'to_email', __( 'To Email', 'aryo-aal' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The Email address notifications will be sent to', 'aryo-aal' ) );
 		$this->add_settings_field_helper( 'message_format', __( 'Message', 'aryo-aal' ), array( 'AAL_Settings_Fields', 'textarea_field' ), sprintf( __( 'Customize the message using the following placeholders: %s', 'aryo-aal' ), '[sitename], [action-details]' ), $default_email_message );
 	}
