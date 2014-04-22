@@ -92,6 +92,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 ### 2.1.0 ###
 * New! Personally-tailored notifications that can be triggered by various types of events, users and action type (currently only email notifications are supported)
 * Bug fixes, stability improvements
+* Fixed an error that occurred on PHP 5.5
 
 ### 2.0.7 ###
 * Tested up to WordPress v3.9.
