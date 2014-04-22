@@ -90,7 +90,8 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 ## Changelog ##
 
 ### 2.1.0 ###
-* Tested up to WordPress v3.9.
+* New! Personally-tailored notifications that can be triggered by various types of events, users and action type (currently only email notifications are supported)
+* Bug fixes, stability improvements
 
 ### 2.0.6 ###
 * Fixed! Random fatal error ([topic](https://github.com/KingYes/wordpress-aryo-activity-log/issues/32))
