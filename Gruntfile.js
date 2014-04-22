@@ -179,8 +179,8 @@ module.exports = function(grunt) {
 		wp_deploy: {
 			deploy:{
 				options: {
-					plugin_slug: '<%= pkg.name %>',
-					svn_user: 'kingyes',
+					plugin_slug: '<%= pkg.slug %>',
+					svn_user: 'KingYes',
 					build_dir: 'build/'
 				}
 			}
