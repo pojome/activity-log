@@ -128,9 +128,9 @@ module.exports = function(grunt) {
 			options: {
 				bump: false,
 				npm: false,
-				tagName: 'v<%= pkg.version %>',
-				commitMessage: 'released v<%= pkg.version %>',
-				tagMessage: 'Tagged as v<%= pkg.version %>'
+				tagName: 'v<%= version %>',
+				commitMessage: 'released v<%= version %>',
+				tagMessage: 'Tagged as v<%= version %>'
 			}
 		},
 
