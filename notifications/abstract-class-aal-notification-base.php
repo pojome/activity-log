@@ -122,7 +122,7 @@ abstract class AAL_Notification_Base {
 					break;
 			}
 
-			$message .= sprintf( "<strong>%s</strong> - %s<br>\n", $detail_title, $detail_val );
+			$message .= sprintf( "<strong>%s</strong> - %s\n", $detail_title, $detail_val );
 		}
 
 		return $message;

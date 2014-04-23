@@ -47,7 +47,7 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 		wp_mail(
 			$to_email,
 			__( 'New notification from Activity Log', 'aryo-aal' ),
-			$email_contents,
+			nl2br( $email_contents ),
 			array(
 				"From: Activity Log @ $site_name <$from_email>"
 			)
