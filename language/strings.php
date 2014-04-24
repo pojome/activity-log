@@ -44,6 +44,8 @@ __( 'Taxonomy', 'aryo-aal' );
 
 // Core
 __( 'Core', 'aryo-aal' );
+__( 'WordPress Updated', 'aryo-aal' );
+__( 'WordPress Auto Updated', 'aryo-aal' );
 
 // Comments
 __( 'Comments', 'aryo-aal' );

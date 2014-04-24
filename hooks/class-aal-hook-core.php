@@ -8,9 +8,9 @@ class AAL_Hook_Core extends AAL_Hook_Base {
 
 		// Auto updated
 		if ( 'update-core.php' !== $pagenow )
-			$object_name = __( 'WordPress Auto Updated', 'aryo-aal' );
+			$object_name = 'WordPress Auto Updated';
 		else
-			$object_name = __( 'WordPress Updated', 'aryo-aal' );
+			$object_name = 'WordPress Updated';
 
 		aal_insert_log( array(
 			'action'      => 'updated',
