@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: aryo-activity-log 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-24 21:37+0000\n"
+"POT-Creation-Date: 2014-04-24 22:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,39 +63,39 @@ msgid "Unknown"
 msgstr ""
 
 #: classes/class-aal-activity-log-list-table.php:151
-#: classes/class-aal-activity-log-list-table.php:229
+#: classes/class-aal-activity-log-list-table.php:235
 msgid "Guest"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:240
+#: classes/class-aal-activity-log-list-table.php:246
 msgid "All Users"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:267
+#: classes/class-aal-activity-log-list-table.php:273
 msgid "All Types"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:278
+#: classes/class-aal-activity-log-list-table.php:284
 msgid "All Time"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:279
+#: classes/class-aal-activity-log-list-table.php:285
 msgid "Today"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:280
+#: classes/class-aal-activity-log-list-table.php:286
 msgid "Yesterday"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:281
+#: classes/class-aal-activity-log-list-table.php:287
 msgid "Week"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:282
+#: classes/class-aal-activity-log-list-table.php:288
 msgid "Month"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:289
+#: classes/class-aal-activity-log-list-table.php:295
 msgid "Filter"
 msgstr ""
 
@@ -338,247 +338,279 @@ msgstr ""
 msgid "Core"
 msgstr ""
 
+#: language/strings.php:49
+msgid "Comments"
+msgstr ""
+
+#: language/strings.php:50
+msgid "pending"
+msgstr ""
+
 #: language/strings.php:51
-msgid "blogname"
+msgid "approved"
 msgstr ""
 
 #: language/strings.php:52
-msgid "blogdescription"
+msgid "unapproved"
 msgstr ""
 
 #: language/strings.php:53
-msgid "siteurl"
+msgid "trashed"
 msgstr ""
 
 #: language/strings.php:54
-msgid "home"
+msgid "untrashed"
 msgstr ""
 
 #: language/strings.php:55
-msgid "admin_email"
+msgid "spammed"
 msgstr ""
 
 #: language/strings.php:56
-msgid "users_can_register"
-msgstr ""
-
-#: language/strings.php:57
-msgid "default_role"
-msgstr ""
-
-#: language/strings.php:58
-msgid "timezone_string"
-msgstr ""
-
-#: language/strings.php:59
-msgid "date_format"
-msgstr ""
-
-#: language/strings.php:60
-msgid "time_format"
+msgid "unspammed"
 msgstr ""
 
 #: language/strings.php:61
-msgid "start_of_week"
+msgid "blogname"
+msgstr ""
+
+#: language/strings.php:62
+msgid "blogdescription"
+msgstr ""
+
+#: language/strings.php:63
+msgid "siteurl"
 msgstr ""
 
 #: language/strings.php:64
-msgid "use_smilies"
+msgid "home"
 msgstr ""
 
 #: language/strings.php:65
-msgid "use_balanceTags"
+msgid "admin_email"
 msgstr ""
 
 #: language/strings.php:66
-msgid "default_category"
+msgid "users_can_register"
 msgstr ""
 
 #: language/strings.php:67
-msgid "default_post_format"
+msgid "default_role"
 msgstr ""
 
 #: language/strings.php:68
-msgid "mailserver_url"
+msgid "timezone_string"
 msgstr ""
 
 #: language/strings.php:69
-msgid "mailserver_login"
+msgid "date_format"
 msgstr ""
 
 #: language/strings.php:70
-msgid "mailserver_pass"
+msgid "time_format"
 msgstr ""
 
 #: language/strings.php:71
-msgid "default_email_category"
+msgid "start_of_week"
 msgstr ""
 
-#: language/strings.php:72
-msgid "ping_sites"
+#: language/strings.php:74
+msgid "use_smilies"
 msgstr ""
 
 #: language/strings.php:75
-msgid "show_on_front"
+msgid "use_balanceTags"
 msgstr ""
 
 #: language/strings.php:76
-msgid "page_on_front"
+msgid "default_category"
 msgstr ""
 
 #: language/strings.php:77
-msgid "page_for_posts"
+msgid "default_post_format"
 msgstr ""
 
 #: language/strings.php:78
-msgid "posts_per_page"
+msgid "mailserver_url"
 msgstr ""
 
 #: language/strings.php:79
-msgid "posts_per_rss"
+msgid "mailserver_login"
 msgstr ""
 
 #: language/strings.php:80
-msgid "rss_use_excerpt"
+msgid "mailserver_pass"
 msgstr ""
 
 #: language/strings.php:81
-msgid "blog_public"
+msgid "default_email_category"
 msgstr ""
 
-#: language/strings.php:84
-msgid "default_pingback_flag"
+#: language/strings.php:82
+msgid "ping_sites"
 msgstr ""
 
 #: language/strings.php:85
-msgid "default_ping_status"
+msgid "show_on_front"
 msgstr ""
 
 #: language/strings.php:86
-msgid "default_comment_status"
+msgid "page_on_front"
 msgstr ""
 
 #: language/strings.php:87
-msgid "require_name_email"
+msgid "page_for_posts"
 msgstr ""
 
 #: language/strings.php:88
-msgid "comment_registration"
+msgid "posts_per_page"
 msgstr ""
 
 #: language/strings.php:89
-msgid "close_comments_for_old_posts"
+msgid "posts_per_rss"
 msgstr ""
 
 #: language/strings.php:90
-msgid "close_comments_days_old"
+msgid "rss_use_excerpt"
 msgstr ""
 
 #: language/strings.php:91
-msgid "thread_comments"
-msgstr ""
-
-#: language/strings.php:92
-msgid "thread_comments_depth"
-msgstr ""
-
-#: language/strings.php:93
-msgid "page_comments"
+msgid "blog_public"
 msgstr ""
 
 #: language/strings.php:94
-msgid "comments_per_page"
+msgid "default_pingback_flag"
 msgstr ""
 
 #: language/strings.php:95
-msgid "default_comments_page"
+msgid "default_ping_status"
 msgstr ""
 
 #: language/strings.php:96
-msgid "comment_order"
+msgid "default_comment_status"
 msgstr ""
 
 #: language/strings.php:97
-msgid "comments_notify"
+msgid "require_name_email"
 msgstr ""
 
 #: language/strings.php:98
-msgid "moderation_notify"
+msgid "comment_registration"
 msgstr ""
 
 #: language/strings.php:99
-msgid "comment_moderation"
+msgid "close_comments_for_old_posts"
 msgstr ""
 
 #: language/strings.php:100
-msgid "comment_whitelist"
+msgid "close_comments_days_old"
 msgstr ""
 
 #: language/strings.php:101
-msgid "comment_max_links"
+msgid "thread_comments"
 msgstr ""
 
 #: language/strings.php:102
-msgid "moderation_keys"
+msgid "thread_comments_depth"
 msgstr ""
 
 #: language/strings.php:103
-msgid "blacklist_keys"
+msgid "page_comments"
 msgstr ""
 
 #: language/strings.php:104
-msgid "show_avatars"
+msgid "comments_per_page"
 msgstr ""
 
 #: language/strings.php:105
-msgid "avatar_rating"
+msgid "default_comments_page"
 msgstr ""
 
 #: language/strings.php:106
-msgid "avatar_default"
+msgid "comment_order"
+msgstr ""
+
+#: language/strings.php:107
+msgid "comments_notify"
+msgstr ""
+
+#: language/strings.php:108
+msgid "moderation_notify"
 msgstr ""
 
 #: language/strings.php:109
-msgid "thumbnail_size_w"
+msgid "comment_moderation"
 msgstr ""
 
 #: language/strings.php:110
-msgid "thumbnail_size_h"
+msgid "comment_whitelist"
 msgstr ""
 
 #: language/strings.php:111
-msgid "thumbnail_crop"
+msgid "comment_max_links"
 msgstr ""
 
 #: language/strings.php:112
-msgid "medium_size_w"
+msgid "moderation_keys"
 msgstr ""
 
 #: language/strings.php:113
-msgid "medium_size_h"
+msgid "blacklist_keys"
 msgstr ""
 
 #: language/strings.php:114
-msgid "large_size_w"
+msgid "show_avatars"
 msgstr ""
 
 #: language/strings.php:115
-msgid "large_size_h"
+msgid "avatar_rating"
 msgstr ""
 
 #: language/strings.php:116
-msgid "uploads_use_yearmonth_folders"
+msgid "avatar_default"
 msgstr ""
 
 #: language/strings.php:119
-msgid "permalink_structure"
+msgid "thumbnail_size_w"
 msgstr ""
 
 #: language/strings.php:120
-msgid "category_base"
+msgid "thumbnail_size_h"
 msgstr ""
 
 #: language/strings.php:121
+msgid "thumbnail_crop"
+msgstr ""
+
+#: language/strings.php:122
+msgid "medium_size_w"
+msgstr ""
+
+#: language/strings.php:123
+msgid "medium_size_h"
+msgstr ""
+
+#: language/strings.php:124
+msgid "large_size_w"
+msgstr ""
+
+#: language/strings.php:125
+msgid "large_size_h"
+msgstr ""
+
+#: language/strings.php:126
+msgid "uploads_use_yearmonth_folders"
+msgstr ""
+
+#: language/strings.php:129
+msgid "permalink_structure"
+msgstr ""
+
+#: language/strings.php:130
+msgid "category_base"
+msgstr ""
+
+#: language/strings.php:131
 msgid "tag_base"
 msgstr ""
 

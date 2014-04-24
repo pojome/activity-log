@@ -45,6 +45,16 @@ __( 'Taxonomy', 'aryo-aal' );
 // Core
 __( 'Core', 'aryo-aal' );
 
+// Comments
+__( 'Comments', 'aryo-aal' );
+__( 'pending', 'aryo-aal' );
+__( 'approved', 'aryo-aal' );
+__( 'unapproved', 'aryo-aal' );
+__( 'trashed', 'aryo-aal' );
+__( 'untrashed', 'aryo-aal' );
+__( 'spammed', 'aryo-aal' );
+__( 'unspammed', 'aryo-aal' );
+
 
 
 // Translate Options?
