@@ -66,7 +66,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		
 		$this->_roles = apply_filters( 'aal_init_roles', array(
 			// admin
-			'manage_options' => array( 'Post', 'Taxonomy', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu' ),
+			'manage_options' => array( 'Core', 'Post', 'Taxonomy', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu' ),
 			// editor
 			'edit_pages'     => array( 'Post', 'Taxonomy', 'Attachment' ),
 		) );

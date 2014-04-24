@@ -42,6 +42,9 @@ __( 'Menu', 'aryo-aal' );
 // Taxonomy
 __( 'Taxonomy', 'aryo-aal' );
 
+// Core
+__( 'Core', 'aryo-aal' );
+
 
 
 // Translate Options?
