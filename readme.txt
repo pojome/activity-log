@@ -82,8 +82,8 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 == Changelog ==
 
 = 2.1.1 =
-* New! Track about WordPress core update (direct or auto-updated)
-* New! Track post comments (created, approved, unproved, trashed, untrashed, spammed, unspammed, deleted)
+* New! Track about WordPress core update (direct or auto-updated) ([#41](https://github.com/KingYes/wordpress-aryo-activity-log/issues/41))
+* New! Track post comments (created, approved, unproved, trashed, untrashed, spammed, unspammed, deleted) ([#42](https://github.com/KingYes/wordpress-aryo-activity-log/issues/42))
 
 = 2.1.0 =
 * New! Personally-tailored notifications that can be triggered by various types of events, users and action type (currently only email notifications are supported)
