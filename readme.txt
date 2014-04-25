@@ -23,6 +23,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Tags</strong> - Created, Edited, Deleted.
 * <strong>Categories</strong> - Created, Edited, Deleted.
 * <strong>Taxonomies</strong> - Created, Edited, Deleted.
+* <strong>Comments</strong> - Created, Approved, Unproved, Trashed, Untrashed, Spammed, Unspammed, Deleted.
 * <strong>Media</strong> - Uploaded, Edited, Deleted.
 * <strong>Users</strong> - Login, Logout, Login has failed, Update profile, Registered and Deleted.
 * <strong>Plugins</strong> - Activated, Deactivated, Changed.
@@ -32,6 +33,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks.
 * <strong>Options</strong> - Can be extend by east filter.
 * <strong>WooCommerce</strong> - Few options updated (will be more soon)
+* <strong>WordPress</strong> - Core Updates.
 * and much more..
 
 <h4>What people are saying</h4>
