@@ -75,7 +75,7 @@
 		addRule: function ( $el ) {
 			this.counter++;
 			var $copy = $el.clone(),
-				curID = parseInt( $el.data( 'id' ) ),
+				curID = parseInt( $el.data( 'id' ), null ),
 				newID = this.counter;
 
 			$copy.find( '[name]' ).each( function() {
@@ -109,18 +109,18 @@
 	 * Form serialization helper
 	 */
 	$.fn.AALSerializeObject = function() {
-	    var o = {};
-	    var a = this.serializeArray();
-	    $.each(a, function() {
-	        if (o[this.name] !== undefined) {
-	            if (!o[this.name].push) {
-	                o[this.name] = [o[this.name]];
-	            }
-	            o[this.name].push(this.value || '');
-	        } else {
-	            o[this.name] = this.value || '';
-	        }
-	    });
-	    return o;
+		var o = {};
+		var a = this.serializeArray();
+		$.each( a, function() {
+			if ( o[this.name] !== undefined ) {
+				if ( !o[this.name].push ) {
+					o[this.name] = [o[this.name]];
+				}
+				o[this.name].push( this.value || '' );
+			} else {
+				o[this.name] = this.value || '';
+			}
+		} );
+		return o;
 	};
 })( jQuery );
