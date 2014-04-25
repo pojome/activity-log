@@ -91,6 +91,18 @@ module.exports = function(grunt) {
 			]
 		},
 
+		watch: {
+			js: {
+				files: [
+					'assets/js/settings.js'
+				],
+				tasks: [
+					'jshint'
+				],
+				options: {}
+			}
+		},
+
 		bumpup: {
 			options: {
 				updateProps: {
