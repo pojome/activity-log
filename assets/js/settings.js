@@ -1,3 +1,5 @@
+'use strict';
+
 ( function ( $, undefined ) {
 	var AAL = {
 		$wrapper: {},

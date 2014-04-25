@@ -82,6 +82,15 @@ module.exports = function(grunt) {
 			}
 		},
 
+		jshint: {
+			options: {
+				jshintrc: '.jshintrc'
+			},
+			all: [
+				'assets/js/settings.js'
+			]
+		},
+
 		bumpup: {
 			options: {
 				updateProps: {
@@ -157,6 +166,7 @@ module.exports = function(grunt) {
 					'!.git/**',
 					'!tests/**',
 					'!.travis.yml',
+					'!.jshintrc',
 					'!README.md',
 					'!phpunit.xml',
 					'!vendor/**',
