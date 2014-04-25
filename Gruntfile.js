@@ -213,6 +213,7 @@ module.exports = function(grunt) {
 	// Default task(s).
 	grunt.registerTask( 'default', [
 		'checktextdomain',
+		'jshint',
 		'pot',
 		'phpunit',
 		'wp_readme_to_markdown'
@@ -227,6 +228,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'publish', [
 		'checktextdomain',
 		'pot',
+		'jshint',
 		'phpunit',
 		'bumpup',
 		'replace',
