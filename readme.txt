@@ -83,6 +83,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.1.2 =
+* Tweak! Update translate: Hebrew (he_IL)
+
 = 2.1.1 =
 * New! Track about WordPress core update (manual or auto-updated) ([#41](https://github.com/KingYes/wordpress-aryo-activity-log/issues/41))
 * New! Track post comments (created, approved, unproved, trashed, untrashed, spammed, unspammed, deleted) ([#42](https://github.com/KingYes/wordpress-aryo-activity-log/issues/42))
