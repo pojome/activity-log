@@ -5,7 +5,7 @@
 **Tags:** access, administration, activity, community, event, monitor, multisite, multi-users, log, logger, audit log, login, network, stats, security, tracking, madeinisrael, woocommerce  
 **Requires at least:** 3.5  
 **Tested up to:** 3.9  
-**Stable tag:** 2.1.1  
+**Stable tag:** 2.1.2  
 **License:** GPLv2 or later  
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
