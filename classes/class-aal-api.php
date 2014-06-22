@@ -27,6 +27,34 @@ class AAL_API {
 	}
 
 	/**
+	 * Get real address
+	 * 
+	 * @since 2.1.4
+	 * 
+	 * @return string real address IP
+	 */
+	protected function _get_ip_address() {
+		$server_ip_keys = array(
+			'HTTP_CLIENT_IP',
+			'HTTP_X_FORWARDED_FOR',
+			'HTTP_X_FORWARDED',
+			'HTTP_X_CLUSTER_CLIENT_IP',
+			'HTTP_FORWARDED_FOR',
+			'HTTP_FORWARDED',
+			'REMOTE_ADDR',
+		);
+		
+		foreach ( $server_ip_keys as $key ) {
+			if ( isset( $_SERVER[ $key ] ) ) {
+				return $_SERVER[ $key ];
+			}
+		}
+		
+		// Fallback local ip.
+		return '127.0.0.1';
+	}
+
+	/**
 	 * @since 2.0.0
 	 * @return void
 	 */
@@ -56,7 +84,7 @@ class AAL_API {
 			'object_subtype' => '',
 			'object_name'    => '',
 			'object_id'      => '',
-			'hist_ip'        => $_SERVER['REMOTE_ADDR'],
+			'hist_ip'        => $this->_get_ip_address(),
 			'hist_time'      => current_time( 'timestamp' ),
 		) );
 
