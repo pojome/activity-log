@@ -84,6 +84,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.1.4 =
+* Fixed! Store real IP address in Proxy too ([#53](https://github.com/KingYes/wordpress-aryo-activity-log/issues/53))
+
 = 2.1.3 =
 * New! Added translate: Dutch (nl_NL) - Thanks to [Tom Aalbers](http://securancy.com/) ([#55](https://github.com/KingYes/wordpress-aryo-activity-log/issues/55))
 
