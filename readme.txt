@@ -37,6 +37,8 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>bbPress</strong> - Forums, Topics, Replies, Taxonomies and other actions
 * and much more...
 
+<strong>New!</strong> You are now able to get email notifications once an event you have defined (via rules) has occured. This is useful in cases you must know right away when someone does something on your site.
+
 <h4>What people are saying</h4>
 * <em>“Thanks to this step, we’ve discovered that our site was undergoing a brute force attack”</em> - [artdriver.com](http://www.artdriver.com/wordpress-site-hacked-solution-time/)
 * <em>“Optimized code - The plugin itself is blazing fast and leaves almost no footprint on the server.”</em> - [freshtechtips.com](http://www.freshtechtips.com/2014/01/best-audit-trail-plugins-for-wordpress.html)
