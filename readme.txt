@@ -73,6 +73,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 1. The log viewer page
 2. The settings page
 3. Screen Options
+4. Interface for defining notification rules
 
 == Frequently Asked Questions ==
 
