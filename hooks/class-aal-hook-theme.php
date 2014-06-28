@@ -80,10 +80,65 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 		);
 	}
 
+	/**
+	 * @param Theme_Upgrader $upgrader
+	 * @param array $extra
+	 */
+	public function hooks_theme_install_or_update( $upgrader, $extra ) {
+		if ( ! isset( $extra['type'] ) && 'theme' !== $extra['type'] )
+			return;
+		
+		if ( 'install' === $extra['action'] ) {
+			$slug = $upgrader->theme_info();
+			if ( ! $slug )
+				return;
+
+			wp_clean_themes_cache();
+			$theme   = wp_get_theme( $slug );
+			$name    = $theme->name;
+			$version = $theme->version;
+
+			aal_insert_log(
+				array(
+					'action' => 'installed',
+					'object_type' => 'Theme',
+					'object_name' => $name,
+					'object_subtype' => $version,
+				)
+			);
+		}
+		
+		if ( 'update' === $extra['action'] ) {
+			if ( isset( $extra['bulk'] ) && true == $extra['bulk'] )
+				$slugs = $extra['themes'];
+			else
+				$slugs = array( $upgrader->skin->theme );
+
+			foreach ( $slugs as $slug ) {
+				$theme      = wp_get_theme( $slug );
+				$stylesheet = $theme['Stylesheet Dir'] . '/style.css';
+				$theme_data = get_file_data( $stylesheet, array( 'Version' => 'Version' ) );
+				
+				$name    = $theme['Name'];
+				$version = $theme_data['Version'];
+
+				aal_insert_log(
+					array(
+						'action' => 'updated',
+						'object_type' => 'Theme',
+						'object_name' => $name,
+						'object_subtype' => $version,
+					)
+				);
+			}
+		}
+	}
+
 	public function __construct() {
 		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
 		add_action( 'switch_theme', array( &$this, 'hooks_switch_theme' ), 10, 2 );
 		add_action( 'delete_site_transient_update_themes', array( &$this, 'hooks_theme_deleted' ) );
+		add_action( 'upgrader_process_complete', array( &$this, 'hooks_theme_install_or_update' ), 10, 2 );
 
 		// Theme customizer
 		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ) );

@@ -25,6 +25,7 @@ __( 'wrong_password', 'aryo-aal' );
 __( 'Plugin', 'aryo-aal' );
 __( 'activated', 'aryo-aal' );
 __( 'deactivated', 'aryo-aal' );
+__( 'installed', 'aryo-aal' );
 
 // Theme
 __( 'Theme', 'aryo-aal' );
