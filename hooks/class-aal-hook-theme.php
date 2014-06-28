@@ -85,7 +85,7 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 	 * @param array $extra
 	 */
 	public function hooks_theme_install_or_update( $upgrader, $extra ) {
-		if ( ! isset( $extra['type'] ) && 'theme' !== $extra['type'] )
+		if ( ! isset( $extra['type'] ) || 'theme' !== $extra['type'] )
 			return;
 		
 		if ( 'install' === $extra['action'] ) {
