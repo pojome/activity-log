@@ -28,7 +28,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Media</strong> - Uploaded, Edited, Deleted
 * <strong>Users</strong> - Login, Logout, Login has failed, Update profile, Registered and Deleted
 * <strong>Plugins</strong> - Activated, Deactivated, Changed
-* <strong>Themes</strong> - Activeted, Changed (Editor and Customizer)
+* <strong>Themes</strong> - Installed, Updated, Activeted, Changed (Editor and Customizer)
 * <strong>Widgets</strong> - Added to a sidebar / Deleted from a sidebar, Order widgets
 * <strong>Menus</strong> - A menu is being updated
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks
@@ -86,6 +86,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 == Changelog ==
+
+= 2.1.5 =
+* New! Now tracking when theme installed, updated, deleted ([#44](https://github.com/KingYes/wordpress-aryo-activity-log/issues/44))
 
 = 2.1.4 =
 * Fixed! Store real IP address in Proxy too ([#53](https://github.com/KingYes/wordpress-aryo-activity-log/issues/53))
