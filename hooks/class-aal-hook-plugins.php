@@ -6,18 +6,20 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 	protected function _add_log_plugin( $action, $plugin_name ) {
 		// Get plugin name if is a path
 		if ( false !== strpos( $plugin_name, '/' ) ) {
-			$plugin_dir = explode( '/', $plugin_name );
+			$plugin_dir  = explode( '/', $plugin_name );
 			$plugin_data = array_values( get_plugins( '/' . $plugin_dir[0] ) );
 			$plugin_data = array_shift( $plugin_data );
 			$plugin_name = $plugin_data['Name'];
 		}
 
-		aal_insert_log( array(
-			'action'      => $action,
-			'object_type' => 'Plugin',
-			'object_id'   => 0,
-			'object_name' => $plugin_name,
-		) );
+		aal_insert_log(
+			array(
+				'action'      => $action,
+				'object_type' => 'Plugin',
+				'object_id'   => 0,
+				'object_name' => $plugin_name,
+			)
+		);
 	}
 
 	public function hooks_deactivated_plugin( $plugin_name ) {
