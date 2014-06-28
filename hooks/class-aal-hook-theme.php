@@ -55,9 +55,35 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 		aal_insert_log( $aal_args );
 	}
 
+	public function hooks_theme_deleted() {
+		$backtrace_history = debug_backtrace();
+
+		$delete_theme_call = null;
+		foreach ( $backtrace_history as $call ) {
+			if ( isset( $call['function'] ) && 'delete_theme' === $call['function'] ) {
+				$delete_theme_call = $call;
+				break;
+			}
+		}
+
+		if ( empty( $delete_theme_call ) )
+			return;
+
+		$name = $delete_theme_call['args'][0];
+		
+		aal_insert_log(
+			array(
+				'action' => 'deleted',
+				'object_type' => 'Theme',
+				'object_name' => $name,
+			)
+		);
+	}
+
 	public function __construct() {
 		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
 		add_action( 'switch_theme', array( &$this, 'hooks_switch_theme' ), 10, 2 );
+		add_action( 'delete_site_transient_update_themes', array( &$this, 'hooks_theme_deleted' ) );
 
 		// Theme customizer
 		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ) );
