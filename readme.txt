@@ -28,7 +28,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Media</strong> - Uploaded, Edited, Deleted
 * <strong>Users</strong> - Login, Logout, Login has failed, Update profile, Registered and Deleted
 * <strong>Plugins</strong> - Activated, Deactivated, Changed
-* <strong>Themes</strong> - Installed, Updated, Activeted, Changed (Editor and Customizer)
+* <strong>Themes</strong> - Installed, Updated, Deleted, Activeted, Changed (Editor and Customizer)
 * <strong>Widgets</strong> - Added to a sidebar / Deleted from a sidebar, Order widgets
 * <strong>Menus</strong> - A menu is being updated
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks
