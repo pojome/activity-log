@@ -29,13 +29,15 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 	}
 
 	public function hooks_switch_theme( $new_name, WP_Theme $new_theme ) {
-		aal_insert_log( array(
-			'action'         => 'activated',
-			'object_type'    => 'Theme',
-			'object_subtype' => $new_theme->get_stylesheet(),
-			'object_id'      => 0,
-			'object_name'    => $new_name,
-		) );
+		aal_insert_log(
+				array(
+				'action'         => 'activated',
+				'object_type'    => 'Theme',
+				'object_subtype' => $new_theme->get_stylesheet(),
+				'object_id'      => 0,
+				'object_name'    => $new_name,
+			)
+		);
 	}
 
 	public function hooks_theme_customizer_modified( WP_Customize_Manager $obj ) {
