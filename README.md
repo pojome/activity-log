@@ -1,11 +1,11 @@
 # ARYO Activity Log #
 [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-**Contributors:** pojome, KingYes, ariel.k, maor  
+**Contributors:** pojo.me, KingYes, ariel.k, maor  
 **Tags:** access, administration, activity, community, event, monitor, multisite, multi-users, log, logger, audit log, login, network, stats, security, tracking, madeinisrael, woocommerce, notifications, email notifications  
 **Requires at least:** 3.5  
 **Tested up to:** 3.9.1  
-**Stable tag:** 2.1.4  
+**Stable tag:** 2.1.5  
 **License:** GPLv2 or later  
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
