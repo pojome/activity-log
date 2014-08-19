@@ -78,15 +78,18 @@ class AAL_API {
 	public function insert( $args ) {
 		global $wpdb;
 
-		$args = wp_parse_args( $args, array(
-			'action'         => '',
-			'object_type'    => '',
-			'object_subtype' => '',
-			'object_name'    => '',
-			'object_id'      => '',
-			'hist_ip'        => $this->_get_ip_address(),
-			'hist_time'      => current_time( 'timestamp' ),
-		) );
+		$args = wp_parse_args(
+			$args,
+			array(
+				'action'         => '',
+				'object_type'    => '',
+				'object_subtype' => '',
+				'object_name'    => '',
+				'object_id'      => '',
+				'hist_ip'        => $this->_get_ip_address(),
+				'hist_time'      => current_time( 'timestamp' ),
+			)
+		);
 
 		$user = get_user_by( 'id', get_current_user_id() );
 		if ( $user ) {
