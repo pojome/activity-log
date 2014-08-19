@@ -132,3 +132,7 @@ __( 'uploads_use_yearmonth_folders', 'aryo-aal' );
 __( 'permalink_structure', 'aryo-aal' );
 __( 'category_base', 'aryo-aal' );
 __( 'tag_base', 'aryo-aal' );
+
+// Export
+__( 'Export', 'aryo-aal' );
+__( 'downloaded', 'aryo-aal' );
