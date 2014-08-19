@@ -3,25 +3,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_Hook_Export extends AAL_Hook_Base {
 
-	public function _core_updated_successfully( $wp_version ) {
-		global $pagenow;
-
-		// Auto updated
-		if ( 'update-core.php' !== $pagenow )
-			$object_name = 'WordPress Auto Updated';
-		else
-			$object_name = 'WordPress Updated';
-
-		aal_insert_log( array(
-			'action'      => 'updated',
-			'object_type' => 'Core',
-			'object_id'   => 0,
-			'object_name' => $object_name,
-		) );
+	public function hook_export_wp( $args ) {
+		
 	}
 
 	public function __construct() {
-		add_action( '_core_updated_successfully', array( &$this, '_core_updated_successfully' ) );
+		add_action( 'export_wp', array( &$this, 'export_wp' ) );
 		
 		parent::__construct();
 	}
