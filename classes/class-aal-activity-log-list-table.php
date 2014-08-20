@@ -59,29 +59,40 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 
 	public function __construct( $args = array() ) {
-		parent::__construct( array(
-			'singular'  => 'activity',
-			'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
-		) );
+		parent::__construct(
+			array(
+				'singular'  => 'activity',
+				'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
+			)
+		);
 		
-		$this->_roles = apply_filters( 'aal_init_roles', array(
-			// admin
-			'manage_options' => array( 'Core', 'Post', 'Taxonomy', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu', 'Comments' ),
-			// editor
-			'edit_pages'     => array( 'Post', 'Taxonomy', 'Attachment', 'Comments' ),
-		) );
+		$this->_roles = apply_filters(
+			'aal_init_roles',
+			array(
+				// admin
+				'manage_options' => array( 'Core', 'Export', 'Post', 'Taxonomy', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu', 'Comments' ),
+				// editor
+				'edit_pages'     => array( 'Post', 'Taxonomy', 'Attachment', 'Comments' ),
+			)
+		);
 
-		$this->_caps = apply_filters( 'aal_init_caps', array(
-			'administrator' => array( 'administrator', 'editor', 'author', 'guest' ),
-			'editor'        => array( 'editor', 'author', 'guest' ),
-			'author'        => array( 'author', 'guest' ),
-		) );
+		$this->_caps = apply_filters(
+			'aal_init_caps',
+			array(
+				'administrator' => array( 'administrator', 'editor', 'author', 'guest' ),
+				'editor'        => array( 'editor', 'author', 'guest' ),
+				'author'        => array( 'author', 'guest' ),
+			)
+		);
 
-		add_screen_option( 'per_page', array(
-			'default' => 50,
-			'label'   => __( 'Activities', 'aryo-aal' ),
-			'option'  => 'edit_aal_logs_per_page',
-		) );
+		add_screen_option(
+			'per_page',
+			array(
+				'default' => 50,
+				'label'   => __( 'Activities', 'aryo-aal' ),
+				'option'  => 'edit_aal_logs_per_page',
+			)
+		);
 
 		add_filter( 'set-screen-option', array( &$this, 'set_screen_option' ), 10, 3 );
 		set_screen_options();
@@ -115,7 +126,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$return = ucwords( str_replace( '_', ' ', __( $item->action, 'aryo-aal' ) ) );
 				break;
 			case 'date' :
-				$return = sprintf( '<strong>' . __( '%s ago', 'aryo-aal' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
+				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-aal' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
 				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
 				$return .= '<br />' . date( 'H:i', $item->hist_time );
 				break;
@@ -160,7 +171,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	public function column_label( $item ) {
 		$return = '';
 		if ( ! empty( $item->object_subtype ) ) {
-			$pt = get_post_type_object( $item->object_subtype );
+			$pt     = get_post_type_object( $item->object_subtype );
 			$return = ! empty( $pt->label ) ? $pt->label : $item->object_subtype;
 		}
 		return $return;
@@ -182,6 +193,15 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			case 'Comments' :
 				if ( ! empty( $item->object_id ) && $comment = get_comment( $item->object_id ) ) {
 					$return = sprintf( '<a href="%s">%s #%d</a>', get_edit_comment_link( $item->object_id ), $item->object_name, $item->object_id );
+				}
+				break;
+			
+			case 'Export' :
+				if ( 'all' === $item->object_name ) {
+					$return = __( 'All', 'aryo-aal' );
+				} else {
+					$pt     = get_post_type_object( $item->object_name );
+					$return = ! empty( $pt->label ) ? $pt->label : $item->object_name;
 				}
 				break;
 

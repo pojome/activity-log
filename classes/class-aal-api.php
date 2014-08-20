@@ -78,15 +78,18 @@ class AAL_API {
 	public function insert( $args ) {
 		global $wpdb;
 
-		$args = wp_parse_args( $args, array(
-			'action'         => '',
-			'object_type'    => '',
-			'object_subtype' => '',
-			'object_name'    => '',
-			'object_id'      => '',
-			'hist_ip'        => $this->_get_ip_address(),
-			'hist_time'      => current_time( 'timestamp' ),
-		) );
+		$args = wp_parse_args(
+			$args,
+			array(
+				'action'         => '',
+				'object_type'    => '',
+				'object_subtype' => '',
+				'object_name'    => '',
+				'object_id'      => '',
+				'hist_ip'        => $this->_get_ip_address(),
+				'hist_time'      => current_time( 'timestamp' ),
+			)
+		);
 
 		$user = get_user_by( 'id', get_current_user_id() );
 		if ( $user ) {
@@ -100,7 +103,8 @@ class AAL_API {
 		}
 		
 		// TODO: Find better way to Multisite compatibility.
-		if ( empty( $args['user_caps'] ) )
+		// Fallback for multisite with bbPress
+		if ( empty( $args['user_caps'] ) || 'bbp_participant' === $args['user_caps'] )
 			$args['user_caps'] = 'administrator';
 		
 		// Make sure for non duplicate.

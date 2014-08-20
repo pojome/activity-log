@@ -2,10 +2,10 @@
 [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 **Contributors:** pojo.me, KingYes, ariel.k, maor  
-**Tags:** access, administration, activity, community, event, monitor, multisite, multi-users, log, logger, audit log, login, network, stats, security, tracking, madeinisrael, woocommerce, notifications, email notifications  
+**Tags:** administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications  
 **Requires at least:** 3.5  
 **Tested up to:** 3.9.2  
-**Stable tag:** 2.1.6  
+**Stable tag:** 2.1.7  
 **License:** GPLv2 or later  
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -35,6 +35,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Menus</strong> - A menu is being updated
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks
 * <strong>Options</strong> - Can be extend by east filter
+* <strong>Export</strong> - User download export file from the site
 * <strong>WooCommerce</strong> - Few options updated (will be more soon)
 * <strong>bbPress</strong> - Forums, Topics, Replies, Taxonomies and other actions
 * and much more...
@@ -42,6 +43,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 <strong>New!</strong> You are now able to get email notifications once an event you have defined (via rules) has occured. This is useful in cases you must know right away when someone does something on your site.
 
 <h4>What people are saying</h4>
+* <em>“Best 10 Free WordPress Plugins of the Month – July 2014: Keeping tabs on what your users do with their access to the Dashboard”</em> - [ManageWp.com](https://managewp.com/best-free-wordpress-plugins-july-2014)
 * <em>“Thanks to this step, we’ve discovered that our site was undergoing a brute force attack”</em> - [artdriver.com](http://www.artdriver.com/wordpress-site-hacked-solution-time/)
 * <em>“Optimized code - The plugin itself is blazing fast and leaves almost no footprint on the server.”</em> - [freshtechtips.com](http://www.freshtechtips.com/2014/01/best-audit-trail-plugins-for-wordpress.html)
 * <em>“The plugin successful for activity log for WordPress.”</em> - [wp-tricks.co.il](http://www.wp-tricks.co.il/2013/08/%D7%99%D7%95%D7%9E%D7%9F-%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA-%D7%9C%D7%95%D7%95%D7%A8%D7%93%D7%A4%D7%A8%D7%A1-aryo-activity-log/)
@@ -96,6 +98,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 ## Changelog ##
+
+### 2.1.7 ###
+* New! Now tracking when user download export file from the site.
 
 ### 2.1.6 ###
 * Tested up to WordPress v3.9.2.
