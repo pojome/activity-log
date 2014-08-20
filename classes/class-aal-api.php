@@ -103,7 +103,8 @@ class AAL_API {
 		}
 		
 		// TODO: Find better way to Multisite compatibility.
-		if ( empty( $args['user_caps'] ) )
+		// Fallback for multisite with bbPress
+		if ( empty( $args['user_caps'] ) || 'bbp_participant' === $args['user_caps'] )
 			$args['user_caps'] = 'administrator';
 		
 		// Make sure for non duplicate.
