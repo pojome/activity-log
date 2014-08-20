@@ -35,6 +35,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Menus</strong> - A menu is being updated
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks
 * <strong>Options</strong> - Can be extend by east filter
+* <strong>Export</strong> - User download export file from the site
 * <strong>WooCommerce</strong> - Few options updated (will be more soon)
 * <strong>bbPress</strong> - Forums, Topics, Replies, Taxonomies and other actions
 * and much more...
@@ -97,6 +98,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 ## Changelog ##
+
+### 2.1.7 ###
+* New! Now tracking when user download export file from the site.
 
 ### 2.1.6 ###
 * Tested up to WordPress v3.9.2.
