@@ -99,8 +99,11 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.1.8 ###
+* New! Now tracking when plugins installed and updated ([#59](https://github.com/KingYes/wordpress-aryo-activity-log/pull/59) and [#43](https://github.com/KingYes/wordpress-aryo-activity-log/issues/43))
+
 ### 2.1.7 ###
-* New! Now tracking when user download export file from the site.
+* New! Now tracking when user download export file from the site ([#58](https://github.com/KingYes/wordpress-aryo-activity-log/issues/58) and [#63](https://github.com/KingYes/wordpress-aryo-activity-log/pull/63))
 
 ### 2.1.6 ###
 * Tested up to WordPress v3.9.2.
