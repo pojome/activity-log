@@ -6,18 +6,20 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 	protected function _add_log_plugin( $action, $plugin_name ) {
 		// Get plugin name if is a path
 		if ( false !== strpos( $plugin_name, '/' ) ) {
-			$plugin_dir = explode( '/', $plugin_name );
+			$plugin_dir  = explode( '/', $plugin_name );
 			$plugin_data = array_values( get_plugins( '/' . $plugin_dir[0] ) );
 			$plugin_data = array_shift( $plugin_data );
 			$plugin_name = $plugin_data['Name'];
 		}
 
-		aal_insert_log( array(
-			'action'      => $action,
-			'object_type' => 'Plugin',
-			'object_id'   => 0,
-			'object_name' => $plugin_name,
-		) );
+		aal_insert_log(
+			array(
+				'action'      => $action,
+				'object_type' => 'Plugin',
+				'object_id'   => 0,
+				'object_name' => $plugin_name,
+			)
+		);
 	}
 
 	public function hooks_deactivated_plugin( $plugin_name ) {
@@ -55,10 +57,58 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 		return $location;
 	}
 
+	/**
+	 * @param Plugin_Upgrader $upgrader
+	 * @param array $extra
+	 */
+	public function hooks_plugin_install_or_update( $upgrader, $extra ) {
+		if ( ! isset( $extra['type'] ) || 'plugin' !== $extra['type'] )
+			return;
+
+		if ( 'install' === $extra['action'] ) {
+			$path = $upgrader->plugin_info();
+			if ( ! $path )
+				return;
+			
+			$data = get_plugin_data( $upgrader->skin->result['local_destination'] . '/' . $path, true, false );
+			
+			aal_insert_log(
+				array(
+					'action' => 'installed',
+					'object_type' => 'Plugin',
+					'object_name' => $data['Name'],
+					'object_subtype' => $data['Version'],
+				)
+			);
+		}
+
+		if ( 'update' === $extra['action'] ) {
+			if ( isset( $extra['bulk'] ) && true == $extra['bulk'] )
+				$slugs = $extra['plugins'];
+			else
+				$slugs = array( $upgrader->skin->plugin );
+
+			foreach ( $slugs as $slug ) {
+				$data = get_plugin_data( WP_PLUGIN_DIR . '/' . $slug, true, false );
+				
+				aal_insert_log(
+					array(
+						'action' => 'updated',
+						'object_type' => 'Plugin',
+						'object_name' => $data['Name'],
+						'object_subtype' => $data['Version'],
+					)
+				);
+			}
+		}
+	}
+
 	public function __construct() {
 		add_action( 'activated_plugin', array( &$this, 'hooks_activated_plugin' ) );
 		add_action( 'deactivated_plugin', array( &$this, 'hooks_deactivated_plugin' ) );
 		add_filter( 'wp_redirect', array( &$this, 'hooks_plugin_modify' ), 10, 2 );
+
+		add_action( 'upgrader_process_complete', array( &$this, 'hooks_plugin_install_or_update' ), 10, 2 );
 
 		parent::__construct();
 	}
