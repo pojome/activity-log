@@ -81,6 +81,26 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 				)
 			);
 		}
+
+		if ( 'update' === $extra['action'] ) {
+			if ( isset( $extra['bulk'] ) && true == $extra['bulk'] )
+				$slugs = $extra['plugins'];
+			else
+				$slugs = array( $upgrader->skin->plugin );
+
+			foreach ( $slugs as $slug ) {
+				$data = get_plugin_data( WP_PLUGIN_DIR . '/' . $slug, true, false );
+				
+				aal_insert_log(
+					array(
+						'action' => 'updated',
+						'object_type' => 'Plugin',
+						'object_name' => $data['Name'],
+						'object_subtype' => $data['Version'],
+					)
+				);
+			}
+		}
 	}
 
 	public function __construct() {
