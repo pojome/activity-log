@@ -57,10 +57,38 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 		return $location;
 	}
 
+	/**
+	 * @param Plugin_Upgrader $upgrader
+	 * @param array $extra
+	 */
+	public function hooks_plugin_install_or_update( $upgrader, $extra ) {
+		if ( ! isset( $extra['type'] ) || 'plugin' !== $extra['type'] )
+			return;
+
+		if ( 'install' === $extra['action'] ) {
+			$path = $upgrader->plugin_info();
+			if ( ! $path )
+				return;
+			
+			$data = get_plugin_data( $upgrader->skin->result['local_destination'] . '/' . $path, true, false );
+			
+			aal_insert_log(
+				array(
+					'action' => 'installed',
+					'object_type' => 'Plugin',
+					'object_name' => $data['Name'],
+					'object_subtype' => $data['Version'],
+				)
+			);
+		}
+	}
+
 	public function __construct() {
 		add_action( 'activated_plugin', array( &$this, 'hooks_activated_plugin' ) );
 		add_action( 'deactivated_plugin', array( &$this, 'hooks_deactivated_plugin' ) );
 		add_filter( 'wp_redirect', array( &$this, 'hooks_plugin_modify' ), 10, 2 );
+
+		add_action( 'upgrader_process_complete', array( &$this, 'hooks_plugin_install_or_update' ), 10, 2 );
 
 		parent::__construct();
 	}
