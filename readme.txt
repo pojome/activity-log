@@ -34,7 +34,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks
 * <strong>Options</strong> - Can be extend by east filter
 * <strong>Export</strong> - User download export file from the site
-* <strong>WooCommerce</strong> - Few options updated (will be more soon)
+* <strong>WooCommerce</strong> - Monitor all shop options
 * <strong>bbPress</strong> - Forums, Topics, Replies, Taxonomies and other actions
 * and much more...
 
@@ -88,6 +88,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 == Changelog ==
+
+= 2.1.9 =
+* New! Store all WooCommerce settings ([#62](https://github.com/KingYes/wordpress-aryo-activity-log/issues/62))
 
 = 2.1.8 =
 * New! Now tracking when plugins installed and updated ([#59](https://github.com/KingYes/wordpress-aryo-activity-log/pull/59) and [#43](https://github.com/KingYes/wordpress-aryo-activity-log/issues/43))
