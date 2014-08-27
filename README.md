@@ -4,7 +4,7 @@
 **Contributors:** pojo.me, KingYes, ariel.k, maor  
 **Tags:** administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications  
 **Requires at least:** 3.5  
-**Tested up to:** 3.9.2  
+**Tested up to:** 4.0.0  
 **Stable tag:** 2.1.8  
 **License:** GPLv2 or later  
 
@@ -101,6 +101,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ### 2.1.9 ###
 * New! Store all WooCommerce settings ([#62](https://github.com/KingYes/wordpress-aryo-activity-log/issues/62))
+* Tested up to WordPress v4.0.0
 
 ### 2.1.8 ###
 * New! Now tracking when plugins installed and updated ([#59](https://github.com/KingYes/wordpress-aryo-activity-log/pull/59) and [#43](https://github.com/KingYes/wordpress-aryo-activity-log/issues/43))
@@ -109,7 +110,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * New! Now tracking when user download export file from the site ([#58](https://github.com/KingYes/wordpress-aryo-activity-log/issues/58) and [#63](https://github.com/KingYes/wordpress-aryo-activity-log/pull/63))
 
 ### 2.1.6 ###
-* Tested up to WordPress v3.9.2.
+* Tested up to WordPress v3.9.2
 
 ### 2.1.5 ###
 * New! Now tracking when theme installed, updated, deleted ([#44](https://github.com/KingYes/wordpress-aryo-activity-log/issues/44))
@@ -133,7 +134,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Fixed an error that occurred on PHP 5.5
 
 ### 2.0.7 ###
-* Tested up to WordPress v3.9.
+* Tested up to WordPress v3.9.0
 
 ### 2.0.6 ###
 * Fixed! Random fatal error ([topic](https://github.com/KingYes/wordpress-aryo-activity-log/issues/32))
