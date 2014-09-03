@@ -174,6 +174,7 @@ module.exports = function(grunt) {
 					'**',
 					'!node_modules/**',
 					'!build/**',
+					'!wp-assets/**',
 					'!bin/**',
 					'!.git/**',
 					'!tests/**',
