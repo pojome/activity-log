@@ -3,7 +3,7 @@ Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 2.1.8
+Stable tag: 2.1.9
 License: GPLv2 or later
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -91,7 +91,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 = 2.1.9 =
 * New! Store all WooCommerce settings ([#62](https://github.com/KingYes/wordpress-aryo-activity-log/issues/62))
-* Tested up to WordPress v4.0.0
+* Tested up to WordPress v4.0
 
 = 2.1.8 =
 * New! Now tracking when plugins installed and updated ([#59](https://github.com/KingYes/wordpress-aryo-activity-log/pull/59) and [#43](https://github.com/KingYes/wordpress-aryo-activity-log/issues/43))
