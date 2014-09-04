@@ -2,7 +2,7 @@
 Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications
 Requires at least: 3.5
-Tested up to: 4.0.0
+Tested up to: 4.0
 Stable tag: 2.1.8
 License: GPLv2 or later
 
