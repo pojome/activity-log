@@ -54,7 +54,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * Danish (da_DK) - [Morten Dalgaard Johansen](http://www.iosoftgame.com/)
 * Hebrew (he_IL) + RTL Support - [Aryo Digital](http://www.aryodigital.com/)
 * Armenia (hy_AM) - Hayk Jomardyan
-* Brazilian Portuguese (pt_BR) - Techload
+* Brazilian Portuguese (pt_BR) - [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
@@ -91,7 +91,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 == Changelog ==
 
 = 2.1.10 =
-* New! Added translate: Portuguese (pt_BR) - Thanks to Techload
+* New! Added translate: Portuguese (pt_BR) - Thanks to [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
 
 = 2.1.9 =
 * New! Store all WooCommerce settings ([#62](https://github.com/KingYes/wordpress-aryo-activity-log/issues/62))
