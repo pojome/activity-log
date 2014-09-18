@@ -32,7 +32,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Plugins</strong> - Installed, Updated, Activated, Deactivated, Changed
 * <strong>Themes</strong> - Installed, Updated, Deleted, Activated, Changed (Editor and Customizer)
 * <strong>Widgets</strong> - Added to a sidebar / Deleted from a sidebar, Order widgets
-* <strong>Menus</strong> - A menu is being updated
+* <strong>Menus</strong> - A menu is being Created, Updated, Deleted
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks
 * <strong>Options</strong> - Can be extend by east filter
 * <strong>Export</strong> - User download export file from the site
@@ -101,6 +101,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 ## Changelog ##
 
 ### 2.1.10 ###
+* New! Now tracking when menus created and deleted
 * New! Added translate: Portuguese (pt_BR) - Thanks to [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
 
 ### 2.1.9 ###
