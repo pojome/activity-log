@@ -90,6 +90,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.1.11 =
+* Fixed! Compatible for old WP version
+
 = 2.1.10 =
 * New! Now tracking when menus created and deleted
 * New! Added translate: Portuguese (pt_BR) - Thanks to [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
