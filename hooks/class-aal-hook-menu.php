@@ -5,7 +5,7 @@ class AAL_Hook_Menu extends AAL_Hook_Base {
 
 	public function hooks_menu_created_or_updated( $nav_menu_selected_id ) {
 		if ( $menu_object = wp_get_nav_menu_object( $nav_menu_selected_id ) ) {
-			if ( 'wp_create_nav_menu' === current_action() )
+			if ( 'wp_create_nav_menu' === current_filter() )
 				$action = 'created';
 			else
 				$action = 'updated';
