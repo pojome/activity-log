@@ -57,6 +57,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * Hebrew (he_IL) + RTL Support - [Aryo Digital](http://www.aryodigital.com/)
 * Armenia (hy_AM) - Hayk Jomardyan
 * Brazilian Portuguese (pt_BR) - [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
+* Turkish (tr_TR) - [Ahmet Kolcu](http://ahmetkolcu.org)
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
@@ -99,6 +100,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 ## Changelog ##
+
+### 2.1.12 ###
+* New! Added translate: Turkish (tr_TR) - Thanks to [Ahmet Kolcu](http://ahmetkolcu.org)
 
 ### 2.1.11 ###
 * Fixed! Compatible for old WP version
