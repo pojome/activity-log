@@ -11,13 +11,39 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	protected $_roles = array();
 	
 	protected $_caps = array();
+	
+	protected $_allow_caps = array();
+	
+	protected function _get_allow_caps() {
+		if ( empty( $this->_allow_caps ) ) {
+			$user = get_user_by( 'id', get_current_user_id() );
+			if ( ! $user )
+				wp_die( 'No allowed here.' );
+
+			$user_cap   = strtolower( key( $user->caps ) );
+			$allow_caps = array();
+
+			foreach ( $this->_caps as $key => $cap_allow ) {
+				if ( $key === $user_cap ) {
+					$allow_caps = array_merge( $allow_caps, $cap_allow );
+					break;
+				}
+			}
+
+			// TODO: Find better way to Multisite compatibility.
+			if ( is_super_admin() || current_user_can( 'view_all_aryo_activity_log' ) )
+				$allow_caps = $this->_caps['administrator'];
+
+			if ( empty( $allow_caps ) )
+				wp_die( 'No allowed here.' );
+			
+			$this->_allow_caps = array_unique( $allow_caps );
+		}
+		return $this->_allow_caps;
+	}
 
 	protected function _get_where_by_role() {
 		$allow_modules = array();
-
-		$user = get_user_by( 'id', get_current_user_id() );
-		if ( ! $user )
-			wp_die( 'No allowed here.' );
 
 		foreach ( $this->_roles as $key => $role ) {
 			if ( current_user_can( $key ) || current_user_can( 'view_all_aryo_activity_log' ) ) {
@@ -33,26 +59,9 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		$where = array();
 		foreach ( $allow_modules as $type )
 			$where[] .= '`object_type` = \'' . $type . '\'';
-
-		$user_cap   = strtolower( key( $user->caps ) );
-		$allow_caps = $where_caps = array();
 		
-		foreach ( $this->_caps as $key => $cap_allow ) {
-			if ( $key === $user_cap ) {
-				$allow_caps = array_merge( $allow_caps, $cap_allow );
-				break;
-			}
-		}
-
-		// TODO: Find better way to Multisite compatibility.
-		if ( is_super_admin() || current_user_can( 'view_all_aryo_activity_log' ) )
-			$allow_caps = $this->_caps['administrator'];
-
-		if ( empty( $allow_caps ) )
-			wp_die( 'No allowed here.' );
-
-		$allow_caps = array_unique( $allow_caps );
-		foreach ( $allow_caps as $cap )
+		$where_caps = array();
+		foreach ( $this->_get_allow_caps() as $cap )
 			$where_caps[] .= '`user_caps` = \'' . $cap . '\'';
 
 		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ')';
@@ -247,6 +256,23 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		) );
 
 		if ( $users ) {
+			if ( ! isset( $_REQUEST['capshow'] ) )
+				$_REQUEST['capshow'] = '';
+
+			$output = array();
+			foreach ( $this->_get_allow_caps() as $cap ) {
+				$output[ $cap ] = __( ucwords( $cap ), 'aryo-aal' );
+			}
+
+			if ( ! empty( $output ) ) {
+				echo '<select name="capshow" id="hs-filter-capshow">';
+				printf( '<option value="">%s</option>', __( 'All Roles', 'aryo-aal' ) );
+				foreach ( $output as $key => $value ) {
+					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['capshow'], $key, false ), $value );
+				}
+				echo '</select>';
+			}
+			
 			if ( ! isset( $_REQUEST['usershow'] ) )
 				$_REQUEST['usershow'] = '';
 
@@ -339,6 +365,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
 			$where .= $wpdb->prepare( ' AND `user_id` = %d', $_REQUEST['usershow'] );
+		}
+
+		if ( isset( $_REQUEST['capshow'] ) && '' !== $_REQUEST['capshow'] ) {
+			$where .= $wpdb->prepare( ' AND `user_caps` = \'%s\'', strtolower( $_REQUEST['capshow'] ) );
 		}
 
 		if ( isset( $_REQUEST['dateshow'] ) && in_array( $_REQUEST['dateshow'], array( 'today', 'yesterday', 'week', 'month' ) ) ) {
