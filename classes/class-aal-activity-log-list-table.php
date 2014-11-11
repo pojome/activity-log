@@ -343,7 +343,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		if ( isset( $_REQUEST['dateshow'] ) && in_array( $_REQUEST['dateshow'], array( 'today', 'yesterday', 'week', 'month' ) ) ) {
 			$current_time = current_time( 'timestamp' );
-			
+
 			// Today
 			$start_time = mktime( 0, 0, 0, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );;
 			$end_time = mktime( 23, 59, 59, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
