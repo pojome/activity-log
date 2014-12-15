@@ -58,6 +58,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * Armenia (hy_AM) - Hayk Jomardyan
 * Brazilian Portuguese (pt_BR) - [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
 * Turkish (tr_TR) - [Ahmet Kolcu](http://ahmetkolcu.org)
+* Persian (fa_IR) - [Promising](http://vwp.ir/)
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
