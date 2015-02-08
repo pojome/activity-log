@@ -1,9 +1,9 @@
-=== ARYO Activity Log ===
+=== Activity Log ===
 Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications
 Requires at least: 3.5
-Tested up to: 4.0.1
-Stable tag: 2.1.14
+Tested up to: 4.1
+Stable tag: 2.1.15
 License: GPLv2 or later
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -91,6 +91,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 == Changelog ==
+
+= 2.1.15 =
+* Tested up to WordPress v4.1
+* Change plugin name to "Activity Log"
 
 = 2.1.14 =
 * New! Added translate: Persian (fa_IR) - Thanks to [Promising](http://vwp.ir/)

@@ -1,11 +1,11 @@
-# ARYO Activity Log #
+# Activity Log #
 [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 **Contributors:** pojo.me, KingYes, ariel.k, maor  
 **Tags:** administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications  
 **Requires at least:** 3.5  
-**Tested up to:** 4.0.1  
-**Stable tag:** 2.1.14  
+**Tested up to:** 4.1  
+**Stable tag:** 2.1.15  
 **License:** GPLv2 or later  
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -78,16 +78,16 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 ## Screenshots ##
 
 ### 1. The log viewer page ###
-![The log viewer page](http://s.wordpress.org/extend/plugins/aryo-activity-log/screenshot-1.png)
+![The log viewer page](http://s.wordpress.org/extend/plugins/activity-log/screenshot-1.png)
 
 ### 2. The settings page ###
-![The settings page](http://s.wordpress.org/extend/plugins/aryo-activity-log/screenshot-2.png)
+![The settings page](http://s.wordpress.org/extend/plugins/activity-log/screenshot-2.png)
 
 ### 3. Screen Options ###
-![Screen Options](http://s.wordpress.org/extend/plugins/aryo-activity-log/screenshot-3.png)
+![Screen Options](http://s.wordpress.org/extend/plugins/activity-log/screenshot-3.png)
 
 ### 4. Interface for defining notification rules ###
-![Interface for defining notification rules](http://s.wordpress.org/extend/plugins/aryo-activity-log/screenshot-4.png)
+![Interface for defining notification rules](http://s.wordpress.org/extend/plugins/activity-log/screenshot-4.png)
 
 
 ## Frequently Asked Questions ##
@@ -101,6 +101,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 ## Changelog ##
+
+### 2.1.15 ###
+* Tested up to WordPress v4.1
+* Change plugin name to "Activity Log"
 
 ### 2.1.14 ###
 * New! Added translate: Persian (fa_IR) - Thanks to [Promising](http://vwp.ir/)
