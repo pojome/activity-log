@@ -83,11 +83,15 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 		}
 
 		if ( 'update' === $extra['action'] ) {
-			if ( isset( $extra['bulk'] ) && true == $extra['bulk'] )
+			if ( isset( $extra['bulk'] ) && true == $extra['bulk'] ) {
 				$slugs = $extra['plugins'];
-			else
+			} else {
+				if ( ! isset( $upgrader->skin->plugin ) )
+					return;
+				
 				$slugs = array( $upgrader->skin->plugin );
-
+			}
+			
 			foreach ( $slugs as $slug ) {
 				$data = get_plugin_data( WP_PLUGIN_DIR . '/' . $slug, true, false );
 				
