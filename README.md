@@ -54,7 +54,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * Dutch (nl_NL) - [Tom Aalbers](http://securancy.com/)
 * Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
 * Danish (da_DK) - [Morten Dalgaard Johansen](http://www.iosoftgame.com/)
-* Hebrew (he_IL) + RTL Support - [Aryo Digital](http://www.aryodigital.com/)
+* Hebrew (he_IL) + RTL Support - [Pojo.me](http://pojo.me/)
 * Armenia (hy_AM) - Hayk Jomardyan
 * Brazilian Portuguese (pt_BR) - [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
 * Turkish (tr_TR) - [Ahmet Kolcu](http://ahmetkolcu.org)
@@ -101,6 +101,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 ## Changelog ##
+
+### 2.1.16 ###
+* Fixes Undefined property with some 3td party themes/plugins
 
 ### 2.1.15 ###
 * Tested up to WordPress v4.1
