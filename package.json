@@ -16,7 +16,7 @@
 		"grunt-shell": "~1.1.1",
 		"grunt-text-replace": "~0.4.0",
 		"grunt-release": "~0.11.0",
-		"grunt-contrib-copy": "~0.7.0",
+		"grunt-contrib-copy": "~0.8.0",
 		"grunt-contrib-clean": "~0.6.0",
 		"grunt-wp-deploy": "~1.0.3",
 		"matchdep": "~0.3.0"
