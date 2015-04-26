@@ -337,15 +337,15 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		) );
 
 		if ( $actions ) {
-			if ( ! isset( $_REQUEST['actionshow'] ) )
-				$_REQUEST['actionshow'] = '';
+			if ( ! isset( $_REQUEST['showaction'] ) )
+				$_REQUEST['showaction'] = '';
 
 			$output = array();
 			foreach ( $actions as $type )
-				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->action, selected( $_REQUEST['actionshow'], $type->action, false ) );
+				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ) );
 
-			echo '<select name="actionshow" id="hs-filter-actionshow">';
-			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-aal' ) );
+			echo '<select name="showaction" id="hs-filter-showaction">';
+			printf( '<option value="" %s>%s</option>', selected( true, true, false ), __( 'All Actions', 'aryo-aal' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
@@ -391,8 +391,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND `object_type` = \'%s\'', $_REQUEST['typeshow'] );
 		}
 
-		if ( isset( $_REQUEST['actionshow'] ) && '' !== $_REQUEST['actionshow'] ) {
-			$where .= $wpdb->prepare( ' AND `action` = \'%s\'', $_REQUEST['actionshow'] );
+		if ( isset( $_REQUEST['showaction'] ) && '' !== $_REQUEST['showaction'] ) {
+			$where .= $wpdb->prepare( ' AND `action` = \'%s\'', $_REQUEST['showaction'] );
 		}
 
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
