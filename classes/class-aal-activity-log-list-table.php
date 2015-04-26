@@ -246,12 +246,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		echo '<div class="alignleft actions">';
 
 		$users = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
+			'SELECT DISTINCT %1$s FROM `%2$s`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-					GROUP BY `user_id`
-					ORDER BY `user_id`
-					;',
+				GROUP BY `%1$s`
+				ORDER BY `%1$s`
+			;',
+			'user_id',
 			$wpdb->activity_log
 		) );
 
@@ -299,12 +300,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		$types = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
+			'SELECT DISTINCT %1$s FROM `%2$s`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `object_type`
-				ORDER BY `object_type`
+				GROUP BY `%1$s`
+				ORDER BY `%1$s`
 			;',
+			'object_type',
 			$wpdb->activity_log
 		) );
 
@@ -323,22 +325,23 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 
-		$log_actions = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
+		$actions = $wpdb->get_results( $wpdb->prepare(
+			'SELECT DISTINCT %1$s FROM `%2$s`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `action`
-				ORDER BY `action`
+				GROUP BY `%1$s`
+				ORDER BY `%1$s`
 			;',
+			'action',
 			$wpdb->activity_log
 		) );
 
-		if ( $log_actions ) {
+		if ( $actions ) {
 			if ( ! isset( $_REQUEST['actionshow'] ) )
 				$_REQUEST['actionshow'] = '';
 
 			$output = array();
-			foreach ( $log_actions as $type )
+			foreach ( $actions as $type )
 				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->action, selected( $_REQUEST['actionshow'], $type->action, false ) );
 
 			echo '<select name="actionshow" id="hs-filter-actionshow">';
