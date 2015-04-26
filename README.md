@@ -79,16 +79,16 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 ## Screenshots ##
 
 ### 1. The log viewer page ###
-![The log viewer page](http://s.wordpress.org/extend/plugins/activity-log/screenshot-1.png)
+![The log viewer page](https://raw.githubusercontent.com/KingYes/wordpress-aryo-activity-log/master/screenshot-1.png)
 
 ### 2. The settings page ###
-![The settings page](http://s.wordpress.org/extend/plugins/activity-log/screenshot-2.png)
+![The settings page](https://raw.githubusercontent.com/KingYes/wordpress-aryo-activity-log/master/screenshot-2.png)
 
 ### 3. Screen Options ###
-![Screen Options](http://s.wordpress.org/extend/plugins/activity-log/screenshot-3.png)
+![Screen Options](https://raw.githubusercontent.com/KingYes/wordpress-aryo-activity-log/master/screenshot-3.png)
 
 ### 4. Interface for defining notification rules ###
-![Interface for defining notification rules](http://s.wordpress.org/extend/plugins/activity-log/screenshot-4.png)
+![Interface for defining notification rules](https://raw.githubusercontent.com/KingYes/wordpress-aryo-activity-log/master/screenshot-4.png)
 
 
 ## Frequently Asked Questions ##
