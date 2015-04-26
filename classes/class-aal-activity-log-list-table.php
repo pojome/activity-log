@@ -345,7 +345,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ) );
 
 			echo '<select name="showaction" id="hs-filter-showaction">';
-			printf( '<option value="" %s>%s</option>', selected( true, true, false ), __( 'All Actions', 'aryo-aal' ) );
+			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-aal' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
