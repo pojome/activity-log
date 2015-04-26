@@ -224,6 +224,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	
 	public function display_tablenav( $which ) {
 		if ( 'top' == $which )
+			$this->search_box( __( 'Search' ), 'aal-search' );
 			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
 		?>
 		<div class="tablenav <?php echo esc_attr( $which ); ?>">
@@ -388,7 +389,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		if ( isset( $_REQUEST['actionshow'] ) && '' !== $_REQUEST['actionshow'] ) {
-			$where .= $wpdb->prepare( ' AND `action` = \'%s\'', strtolower( $_REQUEST['actionshow'] ) );
+			$where .= $wpdb->prepare( ' AND `action` = \'%s\'', $_REQUEST['actionshow'] );
 		}
 
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
@@ -418,7 +419,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND `hist_time` > %1$d AND `hist_time` < %2$d', $start_time, $end_time );
 		}
 
+		if ( isset( $_REQUEST['s'] ) ) {
+			// Search only searches 'description' fields.
+			$where .= $wpdb->prepare( ' AND `object_name` LIKE \'%%%s%%\'', '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%' );
+		}
+
 		$offset = ( $this->get_pagenum() - 1 ) * $items_per_page;
+
 		
 		$total_items = $wpdb->get_var( $wpdb->prepare(
 			'SELECT COUNT(`histid`) FROM `%1$s`
@@ -453,6 +460,20 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		if ( 'edit_aal_logs_per_page' === $option )
 			return $value;
 		return $status;
+	}
+
+	public function search_box( $text, $input_id ) {
+
+		$search_data = isset( $_REQUEST['s'] ) ? sanitize_text_field( $_REQUEST['s'] ) : '';
+
+		$input_id = $input_id . '-search-input';
+		?>
+		<p class="search-box">
+			<label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
+			<input type="search" id="<?php echo $input_id ?>" name="s" value="<?php echo $search_data; ?>" />
+			<?php submit_button( $text, 'button', false, false, array('id' => 'search-submit') ); ?>
+		</p>
+	<?php
 	}
 	
 }
