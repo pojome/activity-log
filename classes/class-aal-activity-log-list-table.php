@@ -313,7 +313,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			$output = array();
 			foreach ( $types as $type )
-				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ) );
+				$output[] = sprintf( '<option value="%1$s"%2$s>%3$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ), __( $type->object_type, 'aryo-aal' ) );
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
 			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-aal' ) );
