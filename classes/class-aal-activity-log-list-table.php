@@ -224,6 +224,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	
 	public function display_tablenav( $which ) {
 		if ( 'top' == $which )
+			$this->search_box( __( 'Search' ), 'aal-search' );
 			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
 		?>
 		<div class="tablenav <?php echo esc_attr( $which ); ?>">
@@ -245,12 +246,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		echo '<div class="alignleft actions">';
 
 		$users = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
+			'SELECT DISTINCT %1$s FROM `%2$s`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-					GROUP BY `user_id`
-					ORDER BY `user_id`
-					;',
+				GROUP BY `%1$s`
+				ORDER BY `%1$s`
+			;',
+			'user_id',
 			$wpdb->activity_log
 		) );
 
@@ -298,12 +300,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		$types = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
+			'SELECT DISTINCT %1$s FROM `%2$s`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `object_type`
-				ORDER BY `object_type`
+				GROUP BY `%1$s`
+				ORDER BY `%1$s`
 			;',
+			'object_type',
 			$wpdb->activity_log
 		) );
 
@@ -317,6 +320,32 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
 			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-aal' ) );
+			echo implode( '', $output );
+			echo '</select>';
+		}
+
+
+		$actions = $wpdb->get_results( $wpdb->prepare(
+			'SELECT DISTINCT %1$s FROM `%2$s`
+				WHERE 1 = 1
+				' . $this->_get_where_by_role() . '
+				GROUP BY `%1$s`
+				ORDER BY `%1$s`
+			;',
+			'action',
+			$wpdb->activity_log
+		) );
+
+		if ( $actions ) {
+			if ( ! isset( $_REQUEST['showaction'] ) )
+				$_REQUEST['showaction'] = '';
+
+			$output = array();
+			foreach ( $actions as $type )
+				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ) );
+
+			echo '<select name="showaction" id="hs-filter-showaction">';
+			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-aal' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
@@ -362,6 +391,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND `object_type` = \'%s\'', $_REQUEST['typeshow'] );
 		}
 
+		if ( isset( $_REQUEST['showaction'] ) && '' !== $_REQUEST['showaction'] ) {
+			$where .= $wpdb->prepare( ' AND `action` = \'%s\'', $_REQUEST['showaction'] );
+		}
+
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
 			$where .= $wpdb->prepare( ' AND `user_id` = %d', $_REQUEST['usershow'] );
 		}
@@ -389,7 +422,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND `hist_time` > %1$d AND `hist_time` < %2$d', $start_time, $end_time );
 		}
 
+		if ( isset( $_REQUEST['s'] ) ) {
+			// Search only searches 'description' fields.
+			$where .= $wpdb->prepare( ' AND `object_name` LIKE \'%%%s%%\'', '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%' );
+		}
+
 		$offset = ( $this->get_pagenum() - 1 ) * $items_per_page;
+
 		
 		$total_items = $wpdb->get_var( $wpdb->prepare(
 			'SELECT COUNT(`histid`) FROM `%1$s`
@@ -424,6 +463,20 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		if ( 'edit_aal_logs_per_page' === $option )
 			return $value;
 		return $status;
+	}
+
+	public function search_box( $text, $input_id ) {
+
+		$search_data = isset( $_REQUEST['s'] ) ? sanitize_text_field( $_REQUEST['s'] ) : '';
+
+		$input_id = $input_id . '-search-input';
+		?>
+		<p class="search-box">
+			<label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
+			<input type="search" id="<?php echo $input_id ?>" name="s" value="<?php echo $search_data; ?>" />
+			<?php submit_button( $text, 'button', false, false, array('id' => 'search-submit') ); ?>
+		</p>
+	<?php
 	}
 	
 }
