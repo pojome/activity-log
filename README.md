@@ -5,7 +5,7 @@
 **Tags:** administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications  
 **Requires at least:** 3.5  
 **Tested up to:** 4.2  
-**Stable tag:** 2.2.0  
+**Stable tag:** 2.2.1  
 **License:** GPLv2 or later  
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
@@ -103,6 +103,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 ## Changelog ##
+
+### 2.2.1 ###
+* Fixes from prev release
 
 ### 2.2.0 ###
 * New! - Adds search box, to allow users to search the description field.

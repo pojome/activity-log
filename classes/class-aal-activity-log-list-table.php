@@ -224,7 +224,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	
 	public function display_tablenav( $which ) {
 		if ( 'top' == $which )
-			$this->search_box( __( 'Search' ), 'aal-search' );
+			$this->search_box( __( 'Search', 'aryo-aal' ), 'aal-search' );
 			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
 		?>
 		<div class="tablenav <?php echo esc_attr( $which ); ?>">
