@@ -49,7 +49,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 
 <h4>Translators:</h4>
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
-* Dutch (nl_NL) - [Tom Aalbers](http://securancy.com/)
+* Dutch (nl_NL) - [Tom Aalbers](http://www.dtaalbers.com/)
 * Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
 * Danish (da_DK) - [Morten Dalgaard Johansen](http://www.iosoftgame.com/)
 * Hebrew (he_IL) + RTL Support - [Pojo.me](http://pojo.me/)
@@ -148,7 +148,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Fixed! Store real IP address in Proxy too ([#53](https://github.com/KingYes/wordpress-aryo-activity-log/issues/53))
 
 = 2.1.3 =
-* New! Added translate: Dutch (nl_NL) - Thanks to [Tom Aalbers](http://securancy.com/) ([#55](https://github.com/KingYes/wordpress-aryo-activity-log/issues/55))
+* New! Added translate: Dutch (nl_NL) - Thanks to [Tom Aalbers](http://www.dtaalbers.com/) ([#55](https://github.com/KingYes/wordpress-aryo-activity-log/issues/55))
 
 = 2.1.2 =
 * Tweak! Update translate: Hebrew (he_IL)
