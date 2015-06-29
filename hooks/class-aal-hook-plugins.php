@@ -45,7 +45,8 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 					$aal_args['object_name'] = $_REQUEST['file'];
 					// Get plugin name
 					$plugin_dir  = explode( '/', $_REQUEST['file'] );
-					$plugin_data = array_shift( array_values( get_plugins( '/' . $plugin_dir[0] ) ) );
+					$plugin_data = array_values( get_plugins( '/' . $plugin_dir[0] ) );
+					$plugin_data = array_shift( $plugin_data );
 
 					$aal_args['object_subtype'] = $plugin_data['Name'];
 				}

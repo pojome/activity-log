@@ -94,6 +94,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.2.2 =
+* Fixed! some PHP strict standards (PHP v5.4+)
+
 = 2.2.1 =
 * Fixes from prev release
 
