@@ -145,6 +145,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				if ( isset( $item->$column_name ) )
 					$return = $item->$column_name;
 		}
+
+		$return = apply_filters( 'aal_table_list_column_default', $return, $item, $column_name );
 		
 		return $return;
 	}
@@ -173,6 +175,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function column_type( $item ) {
 		$return = __( $item->object_type, 'aryo-aal' );
+		
+		$return = apply_filters( 'aal_table_list_column_type', $return, $item );
 		return $return;
 	}
 
@@ -182,6 +186,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$pt     = get_post_type_object( $item->object_subtype );
 			$return = ! empty( $pt->label ) ? $pt->label : $item->object_subtype;
 		}
+
+		$return = apply_filters( 'aal_table_list_column_label', $return, $item );
 		return $return;
 	}
 	
@@ -218,6 +224,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$return = __( $item->object_name, 'aryo-aal' );
 				break;
 		}
+		
+		$return = apply_filters( 'aal_table_list_column_description', $return, $item );
 		
 		return $return;
 	}
