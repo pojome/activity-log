@@ -5,14 +5,14 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 	
 	protected function _draft_or_post_title( $post = 0 ) {
 		$title = get_the_title( $post );
+		
 		if ( empty( $title ) )
 			$title = __( '(no title)', 'aryo-aal' );
+		
 		return $title;
 	}
 
 	public function hooks_transition_post_status( $new_status, $old_status, $post ) {
-		$action = '';
-
 		if ( 'auto-draft' === $old_status && ( 'auto-draft' !== $new_status && 'inherit' !== $new_status ) ) {
 			// page created
 			$action = 'created';
@@ -37,13 +37,15 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		if ( 'nav_menu_item' === get_post_type( $post->ID ) )
 			return;
 
-		aal_insert_log( array(
-			'action'         => $action,
-			'object_type'    => 'Post',
-			'object_subtype' => $post->post_type,
-			'object_id'      => $post->ID,
-			'object_name'    => $this->_draft_or_post_title( $post->ID ),
-		) );
+		aal_insert_log(
+			array(
+				'action' => $action,
+				'object_type' => 'Post',
+				'object_subtype' => $post->post_type,
+				'object_id' => $post->ID,
+				'object_name' => $this->_draft_or_post_title( $post->ID ),
+			)
+		);
 	}
 
 	public function hooks_delete_post( $post_id ) {
@@ -59,13 +61,15 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		if ( 'nav_menu_item' === get_post_type( $post->ID ) )
 			return;
 
-		aal_insert_log( array(
-			'action'         => 'deleted',
-			'object_type'    => 'Post',
-			'object_subtype' => $post->post_type,
-			'object_id'      => $post->ID,
-			'object_name'    => $this->_draft_or_post_title( $post->ID ),
-		) );
+		aal_insert_log(
+			array(
+				'action' => 'deleted',
+				'object_type' => 'Post',
+				'object_subtype' => $post->post_type,
+				'object_id' => $post->ID,
+				'object_name' => $this->_draft_or_post_title( $post->ID ),
+			)
+		);
 	}
 	
 	public function __construct() {
