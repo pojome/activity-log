@@ -61,6 +61,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * Persian (fa_IR) - [Promising](http://vwp.ir/)
 * Russian (ru_RU) - Oleg Reznikov
 * Polish (pl_PL) - Maciej Gryniuk
+* Czech (cs_CZ) - Martin Kokeš
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
