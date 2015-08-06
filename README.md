@@ -104,6 +104,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.2.4 ###
+* New! - Added translate: Czech (cs_CZ) - Thanks to Martin Kokeš ([#76](https://github.com/KingYes/wordpress-aryo-activity-log/pull/76))
+
 ### 2.2.3 ###
 * Tweak! - Added more filters in table list columns
 
