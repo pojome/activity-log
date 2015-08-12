@@ -60,7 +60,7 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * Russian (ru_RU) - Oleg Reznikov
 * Polish (pl_PL) - Maciej Gryniuk
 * Czech (cs_CZ) - Martin Kokeš
-* Finnish (fi_FI) - Nazq
+* Finnish (fi) - Nazq
 
 The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
 
@@ -97,7 +97,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 == Changelog ==
 
 = 2.2.5 =
-* New! - Added translate: Finnish (fi_FI) - Thanks to Nazq ([topic](https://wordpress.org/support/topic/finnish-translation-1))
+* New! - Added translate: Finnish (fi) - Thanks to Nazq ([topic](https://wordpress.org/support/topic/finnish-translation-1))
 
 = 2.2.4 =
 * New! - Added translate: Czech (cs_CZ) - Thanks to Martin Kokeš ([#76](https://github.com/KingYes/wordpress-aryo-activity-log/pull/76))
