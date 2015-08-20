@@ -92,7 +92,7 @@ class AAL_Maintenance {
 		$wpdb->query( "DROP TABLE IF EXISTS `{$wpdb->prefix}aryo_activity_log`;" );
 
 		$admin_role = get_role( 'administrator' );
-		if ( $admin_role->has_cap( 'view_all_aryo_activity_log' ) )
+		if ( $admin_role && $admin_role->has_cap( 'view_all_aryo_activity_log' ) )
 			$admin_role->remove_cap( 'view_all_aryo_activity_log' );
 
 		delete_option( 'activity_log_db_version' );
