@@ -21,4 +21,4 @@ before_script:
 after_success:
     - bash <(curl -s https://codecov.io/bash)
 
-script: phpunit
+script: phpunit --coverage-clover=coverage.xml

@@ -75,11 +75,17 @@ final class AAL_Main {
 	 * @since 2.0.5
 	 */
 	public $api;
-	
+
+	/**
+	 * Load text domain
+	 */
 	public function load_textdomain() {
 		load_plugin_textdomain( 'aryo-aal', false, basename( dirname( __FILE__ ) ) . '/language' );
 	}
 
+	/**
+	 * Construct
+	 */
 	protected function __construct() {
 		global $wpdb;
 
