@@ -4,7 +4,7 @@
 **Contributors:** pojo.me, KingYes, ariel.k, maor  
 **Tags:** administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications  
 **Requires at least:** 3.5  
-**Tested up to:** 4.2  
+**Tested up to:** 4.3  
 **Stable tag:** 2.2.4  
 **License:** GPLv2 or later  
 
@@ -108,6 +108,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ### 2.2.5 ###
 * New! - Added translate: Finnish (fi) - Thanks to Nazq ([topic](https://wordpress.org/support/topic/finnish-translation-1))
+* Tweak! - Better actions label in list table
+* Fixed! - Notice php warring in MU delete site
+* Tested up to WordPress v4.3
 
 ### 2.2.4 ###
 * New! - Added translate: Czech (cs_CZ) - Thanks to Martin Kokeš ([#76](https://github.com/KingYes/wordpress-aryo-activity-log/pull/76))

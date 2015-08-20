@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: aryo-activity-log 2.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-12 09:44+0300\n"
+"POT-Creation-Date: 2015-08-20 14:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,97 +21,97 @@ msgstr ""
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:100
+#: classes/class-aal-activity-log-list-table.php:104
 msgid "Activities"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:111
+#: classes/class-aal-activity-log-list-table.php:115
 msgid "Date"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:112
+#: classes/class-aal-activity-log-list-table.php:116
 msgid "Author"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:113
+#: classes/class-aal-activity-log-list-table.php:117
 msgid "IP"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:114
+#: classes/class-aal-activity-log-list-table.php:118
 msgid "Type"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:115
+#: classes/class-aal-activity-log-list-table.php:119
 msgid "Label"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:116
+#: classes/class-aal-activity-log-list-table.php:120
 msgid "Action"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:117
+#: classes/class-aal-activity-log-list-table.php:121
 msgid "Description"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:137
+#: classes/class-aal-activity-log-list-table.php:141
 #, php-format
 msgid "%s ago"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:166
+#: classes/class-aal-activity-log-list-table.php:170
 msgid "Unknown"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:172
-#: classes/class-aal-activity-log-list-table.php:291
+#: classes/class-aal-activity-log-list-table.php:176
+#: classes/class-aal-activity-log-list-table.php:295
 msgid "Guest"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:215
+#: classes/class-aal-activity-log-list-table.php:219
 msgid "All"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:235
+#: classes/class-aal-activity-log-list-table.php:239
 msgid "Search"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:278
+#: classes/class-aal-activity-log-list-table.php:282
 msgid "All Roles"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:302
+#: classes/class-aal-activity-log-list-table.php:306
 msgid "All Users"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:330
+#: classes/class-aal-activity-log-list-table.php:334
 msgid "All Types"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:356
+#: classes/class-aal-activity-log-list-table.php:360
 msgid "All Actions"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:367
+#: classes/class-aal-activity-log-list-table.php:371
 msgid "All Time"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:368
+#: classes/class-aal-activity-log-list-table.php:372
 msgid "Today"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:369
+#: classes/class-aal-activity-log-list-table.php:373
 msgid "Yesterday"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:370
+#: classes/class-aal-activity-log-list-table.php:374
 msgid "Week"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:371
+#: classes/class-aal-activity-log-list-table.php:375
 msgid "Month"
 msgstr ""
 
-#: classes/class-aal-activity-log-list-table.php:378
+#: classes/class-aal-activity-log-list-table.php:382
 msgid "Filter"
 msgstr ""
 
