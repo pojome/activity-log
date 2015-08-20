@@ -65,6 +65,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ')';
 	}
+	
+	protected function _get_action_label( $action ) {
+		return ucwords( str_replace( '_', ' ', __( $action, 'aryo-aal' ) ) );
+	}
 
 	public function __construct( $args = array() ) {
 		parent::__construct(
@@ -131,7 +135,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		
 		switch ( $column_name ) {
 			case 'action' :
-				$return = ucwords( str_replace( '_', ' ', __( $item->action, 'aryo-aal' ) ) );
+				$return = $this->_get_action_label( $item->action );
 				break;
 			case 'date' :
 				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-aal' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
@@ -350,7 +354,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			$output = array();
 			foreach ( $actions as $type )
-				$output[] = sprintf( '<option value="%1$s"%2$s>%1$s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ) );
+				$output[] = sprintf( '<option value="%s"%s>%s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ), $this->_get_action_label( $type->action ) );
 
 			echo '<select name="showaction" id="hs-filter-showaction">';
 			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-aal' ) );
