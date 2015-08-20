@@ -22,6 +22,10 @@ abstract class AAL_Notification_Base {
 		add_action( 'init', array( &$this, 'init' ), 30 );
 		add_action( 'aal_validate_options', array( &$this, '_validate_options' ), 10, 2 );
 	}
+
+	private function settings_field_name_attr( $name ) {
+		return esc_attr( "notification_handler_options_{$this->id}[{$name}]" );
+	}
 	
 	public function init() {}
 	
@@ -76,10 +80,6 @@ abstract class AAL_Notification_Base {
 		$form_data[ $option_key ] = $output;
 	
 		return $form_data;
-	}
-	
-	private function settings_field_name_attr( $name ) {
-		return esc_attr( "notification_handler_options_{$this->id}[{$name}]" );
 	}
 	
 	public function get_handler_options() {
