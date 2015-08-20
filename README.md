@@ -106,6 +106,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.2.6 ###
+* Tweak! - Added more actions/types in notification
+
 ### 2.2.5 ###
 * New! - Added translate: Finnish (fi) - Thanks to Nazq ([topic](https://wordpress.org/support/topic/finnish-translation-1))
 * Tweak! - Better actions label in list table
