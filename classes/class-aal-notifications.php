@@ -60,25 +60,36 @@ class AAL_Notifications {
 
 	public function get_object_types() {
 		// TODO: include filter?
+		// TODO: It's need to be integration from the plugin
 		$opts = array(
-			'Attachment',
-			'Menu',
-			'Options',
-			'Plugin',
+			'Core',
+			'Export',
 			'Post',
 			'Taxonomy',
-			'Theme',
 			'User',
+			'Options',
+			'Attachment',
+			'Plugin',
 			'Widget',
+			'Theme',
+			'Menu',
+			'Comments',
 		);
 		return array_combine( $opts, $opts );
 	}
 
 	public function get_actions() {
+		// TODO: It's need to be integration from the plugin
 		$opts = array(
 			'created',
 			'deleted',
 			'updated',
+			'trashed',
+			'untrashed',
+			'spammed',
+			'unspammed',
+			'downloaded',
+			'installed',
 			'added',
 			'activated',
 			'deactivated',
