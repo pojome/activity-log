@@ -126,6 +126,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	
 	public function get_sortable_columns() {
 		return array(
+			'ip' => 'hist_ip',
 			'date' => array( 'hist_time', true ),
 		);
 	}
@@ -395,7 +396,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		if ( ! isset( $_REQUEST['order'] ) || ! in_array( $_REQUEST['order'], array( 'desc', 'asc' ) ) ) {
 			$_REQUEST['order'] = 'DESC';
 		}
-		if ( ! isset( $_REQUEST['orderby'] ) || ! in_array( $_REQUEST['orderby'], array( 'hist_time' ) ) ) {
+		if ( ! isset( $_REQUEST['orderby'] ) || ! in_array( $_REQUEST['orderby'], array( 'hist_time', 'hist_ip' ) ) ) {
 			$_REQUEST['orderby'] = 'hist_time';
 		}
 		

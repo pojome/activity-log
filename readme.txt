@@ -97,6 +97,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 == Changelog ==
 
 = 2.2.6 =
+* Tweak! - Added sort by IP address ([#77](https://github.com/KingYes/wordpress-aryo-activity-log/issues/77))
 * Tweak! - Added more actions/types in notification
 
 = 2.2.5 =
