@@ -3,7 +3,7 @@ Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications
 Requires at least: 3.5
 Tested up to: 4.3
-Stable tag: 2.2.5
+Stable tag: 2.2.6
 License: GPLv2 or later
 
 Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
