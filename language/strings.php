@@ -29,6 +29,7 @@ __( 'Plugin', 'aryo-aal' );
 __( 'activated', 'aryo-aal' );
 __( 'deactivated', 'aryo-aal' );
 __( 'installed', 'aryo-aal' );
+__( 'File Updated', 'aryo-aal' );
 
 // Theme
 __( 'Theme', 'aryo-aal' );
