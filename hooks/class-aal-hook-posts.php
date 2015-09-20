@@ -23,7 +23,7 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		}
 		elseif ( 'trash' === $new_status ) {
 			// page was deleted.
-			$action = 'deleted';
+			$action = 'trashed';
 		}
 		else {
 			// page updated. i guess.
