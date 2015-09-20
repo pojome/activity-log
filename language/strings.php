@@ -13,6 +13,7 @@ __( 'Post', 'aryo-aal' );
 __( 'created', 'aryo-aal' );
 __( 'updated', 'aryo-aal' );
 __( 'deleted', 'aryo-aal' );
+__( 'trashed', 'aryo-aal' );
 
 // Attachment
 __( 'Attachment', 'aryo-aal' );
@@ -57,7 +58,6 @@ __( 'Comments', 'aryo-aal' );
 __( 'pending', 'aryo-aal' );
 __( 'approved', 'aryo-aal' );
 __( 'unapproved', 'aryo-aal' );
-__( 'trashed', 'aryo-aal' );
 __( 'untrashed', 'aryo-aal' );
 __( 'spammed', 'aryo-aal' );
 __( 'unspammed', 'aryo-aal' );
