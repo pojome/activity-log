@@ -1,6 +1,7 @@
 .idea/
 node_modules/
 build/
+log/
 npm-debug.log
 .DS_Store
 coverage.xml
