@@ -33,6 +33,36 @@ class AAL_Test_Base extends WP_UnitTestCase {
 		
 		$this->assertNotEmpty( $row );
 	}
+
+	public function test_trash_post() {
+		global $wpdb;
+
+		$post = $this->factory->post->create_and_get(
+			array(
+				'post_title' => 'aal-test-trash-post',
+			)
+		);
+
+		wp_delete_post( $post->ID );
+
+		$row = $wpdb->get_row(
+			$wpdb->prepare(
+				'SELECT * FROM %1$s
+					WHERE `action` = \'%2$s\'
+						AND `object_type` = \'%3$s\'
+						AND `object_subtype` = \'%4$s\'
+						AND `object_name` = \'%5$s\'
+				',
+				$wpdb->activity_log,
+				'trashed',
+				'Post',
+				$post->post_type,
+				$post->post_title
+			)
+		);
+
+		$this->assertNotEmpty( $row );
+	}
 	
 	public function test_delete_post() {
 		global $wpdb;
@@ -43,7 +73,7 @@ class AAL_Test_Base extends WP_UnitTestCase {
 			)
 		);
 		
-		wp_delete_post( $post->ID );
+		wp_delete_post( $post->ID, true );
 
 		$row = $wpdb->get_row(
 			$wpdb->prepare(
@@ -60,7 +90,7 @@ class AAL_Test_Base extends WP_UnitTestCase {
 				$post->post_title
 			)
 		);
-
+		
 		$this->assertNotEmpty( $row );
 	}
 	
