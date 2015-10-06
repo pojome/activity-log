@@ -14,7 +14,8 @@ module.exports = function(grunt) {
 		checktextdomain: {
 			standard: {
 				options:{
-					text_domain: 'aryo-aal',
+					text_domain: 'aryo-activity-log',
+					correct_domain: true,
 					keywords: [
 						// WordPress keywords
 						'__:1,2d',
@@ -49,7 +50,7 @@ module.exports = function(grunt) {
 
 		pot: {
 			options:{
-				text_domain: 'aryo-aal',
+				text_domain: 'aryo-activity-log',
 				dest: 'language/',
 				keywords: [
 					// WordPress keywords

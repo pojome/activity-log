@@ -17,12 +17,12 @@ class AAL_Help {
         switch ( $screen->id ) {
             case 'activity-log_page_activity-log-settings':
                 $screen->add_help_tab( array(
-                    'title' => __( 'Overview', 'aryo-aal' ),
+                    'title' => __( 'Overview', 'aryo-activity-log' ),
                     'id' => 'aal-overview',
                     'content' => '
-                    <h3>' . __( 'Notifications', 'aryo-aal' ) . '</h3>
+                    <h3>' . __( 'Notifications', 'aryo-activity-log' ) . '</h3>
                     <p>' . __( 'This screen lets you control what will happen once a user on your site does something you define. For instance, let us assume that you have created a user on your site
-                    for your content editor. Now, let\'s say that every time that user updates a post, you want to know about it. You can easily do it from this page.', 'aryo-aal' ) . '</p>',
+                    for your content editor. Now, let\'s say that every time that user updates a post, you want to know about it. You can easily do it from this page.', 'aryo-activity-log' ) . '</p>',
                 ) );
                 break;
         }

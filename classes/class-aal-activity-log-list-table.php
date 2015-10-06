@@ -67,7 +67,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 	
 	protected function _get_action_label( $action ) {
-		return ucwords( str_replace( '_', ' ', __( $action, 'aryo-aal' ) ) );
+		return ucwords( str_replace( '_', ' ', __( $action, 'aryo-activity-log' ) ) );
 	}
 
 	public function __construct( $args = array() ) {
@@ -101,7 +101,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'per_page',
 			array(
 				'default' => 50,
-				'label'   => __( 'Activities', 'aryo-aal' ),
+				'label'   => __( 'Activities', 'aryo-activity-log' ),
 				'option'  => 'edit_aal_logs_per_page',
 			)
 		);
@@ -112,13 +112,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function get_columns() {
 		$columns = array(
-			'date'        => __( 'Date', 'aryo-aal' ),
-			'author'      => __( 'Author', 'aryo-aal' ),
-			'ip'          => __( 'IP', 'aryo-aal' ),
-			'type'        => __( 'Type', 'aryo-aal' ),
-			'label'       => __( 'Label', 'aryo-aal' ),
-			'action'      => __( 'Action', 'aryo-aal' ),
-			'description' => __( 'Description', 'aryo-aal' ),
+			'date'        => __( 'Date', 'aryo-activity-log' ),
+			'author'      => __( 'Author', 'aryo-activity-log' ),
+			'ip'          => __( 'IP', 'aryo-activity-log' ),
+			'type'        => __( 'Type', 'aryo-activity-log' ),
+			'label'       => __( 'Label', 'aryo-activity-log' ),
+			'action'      => __( 'Action', 'aryo-activity-log' ),
+			'description' => __( 'Description', 'aryo-activity-log' ),
 		);
 
 		return $columns;
@@ -139,7 +139,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$return = $this->_get_action_label( $item->action );
 				break;
 			case 'date' :
-				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-aal' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
+				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-activity-log' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
 				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
 				$return .= '<br />' . date( 'H:i', $item->hist_time );
 				break;
@@ -168,18 +168,18 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					get_edit_user_link( $user->ID ),
 					get_avatar( $user->ID, 40 ),
 					$user->display_name,
-					isset( $user->roles[0] ) && isset( $wp_roles->role_names[ $user->roles[0] ] ) ? $wp_roles->role_names[ $user->roles[0] ] : __( 'Unknown', 'aryo-aal' )
+					isset( $user->roles[0] ) && isset( $wp_roles->role_names[ $user->roles[0] ] ) ? $wp_roles->role_names[ $user->roles[0] ] : __( 'Unknown', 'aryo-activity-log' )
 				);
 			}
 		}
 		return sprintf(
 			'<span class="aal-author-name">%s</span>',
-			__( 'Guest', 'aryo-aal' )
+			__( 'Guest', 'aryo-activity-log' )
 		);
 	}
 
 	public function column_type( $item ) {
-		$return = __( $item->object_type, 'aryo-aal' );
+		$return = __( $item->object_type, 'aryo-activity-log' );
 		
 		$return = apply_filters( 'aal_table_list_column_type', $return, $item );
 		return $return;
@@ -217,7 +217,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			
 			case 'Export' :
 				if ( 'all' === $item->object_name ) {
-					$return = __( 'All', 'aryo-aal' );
+					$return = __( 'All', 'aryo-activity-log' );
 				} else {
 					$pt     = get_post_type_object( $item->object_name );
 					$return = ! empty( $pt->label ) ? $pt->label : $item->object_name;
@@ -226,7 +226,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			case 'Options' :
 			case 'Core' :
-				$return = __( $item->object_name, 'aryo-aal' );
+				$return = __( $item->object_name, 'aryo-activity-log' );
 				break;
 		}
 		
@@ -237,7 +237,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	
 	public function display_tablenav( $which ) {
 		if ( 'top' == $which )
-			$this->search_box( __( 'Search', 'aryo-aal' ), 'aal-search' );
+			$this->search_box( __( 'Search', 'aryo-activity-log' ), 'aal-search' );
 			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
 		?>
 		<div class="tablenav <?php echo esc_attr( $which ); ?>">
@@ -275,12 +275,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			$output = array();
 			foreach ( $this->_get_allow_caps() as $cap ) {
-				$output[ $cap ] = __( ucwords( $cap ), 'aryo-aal' );
+				$output[ $cap ] = __( ucwords( $cap ), 'aryo-activity-log' );
 			}
 
 			if ( ! empty( $output ) ) {
 				echo '<select name="capshow" id="hs-filter-capshow">';
-				printf( '<option value="">%s</option>', __( 'All Roles', 'aryo-aal' ) );
+				printf( '<option value="">%s</option>', __( 'All Roles', 'aryo-activity-log' ) );
 				foreach ( $output as $key => $value ) {
 					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['capshow'], $key, false ), $value );
 				}
@@ -293,7 +293,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$output = array();
 			foreach ( $users as $_user ) {
 				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'Guest', 'aryo-aal' );
+					$output[0] = __( 'Guest', 'aryo-activity-log' );
 					continue;
 				}
 
@@ -304,7 +304,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			if ( ! empty( $output ) ) {
 				echo '<select name="usershow" id="hs-filter-usershow">';
-				printf( '<option value="">%s</option>', __( 'All Users', 'aryo-aal' ) );
+				printf( '<option value="">%s</option>', __( 'All Users', 'aryo-activity-log' ) );
 				foreach ( $output as $key => $value ) {
 					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
 				}
@@ -329,10 +329,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			$output = array();
 			foreach ( $types as $type )
-				$output[] = sprintf( '<option value="%1$s"%2$s>%3$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ), __( $type->object_type, 'aryo-aal' ) );
+				$output[] = sprintf( '<option value="%1$s"%2$s>%3$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ), __( $type->object_type, 'aryo-activity-log' ) );
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
-			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-aal' ) );
+			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-activity-log' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
@@ -358,7 +358,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$output[] = sprintf( '<option value="%s"%s>%s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ), $this->_get_action_label( $type->action ) );
 
 			echo '<select name="showaction" id="hs-filter-showaction">';
-			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-aal' ) );
+			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-activity-log' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
@@ -369,18 +369,18 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$_REQUEST['dateshow'] = '';
 			
 			$date_options = array(
-				'' => __( 'All Time', 'aryo-aal' ),
-				'today' => __( 'Today', 'aryo-aal' ),
-				'yesterday' => __( 'Yesterday', 'aryo-aal' ),
-				'week' => __( 'Week', 'aryo-aal' ),
-				'month' => __( 'Month', 'aryo-aal' ),
+				'' => __( 'All Time', 'aryo-activity-log' ),
+				'today' => __( 'Today', 'aryo-activity-log' ),
+				'yesterday' => __( 'Yesterday', 'aryo-activity-log' ),
+				'week' => __( 'Week', 'aryo-activity-log' ),
+				'month' => __( 'Month', 'aryo-activity-log' ),
 			);
 			echo '<select name="dateshow" id="hs-filter-date">';
 			foreach ( $date_options as $key => $value )
 				printf( '<option value="%1$s"%2$s>%3$s</option>', $key, selected( $_REQUEST['dateshow'], $key, false ), $value );
 			echo '</select>';
 			
-			submit_button( __( 'Filter', 'aryo-aal' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
+			submit_button( __( 'Filter', 'aryo-activity-log' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
 		}
 
 		echo '</div>';

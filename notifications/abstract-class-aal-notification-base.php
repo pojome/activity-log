@@ -95,11 +95,11 @@ abstract class AAL_Notification_Base {
 
 	public function prep_notification_body( $args ) {
 		$details_to_provide = array(
-			'user_id'     => __( 'User', 'aryo-aal' ),
-			'object_type' => __( 'Object Type', 'aryo-aal' ),
-			'object_name' => __( 'Object Name', 'aryo-aal' ),
-			'action'      => __( 'Action Type', 'aryo-aal' ),
-			'hist_ip'     => __( 'IP Address', 'aryo-aal' ),
+			'user_id'     => __( 'User', 'aryo-activity-log' ),
+			'object_type' => __( 'Object Type', 'aryo-activity-log' ),
+			'object_name' => __( 'Object Name', 'aryo-activity-log' ),
+			'action'      => __( 'Action Type', 'aryo-activity-log' ),
+			'hist_ip'     => __( 'IP Address', 'aryo-activity-log' ),
 		);
 		$message = '';
 
@@ -118,7 +118,7 @@ abstract class AAL_Notification_Base {
 					}
 					break;
 				default:
-					$detail_val = isset( $args[ $detail_key ] ) ? $args[ $detail_key ] : __( 'N/A', 'aryo-aal' );
+					$detail_val = isset( $args[ $detail_key ] ) ? $args[ $detail_key ] : __( 'N/A', 'aryo-activity-log' );
 					break;
 			}
 

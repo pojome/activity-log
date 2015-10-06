@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the aryo-activity-log package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: aryo-activity-log 2.2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-08 14:39+0300\n"
+"POT-Creation-Date: 2015-10-06 11:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,7 +228,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: classes/class-aal-settings.php:444 language/strings.php:22
+#: classes/class-aal-settings.php:444 language/strings.php:23
 #: notifications/abstract-class-aal-notification-base.php:98
 msgid "User"
 msgstr ""
@@ -291,100 +291,100 @@ msgstr ""
 msgid "deleted"
 msgstr ""
 
-#: language/strings.php:18
-msgid "Attachment"
+#: language/strings.php:16
+msgid "trashed"
 msgstr ""
 
 #: language/strings.php:19
+msgid "Attachment"
+msgstr ""
+
+#: language/strings.php:20
 msgid "added"
 msgstr ""
 
-#: language/strings.php:23
+#: language/strings.php:24
 msgid "logged_out"
 msgstr ""
 
-#: language/strings.php:24
+#: language/strings.php:25
 msgid "logged_in"
 msgstr ""
 
-#: language/strings.php:25
+#: language/strings.php:26
 msgid "wrong_password"
 msgstr ""
 
-#: language/strings.php:28
+#: language/strings.php:29
 msgid "Plugin"
 msgstr ""
 
-#: language/strings.php:29
+#: language/strings.php:30
 msgid "activated"
 msgstr ""
 
-#: language/strings.php:30
+#: language/strings.php:31
 msgid "deactivated"
 msgstr ""
 
-#: language/strings.php:31
+#: language/strings.php:32
 msgid "installed"
 msgstr ""
 
-#: language/strings.php:32
+#: language/strings.php:33
 msgid "File Updated"
 msgstr ""
 
-#: language/strings.php:35
+#: language/strings.php:36
 msgid "Theme"
 msgstr ""
 
-#: language/strings.php:36
+#: language/strings.php:37
 msgid "Theme Customizer"
 msgstr ""
 
-#: language/strings.php:39
+#: language/strings.php:40
 msgid "Widget"
 msgstr ""
 
-#: language/strings.php:42
+#: language/strings.php:43
 msgid "Options"
 msgstr ""
 
-#: language/strings.php:45
+#: language/strings.php:46
 msgid "Menu"
 msgstr ""
 
-#: language/strings.php:48
+#: language/strings.php:49
 msgid "Taxonomy"
 msgstr ""
 
-#: language/strings.php:51
+#: language/strings.php:52
 msgid "Core"
 msgstr ""
 
-#: language/strings.php:52
+#: language/strings.php:53
 msgid "WordPress Updated"
 msgstr ""
 
-#: language/strings.php:53
+#: language/strings.php:54
 msgid "WordPress Auto Updated"
 msgstr ""
 
-#: language/strings.php:56
+#: language/strings.php:57
 msgid "Comments"
 msgstr ""
 
-#: language/strings.php:57
+#: language/strings.php:58
 msgid "pending"
 msgstr ""
 
-#: language/strings.php:58
+#: language/strings.php:59
 msgid "approved"
 msgstr ""
 
-#: language/strings.php:59
-msgid "unapproved"
-msgstr ""
-
 #: language/strings.php:60
-msgid "trashed"
+msgid "unapproved"
 msgstr ""
 
 #: language/strings.php:61

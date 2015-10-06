@@ -6,7 +6,7 @@ Description: Get aware of any activities that are taking place on your dashboard
 Author: Yakir Sitbon, Maor Chasen, Ariel Klikstein
 Author URI: http://pojo.me/
 Version: 2.2.6
-Text Domain: aryo-aal
+Text Domain: aryo-activity-log
 Domain Path: /language/
 License: GPLv2 or later
 
@@ -80,7 +80,7 @@ final class AAL_Main {
 	 * Load text domain
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'aryo-aal', false, basename( dirname( __FILE__ ) ) . '/language' );
+		load_plugin_textdomain( 'aryo-activity-log', false, basename( dirname( __FILE__ ) ) . '/language' );
 	}
 
 	/**
@@ -113,7 +113,7 @@ final class AAL_Main {
 	 */
 	public function __clone() {
 		// Cloning instances of the class is forbidden
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'aryo-aal' ), '2.0.7' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'aryo-activity-log' ), '2.0.7' );
 	}
 
 	/**
@@ -124,7 +124,7 @@ final class AAL_Main {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'aryo-aal' ), '2.0.7' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'aryo-activity-log' ), '2.0.7' );
 	}
 
 	/**

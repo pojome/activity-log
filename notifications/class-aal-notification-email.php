@@ -12,14 +12,14 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 		parent::__construct();
 		
 		$this->id = 'email';
-		$this->name = __( 'Email', 'aryo-aal' );
-		$this->description = __( 'Get notified by Email.', 'aryo-aal' );
+		$this->name = __( 'Email', 'aryo-activity-log' );
+		$this->description = __( 'Get notified by Email.', 'aryo-activity-log' );
 	}
 	
 	public function init() {
 		$this->options = array_merge( array(
 			'from_email'   => get_option( 'admin_email' ),
-//			'message_format' => __( "Hi there!\n\nA notification condition on [sitename] was matched. Here are the details:\n\n[action-details]\n\nSent by ARYO Activity Log", 'aryo-aal' )
+//			'message_format' => __( "Hi there!\n\nA notification condition on [sitename] was matched. Here are the details:\n\n[action-details]\n\nSent by ARYO Activity Log", 'aryo-activity-log' )
 		), $this->get_handler_options() );
 	}
 	
@@ -46,7 +46,7 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 
 		wp_mail(
 			$to_email,
-			__( 'New notification from Activity Log', 'aryo-aal' ),
+			__( 'New notification from Activity Log', 'aryo-activity-log' ),
 			nl2br( $email_contents ),
 			array(
 				"From: Activity Log @ $site_name <$from_email>"
@@ -62,11 +62,11 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 	}
 	
 	public function settings_fields() {
-		$default_email_message = __( "Hi there!\n\nA notification condition on [sitename] was matched. Here are the details:\n\n[action-details]\n\nSent by ARYO Activity Log", 'aryo-aal' );
+		$default_email_message = __( "Hi there!\n\nA notification condition on [sitename] was matched. Here are the details:\n\n[action-details]\n\nSent by ARYO Activity Log", 'aryo-activity-log' );
 
-		$this->add_settings_field_helper( 'from_email', __( 'From Email', 'aryo-aal' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The source Email address', 'aryo-aal' ) );
-		$this->add_settings_field_helper( 'to_email', __( 'To Email', 'aryo-aal' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The Email address notifications will be sent to', 'aryo-aal' ) );
-		$this->add_settings_field_helper( 'message_format', __( 'Message', 'aryo-aal' ), array( 'AAL_Settings_Fields', 'textarea_field' ), sprintf( __( 'Customize the message using the following placeholders: %s', 'aryo-aal' ), '[sitename], [action-details]' ), $default_email_message );
+		$this->add_settings_field_helper( 'from_email', __( 'From Email', 'aryo-activity-log' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The source Email address', 'aryo-activity-log' ) );
+		$this->add_settings_field_helper( 'to_email', __( 'To Email', 'aryo-activity-log' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The Email address notifications will be sent to', 'aryo-activity-log' ) );
+		$this->add_settings_field_helper( 'message_format', __( 'Message', 'aryo-activity-log' ), array( 'AAL_Settings_Fields', 'textarea_field' ), sprintf( __( 'Customize the message using the following placeholders: %s', 'aryo-activity-log' ), '[sitename], [action-details]' ), $default_email_message );
 	}
 	
 	public function validate_options( $input ) {

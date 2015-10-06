@@ -23,10 +23,10 @@ class AAL_Settings {
 	}
 	
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/KingYes/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-aal' ) );
+		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/KingYes/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-activity-log' ) );
 		array_unshift( $links, $settings_link );
 		
-		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=activity-log-settings' ), __( 'Settings', 'aryo-aal' ) );
+		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=activity-log-settings' ), __( 'Settings', 'aryo-activity-log' ) );
 		array_unshift( $links, $settings_link );
 		
 		return $links;
@@ -40,8 +40,8 @@ class AAL_Settings {
 	public function action_admin_menu() {
 		$this->hook = add_submenu_page(
 			'activity_log_page',
-			__( 'Activity Log Settings', 'aryo-aal' ), 	// <title> tag
-			__( 'Settings', 'aryo-aal' ), 			// menu label
+			__( 'Activity Log Settings', 'aryo-activity-log' ), 	// <title> tag
+			__( 'Settings', 'aryo-activity-log' ), 			// menu label
 			'manage_options', 								// required cap to view this page
 			$this->slug, 			// page slug
 			array( &$this, 'display_settings_page' )			// callback
@@ -79,14 +79,14 @@ class AAL_Settings {
 				// First, we register a section. This is necessary since all future options must belong to a
 				add_settings_section(
 					'general_settings_section',			// ID used to identify this section and with which to register options
-					__( 'Display Options', 'aryo-aal' ),	// Title to be displayed on the administration page
+					__( 'Display Options', 'aryo-activity-log' ),	// Title to be displayed on the administration page
 					array( 'AAL_Settings_Fields', 'general_settings_section_header' ),	// Callback used to render the description of the section
 					$this->slug		// Page on which to add this section of options
 				);
 
 				add_settings_field(
 					'logs_lifespan',
-					__( 'Keep logs for', 'aryo-aal' ),
+					__( 'Keep logs for', 'aryo-activity-log' ),
 					array( 'AAL_Settings_Fields', 'number_field' ),
 					$this->slug,
 					'general_settings_section',
@@ -95,24 +95,24 @@ class AAL_Settings {
 						'page'    => $this->slug,
 						'classes' => array( 'small-text' ),
 						'type'    => 'number',
-						'sub_desc'    => __( 'days.', 'aryo-aal' ),
-						'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
+						'sub_desc'    => __( 'days.', 'aryo-activity-log' ),
+						'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-activity-log' ),
 					)
 				);
 
 				if ( apply_filters( 'aal_allow_option_erase_logs', true ) ) {
 					add_settings_field(
 						'raw_delete_log_activities',
-						__( 'Delete Log Activities', 'aryo-aal' ),
+						__( 'Delete Log Activities', 'aryo-activity-log' ),
 						array( 'AAL_Settings_Fields', 'raw_html' ),
 						$this->slug,
 						'general_settings_section',
 						array(
-							'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-aal' ), add_query_arg( array(
+							'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'aryo-activity-log' ), add_query_arg( array(
 								'action' => 'aal_reset_items',
 								'_nonce' => wp_create_nonce( 'aal_reset_items' ),
 							), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
-							'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-aal' ),
+							'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'aryo-activity-log' ),
 						)
 					);
 				}
@@ -122,21 +122,21 @@ class AAL_Settings {
 				// Email Notifications Settings
 				add_settings_section(
 					'email_notifications', // ID used to identify this section and with which to register options
-					__( 'Notifications', 'aryo-aal' ),	// Title to be displayed on the administration page
+					__( 'Notifications', 'aryo-activity-log' ),	// Title to be displayed on the administration page
 					array( 'AAL_Settings_Fields', 'email_notifications_section_header' ),	// Callback used to render the description of the section
 					$this->slug		// Page on which to add this section of options
 				);
 
 				add_settings_field(
 					'notification_rules',
-					__( 'Notification Events', 'aryo-aal' ),
+					__( 'Notification Events', 'aryo-activity-log' ),
 					array( 'AAL_Settings_Fields', 'email_notification_buffer_field' ),
 					$this->slug,
 					'email_notifications',
 					array(
 						'id'      => 'notification_rules',
 						'page'    => $this->slug,
-						'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-aal' ),
+						'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-activity-log' ),
 					)
 				);
 
@@ -157,7 +157,7 @@ class AAL_Settings {
 
 					add_settings_field(
 						"notification_handler_{$handler_id}_enabled",
-						__( 'Enable?', 'aryo-aal' ),
+						__( 'Enable?', 'aryo-activity-log' ),
 						array( $handler_obj, '_settings_enabled_field_callback' ),
 						$this->slug,
 						"notification_$handler_id",
@@ -193,8 +193,8 @@ class AAL_Settings {
 	private function menu_print_tabs() {
 		$current_section = $this->get_setup_section();
 		$sections = array(
-			'general'       => __( 'General', 'aryo-aal' ),
-			'notifications' => __( 'Notifications', 'aryo-aal' ),
+			'general'       => __( 'General', 'aryo-activity-log' ),
+			'notifications' => __( 'Notifications', 'aryo-activity-log' ),
 		);
 
 		$sections = apply_filters( 'aal_setup_sections', $sections );
@@ -224,7 +224,7 @@ class AAL_Settings {
 		<div class="wrap">
 		
 			<div id="icon-themes" class="icon32"></div>
-			<h2 class="aal-page-title"><?php _e( 'Activity Log Settings', 'aryo-aal' ); ?></h2>
+			<h2 class="aal-page-title"><?php _e( 'Activity Log Settings', 'aryo-activity-log' ); ?></h2>
 			<?php settings_errors(); ?>
 			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
 			
@@ -243,7 +243,7 @@ class AAL_Settings {
 	public function admin_notices() {
 		switch ( filter_input( INPUT_GET, 'message' ) ) {
 			case 'data_erased':
-				printf( '<div class="updated"><p>%s</p></div>', __( 'All activities have been successfully deleted.', 'aryo-aal' ) );
+				printf( '<div class="updated"><p>%s</p></div>', __( 'All activities have been successfully deleted.', 'aryo-activity-log' ) );
 				break;
 		}
 	}
@@ -254,7 +254,7 @@ class AAL_Settings {
 		<script type="text/javascript">
 			jQuery( document ).ready( function( $ ) {
 				$( '#aal-delete-log-activities' ).on( 'click', function( e ) {
-					if ( ! confirm( '<?php echo __( 'Are you sure you want to do this action?', 'aryo-aal' ); ?>' ) ) {
+					if ( ! confirm( '<?php echo __( 'Are you sure you want to do this action?', 'aryo-activity-log' ); ?>' ) ) {
 						e.preventDefault();
 					}
 				} );
@@ -265,7 +265,7 @@ class AAL_Settings {
 	
 	public function ajax_aal_reset_items() {
 		if ( ! check_ajax_referer( 'aal_reset_items', '_nonce', false ) || ! current_user_can( 'manage_options' ) ) {
-			wp_die( __( 'You do not have sufficient permissions to access this page.', 'aryo-aal' ) );
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'aryo-activity-log' ) );
 		}
 		
 		AAL_Main::instance()->api->erase_all_items();
@@ -318,13 +318,13 @@ final class AAL_Settings_Fields {
 
 	public static function general_settings_section_header() {
 		?>
-		<p><?php _e( 'These are some basic settings for Activity Log.', 'aryo-aal' ); ?></p>
+		<p><?php _e( 'These are some basic settings for Activity Log.', 'aryo-activity-log' ); ?></p>
 		<?php
 	}
 
 	public static function email_notifications_section_header() {
 		?>
-		<p><?php _e( 'Serve yourself with custom-tailored notifications. First, define your conditions. Then, choose how the notifications will be sent.', 'aryo-aal' ); ?></p>
+		<p><?php _e( 'Serve yourself with custom-tailored notifications. First, define your conditions. Then, choose how the notifications will be sent.', 'aryo-activity-log' ); ?></p>
 		<?php
 	}
 	
@@ -423,8 +423,8 @@ final class AAL_Settings_Fields {
 		extract( $args, EXTR_SKIP );
 		
 		?>
-		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="1" <?php checked( $value, true ); ?>> <?php _e( 'Yes', 'aryo-aal' ); ?></label>
-		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="0" <?php checked( $value, false ); ?>> <?php _e( 'No', 'aryo-aal' ); ?></label>
+		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="1" <?php checked( $value, true ); ?>> <?php _e( 'Yes', 'aryo-activity-log' ); ?></label>
+		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="0" <?php checked( $value, false ); ?>> <?php _e( 'No', 'aryo-activity-log' ); ?></label>
 
 		<?php if ( isset( $args['description'] ) ) : ?>
 		<p class="description"><?php echo $args['description']; ?></p>
@@ -441,14 +441,14 @@ final class AAL_Settings_Fields {
 
 		// available action categories
 		$keys = array(
-			'user' 			=> __( 'User', 'aryo-aal' ),
-			'action-type' 	=> __( 'Action Type', 'aryo-aal' ),
-			'action-value'  => __( 'Action Performed', 'aryo-aal' ),
+			'user' 			=> __( 'User', 'aryo-activity-log' ),
+			'action-type' 	=> __( 'Action Type', 'aryo-activity-log' ),
+			'action-value'  => __( 'Action Performed', 'aryo-activity-log' ),
 		);
 		// available condition types
 		$conditions = array(
-			'equals' => __( 'equals to', 'aryo-aal' ),
-			'not_equals' => __( 'not equals to', 'aryo-aal' ),
+			'equals' => __( 'equals to', 'aryo-activity-log' ),
+			'not_equals' => __( 'not equals to', 'aryo-activity-log' ),
 		);
 
 		$common_name = sprintf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) );
@@ -458,7 +458,7 @@ final class AAL_Settings_Fields {
 		// if empty, reset to one element with the key of 1
 		$rows = empty( $rows ) ? array( array( 'key' => 1 ) ) : $rows;
 		?>
-		<p class="description"><?php _e( 'A notification will be sent upon a successful match with the following conditions:', 'aryo-aal' ); ?></p>
+		<p class="description"><?php _e( 'A notification will be sent upon a successful match with the following conditions:', 'aryo-activity-log' ); ?></p>
 		<div class="aal-notifier-settings">
 			<ul>
 			<?php foreach ( $rows as $rid => $row ) :
