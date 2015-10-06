@@ -19,6 +19,6 @@
 		"grunt-contrib-copy": "~0.8.1",
 		"grunt-contrib-clean": "~0.6.0",
 		"grunt-wp-deploy": "~1.1.0",
-		"matchdep": "~0.3.0"
+		"matchdep": "~1.0.0"
 	}
 }
