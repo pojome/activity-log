@@ -77,6 +77,11 @@ final class AAL_Main {
 	public $api;
 
 	/**
+	 * @var Freemius
+	 */
+	public $freemius;
+
+	/**
 	 * Load text domain
 	 */
 	public function load_textdomain() {
@@ -88,7 +93,9 @@ final class AAL_Main {
 	 */
 	protected function __construct() {
 		global $wpdb;
-
+		
+		$this->_setup_freemius();
+		
 		$this->ui            = new AAL_Admin_Ui();
 		$this->hooks         = new AAL_Hooks();
 		$this->settings      = new AAL_Settings();
@@ -135,7 +142,28 @@ final class AAL_Main {
 			self::$_instance = new AAL_Main();
 		return self::$_instance;
 	}
-	
+
+	private function _setup_freemius() {
+		// Include Freemius SDK.
+		require_once  'classes/freemius/start.php';
+		
+		$this->freemius = fs_dynamic_init(
+			array(
+				'id' => '111',
+				'slug' => 'aryo-activity-log',
+				'public_key' => 'pk_939ce05ca99db10045c0094c6e953',
+				'is_premium' => false,
+				'has_paid_plans' => false,
+				'menu' => array(
+					'slug' => 'aryo-activity-log',
+					'account' => false,
+					'contact' => false,
+					'support' => false,
+				),
+			)
+		);
+	}
+
 }
 AAL_Main::instance();
 
