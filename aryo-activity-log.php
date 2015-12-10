@@ -155,7 +155,7 @@ final class AAL_Main {
 				'is_premium' => false,
 				'has_paid_plans' => false,
 				'menu' => array(
-					'slug' => 'aryo-activity-log',
+					'slug' => 'activity_log_page',
 					'account' => false,
 					'contact' => false,
 					'support' => false,
