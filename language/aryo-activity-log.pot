@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: aryo-activity-log 2.2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-21 16:16+0300\n"
+"POT-Creation-Date: 2015-12-13 19:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: aryo-activity-log.php:116 aryo-activity-log.php:127
+#: aryo-activity-log.php:123 aryo-activity-log.php:134
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
@@ -54,6 +55,7 @@ msgid "Description"
 msgstr ""
 
 #: classes/class-aal-activity-log-list-table.php:142
+#: classes/freemius/includes/fs-plugin-functions.php:259
 #, php-format
 msgid "%s ago"
 msgstr ""
@@ -256,6 +258,1201 @@ msgid ""
 "conditions:"
 msgstr ""
 
+#: classes/freemius/includes/fs-plugin-functions.php:87
+msgctxt "Plugin installer section title"
+msgid "Description"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:88
+msgctxt "Plugin installer section title"
+msgid "Installation"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:89
+msgctxt "Plugin installer section title"
+msgid "FAQ"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:90
+msgctxt "Plugin installer section title"
+msgid "Screenshots"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:91
+msgctxt "Plugin installer section title"
+msgid "Changelog"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:92
+msgctxt "Plugin installer section title"
+msgid "Reviews"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:93
+msgctxt "Plugin installer section title"
+msgid "Other Notes"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:116
+msgid "Plugin Install"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:249
+msgid "Version:"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:253
+msgid "Author:"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:257
+msgid "Last Updated:"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:264
+msgid "Requires WordPress Version:"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:264
+#, php-format
+msgid "%s or higher"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:268
+msgid "Compatible up to:"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:272
+msgid "Downloaded:"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:272
+#, php-format
+msgid "%s time"
+msgid_plural "%s times"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:277
+msgid "WordPress.org Plugin Page &#187;"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:282
+msgid "Plugin Homepage &#187;"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:287
+#: classes/freemius/includes/fs-plugin-functions.php:344
+msgid "Donate to this plugin &#187;"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:293
+msgid "Average Rating"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:299
+#, php-format
+msgid "(based on %s rating)"
+msgid_plural "(based on %s ratings)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:312
+#, php-format
+msgid "Click to see reviews that provided a rating of %d star"
+msgid_plural "Click to see reviews that provided a rating of %d stars"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:312
+#, php-format
+msgid "%d star"
+msgid_plural "%d stars"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:323
+msgid "Contributors"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:351
+#: classes/freemius/includes/fs-plugin-functions.php:353
+msgid "Warning:"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:351
+msgid "This plugin has not been tested with your current version of WordPress."
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:353
+msgid ""
+"This plugin has not been marked as compatible with your version of WordPress."
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:390
+#: classes/freemius/includes/i18n.php:74
+msgid "Install Now"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:395
+#: classes/freemius/includes/i18n.php:75
+msgid "Install Update Now"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:399
+#, php-format
+msgid "Newer Version (%s) Installed"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-functions.php:402
+msgid "Latest Version Installed"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:5
+msgid "Account"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:6
+msgid "Add On"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:7
+msgid "Contact Us"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:8
+msgid "Change Ownership"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:9
+msgid "Support"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:10
+msgid "Support Forum"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:11
+msgid "Add Ons"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:12
+msgctxt "verb"
+msgid "Upgrade"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:13
+msgid "Awesome"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:14
+msgid "Pricing"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:15
+msgctxt "noun"
+msgid "Price"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:16
+msgid "Unlimited Updates"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:17
+msgctxt "verb"
+msgid "Downgrade"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:18
+msgid "Free Trial"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:19
+msgid "Details"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:20
+msgid "Account Details"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:21
+msgctxt "verb"
+msgid "Delete"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:22
+msgid "Delete Account"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:23
+msgid "Dismiss"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:24
+msgctxt "as product pricing plan"
+msgid "Plan"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:25
+msgid "Change Plan"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:26
+#, php-format
+msgctxt "as download professional version"
+msgid "Download %s Version"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:27
+#, php-format
+msgctxt "as download professional version now"
+msgid "Download %s version now"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:28
+msgctxt "as download latest version"
+msgid "Download Latest"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:29
+#, php-format
+msgctxt "E.g. you have a professional license."
+msgid "You have a %s license."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:30
+msgid "New"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:31
+msgid "Free"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:32
+msgctxt "as trial plan"
+msgid "Trial"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:33
+msgctxt "verb"
+msgid "Purchase"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:34
+msgid "Single Site License"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:35
+msgid "Unlimited Licenses"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:36
+#, php-format
+msgid "Up to %s Sites"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:37
+#, php-format
+msgctxt "e.g. Professional Plan"
+msgid "%s Plan"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:38
+#, php-format
+msgid "You are just one step away - %s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:39
+#, php-format
+msgctxt "%s - plugin name. As activate \"Jetpack\" now"
+msgid "Activate \"%s\" Now"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:40
+msgid "Error"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:41
+msgid ""
+"Freemius SDK couldn't find the plugin's main file. Please contact "
+"sdk@freemius.com with the current error."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:44
+msgctxt "as expiration date"
+msgid "Expiration"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:45
+msgid "not verified"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:46
+msgid "Verify Email"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:47
+#, php-format
+msgctxt "e.g. expires in 2 months"
+msgid "Expires in %s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:48
+#, php-format
+msgctxt "e.g. auto renews in 2 months"
+msgid "Auto renews in %s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:49
+msgid "No expiration"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:50
+msgid "Expired"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:51
+#, php-format
+msgid "In %s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:52
+msgctxt "as plugin version"
+msgid "Version"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:53
+msgid "Name"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:54
+#: notifications/class-aal-notification-email.php:15
+msgid "Email"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:55
+msgid "Verified"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:56 language/strings.php:29
+msgid "Plugin"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:57
+msgid "Title"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:58
+msgctxt "as WP plugin slug"
+msgid "Slug"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:59
+msgid "ID"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:60
+msgid "Users"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:61
+msgid "Plugin Installs"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:62
+msgctxt "like websites"
+msgid "Sites"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:63
+msgid "User ID"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:64
+msgid "Site ID"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:65
+msgid "Public Key"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:66
+msgid "Secret Key"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:67
+msgctxt "as secret encryption key missing"
+msgid "No Secret"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:68
+msgid "No ID"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:69
+msgctxt "as synchronize license"
+msgid "Sync License"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:70
+msgid "Deactivate License"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:71
+msgid "Activate"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:72 classes/freemius/includes/i18n.php:93
+msgid "Deactivate"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:73
+msgctxt "active mode"
+msgid "Active"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:76
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:77
+msgid "Localhost"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:78
+#, php-format
+msgctxt "as activate Professional plan"
+msgid "Activate %s Plan"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:79
+#, php-format
+msgid "What is your %s?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:80
+msgid "Activate this add-on"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:81
+msgid ""
+"Deactivating your license will block all premium features, but will enable "
+"you to activate the license on another site. Are you sure you want to "
+"proceed?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:82
+#, php-format
+msgid ""
+"Deleting the account will automatically deactivate your %s plan license so "
+"you can use it on other sites. If you want to terminate the recurring "
+"payments as well, click the \"Cancel\" button, and first \"Downgrade\" your "
+"account. Are you sure you would like to continue with the deletion?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:83
+msgid ""
+"Deletion is not temporary. Only delete if you no longer want to use this "
+"plugin anymore. Are you sure you would like to continue with the deletion?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:84
+#, php-format
+msgid ""
+"Downgrading your plan will immediately stop all future recurring payments "
+"and your %s plan license will expire in %s."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:85
+#, php-format
+msgid ""
+"You can still enjoy all %s features but you will not have access to plugin "
+"updates and support."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:86
+#, php-format
+msgid ""
+"Once your license expire you can still use the Free version but you will NOT "
+"have access to the %s features."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:87
+msgid "Are you sure you want to proceed?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:90
+#, php-format
+msgid "Add Ons for %s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:92
+msgid "If you have a moment, please let us know why you are deactivating"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:94
+msgid "Yes - Deactivate"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:95
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:96
+msgctxt "the text of the cancel button of the plugin deactivation dialog box."
+msgid "Cancel"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:97
+msgid "I no longer need the plugin"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:98
+msgid "I found a better plugin"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:99
+msgid "I only needed the plugin for a short period"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:100
+msgid "The plugin broke my site"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:101
+msgid "The plugin suddenly stopped working"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:102
+msgid "I can't pay for it anymore"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:103
+msgctxt ""
+"the text of the \"other\" reason for deactivating the plugin that is shown "
+"in the modal box."
+msgid "Other"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:104
+msgid "What's the plugin's name?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:105
+msgid "What price would you feel comfortable paying?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:106
+msgid "I couldn't understand how to make it work"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:107
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:108
+msgid "The plugin is not working"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:109
+msgid "It's not what I was looking for"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:110
+msgid "The plugin didn't work as expected"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:111
+msgid "What feature?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:112
+msgid "Kindly share what didn't work so we can fix it for future users..."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:113
+msgid "What you've been looking for?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:114
+msgid "What did you expect?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:115
+msgid "The plugin didn't work"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:116
+msgid "I don't like to share my information with you"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:120
+#, php-format
+msgctxt "greeting"
+msgid "Hey %s,"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:121
+#, php-format
+msgctxt "a greeting. E.g. Thanks John!"
+msgid "Thanks %s!"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:122
+#, php-format
+msgid ""
+"In order to enjoy all our features and functionality, %s needs to connect "
+"your user, %s at %s, to %s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:123
+#, php-format
+msgid ""
+"You should receive an activation email for %s to your mailbox at %s. Please "
+"make sure you click the activation button in that email to complete the "
+"install."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:124
+msgid "What permissions are being granted?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:125
+msgid "Your Profile Overview"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:126
+msgid "Name and email address"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:127
+msgid "Your Site Overview"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:128
+msgid "Site address and WordPress version"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:129
+msgid "Current Plugin Events"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:130
+msgid "Activation, deactivation and uninstall"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:131
+msgid "Privacy Policy"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:132
+msgid "Terms of Service"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:133
+msgctxt "as activating plugin"
+msgid "Activating"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:134
+msgctxt "button label"
+msgid "Allow & Continue"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:135
+msgctxt "verb"
+msgid "Skip"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:136
+msgid "Re-send activation email"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:140
+msgid "Screenshots"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:141
+#, php-format
+msgid "Click to view full-size screenshot %d"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:145
+#, php-format
+msgid "Add Ons of Plugin %s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:146
+msgid "Are you sure you want to delete the all Freemius data?"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:147
+msgid "Delete All Accounts"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:151
+msgctxt "as congratulations"
+msgid "Congrats"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:152
+msgctxt "exclamation"
+msgid "Oops"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:153
+msgctxt "interjection expressing joy or exuberance"
+msgid "Yee-haw"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:154
+msgctxt ""
+"(especially in electronic communication) used to express elation, "
+"enthusiasm, or triumph."
+msgid "W00t"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:155
+msgctxt "a positive response"
+msgid "Right on"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:156
+msgctxt ""
+"something somebody says when they are thinking about what you have just "
+"said. "
+msgid "Hmm"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:157
+msgid "O.K"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:158
+msgctxt "exclamation"
+msgid "Hey"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:159
+msgctxt "advance notice of something that will need attention."
+msgid "Heads up"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:163
+msgid "Seems like you got the latest release."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:164
+msgid "You are all good!"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:165
+msgid ""
+"Sorry, we could not complete the email update. Another user with the same "
+"email is already registered."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:166
+#, php-format
+msgid ""
+"If you would like to give up the ownership of the plugin's account to %s "
+"click the Change Ownership button."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:167
+msgid ""
+"Your email was successfully updated. You should receive an email with "
+"confirmation instructions in few moments."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:168
+msgid "Your name was successfully updated."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:169
+#, php-format
+msgid "You have successfully updated your %s."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:170
+msgid "Please provide your full name."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:171
+#, php-format
+msgid ""
+"Verification mail was just sent to %s. If you can't find it after 5 min, "
+"please check your spam box."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:172
+#, php-format
+msgid ""
+"Just letting you know that the add-ons information of %s is being pulled "
+"from external server."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:173
+msgid "No credit card required"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:174
+msgid "Premium plugin version was successfully activated."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:175
+#, php-format
+msgid "The upgrade of %s was successfully completed."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:176
+#, php-format
+msgid "Your account was successfully activated with the %s plan."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:177
+#, php-format
+msgid "Download the latest %s version now"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:178
+msgid "Download the latest version now"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:179
+#, php-format
+msgctxt "%s - product name, e.g. Facebook add-on was successfully..."
+msgid "%s Add-on was successfully purchased."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:180
+#, php-format
+msgid "Your %s Add-on plan was successfully upgraded."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:181
+msgid "Your email has been successfully verified - you are AWESOME!"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:182
+msgid "Your plan was successfully upgraded."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:183
+#, php-format
+msgid "Your plan was successfully changed to %s."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:184
+msgid ""
+"Your license has expired. You can still continue using the free plugin "
+"forever."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:185
+msgid "Your trial has been successfully started."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:186
+msgid "Your license was successfully activated."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:187
+msgid "It looks like your site currently don't have an active license."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:188
+#, php-format
+msgid "Your license was successfully deactivated, you are back to the %s plan."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:189
+msgid "It looks like the license deactivation failed."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:190
+msgid "It looks like the license could not be activated."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:191
+msgid "Error received from the server:"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:192
+msgid ""
+"Your trial has expired. You can still continue using all our free features."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:193
+#, php-format
+msgid ""
+"Your plan was successfully downgraded. Your %s plan license will expire in "
+"%s."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:194
+msgid ""
+"Seems like we are having some temporary issue with your plan downgrade. "
+"Please try again in few minutes."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:195
+msgid ""
+"It looks like you are not in trial mode anymore so there's nothing to "
+"cancel :)"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:196
+#, php-format
+msgid "Your %s Plan trial was successfully cancelled."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:197
+#, php-format
+msgctxt "%s - numeric version number"
+msgid "Version %s was released."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:198
+#, php-format
+msgid "Please download %s."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:199
+#, php-format
+msgctxt "%s - plan name, as the latest professional version here"
+msgid "the latest %s version here"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:200
+#, php-format
+msgid ""
+"How do you like %s so far? Test all our %s premium features with a %d-day "
+"free trial."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:201
+msgctxt "call to action"
+msgid "Start free trial"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:202
+msgid ""
+"Seems like we are having some temporary issue with your trial cancellation. "
+"Please try again in few minutes."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:203
+#, php-format
+msgid "No commitment for %s days - cancel anytime!"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:204
+#, php-format
+msgid ""
+"Your license has expired. You can still continue using all the %s features, "
+"but you'll need to renew your license to continue getting updates and "
+"support."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:205
+#, php-format
+msgid "Couldn't activate %s."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:206
+msgid "Please contact us with the following message:"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:207
+msgid ""
+"It looks like your plan did't change. If you did upgrade, it's probably an "
+"issue on our side - sorry."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:208
+msgid "Please contact us here"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:209
+#, php-format
+msgid ""
+"I have upgraded my account but when I try to Sync the License, the plan "
+"remains %s."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:212
+msgid "From unknown reason, the API connectivity test fails."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:213
+msgid ""
+"We use PHP cURL library for the API calls, which is a very common library "
+"and usually installed out of the box. Unfortunately, cURL is not installed "
+"on your server."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:214
+msgid ""
+"From unknown reason, CloudFlare, the firewall we use, blocks the connection."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:215
+#, php-format
+msgctxt "as pluginX requires an access to our API"
+msgid "%s requires an access to our API."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:216
+msgid ""
+"It looks like your server is using Squid ACL (access control lists), which "
+"blocks the connection."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:217
+msgid "I don't know what is Squid or ACL, help me!"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:218
+#: classes/freemius/includes/i18n.php:222
+#, php-format
+msgid ""
+"We'll make sure to contact your hosting company and resolve the issue. You "
+"will get a follow-up email to %s once we have an update."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:219
+msgid "I'm a system administrator"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:220
+#, php-format
+msgid ""
+"Great, please whitelist the following domains: %s. Once you done, deactivate "
+"the plugin and activate it again."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:221
+msgid "I don't know what is cURL or how to install it, help me!"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:223
+msgid ""
+"Great, please install cURL and enable it in your php.ini file. To make sure "
+"it was successfully activated, use 'phpinfo()'. Once activated, deactivate "
+"the plugin and reactivate it back again."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:224
+msgid ""
+"We are sure it's an issue on our side and more than happy to resolve it for "
+"you ASAP if you give us a chance."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:225
+msgid "Yes - I'm giving you a chance to fix it"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:226
+#, php-format
+msgid ""
+"We will do our best to whitelist your server and resolve this issue ASAP. "
+"You will get a follow-up email to %s once we have an update."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:227
+msgid "Let's try your previous version"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:228
+msgid "Uninstall this version and install the previous one."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:229
+msgid "That's exhausting, please deactivate"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:230
+msgid ""
+"We feel your frustration and sincerely apologize for the inconvenience. Hope "
+"to see you again in the future."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:231
+#, php-format
+msgid ""
+"Thank for giving us the chance to fix it! A message was just sent to our "
+"technical staff. We will get back to you as soon as we have an update to %s. "
+"Appreciate your patience."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:232
+#, php-format
+msgctxt "%1s - plugin title, %2s - API domain"
+msgid ""
+"Your server is blocking the access to Freemius' API, which is crucial for "
+"%1s license synchronization. Please contact your host to whitelist %2s"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:233
+msgid ""
+"It seems like one of the authentication parameters is wrong. Update your "
+"Public Key, Secret Key & User ID, and try again."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:236
+#, php-format
+msgid ""
+"Please check your mailbox, you should receive an email via %s to confirm the "
+"ownership change. From security reasons, you must confirm the change within "
+"the next 15 min. If you cannot find the email, please check your spam folder."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:237
+#, php-format
+msgid ""
+"Thanks for confirming the ownership change. An email was just sent to %s for "
+"final approval."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:238
+#, php-format
+msgid "%s is the new owner of the account."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:240
+msgid "Freemius Debug"
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:241
+#, php-format
+msgctxt "addonX cannot run without pluginY"
+msgid "%s cannot run without %s."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:242
+#, php-format
+msgctxt "addonX cannot run..."
+msgid "%s cannot run without the plugin."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:243
+#, php-format
+msgctxt "pluginX activation was successfully..."
+msgid "%s activation was successfully completed."
+msgstr ""
+
+#: classes/freemius/includes/i18n.php:244
+msgctxt "Plugin installer section title"
+msgid "Features & Pricing"
+msgstr ""
+
+#: classes/freemius/templates/account.php:274
+msgctxt "verb"
+msgid "Edit"
+msgstr ""
+
 #: hooks/class-aal-hook-posts.php:10
 msgid "(no title)"
 msgstr ""
@@ -313,10 +1510,6 @@ msgstr ""
 
 #: language/strings.php:26
 msgid "wrong_password"
-msgstr ""
-
-#: language/strings.php:29
-msgid "Plugin"
 msgstr ""
 
 #: language/strings.php:30
@@ -665,10 +1858,6 @@ msgstr ""
 
 #: notifications/abstract-class-aal-notification-base.php:121
 msgid "N/A"
-msgstr ""
-
-#: notifications/class-aal-notification-email.php:15
-msgid "Email"
 msgstr ""
 
 #: notifications/class-aal-notification-email.php:16
