@@ -271,7 +271,7 @@
 									       value="">
 									<?php wp_nonce_field( 'update_' . $p['id'] ) ?>
 									<input type="submit" class="button button-small"
-									       value="<?php _ex( 'Edit', 'verb', 'aryo-activity-log' ) ?>">
+									       value="<?php _ex( 'Edit', 'verb', 'freemius' ) ?>">
 								</form>
 							<?php endif ?>
 						</td>
