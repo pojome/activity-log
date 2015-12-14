@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 **Contributors:** pojo.me, KingYes, ariel.k, maor, freemius  
-**Tags:** administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications  
+**Tags:** actions, activity, Activity Log, activity logs, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, change, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, woocommerce log, woocommerce monitor, woocommerce monitoring, woocommrece security, wordpress activity log, WordPress Admin, wordpress admin monitoring, wordpress audit, wordpress email alerts, wordpress log, wordpress monitor, wordpress monitoring, wordpress multisite, wordpress security, wordpress security alerts, wordpress security audit log, wordpress security monitor, wordpress security plugin, wordpress user tracking  
 **Requires at least:** 3.5  
 **Tested up to:** 4.4  
 **Stable tag:** 2.2.6  
