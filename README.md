@@ -4,7 +4,7 @@
 **Contributors:** pojo.me, KingYes, ariel.k, maor, freemius  
 **Tags:** administration, activity, event, monitor, multisite, multi-users, log, logger, audit log, stats, security, tracking, woocommerce, notifications, email notifications  
 **Requires at least:** 3.5  
-**Tested up to:** 4.3  
+**Tested up to:** 4.4  
 **Stable tag:** 2.2.6  
 **License:** GPLv2 or later  
 
@@ -105,6 +105,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 ## Changelog ##
+
+### 2.2.8 ###
+* Tested up to WordPress v4.4
 
 ### 2.2.7 ###
 * Tweak! Update translate: Russian (ru_RU) - Thanks to Oleg Reznikov
