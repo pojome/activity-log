@@ -106,14 +106,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
-### 2.2.9 ###
-* Added! - Freemius Insights platform to improve plugin UX
-
-### 2.2.8 ###
-* Tested up to WordPress v4.4
-
 ### 2.2.7 ###
+* Added! - Freemius Insights platform to improve plugin UX
 * Tweak! Update translate: Russian (ru_RU) - Thanks to Oleg Reznikov
+* Tested up to WordPress v4.4
 
 ### 2.2.6 ###
 * Tweak! - Added sort by IP address ([#77](https://github.com/KingYes/wordpress-aryo-activity-log/issues/77))
