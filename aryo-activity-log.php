@@ -162,9 +162,24 @@ final class AAL_Main {
 				),
 			)
 		);
+		
+		if ( $this->freemius->is_plugin_update() ) {
+			$this->freemius->add_filter( 'connect_message', array( &$this, '_freemius_custom_connect_message' ), WP_FS__DEFAULT_PRIORITY, 6 );
+		}
+	}
+
+	public function _freemius_custom_connect_message( $message, $user_first_name, $plugin_title, $user_login, $site_link, $freemius_link ) {
+		return sprintf(
+			__(
+				'<b>Please help us improve %1$s!</b><br>
+		     	If you opt-in, some data about your usage of <b>%1$s</b> will be sent to %2$s.
+		     	If you skip this, that\'s okay! <b>%1$s</b> will still work just fine.',
+				'aryo-activity-log'
+			),
+			$this->freemius->get_plugin_name(),
+			$freemius_link
+		);
 	}
 
 }
 AAL_Main::instance();
-
-// EOF

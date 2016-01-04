@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: aryo-activity-log 2.2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-14 14:57+0200\n"
+"POT-Creation-Date: 2016-01-04 18:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,16 @@ msgstr ""
 
 #: aryo-activity-log.php:123 aryo-activity-log.php:134
 msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: aryo-activity-log.php:174
+#, php-format
+msgid ""
+"<b>Please help us improve %1$s!</b><br>\n"
+"\t\t     \tIf you opt-in, some data about your usage of <b>%1$s</b> will be "
+"sent to %2$s.\n"
+"\t\t     \tIf you skip this, that's okay! <b>%1$s</b> will still work just "
+"fine."
 msgstr ""
 
 #: classes/class-aal-activity-log-list-table.php:104
@@ -446,6 +456,7 @@ msgid "Awesome"
 msgstr ""
 
 #: classes/freemius/includes/i18n.php:14
+msgctxt "noun"
 msgid "Pricing"
 msgstr ""
 
@@ -485,6 +496,7 @@ msgid "Delete Account"
 msgstr ""
 
 #: classes/freemius/includes/i18n.php:23
+msgctxt "as close a window"
 msgid "Dismiss"
 msgstr ""
 

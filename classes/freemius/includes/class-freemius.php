@@ -939,7 +939,7 @@
 
 			if (isset( $this->_storage->connectivity_test ) ) {
 				if ( $_SERVER['HTTP_HOST'] == $this->_storage->connectivity_test['host'] &&
-				     $_SERVER['SERVER_ADDR'] == $this->_storage->connectivity_test['server_ip']
+				     fs_get_ip() == $this->_storage->connectivity_test['server_ip']
 				) {
 					if ( ( $this->_storage->connectivity_test['is_connected'] &&
 					       $this->_storage->connectivity_test['is_active'] ) ||
@@ -954,7 +954,7 @@
 				}
 			}
 
-			$is_update = $this->apply_filters( 'is_plugin_update', !$this->is_plugin_new_install() );
+			$is_update = $this->apply_filters( 'is_plugin_update', $this->is_plugin_update() );
 
 			if ( WP_FS__SIMULATE_NO_API_CONNECTIVITY ) {
 				$is_connected = false;
@@ -982,7 +982,7 @@
 			$this->_storage->connectivity_test = array(
 				'is_connected' => $is_connected,
 				'host'         => $_SERVER['HTTP_HOST'],
-				'server_ip'    => $_SERVER['SERVER_ADDR'],
+				'server_ip'    => fs_get_ip(),
 				'is_active'    => $is_active,
 				'timestamp'    => WP_FS__SCRIPT_START_TIME,
 				// Last version with connectivity attempt.
@@ -1387,6 +1387,8 @@
 				);
 			}
 
+			$server_ip = fs_get_ip();
+
 			// Generate the default email sections.
 			$sections = array(
 				'sdk'     => array(
@@ -1413,7 +1415,7 @@
 						),
 						'server_addr' => array(
 							'SERVER_ADDR',
-							( ! empty( $_SERVER['SERVER_ADDR'] ) ? '<a href="http://www.projecthoneypot.org/ip_' . $_SERVER['SERVER_ADDR'] . '">' . $_SERVER['SERVER_ADDR'] . '</a>' : '' )
+							'<a href="http://www.projecthoneypot.org/ip_' . $server_ip . '">' . $server_ip . '</a>'
 						)
 					)
 				),
@@ -2384,6 +2386,16 @@
 		}
 
 		/**
+		 * @author Vova Feldman (@svovaf)
+		 * @since  1.1.5
+		 *
+		 * @return bool
+		 */
+		function is_plugin_update() {
+			return ! $this->is_plugin_new_install();
+		}
+
+		/**
 		 * Plugin activated hook.
 		 *
 		 * @author Vova Feldman (@svovaf)
@@ -2549,6 +2561,9 @@
 				'timestamp' => WP_FS__SCRIPT_START_TIME,
 				'version'   => $this->get_plugin_version(),
 			);
+
+			// Update anonymous mode cache.
+			$this->_is_anonymous = $is_anonymous;
 		}
 
 		/**
@@ -2569,7 +2584,7 @@
 			$this->_logger->entrance();
 
 			$this->_admin_notices->remove_sticky( 'connect_account' );
-			
+
 			$this->set_anonymous_mode();
 
 			// Send anonymous skip event.
@@ -4755,6 +4770,11 @@
 						);
 					}
 
+					$show_pricing = ($this->has_paid_plan() && $this->_menu->is_submenu_item_visible( 'pricing' ));
+					// If user don't have paid plans, add pricing page
+					// to support add-ons checkout but don't add the submenu item.
+					// || (isset( $_GET['page'] ) && $this->_menu->get_slug( 'pricing' ) == $_GET['page']);
+
 					// Add upgrade/pricing page.
 					$this->add_submenu_item(
 						( $this->is_paying() ? __fs( 'pricing' ) : __fs( 'upgrade' ) . '&nbsp;&nbsp;&#x27a4;' ),
@@ -4764,9 +4784,7 @@
 						'pricing',
 						array( &$this, '_clean_admin_content_section' ),
 						WP_FS__LOWEST_PRIORITY,
-						// If user don't have paid plans, add pricing page
-						// to support add-ons checkout but don't add the submenu item.
-						$this->_menu->is_submenu_item_visible( 'pricing' ) && ( $this->has_paid_plan() || ( isset( $_GET['page'] ) && $this->_menu->get_slug( 'pricing' ) == $_GET['page'] ) )
+						$show_pricing
 					);
 				}
 			}
@@ -4883,8 +4901,8 @@
 			if ( $this->is_registered() ) {
 				if ( $this->_menu->is_submenu_item_visible( 'support' ) ) {
 					$this->add_submenu_link_item(
-						__fs( 'support-forum' ),
-						'https://wordpress.org/support/plugin/' . $this->_slug,
+						$this->apply_filters( 'support_forum_submenu', __fs( 'support-forum' ) ),
+						$this->apply_filters( 'support_forum_url', 'https://wordpress.org/support/plugin/' . $this->_slug ),
 						'wp-support-forum',
 						'read',
 						50
@@ -5090,6 +5108,21 @@
 			$this->_logger->entrance( $tag );
 
 			add_filter( 'fs_' . $tag . '_' . $this->_slug, $function_to_add, $priority, $accepted_args );
+		}
+
+		/**
+		 * Check if has filter.
+		 *
+		 * @author Vova Feldman (@svovaf)
+		 * @since  1.1.4
+		 *
+		 * @param string        $tag
+		 * @param callable|bool $function_to_check Optional. The callback to check for. Default false.
+		 */
+		function has_filter( $tag, $function_to_check = false ) {
+			$this->_logger->entrance( $tag );
+
+			return has_filter( 'fs_' . $tag . '_' . $this->_slug, $function_to_check );
 		}
 
 		/* Account Page
