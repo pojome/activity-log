@@ -38,6 +38,7 @@ module.exports = function(grunt) {
 					src: [
 						'**/*.php',
 						'!node_modules/**',
+						'!classes/freemius/**',
 						'!build/**',
 						'!tests/**',
 						'!vendor/**',

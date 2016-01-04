@@ -77,6 +77,11 @@ final class AAL_Main {
 	public $api;
 
 	/**
+	 * @var Freemius
+	 */
+	public $freemius;
+
+	/**
 	 * Load text domain
 	 */
 	public function load_textdomain() {
@@ -88,7 +93,9 @@ final class AAL_Main {
 	 */
 	protected function __construct() {
 		global $wpdb;
-
+		
+		$this->_setup_freemius();
+		
 		$this->ui            = new AAL_Admin_Ui();
 		$this->hooks         = new AAL_Hooks();
 		$this->settings      = new AAL_Settings();
@@ -135,8 +142,44 @@ final class AAL_Main {
 			self::$_instance = new AAL_Main();
 		return self::$_instance;
 	}
-	
+
+	private function _setup_freemius() {
+		// Include Freemius SDK.
+		require_once  'classes/freemius/start.php';
+		
+		$this->freemius = fs_dynamic_init(
+			array(
+				'id' => '111',
+				'slug' => 'aryo-activity-log',
+				'public_key' => 'pk_939ce05ca99db10045c0094c6e953',
+				'is_premium' => false,
+				'has_paid_plans' => false,
+				'menu' => array(
+					'slug' => 'activity_log_page',
+					'account' => false,
+					'contact' => false,
+					'support' => false,
+				),
+			)
+		);
+		
+		if ( $this->freemius->is_plugin_update() ) {
+			$this->freemius->add_filter( 'connect_message', array( &$this, '_freemius_custom_connect_message' ), WP_FS__DEFAULT_PRIORITY, 6 );
+		}
+	}
+
+	public function _freemius_custom_connect_message( $message, $user_first_name, $plugin_title, $user_login, $site_link, $freemius_link ) {
+		return sprintf(
+			__(
+				'<b>Please help us improve %1$s!</b><br>
+		     	If you opt-in, some data about your usage of <b>%1$s</b> will be sent to %2$s.
+		     	If you skip this, that\'s okay! <b>%1$s</b> will still work just fine.',
+				'aryo-activity-log'
+			),
+			$this->freemius->get_plugin_name(),
+			$freemius_link
+		);
+	}
+
 }
 AAL_Main::instance();
-
-// EOF
