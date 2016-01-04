@@ -96,6 +96,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.2.9 =
+* Added! - Freemius Insights platform to improve plugin UX
+
 = 2.2.8 =
 * Tested up to WordPress v4.4
 
