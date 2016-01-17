@@ -106,6 +106,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.2.8 ###
+* Tweak! Update Freemius SDK 
+
 ### 2.2.7 ###
 * Added! - Freemius Insights platform to improve plugin UX
 * Tweak! Update translate: Russian (ru_RU) - Thanks to Oleg Reznikov

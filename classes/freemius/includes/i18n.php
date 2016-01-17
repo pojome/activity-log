@@ -1,4 +1,23 @@
 <?php
+	/**
+	 * All strings can now be overridden.
+	 *
+	 * For example, if we want to override:
+	 *      'you-are-step-away' => 'You are just one step away - %s',
+	 *
+	 * We can use the filter:
+	 *      fs_override_i18n( array(
+	 *          'opt-in-connect' => __( "Yes - I'm in!", '{your-text_domain}' ),
+	 *          'skip'           => __( 'Not today', '{your-text_domain}' ),
+	 *      ), '{plugin_slug}' );
+	 *
+	 * Or with the Freemius instance:
+	 *
+	 *      my_freemius->override_i18n( array(
+	 *          'opt-in-connect' => __( "Yes - I'm in!", '{your-text_domain}' ),
+	 *          'skip'           => __( 'Not today', '{your-text_domain}' ),
+	 *      );
+	 */
 	global $fs_text;
 
 	$fs_text = array(
@@ -38,7 +57,7 @@
 		'you-are-step-away'                        => __( 'You are just one step away - %s', 'freemius' ),
 		'activate-x-now'                           => _x( 'Complete "%s" Activation Now', '%s - plugin name. As complete "Jetpack" activation now', 'freemius' ),
 		'few-plugin-tweaks'                        => __( 'We made a few tweaks to the plugin, %s', 'freemius' ),
-		'optin-x-now'                        => __( 'Opt-in to make "%s" Better!', 'freemius' ),
+		'optin-x-now'                              => __( 'Opt-in to make "%s" Better!', 'freemius' ),
 		'error'                                    => __( 'Error', 'freemius' ),
 		'failed-finding-main-path'                 => __( 'Freemius SDK couldn\'t find the plugin\'s main file. Please contact sdk@freemius.com with the current error.', 'freemius' ),
 		#region Account
@@ -56,6 +75,8 @@
 		'email'                                    => __( 'Email', 'freemius' ),
 		'verified'                                 => __( 'Verified', 'freemius' ),
 		'plugin'                                   => __( 'Plugin', 'freemius' ),
+		'plugins'                                  => __( 'Plugins', 'freemius' ),
+		'path'                                     => _x( 'Path', 'as file/folder path', 'freemius' ),
 		'title'                                    => __( 'Title', 'freemius' ),
 		'slug'                                     => _x( 'Slug', 'as WP plugin slug', 'freemius' ),
 		'id'                                       => __( 'ID', 'freemius' ),
@@ -69,10 +90,12 @@
 		'no-secret'                                => _x( 'No Secret', 'as secret encryption key missing', 'freemius' ),
 		'no-id'                                    => __( 'No ID', 'freemius' ),
 		'sync-license'                             => _x( 'Sync License', 'as synchronize license', 'freemius' ),
+		'sync'                                     => _x( 'Sync', 'as synchronize', 'freemius' ),
 		'deactivate-license'                       => __( 'Deactivate License', 'freemius' ),
 		'activate'                                 => __( 'Activate', 'freemius' ),
 		'deactivate'                               => __( 'Deactivate', 'freemius' ),
 		'active'                                   => _x( 'Active', 'active mode', 'freemius' ),
+		'is-active'                                => _x( 'Is Active', 'is active mode?', 'freemius' ),
 		'install-now'                              => __( 'Install Now', 'freemius' ),
 		'install-update-now'                       => __( 'Install Update Now', 'freemius' ),
 		'more-information-about-x'                 => __( 'More information about %s', 'freemius' ),
@@ -122,14 +145,17 @@
 		'hey-x'                                    => _x( 'Hey %s,', 'greeting', 'freemius' ),
 		'thanks-x'                                 => _x( 'Thanks %s!', 'a greeting. E.g. Thanks John!', 'freemius' ),
 		'connect-message'                          => __( 'In order to enjoy all our features and functionality, %s needs to connect your user, %s at %s, to %s', 'freemius' ),
+		'connect-message_on-update'                => __( 'Please help us improve %2$s! If you opt-in, some data about your usage of %2$s will be sent to %5$s. If you skip this, that\'s okay! %2$s will still work just fine.', 'freemius' ),
 		'pending-activation-message'               => __( 'You should receive an activation email for %s to your mailbox at %s. Please make sure you click the activation button in that email to complete the install.', 'freemius' ),
 		'what-permissions'                         => __( 'What permissions are being granted?', 'freemius' ),
 		'permissions-profile'                      => __( 'Your Profile Overview', 'freemius' ),
 		'permissions-profile_desc'                 => __( 'Name and email address', 'freemius' ),
 		'permissions-site'                         => __( 'Your Site Overview', 'freemius' ),
-		'permissions-site_desc'                    => __( 'Site address and WordPress version', 'freemius' ),
-		'permissions-events'                       => __( 'Current Plugin Events', 'freemius' ),
+		'permissions-site_desc'                    => __( 'Site address, WordPress version, PHP Version', 'freemius' ),
+		'permissions-events'                       => __( 'Plugin Events', 'freemius' ),
 		'permissions-events_desc'                  => __( 'Activation, deactivation and uninstall', 'freemius' ),
+		'permissions-newsletter'                   => __( 'Newsletter', 'freemius' ),
+		'permissions-newsletter_desc'              => __( 'Updates, announcements, marketing, no spam', 'freemius' ),
 		'privacy-policy'                           => __( 'Privacy Policy', 'freemius' ),
 		'tos'                                      => __( 'Terms of Service', 'freemius' ),
 		'activating'                               => _x( 'Activating', 'as activating plugin', 'freemius' ),
@@ -144,9 +170,23 @@
 		#endregion Screenshots
 
 		#region Debug
+		'freemius-debug'                           => __( 'Freemius Debug', 'freemius' ),
+		'on'                                       => _x( 'On', 'as turned on', 'freemius' ),
+		'off'                                      => _x( 'Off', 'as turned off', 'freemius' ),
+		'freemius-state'                           => __( 'Freemius State', 'freemius' ),
+		'connected'                                => _x( 'Connected', 'as connection was successful', 'freemius' ),
+		'blocked'                                  => _x( 'Blocked', 'as connection blocked', 'freemius' ),
+		'api'                                      => _x( 'API', 'as application program interface', 'freemius' ),
+		'sdk'                                      => _x( 'SDK', 'as software development kit versions', 'freemius' ),
+		'sdk-versions'                             => _x( 'SDK Versions', 'as software development kit versions', 'freemius' ),
+		'plugin-path'                              => _x( 'Plugin Path', 'as plugin folder path', 'freemius' ),
+		'sdk-path'                                 => _x( 'SDK Path', 'as sdk path', 'freemius' ),
 		'addons-of-x'                              => __( 'Add Ons of Plugin %s', 'freemius' ),
 		'delete-all-confirm'                       => __( 'Are you sure you want to delete the all Freemius data?', 'freemius' ),
+		'actions'                                  => __( 'Actions', 'freemius' ),
 		'delete-all-accounts'                      => __( 'Delete All Accounts', 'freemius' ),
+		'clear-api-cache'                          => __( 'Clear API Cache', 'freemius' ),
+		'sync-data-from-server'                    => __( 'Sync Data From Server', 'freemius' ),
 		#endregion Debug
 
 		#region Expressions
@@ -239,7 +279,6 @@
 		'change-owner-request_owner-confirmed'     => __( 'Thanks for confirming the ownership change. An email was just sent to %s for final approval.', 'freemius' ),
 		'change-owner-request_candidate-confirmed' => __( '%s is the new owner of the account.', 'freemius' ),
 		#endregion Change Owner
-		'freemius-debug'                           => __( 'Freemius Debug', 'freemius' ),
 		'addon-x-cannot-run-without-y'             => _x( '%s cannot run without %s.', 'addonX cannot run without pluginY', 'freemius' ),
 		'addon-x-cannot-run-without-parent'        => _x( '%s cannot run without the plugin.', 'addonX cannot run...', 'freemius' ),
 		'plugin-x-activation-message'              => _x( '%s activation was successfully completed.', 'pluginX activation was successfully...', 'freemius' ),
