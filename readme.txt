@@ -96,6 +96,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.2.9 =
+* Tweak! Update Freemius SDK 
+
 = 2.2.8 =
 * Tweak! Update Freemius SDK 
 
