@@ -39,7 +39,7 @@
 	 */
 	if ( ! defined( 'WP_FS__LOCALHOST_IP' ) ) {
 		// VVV default public network IP.
-		define( 'WP_FS__VVV_DEFAULT_PUBLIC_IP', '192.168.50.1' );
+		define( 'WP_FS__VVV_DEFAULT_PUBLIC_IP', '192.168.50.4' );
 
 //		define( 'WP_FS__LOCALHOST_IP', WP_FS__VVV_DEFAULT_PUBLIC_IP );
 	}
@@ -56,8 +56,9 @@
 	 *      THEREFORE, MAKE SURE THAT WHEN USING THIS PARAMETER,YOUR TESTING ENVIRONMENT'S
 	 *      CLOCK IS SYNCED.
 	 */
-	define( 'WP_FS__SKIP_EMAIL_ACTIVATION', false );
-
+	if ( ! defined( 'WP_FS__SKIP_EMAIL_ACTIVATION' ) ) {
+		define( 'WP_FS__SKIP_EMAIL_ACTIVATION', false );
+	}
 
 	/**
 	 * Directories
@@ -81,17 +82,25 @@
 	define( 'WP_FS__ADDRESS_LOCALHOST', 'http://' . WP_FS__DOMAIN_LOCALHOST . ':8080' );
 	define( 'WP_FS__ADDRESS_PRODUCTION', 'https://' . WP_FS__DOMAIN_PRODUCTION );
 
+	define( 'WP_FS__IS_HTTP_REQUEST', isset( $_SERVER['HTTP_HOST'] ) );
+	define( 'WP_FS__REMOTE_ADDR', fs_get_ip() );
+
 	define( 'WP_FS__IS_PRODUCTION_MODE', ! defined( 'WP_FS__DEV_MODE' ) || ! WP_FS__DEV_MODE || ( WP_FS__TESTING_DOMAIN !== $_SERVER['HTTP_HOST'] ) );
 
 	define( 'WP_FS__ADDRESS', ( WP_FS__IS_PRODUCTION_MODE ? WP_FS__ADDRESS_PRODUCTION : WP_FS__ADDRESS_LOCALHOST ) );
 
 	if ( defined( 'WP_FS__LOCALHOST_IP' ) ) {
-		define( 'WP_FS__IS_LOCALHOST', ( WP_FS__LOCALHOST_IP == $_SERVER['REMOTE_ADDR'] ) );
+		define( 'WP_FS__IS_LOCALHOST', ( WP_FS__LOCALHOST_IP === WP_FS__REMOTE_ADDR ) );
 	} else {
-		define( 'WP_FS__IS_LOCALHOST', ( substr( $_SERVER['REMOTE_ADDR'], 0, 4 ) == '127.' || $_SERVER['REMOTE_ADDR'] == '::1' ) );
+		define( 'WP_FS__IS_LOCALHOST', WP_FS__IS_HTTP_REQUEST &&
+		                               is_string( WP_FS__REMOTE_ADDR ) &&
+		                               ( substr( WP_FS__REMOTE_ADDR, 0, 4 ) == '127.' ||
+		                                 WP_FS__REMOTE_ADDR == '::1' )
+		);
 	}
 
-	define( 'WP_FS__IS_LOCALHOST_FOR_SERVER', ( false !== strpos( $_SERVER['HTTP_HOST'], 'localhost' ) ) );
+	define( 'WP_FS__IS_LOCALHOST_FOR_SERVER', ( ! WP_FS__IS_HTTP_REQUEST ||
+	                                            false !== strpos( $_SERVER['HTTP_HOST'], 'localhost' ) ) );
 
 	// Set API address for local testing.
 	if ( ! WP_FS__IS_PRODUCTION_MODE ) {
@@ -109,7 +118,7 @@
 	}
 	define( 'WP_FS__OPTIONS_OPTION_NAME', WP_FS___OPTION_PREFIX . 'options' );
 
-	define( 'WP_FS__IS_HTTPS', (
+	define( 'WP_FS__IS_HTTPS', ( WP_FS__IS_HTTP_REQUEST &&
 		                           // Checks if CloudFlare's HTTPS (Flexible SSL support)
 		                           isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) ) ||
 	                           // Check if HTTPS request.
@@ -117,7 +126,8 @@
 	                           ( isset( $_SERVER['SERVER_PORT'] ) && 443 == $_SERVER['SERVER_PORT'] )
 	);
 
-	define( 'WP_FS__IS_POST_REQUEST', ( strtoupper( $_SERVER['REQUEST_METHOD'] ) == 'POST' ) );
+	define( 'WP_FS__IS_POST_REQUEST', ( WP_FS__IS_HTTP_REQUEST &&
+	                                    strtoupper( $_SERVER['REQUEST_METHOD'] ) == 'POST' ) );
 
 	/**
 	 * Billing Frequencies
@@ -136,7 +146,7 @@
 	/**
 	 * Times in seconds
 	 */
-//	define( 'WP_FS__TIME_5_MIN_IN_SEC', 300 );
+	define( 'WP_FS__TIME_5_MIN_IN_SEC', 300 );
 	define( 'WP_FS__TIME_10_MIN_IN_SEC', 600 );
 //	define( 'WP_FS__TIME_15_MIN_IN_SEC', 900 );
 	define( 'WP_FS__TIME_24_HOURS_IN_SEC', 86400 );
@@ -144,8 +154,8 @@
 	/**
 	 * Debugging
 	 */
-	define( 'WP_FS__DEBUG_SDK', ! empty( $_GET['fs_dbg'] ) );
-	define( 'WP_FS__ECHO_DEBUG_SDK', ! empty( $_GET['fs_dbg_echo'] ) );
+	define( 'WP_FS__DEBUG_SDK', WP_FS__DEV_MODE && ! empty( $_GET['fs_dbg'] ) );
+	define( 'WP_FS__ECHO_DEBUG_SDK', WP_FS__DEV_MODE && ! empty( $_GET['fs_dbg_echo'] ) );
 	define( 'WP_FS__LOG_DATETIME_FORMAT', 'Y-n-d H:i:s' );
 
 	if ( WP_FS__ECHO_DEBUG_SDK ) {

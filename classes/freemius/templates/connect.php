@@ -6,6 +6,10 @@
 	 * @since       1.0.7
 	 */
 
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
+
 	$slug = $VARS['slug'];
 	$fs   = freemius( $slug );
 
@@ -99,7 +103,7 @@
 						'user_lastname'     => $current_user->user_lastname,
 						'user_nickname'     => $current_user->user_nicename,
 						'user_email'        => $current_user->user_email,
-						'user_ip'           => fs_get_ip(),
+						'user_ip'           => WP_FS__REMOTE_ADDR,
 						'plugin_slug'       => $slug,
 						'plugin_id'         => $fs->get_id(),
 						'plugin_public_key' => $fs->get_public_key(),
@@ -200,6 +204,7 @@
 			$(document.body).css({'cursor': 'wait'});
 		});
 		$('.button.button-primary').on('click', function () {
+			$(this).addClass('fs-loading');
 			$(this).html('<?php _efs(  'activating' , $slug ) ?>...').css({'cursor': 'wait'});
 		});
 		$('.fs-permissions .fs-trigger').on('click', function () {

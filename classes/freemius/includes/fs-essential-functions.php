@@ -120,8 +120,6 @@
 
 	#endregion Core Redirect (copied from BuddyPress) -----------------------------------------
 
-	#region
-
 	if ( ! function_exists( '__fs' ) ) {
 		global $fs_text_overrides;
 
@@ -194,6 +192,36 @@
 			foreach ( $key_value as $key => $value ) {
 				$fs_text_overrides[ $slug ][ $key ] = $value;
 			}
+		}
+	}
+
+	if ( ! function_exists( 'fs_get_ip' ) ) {
+		/**
+		 * Get client IP.
+		 *
+		 * @author Vova Feldman (@svovaf)
+		 * @since  1.1.2
+		 *
+		 * @return string|null
+		 */
+		function fs_get_ip() {
+			$fields = array(
+				'HTTP_CF_CONNECTING_IP',
+				'HTTP_CLIENT_IP',
+				'HTTP_X_FORWARDED_FOR',
+				'HTTP_X_FORWARDED',
+				'HTTP_FORWARDED_FOR',
+				'HTTP_FORWARDED',
+				'REMOTE_ADDR',
+			);
+
+			foreach ( $fields as $ip_field ) {
+				if ( ! empty( $_SERVER[ $ip_field ] ) ) {
+					return $_SERVER[ $ip_field ];
+				}
+			}
+
+			return null;
 		}
 	}
 
@@ -337,3 +365,30 @@
 			fs_update_sdk_newest_version( $newest_sdk_path, $newest_sdk_data->plugin_path );
 		}
 	}
+
+	#region Actions / Filters -----------------------------------------
+
+	/**
+	 * Apply filter for specific plugin.
+	 *
+	 * @author Vova Feldman (@svovaf)
+	 * @since  1.0.9
+	 *
+	 * @param string $slug  Plugin slug
+	 * @param string $tag   The name of the filter hook.
+	 * @param mixed  $value The value on which the filters hooked to `$tag` are applied on.
+	 *
+	 * @return mixed The filtered value after all hooked functions are applied to it.
+	 *
+	 * @uses   apply_filters()
+	 */
+	function fs_apply_filter( $slug, $tag, $value ) {
+		$args = func_get_args();
+
+		return call_user_func_array( 'apply_filters', array_merge(
+				array( 'fs_' . $tag . '_' . $slug ),
+				array_slice( $args, 2 ) )
+		);
+	}
+
+	#endregion Actions / Filters -----------------------------------------

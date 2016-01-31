@@ -192,6 +192,13 @@
 		private $_admin_notices;
 
 		/**
+		 * @since 1.1.6
+		 *
+		 * @var FS_Admin_Notice_Manager
+		 */
+		private static $_global_admin_notices;
+
+		/**
 		 * @var FS_Logger
 		 * @since 1.0.0
 		 */
@@ -797,6 +804,8 @@
 
 			self::$_accounts = FS_Option_Manager::get_manager( WP_FS__ACCOUNTS_OPTION_NAME, true );
 
+			self::$_global_admin_notices = FS_Admin_Notice_Manager::instance( 'global' );
+
 			// Configure which Freemius powered plugins should be auto updated.
 //			add_filter( 'auto_update_plugin', '_include_plugins_in_auto_update', 10, 2 );
 
@@ -812,6 +821,10 @@
 		 * @since  1.0.8
 		 */
 		static function add_debug_page() {
+			if ( ! current_user_can( 'activate_plugins' ) ) {
+				return;
+			}
+
 			self::$_static_logger->entrance();
 
 			$title = sprintf( '%s [v.%s]', __fs( 'freemius-debug' ), WP_FS__SDK_VERSION );
@@ -905,6 +918,7 @@
 			// If already installed or pending then sure it's on :)
 			if ( $this->is_registered() || $this->is_pending_activation() ) {
 				$this->_is_on = true;
+
 				return true;
 			}
 
@@ -936,8 +950,9 @@
 			}
 
 			if ( isset( $this->_storage->connectivity_test ) ) {
-				if ( $_SERVER['HTTP_HOST'] == $this->_storage->connectivity_test['host'] &&
-				     fs_get_ip() == $this->_storage->connectivity_test['server_ip']
+				if ( ! WP_FS__IS_HTTP_REQUEST ||
+				     ( $_SERVER['HTTP_HOST'] == $this->_storage->connectivity_test['host'] &&
+				       WP_FS__REMOTE_ADDR == $this->_storage->connectivity_test['server_ip'] )
 				) {
 					if ( ( $this->_storage->connectivity_test['is_connected'] &&
 					       $this->_storage->connectivity_test['is_active'] ) ||
@@ -945,7 +960,7 @@
 					       $version == $this->_storage->connectivity_test['version'] )
 					) {
 						$this->_has_api_connection = $this->_storage->connectivity_test['is_connected'];
-						$this->_is_on              = $this->_storage->connectivity_test['is_active'] || (WP_FS__DEV_MODE && $this->_has_api_connection);
+						$this->_is_on              = $this->_storage->connectivity_test['is_active'] || ( WP_FS__DEV_MODE && $this->_has_api_connection );
 
 						return $this->_has_api_connection;
 					}
@@ -980,7 +995,7 @@
 			$this->_storage->connectivity_test = array(
 				'is_connected' => $is_connected,
 				'host'         => $_SERVER['HTTP_HOST'],
-				'server_ip'    => fs_get_ip(),
+				'server_ip'    => WP_FS__REMOTE_ADDR,
 				'is_active'    => $is_active,
 				'timestamp'    => WP_FS__SCRIPT_START_TIME,
 				// Last version with connectivity attempt.
@@ -988,7 +1003,7 @@
 			);
 
 			$this->_has_api_connection = $is_connected;
-			$this->_is_on              = $is_active || (WP_FS__DEV_MODE && $is_connected);
+			$this->_is_on              = $is_active || ( WP_FS__DEV_MODE && $is_connected );
 
 			return $this->_has_api_connection;
 		}
@@ -1385,7 +1400,7 @@
 				);
 			}
 
-			$server_ip = fs_get_ip();
+			$server_ip = WP_FS__REMOTE_ADDR;
 
 			// Generate the default email sections.
 			$sections = array(
@@ -1560,6 +1575,19 @@
 			$this->_permissions      = $this->_get_option( $plugin_info, 'permissions', array() );
 
 			if ( ! $this->is_registered() ) {
+				if ( ! WP_FS__IS_HTTP_REQUEST ) {
+					/**
+					 * If not registered and executed without HTTP context (e.g. CLI, Cronjob),
+					 * then don't start Freemius.
+					 *
+					 * @author Vova Feldman (@svovaf)
+					 * @since  1.1.6.3
+					 *
+					 * @link https://wordpress.org/support/topic/errors-in-the-freemius-class-when-running-in-wordpress-in-cli
+					 */
+					return;
+				}
+
 				if ( ! $this->has_api_connectivity() ) {
 					if ( is_admin() && $this->_admin_notices->has_sticky( 'failed_connect_api' ) ) {
 						if ( ! $this->_enable_anonymous ) {
@@ -1655,11 +1683,11 @@
 							&$this,
 							'_get_addon_info_filter'
 						), WP_FS__DEFAULT_PRIORITY, 3 );
-					} else {
-						if ( $this->is_paying() || $this->_has_addons() ) {
-							new FS_Plugin_Updater( $this );
-						}
 					}
+				}
+
+				if ( $this->is_premium() ) {
+					new FS_Plugin_Updater( $this );
 				}
 
 //				if ( $this->is_registered() ||
@@ -2131,6 +2159,11 @@
 				return false;
 			}
 
+			// Check if API is not down.
+			if ( FS_Api::is_temporary_down() ) {
+				return false;
+			}
+
 			$sync_timestamp = $this->_storage->get( 'sync_timestamp' );
 
 			if ( ! is_numeric( $sync_timestamp ) || $sync_timestamp >= time() ) {
@@ -2147,8 +2180,10 @@
 					// Initiate background plan sync.
 					$this->_sync_license( true );
 
-					// Check for plugin updates.
-					$this->_check_updates( true );
+					if ( $this->is_paying() ) {
+						// Check for plugin updates.
+						$this->_check_updates( true );
+					}
 				}
 
 				if ( ! $this->is_addon() ) {
@@ -2631,16 +2666,16 @@
 		private function update_plugin_version_event() {
 			$this->_logger->entrance( 'slug = ' . $this->_slug );
 
-			$this->_site->version = $this->get_plugin_version();
-
 			// Send update event.
 			$site = $this->send_install_update( array(), true );
 
 			if ( false !== $site && ! $this->is_api_error( $site ) ) {
 				$this->_site       = new FS_Site( $site );
 				$this->_site->plan = $this->_get_plan_by_id( $site->plan_id );
-				$this->_store_site( true );
 			}
+
+			$this->_site->version = $this->get_plugin_version();
+			$this->_store_site( true );
 		}
 
 		/**
@@ -3244,6 +3279,21 @@
 
 			return $addons[ $this->_plugin->id ];
 		}
+
+		/**
+		 * Check if user has any
+		 *
+		 * @author Vova Feldman (@svovaf)
+		 * @since  1.1.6
+		 *
+		 * @return bool
+		 */
+		function has_account_addons() {
+			$addons = $this->get_account_addons();
+
+			return is_array( $addons ) && ( 0 < count( $addons ) );
+		}
+
 
 		/**
 		 * Get add-on by ID (from local data).
@@ -4334,10 +4384,12 @@
 		function setup_account( FS_User $user, FS_Site $site, $redirect = true ) {
 			$this->_user = $user;
 			$this->_site = $site;
+
+			$this->_sync_plans();
+
 			$this->_enrich_site_plan( false );
 
 			$this->_set_account( $user, $site );
-			$this->_sync_plans();
 
 			if ( $this->is_trial() ) {
 				// Store trial plan information.
@@ -5116,11 +5168,9 @@
 			$this->_logger->entrance( $tag );
 
 			$args = func_get_args();
+			array_unshift($args, $this->_slug);
 
-			return call_user_func_array( 'apply_filters', array_merge(
-					array( 'fs_' . $tag . '_' . $this->_slug ),
-					array_slice( $args, 1 ) )
-			);
+			return call_user_func_array( 'fs_apply_filter', $args);
 		}
 
 		/**
@@ -5840,30 +5890,45 @@
 			$plan_change = 'none';
 
 			if ( $this->is_api_error( $site ) ) {
-				$api = $this->get_api_site_scope();
+				// Show API messages only if not background sync or if paying customer.
+				if ( ! $background || $this->is_paying() ) {
+					// Try to ping API to see if not blocked.
+					if ( ! FS_Api::test() ) {
+						/**
+						 * Failed to ping API - blocked!
+						 *
+						 * @author Vova Feldman (@svovaf)
+						 * @since  1.1.6 Only show message related to one of the Freemius powered plugins. Once it will be resolved it will fix the issue for all plugins anyways. There's no point to scare users with multiple error messages.
+						 */
+						$api = $this->get_api_site_scope();
 
-				// Try to ping API to see if not blocked.
-				if ( ! $api->test() ) {
-					// Failed to ping API - blocked!
-					$this->_admin_notices->add(
-						sprintf(
-							__fs( 'server-blocking-access', $this->_slug ),
-							$this->get_plugin_name(),
-							'<a href="' . $api->get_url() . '" target="_blank">' . $api->get_url() . '</a>'
-						) . '<br> ' . __fs( 'server-error-message', $this->_slug ) . var_export( $site->error, true ),
-						__fs( 'oops', $this->_slug ) . '...',
-						'error',
-						$background
-					);
-				} else {
-					// Authentication params are broken.
-					$this->_admin_notices->add(
-						__fs( 'wrong-authentication-param-message', $this->_slug ),
-						__fs( 'oops', $this->_slug ) . '...',
-						'error'
-					);
+						if ( ! self::$_global_admin_notices->has_sticky( 'api_blocked' ) ) {
+							self::$_global_admin_notices->add(
+								sprintf(
+									__fs( 'server-blocking-access', $this->_slug ),
+									$this->get_plugin_name(),
+									'<a href="' . $api->get_url() . '" target="_blank">' . $api->get_url() . '</a>'
+								) . '<br> ' . __fs( 'server-error-message', $this->_slug ) . var_export( $site->error, true ),
+								__fs( 'oops', $this->_slug ) . '...',
+								'error',
+								$background,
+								false,
+								'api_blocked'
+							);
+						}
+					} else {
+						// Authentication params are broken.
+						$this->_admin_notices->add(
+							__fs( 'wrong-authentication-param-message', $this->_slug ),
+							__fs( 'oops', $this->_slug ) . '...',
+							'error'
+						);
+					}
 				}
 			} else {
+				// Remove sticky API connectivity message.
+				self::$_global_admin_notices->remove_sticky('api_blocked');
+
 				$site = new FS_Site( $site );
 
 				// Sync licenses.
@@ -7338,7 +7403,7 @@
 
 			// Add start trial button.
 			$message .= ' ' . sprintf(
-					'<a style="margin-left: 10px;" href="%s"><button class="button button-primary">%s &nbsp;&#10140;</button></a>',
+					'<a style="margin-left: 10px; vertical-align: super;" href="%s"><button class="button button-primary">%s &nbsp;&#10140;</button></a>',
 					$upgrade_url,
 					__fs( 'start-free-trial', $this->_slug )
 				);

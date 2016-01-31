@@ -10,7 +10,7 @@
 		exit;
 	}
 
-	$this_sdk_version = '1.1.6.2';
+	$this_sdk_version = '1.1.6.5';
 
 	#region SDK Selection Logic --------------------------------------------------------------------
 
@@ -202,6 +202,7 @@
 	 *      fs_connect_message_on_update_{plugin_slug}
 	 *      fs_uninstall_confirmation_message_{plugin_slug}
 	 *      fs_pending_activation_message_{plugin_slug}
+	 *      fs_is_submenu_visible_{plugin_slug}
 	 *
 	 * --------------------------------------------------------
 	 *
@@ -257,6 +258,7 @@
 		require_once WP_FS__DIR_INCLUDES . '/fs-core-functions.php';
 //		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-abstract-manager.php';
 		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-option-manager.php';
+		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-cache-manager.php';
 		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-admin-notice-manager.php';
 		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-admin-menu-manager.php';
 		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-key-value-storage.php';

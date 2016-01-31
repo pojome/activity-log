@@ -5,6 +5,10 @@
 	 * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
 	 * @since       1.0.3
 	 */
+
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
 ?>
 <div data-id="<?php echo $VARS['id'] ?>" data-slug="<?php echo $VARS['slug'] ?>" class="<?php
 	switch ( $VARS['type'] ) {
@@ -27,10 +31,12 @@
 } ?><?php if ( ! empty( $VARS['plugin'] ) ) {
 	echo ' fs-has-title';
 } ?>"><?php if ( ! empty( $VARS['plugin'] ) ) : ?><label
-		class="fs-plugin-title"><?php echo $VARS['plugin'] ?></label><?php endif ?><p>
-		<?php if ( ! empty( $VARS['title'] ) ) : ?><b><?php echo $VARS['title'] ?></b> <?php endif ?>
-		<?php echo $VARS['message'] ?>
-	</p><?php if ( $VARS['sticky'] ) : ?>
+		class="fs-plugin-title"><?php echo $VARS['plugin'] ?></label><?php endif ?><?php if ( $VARS['sticky'] ) : ?>
 		<div class="fs-close"><i class="dashicons dashicons-no"
 		                         title="<?php _efs( 'dismiss' ) ?>"></i> <span><?php _efs( 'dismiss' ) ?></span>
-		</div><?php endif ?></div>
+		</div><?php endif ?>
+	<div class="fs-notice-body">
+		<?php if ( ! empty( $VARS['title'] ) ) : ?><b><?php echo $VARS['title'] ?></b> <?php endif ?>
+		<?php echo $VARS['message'] ?>
+	</div>
+</div>

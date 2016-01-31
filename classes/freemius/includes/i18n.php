@@ -1,5 +1,16 @@
 <?php
 	/**
+	 * @package     Freemius
+	 * @copyright   Copyright (c) 2015, Freemius, Inc.
+	 * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+	 * @since       1.1.4
+	 */
+
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
+
+	/**
 	 * All strings can now be overridden.
 	 *
 	 * For example, if we want to override:
@@ -53,6 +64,7 @@
 		'license-single-site'                      => __( 'Single Site License', 'freemius' ),
 		'license-unlimited'                        => __( 'Unlimited Licenses', 'freemius' ),
 		'license-x-sites'                          => __( 'Up to %s Sites', 'freemius' ),
+		'renew-license-now'                        => __( '%sRenew your license now%s to access version %s features and support.', 'freemius' ),
 		'x-plan'                                   => _x( '%s Plan', 'e.g. Professional Plan', 'freemius' ),
 		'you-are-step-away'                        => __( 'You are just one step away - %s', 'freemius' ),
 		'activate-x-now'                           => _x( 'Complete "%s" Activation Now', '%s - plugin name. As complete "Jetpack" activation now', 'freemius' ),
@@ -271,7 +283,7 @@
 		'deactivate-plugin-title'                  => __( 'That\'s exhausting, please deactivate', 'freemius' ),
 		'deactivate-plugin-desc'                   => __( 'We feel your frustration and sincerely apologize for the inconvenience. Hope to see you again in the future.', 'freemius' ),
 		'fix-request-sent-message'                 => __( 'Thank for giving us the chance to fix it! A message was just sent to our technical staff. We will get back to you as soon as we have an update to %s. Appreciate your patience.', 'freemius' ),
-		'server-blocking-access'                   => _x( 'Your server is blocking the access to Freemius\' API, which is crucial for %1s license synchronization. Please contact your host to whitelist %2s', '%1s - plugin title, %2s - API domain', 'freemius' ),
+		'server-blocking-access'                   => _x( 'Your server is blocking the access to Freemius\' API, which is crucial for %1s synchronization. Please contact your host to whitelist %2s', '%1s - plugin title, %2s - API domain', 'freemius' ),
 		'wrong-authentication-param-message'       => __( 'It seems like one of the authentication parameters is wrong. Update your Public Key, Secret Key & User ID, and try again.', 'freemius' ),
 		#endregion Connectivity Issues
 		#region Change Owner
