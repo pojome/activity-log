@@ -465,7 +465,10 @@
 				'slug'    => $this->_slug
 			);
 
-			fs_require_once_template( 'deactivation-feedback-modal.php', $vars );
+			/**
+			 * @todo Deactivation form core functions should be loaded only once! Otherwise, when there are multiple Freemius powered plugins the same code is loaded multiple times. The only thing that should be loaded differently is the various deactivation reasons object based on the state of the plugin.
+			 */
+			fs_require_template( 'deactivation-feedback-modal.php', $vars );
 		}
 
 		/**
@@ -2248,12 +2251,19 @@
 		 * @since  1.0.7
 		 */
 		function _admin_init_action() {
-			// Automatically redirect to connect/activation page after plugin activation.
+			/**
+			 * Automatically redirect to connect/activation page after plugin activation.
+			 *
+			 * @since 1.1.7 Do NOT redirect to opt-in when running in network admin mode.
+			 */
 			if ( $this->is_plugin_activation() ) {
 				delete_option( "fs_{$this->_slug}_activated" );
-				$this->_redirect_on_activation_hook();
 
-				return;
+				if ( ! function_exists( 'is_network_admin' ) || ! is_network_admin() ) {
+					$this->_redirect_on_activation_hook();
+
+					return;
+				}
 			}
 
 			if ( fs_request_is_action( $this->_slug . '_skip_activation' ) ) {
@@ -2635,6 +2645,24 @@
 		 */
 		private function reset_anonymous_mode() {
 			unset( $this->_storage->is_anonymous );
+		}
+
+		/**
+		 * Clears the anonymous mode and redirects to the opt-in screen.
+		 *
+		 * @author Vova Feldman (@svovaf)
+		 * @since  1.1.7
+		 */
+		function connect_again() {
+			if ( ! $this->is_anonymous() ) {
+				return;
+			}
+
+			$this->reset_anonymous_mode();
+
+			if ( fs_redirect( $this->get_activation_url() ) ) {
+				exit();
+			}
 		}
 
 		/**
@@ -4967,7 +4995,7 @@
 			$this->embed_submenu_items();
 
 			// Start with specially high number to make sure it's appended.
-			$i = 10000;
+			$i = max( 10000, max( array_keys( $top_level_menu ) ) + 1 );
 			foreach ( $all_submenu_items_after as $meta ) {
 				$top_level_menu[ $i ] = $meta;
 				$i ++;
@@ -4977,12 +5005,26 @@
 			ksort( $top_level_menu );
 		}
 
+		/**
+		 * Displays the Support Forum link when enabled.
+		 *
+		 * Can be filtered like so:
+		 *
+		 *  function _fs_show_support_menu( $is_visible, $menu_id ) {
+		 *      if ( 'support' === $menu_id ) {
+		 * 		    return _fs->is_registered();
+		 * 		}
+		 * 		return $is_visible;
+		 * 	}
+		 * 	_fs()->add_filter('is_submenu_visible', '_fs_show_support_menu', 10, 2);
+		 *
+		 */
 		function _add_default_submenu_items() {
 			if ( ! $this->is_on() ) {
 				return;
 			}
 
-			if ( $this->is_registered() ) {
+			if ( $this->is_registered() || $this->is_anonymous() ) {
 				if ( $this->_menu->is_submenu_item_visible( 'support' ) ) {
 					$this->add_submenu_link_item(
 						$this->apply_filters( 'support_forum_submenu', __fs( 'support-forum', $this->_slug ) ),
@@ -7093,11 +7135,7 @@
 			$this->_logger->entrance();
 
 			$vars = array( 'slug' => $this->_slug );
-			if ( $this->is_pending_activation() ) {
-				fs_require_once_template( 'pending-activation.php', $vars );
-			} else {
-				fs_require_once_template( 'connect.php', $vars );
-			}
+			fs_require_once_template( 'connect.php', $vars );
 		}
 
 		/**
