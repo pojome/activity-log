@@ -6,17 +6,23 @@ Tested up to: 4.4
 Stable tag: 2.2.9
 License: GPLv2 or later
 
-Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site.
+The #1 Activity Log plugin helps you monitor & log all changes and activities on your site, so you can run a safer, more organized WordPress site.
 
 == Description ==
 
-<h3>Like being in control? Check this out.</h3>
+A COMPLETE, EASY TO USE, STABLE AND WELL SUPPORTED WORDPRESS ACTIVITY LOG PLUGIN
 
-We all know that it’s relatively easy to analyze what your visitors are looking for while browsing your site. But there is really no easy way to know what registered users (say, with an Administrator account or even Editors) are doing on the dashboard of your site. How can you know if a post was deleted? or if a plugin was activated/deactivated? or if the active theme was changed?
-If you have tens of users or more, you really can’t know who did it. This plugin tries to solve this issue by tracking what users do on the dashboard of your WordPress site. 
+Want to monitor and track your site activity? Find out exactly who does what on your WordPress website. the Activity Log plugin is like an airplane's black box that logs every activity in WordPress, and lets you see exactly what people are doing on your site.
 
-<strong>As of this moment, the plugin logs things when:</strong><br />
+* Like, if someone is trying to hack your site.
+* Or, when a post was published, and who published it.
+* Or, if a plugin was activated/deactivated.
 
+Useful, right? Trust us, you won't understand how you managed your website without it. The plugin is also lightning fast and works behind the scenes, so it doesn't affect site and admin performance (For optimal performance, we built the plugin so it runs on a separate table in the database).
+
+If you have tens of users or more, you really can’t know who did what. This plugin tries to solve this issue by tracking what users do, and displaying it in an easy to use and easy to filter view on the dashboard of your WordPress site.
+
+<h4>With the Activity Log you can log:</h4>
 * <strong>WordPress</strong> - Core Updates
 * <strong>Posts</strong> - Created, Updated, Deleted
 * <strong>Pages</strong> - Created, Updated, Deleted
@@ -36,9 +42,9 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * <strong>Export</strong> - User download export file from the site
 * <strong>WooCommerce</strong> - Monitor all shop options
 * <strong>bbPress</strong> - Forums, Topics, Replies, Taxonomies and other actions
-* and much more...
+* There's more, but you get the point...
 
-<strong>New!</strong> You are now able to get email notifications once an event you have defined (via rules) has occured. This is useful in cases you must know right away when someone does something on your site.
+<strong>New!</strong> You are now able to get email notifications once an event you have defined (via rules) has occurred. This is useful in cases you must know right away when someone does something on your site. We use it to thwart hacker attempts, for example.
 
 <h4>What people are saying</h4>
 * <em>“Best 10 Free WordPress Plugins of the Month – July 2014: Keeping tabs on what your users do with their access to the Dashboard”</em> - [ManageWp.com](https://managewp.com/best-free-wordpress-plugins-july-2014)
@@ -62,14 +68,12 @@ If you have tens of users or more, you really can’t know who did it. This plug
 * Czech (cs_CZ) - Martin Kokeš
 * Finnish (fi) - Nazq
 
-The plugin does not require any kind of setup. It works out of the box (and that’s why we love it too).
+The plugin does not require any kind of setup. It works out of the box (and that’s another reason people love it).
 
 We’re planning to add a lot more features in the upcoming releases. If you think we’re missing something big time, please post your suggestions in the plugin’s forum.
 
-<strong>Contributions:</strong><br />
-
-Would you like to like to contribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/KingYes/wordpress-aryo-activity-log). Also, if you have any notes about the code, please open a ticket on ths issue tracker.
-
+<h4>Contributions:</h4>
+Would you like to like to contribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/KingYes/wordpress-aryo-activity-log). Also, if you have any notes about the code, please open a ticket on the issue tracker.
 
 == Installation ==
 
