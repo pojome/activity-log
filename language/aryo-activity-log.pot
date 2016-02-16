@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: aryo-activity-log 2.2.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-04 15:08+0200\n"
+"POT-Creation-Date: 2016-02-16 16:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,7 +65,7 @@ msgid "Description"
 msgstr ""
 
 #: classes/class-aal-activity-log-list-table.php:142
-#: classes/freemius/includes/fs-plugin-functions.php:261
+#: classes/freemius/includes/fs-plugin-info-dialog.php:581
 #, php-format
 msgid "%s ago"
 msgstr ""
@@ -268,154 +268,154 @@ msgid ""
 "conditions:"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:87
+#: classes/freemius/includes/fs-plugin-info-dialog.php:303
+#: classes/freemius/includes/i18n.php:111
+msgid "Install Now"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-info-dialog.php:309
+#: classes/freemius/includes/i18n.php:112
+msgid "Install Update Now"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-info-dialog.php:313
+#, php-format
+msgid "Newer Version (%s) Installed"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-info-dialog.php:316
+msgid "Latest Version Installed"
+msgstr ""
+
+#: classes/freemius/includes/fs-plugin-info-dialog.php:406
 msgctxt "Plugin installer section title"
 msgid "Description"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:88
+#: classes/freemius/includes/fs-plugin-info-dialog.php:407
 msgctxt "Plugin installer section title"
 msgid "Installation"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:89
+#: classes/freemius/includes/fs-plugin-info-dialog.php:408
 msgctxt "Plugin installer section title"
 msgid "FAQ"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:90
+#: classes/freemius/includes/fs-plugin-info-dialog.php:409
 msgctxt "Plugin installer section title"
 msgid "Screenshots"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:91
+#: classes/freemius/includes/fs-plugin-info-dialog.php:410
 msgctxt "Plugin installer section title"
 msgid "Changelog"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:92
+#: classes/freemius/includes/fs-plugin-info-dialog.php:411
 msgctxt "Plugin installer section title"
 msgid "Reviews"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:93
+#: classes/freemius/includes/fs-plugin-info-dialog.php:412
 msgctxt "Plugin installer section title"
 msgid "Other Notes"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:118
+#: classes/freemius/includes/fs-plugin-info-dialog.php:437
 msgid "Plugin Install"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:251
+#: classes/freemius/includes/fs-plugin-info-dialog.php:567
 msgid "Version:"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:255
+#: classes/freemius/includes/fs-plugin-info-dialog.php:573
 msgid "Author:"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:259
+#: classes/freemius/includes/fs-plugin-info-dialog.php:579
 msgid "Last Updated:"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:266
+#: classes/freemius/includes/fs-plugin-info-dialog.php:588
 msgid "Requires WordPress Version:"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:266
+#: classes/freemius/includes/fs-plugin-info-dialog.php:588
 #, php-format
 msgid "%s or higher"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:270
+#: classes/freemius/includes/fs-plugin-info-dialog.php:594
 msgid "Compatible up to:"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:274
+#: classes/freemius/includes/fs-plugin-info-dialog.php:601
 msgid "Downloaded:"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:274
+#: classes/freemius/includes/fs-plugin-info-dialog.php:601
 #, php-format
 msgid "%s time"
 msgid_plural "%s times"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:279
+#: classes/freemius/includes/fs-plugin-info-dialog.php:608
 msgid "WordPress.org Plugin Page &#187;"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:284
+#: classes/freemius/includes/fs-plugin-info-dialog.php:615
 msgid "Plugin Homepage &#187;"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:289
-#: classes/freemius/includes/fs-plugin-functions.php:346
+#: classes/freemius/includes/fs-plugin-info-dialog.php:622
+#: classes/freemius/includes/fs-plugin-info-dialog.php:679
 msgid "Donate to this plugin &#187;"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:295
+#: classes/freemius/includes/fs-plugin-info-dialog.php:628
 msgid "Average Rating"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:301
+#: classes/freemius/includes/fs-plugin-info-dialog.php:634
 #, php-format
 msgid "(based on %s rating)"
 msgid_plural "(based on %s ratings)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:314
+#: classes/freemius/includes/fs-plugin-info-dialog.php:647
 #, php-format
 msgid "Click to see reviews that provided a rating of %d star"
 msgid_plural "Click to see reviews that provided a rating of %d stars"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:314
+#: classes/freemius/includes/fs-plugin-info-dialog.php:647
 #, php-format
 msgid "%d star"
 msgid_plural "%d stars"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:325
+#: classes/freemius/includes/fs-plugin-info-dialog.php:658
 msgid "Contributors"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:353
-#: classes/freemius/includes/fs-plugin-functions.php:355
+#: classes/freemius/includes/fs-plugin-info-dialog.php:686
+#: classes/freemius/includes/fs-plugin-info-dialog.php:688
 msgid "Warning:"
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:353
+#: classes/freemius/includes/fs-plugin-info-dialog.php:686
 msgid "This plugin has not been tested with your current version of WordPress."
 msgstr ""
 
-#: classes/freemius/includes/fs-plugin-functions.php:355
+#: classes/freemius/includes/fs-plugin-info-dialog.php:688
 msgid ""
 "This plugin has not been marked as compatible with your version of WordPress."
-msgstr ""
-
-#: classes/freemius/includes/fs-plugin-functions.php:392
-#: classes/freemius/includes/i18n.php:111
-msgid "Install Now"
-msgstr ""
-
-#: classes/freemius/includes/fs-plugin-functions.php:397
-#: classes/freemius/includes/i18n.php:112
-msgid "Install Update Now"
-msgstr ""
-
-#: classes/freemius/includes/fs-plugin-functions.php:401
-#, php-format
-msgid "Newer Version (%s) Installed"
-msgstr ""
-
-#: classes/freemius/includes/fs-plugin-functions.php:404
-msgid "Latest Version Installed"
 msgstr ""
 
 #: classes/freemius/includes/i18n.php:35

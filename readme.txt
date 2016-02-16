@@ -2,7 +2,7 @@
 Contributors: pojo.me, KingYes, ariel.k, maor, freemius
 Tags: actions, activity, Activity Log, activity logs, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, change, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, woocommerce log, woocommerce monitor, woocommerce monitoring, woocommrece security, wordpress activity log, WordPress Admin, wordpress admin monitoring, wordpress audit, wordpress email alerts, wordpress log, wordpress monitor, wordpress monitoring, wordpress multisite, wordpress security, wordpress security alerts, wordpress security audit log, wordpress security monitor, wordpress security plugin, wordpress user tracking
 Requires at least: 3.5
-Tested up to: 4.4
+Tested up to: 4.4.2
 Stable tag: 2.2.9
 License: GPLv2 or later
 
@@ -99,6 +99,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 == Changelog ==
+
+= 2.2.10 =
+* Tweak! Update Freemius SDK
+* Tested up to WordPress v4.4.2
 
 = 2.2.9 =
 * Tweak! Update Freemius SDK 
