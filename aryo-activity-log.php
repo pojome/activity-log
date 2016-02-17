@@ -94,7 +94,7 @@ final class AAL_Main {
 	protected function __construct() {
 		global $wpdb;
 		
-		$this->_setup_freemius();
+		//$this->_setup_freemius();
 		
 		$this->ui            = new AAL_Admin_Ui();
 		$this->hooks         = new AAL_Hooks();

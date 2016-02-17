@@ -100,6 +100,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.2.11 =
+* Tweak! - Temporarily remove Freemius SDK from the plugin
+
 = 2.2.10 =
 * Tweak! Update Freemius SDK
 * Tested up to WordPress v4.4.2
