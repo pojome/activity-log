@@ -12,7 +12,7 @@ The #1 Activity Log plugin helps you monitor & log all changes and activities on
 
 ## Description ##
 
-A COMPLETE, EASY TO USE, STABLE AND WELL SUPPORTED WORDPRESS ACTIVITY LOG PLUGIN
+<strong>A COMPLETE, EASY TO USE & WELL SUPPORTED WORDPRESS ACTIVITY LOG PLUGIN</strong><br />
 
 Want to monitor and track your site activity? Find out exactly who does what on your WordPress website. the Activity Log plugin is like an airplane's black box that logs every activity in WordPress, and lets you see exactly what people are doing on your site.
 
