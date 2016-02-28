@@ -11,7 +11,7 @@
 		"grunt-phpunit": "~0.3.6",
 		"grunt-contrib-jshint": "~1.0.0",
 		"grunt-contrib-watch": "~0.6.1",
-		"grunt-wp-readme-to-markdown-with-extra": "~0.7.0",
+		"grunt-wp-readme-to-markdown-with-extra": "~0.7.1",
 		"grunt-bumpup": "~0.6.3",
 		"grunt-shell": "~1.2.0",
 		"grunt-text-replace": "~0.4.0",
