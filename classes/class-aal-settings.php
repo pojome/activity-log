@@ -423,9 +423,9 @@ final class AAL_Settings_Fields {
 		?>
 		<select id="<?php echo esc_attr( $id ); ?>" name="<?php printf( '%s[%s]', esc_attr( $page ), esc_attr( $id ) ); ?>">
 			<?php foreach ( $options as $name => $label ) : ?>
-				<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) $value ); ?>>
-					<?php echo esc_html( $label ); ?>
-				</option>
+			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) $value ); ?>>
+				<?php echo esc_html( $label ); ?>
+			</option>
 			<?php endforeach; ?>
 		</select>
 		<?php if ( ! empty( $desc ) ) : ?>
