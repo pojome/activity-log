@@ -8,3 +8,6 @@ body.toplevel_page_activity_log_page #wpbody h2.aal-page-title::before {
     padding-right: .2em;
     vertical-align: -18%;
 }
+.aal-xxl-text {
+    width: 100%;
+}

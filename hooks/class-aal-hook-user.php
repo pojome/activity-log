@@ -68,6 +68,10 @@ class AAL_Hook_User extends AAL_Hook_Base {
 	}
 
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( 'wp_login', array( &$this, 'hooks_wp_login' ), 10, 2 );
 		add_action( 'wp_logout', array( &$this, 'hooks_wp_logout' ) );
 		add_action( 'delete_user', array( &$this, 'hooks_delete_user' ) );

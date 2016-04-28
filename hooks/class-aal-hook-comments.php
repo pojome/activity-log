@@ -59,6 +59,10 @@ class AAL_Hook_Comments extends AAL_Hook_Base {
 	}
 
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( 'wp_insert_comment', array( &$this, 'handle_comment_log' ), 10, 2 );
 		add_action( 'edit_comment', array( &$this, 'handle_comment_log' ) );
 		add_action( 'trash_comment', array( &$this, 'handle_comment_log' ) );

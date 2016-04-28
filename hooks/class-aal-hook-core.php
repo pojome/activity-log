@@ -23,6 +23,10 @@ class AAL_Hook_Core extends AAL_Hook_Base {
 	}
 
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( '_core_updated_successfully', array( &$this, 'core_updated_successfully' ) );
 		
 		parent::__construct();

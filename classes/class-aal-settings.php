@@ -5,7 +5,7 @@ class AAL_Settings {
 	private $hook;
 	public $slug = 'activity-log-settings';
 	protected $options;
-	
+
 	public function __construct() {
 		add_action( 'init', array( &$this, 'init' ) );
 		add_action( 'admin_menu', array( &$this, 'action_admin_menu' ), 30 );
@@ -17,18 +17,18 @@ class AAL_Settings {
 		add_action( 'wp_ajax_aal_reset_items', array( &$this, 'ajax_aal_reset_items' ) );
 		add_action( 'wp_ajax_aal_get_properties', array( &$this, 'ajax_aal_get_properties' ) );
 	}
-	
+
 	public function init() {
 		$this->options = $this->get_options();
 	}
-	
+
 	public function plugin_action_links( $links ) {
 		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/KingYes/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-activity-log' ) );
 		array_unshift( $links, $settings_link );
-		
+
 		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=activity-log-settings' ), __( 'Settings', 'aryo-activity-log' ) );
 		array_unshift( $links, $settings_link );
-		
+
 		return $links;
 	}
 
@@ -68,6 +68,7 @@ class AAL_Settings {
 		if ( ! get_option( $this->slug ) ) {
 			update_option( $this->slug, apply_filters( 'aal_default_options', array(
 				'logs_lifespan' => '30',
+				'exclude_ips' => '',
 			) ) );
 		}
 
@@ -116,6 +117,21 @@ class AAL_Settings {
 						)
 					);
 				}
+
+				add_settings_field(
+					'exclude_ips',
+					__( 'Exclude IPs', 'aryo-activity-log' ),
+					array( 'AAL_Settings_Fields', 'text_field' ),
+					$this->slug,
+					'general_settings_section',
+					array(
+						'id'      => 'exclude_ips',
+						'page'    => $this->slug,
+						'classes' => array( 'aal-xxl-text' ),
+						'type'    => 'text',
+						'desc'    => __( 'You can insert a single IP or list of IPs comma separated', 'aryo-activity-log' ),
+					)
+				);
 				break;
 
 			case 'notifications':
@@ -205,16 +221,16 @@ class AAL_Settings {
 			echo '<a class="nav-tab ' . $active . '" href="' . esc_url( $url ) . '">' . esc_html( $section_caption ) . '</a>';
 		}
 	}
-	
+
 	public function validate_options( $input ) {
 		$options = $this->options; // CTX,L1504
-		
+
 		// @todo some data validation/sanitization should go here
 		$output = apply_filters( 'aal_validate_options', $input, $options );
 
 		// merge with current settings
 		$output = array_merge( $options, $output );
-		
+
 		return $output;
 	}
 
@@ -222,12 +238,12 @@ class AAL_Settings {
 		?>
 		<!-- Create a header in the default WordPress 'wrap' container -->
 		<div class="wrap">
-		
+
 			<div id="icon-themes" class="icon32"></div>
 			<h2 class="aal-page-title"><?php _e( 'Activity Log Settings', 'aryo-activity-log' ); ?></h2>
 			<?php settings_errors(); ?>
 			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
-			
+
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( 'aal-options' );
@@ -235,11 +251,11 @@ class AAL_Settings {
 				submit_button();
 				?>
 			</form>
-			
+
 		</div><!-- /.wrap -->
 		<?php
 	}
-	
+
 	public function admin_notices() {
 		switch ( filter_input( INPUT_GET, 'message' ) ) {
 			case 'data_erased':
@@ -247,7 +263,7 @@ class AAL_Settings {
 				break;
 		}
 	}
-	
+
 	public function admin_footer() {
 		// TODO: move to a separate file.
 		?>
@@ -262,24 +278,24 @@ class AAL_Settings {
 		</script>
 		<?php
 	}
-	
+
 	public function ajax_aal_reset_items() {
 		if ( ! check_ajax_referer( 'aal_reset_items', '_nonce', false ) || ! current_user_can( 'manage_options' ) ) {
 			wp_die( __( 'You do not have sufficient permissions to access this page.', 'aryo-activity-log' ) );
 		}
-		
+
 		AAL_Main::instance()->api->erase_all_items();
-		
+
 		wp_redirect( add_query_arg( array(
-				'page' => 'activity-log-settings',
-				'message' => 'data_erased',
+			'page' => 'activity-log-settings',
+			'message' => 'data_erased',
 		), admin_url( 'admin.php' ) ) );
 		die();
 	}
 
 	public function ajax_aal_get_properties() {
 		$action_category = isset( $_REQUEST['action_category'] ) ? $_REQUEST['action_category'] : false;
-		
+
 		$options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $action_category );
 
 		if ( ! empty( $options ) ) {
@@ -293,10 +309,10 @@ class AAL_Settings {
 		$settings = $this->get_options();
 		return ! empty( $settings[ $key ] ) ? $settings[ $key ] : false;
 	}
-	
+
 	/**
 	 * Returns all options
-	 * 
+	 *
 	 * @since 2.0.7
 	 * @return array
 	 */
@@ -304,10 +320,10 @@ class AAL_Settings {
 		// Allow other plugins to get AAL's options.
 		if ( isset( $this->options ) && is_array( $this->options ) && ! empty( $this->options ) )
 			return $this->options;
-		
+
 		return apply_filters( 'aal_options', get_option( $this->slug, array() ) );
 	}
-	
+
 	public function slug() {
 		return $this->slug;
 	}
@@ -327,31 +343,31 @@ final class AAL_Settings_Fields {
 		<p><?php _e( 'Serve yourself with custom-tailored notifications. First, define your conditions. Then, choose how the notifications will be sent.', 'aryo-activity-log' ); ?></p>
 		<?php
 	}
-	
+
 	public static function raw_html( $args ) {
 		if ( empty( $args['html'] ) )
 			return;
-		
+
 		echo $args['html'];
 		if ( ! empty( $args['desc'] ) ) : ?>
 			<p class="description"><?php echo $args['desc']; ?></p>
 		<?php endif;
 	}
-	
+
 	public static function text_field( $args ) {
 		self::_set_name_and_value( $args );
 		extract( $args, EXTR_SKIP );
-		
+
 		$args = wp_parse_args( $args, array(
 			'classes' => array(),
 		) );
 		if ( empty( $args['id'] ) || empty( $args['page'] ) )
 			return;
-		
+
 		?>
 		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
 		<?php if ( ! empty( $desc ) ) : ?>
-		<p class="description"><?php echo $desc; ?></p>
+			<p class="description"><?php echo $desc; ?></p>
 		<?php endif;
 	}
 
@@ -375,11 +391,11 @@ final class AAL_Settings_Fields {
 			<p class="description"><?php echo $desc; ?></p>
 		<?php endif;
 	}
-	
+
 	public static function number_field( $args ) {
 		self::_set_name_and_value( $args );
 		extract( $args, EXTR_SKIP );
-		
+
 		$args = wp_parse_args( $args, array(
 			'classes' => array(),
 			'min' => '1',
@@ -403,31 +419,31 @@ final class AAL_Settings_Fields {
 
 		if ( empty( $options ) || empty( $id ) || empty( $page ) )
 			return;
-		
+
 		?>
 		<select id="<?php echo esc_attr( $id ); ?>" name="<?php printf( '%s[%s]', esc_attr( $page ), esc_attr( $id ) ); ?>">
 			<?php foreach ( $options as $name => $label ) : ?>
-			<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) $value ); ?>>
-				<?php echo esc_html( $label ); ?>
-			</option>
+				<option value="<?php echo esc_attr( $name ); ?>" <?php selected( $name, (string) $value ); ?>>
+					<?php echo esc_html( $label ); ?>
+				</option>
 			<?php endforeach; ?>
 		</select>
 		<?php if ( ! empty( $desc ) ) : ?>
-		<p class="description"><?php echo $desc; ?></p>
+			<p class="description"><?php echo $desc; ?></p>
 		<?php endif; ?>
 		<?php
 	}
-	
+
 	public static function yesno_field( $args ) {
 		self::_set_name_and_value( $args );
 		extract( $args, EXTR_SKIP );
-		
+
 		?>
 		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="1" <?php checked( $value, true ); ?>> <?php _e( 'Yes', 'aryo-activity-log' ); ?></label>
 		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="0" <?php checked( $value, false ); ?>> <?php _e( 'No', 'aryo-activity-log' ); ?></label>
 
 		<?php if ( isset( $args['description'] ) ) : ?>
-		<p class="description"><?php echo $args['description']; ?></p>
+			<p class="description"><?php echo $args['description']; ?></p>
 		<?php endif; ?>
 		<?php
 	}
@@ -461,42 +477,42 @@ final class AAL_Settings_Fields {
 		<p class="description"><?php _e( 'A notification will be sent upon a successful match with the following conditions:', 'aryo-activity-log' ); ?></p>
 		<div class="aal-notifier-settings">
 			<ul>
-			<?php foreach ( $rows as $rid => $row ) :
-				$row_key 		= $row['key']; 
-				$row_condition 	= isset( $row['condition'] ) ? $row['condition'] : '';
-				$row_value 		= isset( $row['value'] ) ? $row['value'] : '';
-				?>
-				<li data-id="<?php echo $rid; ?>">
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
-						<?php foreach ( $keys as $k => $v ) : ?>
-						<option value="<?php echo $k; ?>" <?php selected( $row_key, $k ); ?>><?php echo $v; ?></option>
-						<?php endforeach; ?>
-					</select>
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
-						<?php foreach ( $conditions as $k => $v ) : ?>
-						<option value="<?php echo $k; ?>" <?php selected( $row_condition, $k ); ?>><?php echo $v; ?></option>
-						<?php endforeach; ?>
-					</select>
-					<?php $value_options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
-						<?php foreach ( $value_options as $option_key => $option_value ) : ?>
-						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
-						<?php endforeach; ?>
-					</select>
-					<a href="#" class="aal-new-rule button"><small>+</small> and</a>
-					<a href="#" class="aal-delete-rule button">&times;</a>
-				</li>
-			<?php endforeach; ?>
+				<?php foreach ( $rows as $rid => $row ) :
+					$row_key 		= $row['key'];
+					$row_condition 	= isset( $row['condition'] ) ? $row['condition'] : '';
+					$row_value 		= isset( $row['value'] ) ? $row['value'] : '';
+					?>
+					<li data-id="<?php echo $rid; ?>">
+						<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
+							<?php foreach ( $keys as $k => $v ) : ?>
+								<option value="<?php echo $k; ?>" <?php selected( $row_key, $k ); ?>><?php echo $v; ?></option>
+							<?php endforeach; ?>
+						</select>
+						<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
+							<?php foreach ( $conditions as $k => $v ) : ?>
+								<option value="<?php echo $k; ?>" <?php selected( $row_condition, $k ); ?>><?php echo $v; ?></option>
+							<?php endforeach; ?>
+						</select>
+						<?php $value_options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
+						<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
+							<?php foreach ( $value_options as $option_key => $option_value ) : ?>
+								<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
+							<?php endforeach; ?>
+						</select>
+						<a href="#" class="aal-new-rule button"><small>+</small> and</a>
+						<a href="#" class="aal-delete-rule button">&times;</a>
+					</li>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 		<?php
 	}
-	
+
 	private static function _set_name_and_value( &$args ) {
 		if ( ! isset( $args['name'] ) ) {
 			$args['name'] = sprintf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) );
 		}
-		
+
 		if ( ! isset( $args['value'] ) ) {
 			$args['value'] = AAL_Main::instance()->settings->get_option( $args['id'] );
 		}
