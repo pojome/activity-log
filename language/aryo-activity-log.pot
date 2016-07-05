@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: aryo-activity-log 2.2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 17:50+0300\n"
+"POT-Creation-Date: 2016-07-05 19:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,6 +130,20 @@ msgstr ""
 #: classes/class-aal-admin-ui.php:16 classes/class-aal-admin-ui.php:26
 #: language/strings.php:5
 msgid "Activity Log"
+msgstr ""
+
+#: classes/class-aal-admin-ui.php:190
+msgid "Do You Like Activity Log? You'll Love Elementor!"
+msgstr ""
+
+#: classes/class-aal-admin-ui.php:191
+msgid ""
+"Create high-end, pixel perfect websites at record speeds. Any theme, any "
+"page, any design. The most advanced frontend drag & drop page builder."
+msgstr ""
+
+#: classes/class-aal-admin-ui.php:192 classes/class-aal-admin-ui.php:196
+msgid "Install Now For Free!"
 msgstr ""
 
 #: classes/class-aal-help.php:20

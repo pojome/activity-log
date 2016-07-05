@@ -103,7 +103,6 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 = 2.2.12 =
 * Tested up to WordPress v4.5
 
-
 = 2.2.11 =
 * Tweak! - Temporarily remove Freemius SDK from the plugin
 

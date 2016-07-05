@@ -232,7 +232,7 @@ module.exports = function(grunt) {
 		'checktextdomain',
 		'jshint',
 		'pot',
-		'phpunit',
+		//'phpunit',
 		'wp_readme_to_markdown'
 	] );
 

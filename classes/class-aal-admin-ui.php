@@ -83,9 +83,149 @@ class AAL_Admin_Ui {
 	<?php
 	}
 	
+	public function ajax_aal_install_elementor_set_admin_notice_viewed() {
+		update_user_meta( get_current_user_id(), '_aal_elementor_install_notice', 'true' );
+	}
+
+	public function admin_notices() {
+		if ( ! current_user_can( 'install_plugins' ) || $this->_is_elementor_installed() )
+			return;
+		
+
+		if ( 'true' === get_user_meta( get_current_user_id(), '_aal_elementor_install_notice', true ) )
+			return;
+		
+		if ( ! in_array( get_current_screen()->id, array( 'toplevel_page_activity_log_page', 'dashboard', 'plugins', 'plugins-network' ) ) ) {
+			return;
+		}
+
+		add_action( 'admin_footer', array( &$this, 'print_js' ) );
+
+		$install_url = self_admin_url( 'plugin-install.php?tab=search&s=elementor' );
+		?>
+		<style>
+			.notice.aal-notice {
+				border-left-color: #9b0a46 !important;
+				padding: 20px;
+			}
+			.rtl .notice.aal-notice {
+				border-right-color: #9b0a46 !important;
+			}
+			.notice.aal-notice .aal-notice-inner {
+				display: table;
+				width: 100%;
+			}
+			.notice.aal-notice .aal-notice-inner .aal-notice-icon,
+			.notice.aal-notice .aal-notice-inner .aal-notice-content,
+			.notice.aal-notice .aal-notice-inner .aal-install-now {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.notice.aal-notice .aal-notice-icon {
+				color: #9b0a46;
+				font-size: 50px;
+				width: 50px;
+			}
+			.notice.aal-notice .aal-notice-content {
+				padding: 0 20px;
+			}
+			.notice.aal-notice p {
+				padding: 0;
+				margin: 0;
+			}
+			.notice.aal-notice h3 {
+				margin: 0 0 5px;
+			}
+			.notice.aal-notice .aal-install-now {
+				text-align: center;
+			}
+			.notice.aal-notice .aal-install-now .aal-install-button {
+				background-color: #9b0a46;
+				color: #fff;
+				border-color: #7c1337;
+				box-shadow: 0 1px 0 #7c1337;
+				padding: 5px 30px;
+				height: auto;
+				line-height: 20px;
+				text-transform: capitalize;
+			}
+			.notice.aal-notice .aal-install-now .aal-install-button i {
+				padding-right: 5px;
+			}
+			.rtl .notice.aal-notice .aal-install-now .aal-install-button i {
+				padding-right: 0;
+				padding-left: 5px;
+			}
+			.notice.aal-notice .aal-install-now .aal-install-button:hover {
+				background-color: #a0124a;
+			}
+			.notice.aal-notice .aal-install-now .aal-install-button:active {
+				box-shadow: inset 0 1px 0 #7c1337;
+				transform: translateY(1px);
+			}
+			@media (max-width: 767px) {
+				.notice.aal-notice {
+					padding: 10px;
+				}
+				.notice.aal-notice .aal-notice-inner {
+					display: block;
+				}
+				.notice.aal-notice .aal-notice-inner .aal-notice-content {
+					display: block;
+					padding: 0;
+				}
+				.notice.aal-notice .aal-notice-inner .aal-notice-icon,
+				.notice.aal-notice .aal-notice-inner .aal-install-now {
+					display: none;
+				}
+			}
+		</style>
+		<div class="notice updated is-dismissible aal-notice aal-install-elementor">
+			<div class="aal-notice-inner">
+				<div class="aal-notice-icon">
+					<img src="<?php echo plugins_url( 'assets/images/elementor-logo.png', ACTIVITY_LOG__FILE__ ); ?>" alt="Elementor Logo" />
+				</div>
+				
+				<div class="aal-notice-content">
+					<h3><?php _e( 'Do You Like Activity Log? You\'ll Love Elementor!', 'aryo-activity-log' ); ?></h3>
+					<p><?php _e( 'Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design. The most advanced frontend drag & drop page builder.', 'aryo-activity-log' ); ?>
+						<a href="<?php echo $install_url; ?>"><?php _e( 'Install Now For Free!', 'aryo-activity-log' ); ?></a></p>
+				</div>
+
+				<div class="aal-install-now">
+					<a class="button aal-install-button" href="<?php echo $install_url; ?>"><i class="dashicons dashicons-download"></i><?php _e( 'Install Now For Free!', 'aryo-activity-log' ); ?></a>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+	public function print_js() {
+		?>
+		<script>jQuery( function( $ ) {
+				$( 'div.notice.aal-install-elementor' ).on( 'click', 'button.notice-dismiss', function( event ) {
+					event.preventDefault();
+
+					$.post( ajaxurl, {
+						action: 'aal_install_elementor_set_admin_notice_viewed'
+					} );
+				} );
+			} );</script>
+		<?php
+	}
+	
 	public function __construct() {
 		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ), 20 );
 		add_action( 'admin_head', array( &$this, 'admin_header' ) );
+		add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
+		add_action( 'wp_ajax_aal_install_elementor_set_admin_notice_viewed', array( &$this, 'ajax_aal_install_elementor_set_admin_notice_viewed' ) );
+	}
+	
+	private function _is_elementor_installed() {
+		$file_path = 'elementor/elementor.php';
+		$installed_plugins = get_plugins();
+
+		return isset( $installed_plugins[ $file_path ] );
 	}
 
 	/**
