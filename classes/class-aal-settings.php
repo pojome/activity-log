@@ -277,6 +277,10 @@ class AAL_Settings {
 	}
 
 	public function ajax_aal_get_properties() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error();
+		}
+			
 		$action_category = isset( $_REQUEST['action_category'] ) ? $_REQUEST['action_category'] : false;
 		
 		$options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $action_category );
