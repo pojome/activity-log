@@ -7,7 +7,6 @@ Author: Yakir Sitbon, Maor Chasen, Ariel Klikstein
 Author URI: http://pojo.me/
 Version: 2.3.0
 Text Domain: aryo-activity-log
-Domain Path: /language/
 License: GPLv2 or later
 
 
