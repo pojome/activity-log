@@ -1,11 +1,11 @@
 # Activity Log [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 
-**Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor), [freemius](https://profiles.wordpress.org/freemius)  
+**Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
 **Tags:** actions, activity, Activity Log, activity logs, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, change, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, woocommerce log, woocommerce monitor, woocommerce monitoring, woocommrece security, wordpress activity log, WordPress Admin, wordpress admin monitoring, wordpress audit, wordpress email alerts, wordpress log, wordpress monitor, wordpress monitoring, wordpress multisite, wordpress security, wordpress security alerts, wordpress security audit log, wordpress security monitor, wordpress security plugin, wordpress user tracking  
 **Requires at least:** 3.5  
 **Tested up to:** 4.5  
-**Stable tag:** 2.2.12  
+**Stable tag:** 2.3.0  
 **License:** GPLv2 or later  
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your site, so you can run a safer, more organized WordPress site.
@@ -101,6 +101,11 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 
 ## Changelog ##
+
+### 2.3.0 ###
+* Tweak! - Added restore status for Posts ([#46](https://github.com/KingYes/wordpress-aryo-activity-log/issues/46))
+* Tweak! - A11y changes for WordPress 4.4 which requires `h1` tags ([#84](https://github.com/KingYes/wordpress-aryo-activity-log/issues/84))
+* Tweak! - Allow some ajax requests just for admin
 
 ### 2.2.12 ###
 * Tested up to WordPress v4.5
