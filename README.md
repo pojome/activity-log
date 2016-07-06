@@ -1,7 +1,7 @@
-# Activity Log #
-[![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
+# Activity Log [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
-**Contributors:** pojo.me, KingYes, ariel.k, maor, freemius  
+
+**Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor), [freemius](https://profiles.wordpress.org/freemius)  
 **Tags:** actions, activity, Activity Log, activity logs, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, change, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, woocommerce log, woocommerce monitor, woocommerce monitoring, woocommrece security, wordpress activity log, WordPress Admin, wordpress admin monitoring, wordpress audit, wordpress email alerts, wordpress log, wordpress monitor, wordpress monitoring, wordpress multisite, wordpress security, wordpress security alerts, wordpress security audit log, wordpress security monitor, wordpress security plugin, wordpress user tracking  
 **Requires at least:** 3.5  
 **Tested up to:** 4.5  
@@ -85,18 +85,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Screenshots ##
 
-### 1. The log viewer page ###
-![The log viewer page](http://s.wordpress.org/extend/plugins/activity-log/screenshot-1.png)
-
-### 2. The settings page ###
-![The settings page](http://s.wordpress.org/extend/plugins/activity-log/screenshot-2.png)
-
-### 3. Screen Options ###
-![Screen Options](http://s.wordpress.org/extend/plugins/activity-log/screenshot-3.png)
-
-### 4. Interface for defining notification rules ###
-![Interface for defining notification rules](http://s.wordpress.org/extend/plugins/activity-log/screenshot-4.png)
-
+1. The log viewer page
+2. The settings page
+3. Screen Options
+4. Interface for defining notification rules
 
 ## Frequently Asked Questions ##
 
