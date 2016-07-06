@@ -103,6 +103,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 ## Changelog ##
 
 ### 2.3.0 ###
+* Tweak! - All translates moved to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/aryo-activity-log)
 * Tweak! - Added restore status for Posts ([#46](https://github.com/KingYes/wordpress-aryo-activity-log/issues/46))
 * Tweak! - A11y changes for WordPress 4.4 which requires `h1` tags ([#84](https://github.com/KingYes/wordpress-aryo-activity-log/issues/84))
 * Tweak! - Allow some ajax requests just for admin
