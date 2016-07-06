@@ -80,7 +80,7 @@ final class AAL_Main {
 	 * Load text domain
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'aryo-activity-log', false, basename( dirname( __FILE__ ) ) . '/language' );
+		load_plugin_textdomain( 'aryo-activity-log' );
 	}
 
 	/**
