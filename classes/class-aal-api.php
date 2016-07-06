@@ -154,7 +154,6 @@ class AAL_API {
 		$this->_delete_old_items();
 		do_action( 'aal_insert_log', $args );
 	}
-
 }
 
 /**

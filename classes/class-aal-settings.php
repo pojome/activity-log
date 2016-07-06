@@ -222,9 +222,8 @@ class AAL_Settings {
 		?>
 		<!-- Create a header in the default WordPress 'wrap' container -->
 		<div class="wrap">
-		
-			<div id="icon-themes" class="icon32"></div>
-			<h2 class="aal-page-title"><?php _e( 'Activity Log Settings', 'aryo-activity-log' ); ?></h2>
+
+			<h1 class="aal-page-title"><?php _e( 'Activity Log Settings', 'aryo-activity-log' ); ?></h1>
 			<?php settings_errors(); ?>
 			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
 			
