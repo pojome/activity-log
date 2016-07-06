@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: aryo-activity-log 2.2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-05 19:46+0300\n"
+"POT-Creation-Date: 2016-07-06 14:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,7 +254,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: classes/class-aal-settings.php:444 language/strings.php:23
+#: classes/class-aal-settings.php:444 language/strings.php:24
 #: notifications/abstract-class-aal-notification-base.php:98
 msgid "User"
 msgstr ""
@@ -675,7 +675,7 @@ msgstr ""
 msgid "Verified"
 msgstr ""
 
-#: classes/freemius/includes/i18n.php:89 language/strings.php:29
+#: classes/freemius/includes/i18n.php:89 language/strings.php:30
 msgid "Plugin"
 msgstr ""
 
@@ -1635,355 +1635,359 @@ msgstr ""
 msgid "trashed"
 msgstr ""
 
-#: language/strings.php:19
-msgid "Attachment"
+#: language/strings.php:17
+msgid "restored"
 msgstr ""
 
 #: language/strings.php:20
+msgid "Attachment"
+msgstr ""
+
+#: language/strings.php:21
 msgid "added"
 msgstr ""
 
-#: language/strings.php:24
+#: language/strings.php:25
 msgid "logged_out"
 msgstr ""
 
-#: language/strings.php:25
+#: language/strings.php:26
 msgid "logged_in"
 msgstr ""
 
-#: language/strings.php:26
+#: language/strings.php:27
 msgid "wrong_password"
 msgstr ""
 
-#: language/strings.php:30
+#: language/strings.php:31
 msgid "activated"
 msgstr ""
 
-#: language/strings.php:31
+#: language/strings.php:32
 msgid "deactivated"
 msgstr ""
 
-#: language/strings.php:32
+#: language/strings.php:33
 msgid "installed"
 msgstr ""
 
-#: language/strings.php:33
+#: language/strings.php:34
 msgid "File Updated"
 msgstr ""
 
-#: language/strings.php:36
+#: language/strings.php:37
 msgid "Theme"
 msgstr ""
 
-#: language/strings.php:37
+#: language/strings.php:38
 msgid "Theme Customizer"
 msgstr ""
 
-#: language/strings.php:40
+#: language/strings.php:41
 msgid "Widget"
 msgstr ""
 
-#: language/strings.php:43
+#: language/strings.php:44
 msgid "Options"
 msgstr ""
 
-#: language/strings.php:46
+#: language/strings.php:47
 msgid "Menu"
 msgstr ""
 
-#: language/strings.php:49
+#: language/strings.php:50
 msgid "Taxonomy"
 msgstr ""
 
-#: language/strings.php:52
+#: language/strings.php:53
 msgid "Core"
 msgstr ""
 
-#: language/strings.php:53
+#: language/strings.php:54
 msgid "WordPress Updated"
 msgstr ""
 
-#: language/strings.php:54
+#: language/strings.php:55
 msgid "WordPress Auto Updated"
 msgstr ""
 
-#: language/strings.php:57
+#: language/strings.php:58
 msgid "Comments"
 msgstr ""
 
-#: language/strings.php:58
+#: language/strings.php:59
 msgid "pending"
 msgstr ""
 
-#: language/strings.php:59
+#: language/strings.php:60
 msgid "approved"
 msgstr ""
 
-#: language/strings.php:60
+#: language/strings.php:61
 msgid "unapproved"
 msgstr ""
 
-#: language/strings.php:61
+#: language/strings.php:62
 msgid "untrashed"
 msgstr ""
 
-#: language/strings.php:62
+#: language/strings.php:63
 msgid "spammed"
 msgstr ""
 
-#: language/strings.php:63
+#: language/strings.php:64
 msgid "unspammed"
 msgstr ""
 
-#: language/strings.php:68
+#: language/strings.php:69
 msgid "blogname"
 msgstr ""
 
-#: language/strings.php:69
+#: language/strings.php:70
 msgid "blogdescription"
 msgstr ""
 
-#: language/strings.php:70
+#: language/strings.php:71
 msgid "siteurl"
 msgstr ""
 
-#: language/strings.php:71
+#: language/strings.php:72
 msgid "home"
 msgstr ""
 
-#: language/strings.php:72
+#: language/strings.php:73
 msgid "admin_email"
 msgstr ""
 
-#: language/strings.php:73
+#: language/strings.php:74
 msgid "users_can_register"
 msgstr ""
 
-#: language/strings.php:74
+#: language/strings.php:75
 msgid "default_role"
 msgstr ""
 
-#: language/strings.php:75
+#: language/strings.php:76
 msgid "timezone_string"
 msgstr ""
 
-#: language/strings.php:76
+#: language/strings.php:77
 msgid "date_format"
 msgstr ""
 
-#: language/strings.php:77
+#: language/strings.php:78
 msgid "time_format"
 msgstr ""
 
-#: language/strings.php:78
+#: language/strings.php:79
 msgid "start_of_week"
 msgstr ""
 
-#: language/strings.php:81
+#: language/strings.php:82
 msgid "use_smilies"
 msgstr ""
 
-#: language/strings.php:82
+#: language/strings.php:83
 msgid "use_balanceTags"
 msgstr ""
 
-#: language/strings.php:83
+#: language/strings.php:84
 msgid "default_category"
 msgstr ""
 
-#: language/strings.php:84
+#: language/strings.php:85
 msgid "default_post_format"
 msgstr ""
 
-#: language/strings.php:85
+#: language/strings.php:86
 msgid "mailserver_url"
 msgstr ""
 
-#: language/strings.php:86
+#: language/strings.php:87
 msgid "mailserver_login"
 msgstr ""
 
-#: language/strings.php:87
+#: language/strings.php:88
 msgid "mailserver_pass"
 msgstr ""
 
-#: language/strings.php:88
+#: language/strings.php:89
 msgid "default_email_category"
 msgstr ""
 
-#: language/strings.php:89
+#: language/strings.php:90
 msgid "ping_sites"
 msgstr ""
 
-#: language/strings.php:92
+#: language/strings.php:93
 msgid "show_on_front"
 msgstr ""
 
-#: language/strings.php:93
+#: language/strings.php:94
 msgid "page_on_front"
 msgstr ""
 
-#: language/strings.php:94
+#: language/strings.php:95
 msgid "page_for_posts"
 msgstr ""
 
-#: language/strings.php:95
+#: language/strings.php:96
 msgid "posts_per_page"
 msgstr ""
 
-#: language/strings.php:96
+#: language/strings.php:97
 msgid "posts_per_rss"
 msgstr ""
 
-#: language/strings.php:97
+#: language/strings.php:98
 msgid "rss_use_excerpt"
 msgstr ""
 
-#: language/strings.php:98
+#: language/strings.php:99
 msgid "blog_public"
 msgstr ""
 
-#: language/strings.php:101
+#: language/strings.php:102
 msgid "default_pingback_flag"
 msgstr ""
 
-#: language/strings.php:102
+#: language/strings.php:103
 msgid "default_ping_status"
 msgstr ""
 
-#: language/strings.php:103
+#: language/strings.php:104
 msgid "default_comment_status"
 msgstr ""
 
-#: language/strings.php:104
+#: language/strings.php:105
 msgid "require_name_email"
 msgstr ""
 
-#: language/strings.php:105
+#: language/strings.php:106
 msgid "comment_registration"
 msgstr ""
 
-#: language/strings.php:106
+#: language/strings.php:107
 msgid "close_comments_for_old_posts"
 msgstr ""
 
-#: language/strings.php:107
+#: language/strings.php:108
 msgid "close_comments_days_old"
 msgstr ""
 
-#: language/strings.php:108
+#: language/strings.php:109
 msgid "thread_comments"
 msgstr ""
 
-#: language/strings.php:109
+#: language/strings.php:110
 msgid "thread_comments_depth"
 msgstr ""
 
-#: language/strings.php:110
+#: language/strings.php:111
 msgid "page_comments"
 msgstr ""
 
-#: language/strings.php:111
+#: language/strings.php:112
 msgid "comments_per_page"
 msgstr ""
 
-#: language/strings.php:112
+#: language/strings.php:113
 msgid "default_comments_page"
 msgstr ""
 
-#: language/strings.php:113
+#: language/strings.php:114
 msgid "comment_order"
 msgstr ""
 
-#: language/strings.php:114
+#: language/strings.php:115
 msgid "comments_notify"
 msgstr ""
 
-#: language/strings.php:115
+#: language/strings.php:116
 msgid "moderation_notify"
 msgstr ""
 
-#: language/strings.php:116
+#: language/strings.php:117
 msgid "comment_moderation"
 msgstr ""
 
-#: language/strings.php:117
+#: language/strings.php:118
 msgid "comment_whitelist"
 msgstr ""
 
-#: language/strings.php:118
+#: language/strings.php:119
 msgid "comment_max_links"
 msgstr ""
 
-#: language/strings.php:119
+#: language/strings.php:120
 msgid "moderation_keys"
 msgstr ""
 
-#: language/strings.php:120
+#: language/strings.php:121
 msgid "blacklist_keys"
 msgstr ""
 
-#: language/strings.php:121
+#: language/strings.php:122
 msgid "show_avatars"
 msgstr ""
 
-#: language/strings.php:122
+#: language/strings.php:123
 msgid "avatar_rating"
 msgstr ""
 
-#: language/strings.php:123
+#: language/strings.php:124
 msgid "avatar_default"
 msgstr ""
 
-#: language/strings.php:126
+#: language/strings.php:127
 msgid "thumbnail_size_w"
 msgstr ""
 
-#: language/strings.php:127
+#: language/strings.php:128
 msgid "thumbnail_size_h"
 msgstr ""
 
-#: language/strings.php:128
+#: language/strings.php:129
 msgid "thumbnail_crop"
 msgstr ""
 
-#: language/strings.php:129
+#: language/strings.php:130
 msgid "medium_size_w"
 msgstr ""
 
-#: language/strings.php:130
+#: language/strings.php:131
 msgid "medium_size_h"
 msgstr ""
 
-#: language/strings.php:131
+#: language/strings.php:132
 msgid "large_size_w"
 msgstr ""
 
-#: language/strings.php:132
+#: language/strings.php:133
 msgid "large_size_h"
 msgstr ""
 
-#: language/strings.php:133
+#: language/strings.php:134
 msgid "uploads_use_yearmonth_folders"
 msgstr ""
 
-#: language/strings.php:136
+#: language/strings.php:137
 msgid "permalink_structure"
 msgstr ""
 
-#: language/strings.php:137
+#: language/strings.php:138
 msgid "category_base"
 msgstr ""
 
-#: language/strings.php:138
+#: language/strings.php:139
 msgid "tag_base"
 msgstr ""
 
-#: language/strings.php:141
+#: language/strings.php:142
 msgid "Export"
 msgstr ""
 
-#: language/strings.php:142
+#: language/strings.php:143
 msgid "downloaded"
 msgstr ""
 

@@ -14,6 +14,7 @@ __( 'created', 'aryo-activity-log' );
 __( 'updated', 'aryo-activity-log' );
 __( 'deleted', 'aryo-activity-log' );
 __( 'trashed', 'aryo-activity-log' );
+__( 'restored', 'aryo-activity-log' );
 
 // Attachment
 __( 'Attachment', 'aryo-activity-log' );
