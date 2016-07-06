@@ -78,5 +78,4 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		
 		parent::__construct();
 	}
-
 }
