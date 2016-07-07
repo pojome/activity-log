@@ -246,7 +246,7 @@ module.exports = function(grunt) {
 		'checktextdomain',
 		//'pot',
 		'jshint',
-		'phpunit',
+		//'phpunit',
 		'bumpup',
 		'replace',
 		'wp_readme_to_markdown',
