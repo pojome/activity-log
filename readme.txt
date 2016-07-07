@@ -100,6 +100,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.3.1 =
+* Tweak! - Added seconds in time column
+* Tweak! - Rearrange filters in list table
+
 = 2.3.0 =
 * Tweak! - All translates moved to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/aryo-activity-log)
 * Tweak! - Added restore status for Posts ([#46](https://github.com/KingYes/wordpress-aryo-activity-log/issues/46))

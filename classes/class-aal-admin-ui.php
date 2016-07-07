@@ -189,7 +189,7 @@ class AAL_Admin_Ui {
 				<div class="aal-notice-content">
 					<h3><?php _e( 'Do You Like Activity Log? You\'ll Love Elementor!', 'aryo-activity-log' ); ?></h3>
 					<p><?php _e( 'Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design. The most advanced frontend drag & drop page builder.', 'aryo-activity-log' ); ?>
-						<a href="<?php echo $install_url; ?>"><?php _e( 'Install Now For Free!', 'aryo-activity-log' ); ?></a></p>
+						<a href="https://go.elementor.com/learn/" target="_blank"><?php _e( 'Learn more about Elementor', 'aryo-activity-log' ); ?></a>.</p>
 				</div>
 
 				<div class="aal-install-now">
