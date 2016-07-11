@@ -44,7 +44,7 @@ class AAL_API {
 		);
 		
 		foreach ( $server_ip_keys as $key ) {
-			if ( isset( $_SERVER[ $key ] ) ) {
+			if ( isset( $_SERVER[ $key ] ) && filter_var( $_SERVER[ $key ], FILTER_VALIDATE_IP ) ) {
 				return $_SERVER[ $key ];
 			}
 		}
