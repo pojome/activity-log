@@ -100,6 +100,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.3.3 =
+* Fixed! - Minor XSS vulnerability, credit to [sumofpwn](https://sumofpwn.nl)
+
 = 2.3.2 =
 * Fixed! - Minor XSS vulnerability, credit to [Han Sahin](https://sumofpwn.nl/)
 

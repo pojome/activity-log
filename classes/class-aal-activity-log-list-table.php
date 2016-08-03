@@ -479,14 +479,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 
 	public function search_box( $text, $input_id ) {
-
 		$search_data = isset( $_REQUEST['s'] ) ? sanitize_text_field( $_REQUEST['s'] ) : '';
 
 		$input_id = $input_id . '-search-input';
 		?>
 		<p class="search-box">
 			<label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
-			<input type="search" id="<?php echo $input_id ?>" name="s" value="<?php echo $search_data; ?>" />
+			<input type="search" id="<?php echo $input_id ?>" name="s" value="<?php echo esc_attr( $search_data ); ?>" />
 			<?php submit_button( $text, 'button', false, false, array('id' => 'search-submit') ); ?>
 		</p>
 	<?php
