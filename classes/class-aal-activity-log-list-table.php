@@ -174,7 +174,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 		return sprintf(
 			'<span class="aal-author-name">%s</span>',
-			__( 'Guest', 'aryo-activity-log' )
+			__( 'N/A', 'aryo-activity-log' )
 		);
 	}
 
@@ -324,7 +324,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$output = array();
 			foreach ( $users as $_user ) {
 				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'Guest', 'aryo-activity-log' );
+					$output[0] = __( 'N/A', 'aryo-activity-log' );
 					continue;
 				}
 
