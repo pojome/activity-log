@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/plugins/aryo-activity-log/
 Description: Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site. e.g. post was deleted, plugin was activated, user logged in or logged out - it's all these for you to see.
 Author: Yakir Sitbon, Maor Chasen, Ariel Klikstein
 Author URI: http://pojo.me/
-Version: 2.3.3
+Version: 2.3.4
 Text Domain: aryo-activity-log
 License: GPLv2 or later
 
