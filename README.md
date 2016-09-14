@@ -102,6 +102,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.3.4 ###
+* Tweak! - Change Guest user to "N/A"
+
 ### 2.3.3 ###
 * Fixed! - Minor XSS vulnerability, credit to [Han Sahin](https://sumofpwn.nl/)
 
