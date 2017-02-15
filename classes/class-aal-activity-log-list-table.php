@@ -141,7 +141,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			case 'date' :
 				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-activity-log' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
 				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
-				$return .= '<br />' . date( 'H:i', $item->hist_time );
+				$return .= '<br />' . date( 'H:i:s', $item->hist_time );
 				break;
 			case 'ip' :
 				$return = $item->hist_ip;
@@ -174,7 +174,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 		return sprintf(
 			'<span class="aal-author-name">%s</span>',
-			__( 'Guest', 'aryo-activity-log' )
+			__( 'N/A', 'aryo-activity-log' )
 		);
 	}
 
@@ -269,6 +269,37 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$wpdb->activity_log
 		) );
 
+		$types = $wpdb->get_results( $wpdb->prepare(
+			'SELECT DISTINCT %1$s FROM `%2$s`
+				WHERE 1 = 1
+				' . $this->_get_where_by_role() . '
+				GROUP BY `%1$s`
+				ORDER BY `%1$s`
+			;',
+			'object_type',
+			$wpdb->activity_log
+		) );
+
+		// Make sure we get items for filter.
+		if ( $users || $types ) {
+			if ( ! isset( $_REQUEST['dateshow'] ) )
+				$_REQUEST['dateshow'] = '';
+
+			$date_options = array(
+				'' => __( 'All Time', 'aryo-activity-log' ),
+				'today' => __( 'Today', 'aryo-activity-log' ),
+				'yesterday' => __( 'Yesterday', 'aryo-activity-log' ),
+				'week' => __( 'Week', 'aryo-activity-log' ),
+				'month' => __( 'Month', 'aryo-activity-log' ),
+			);
+			echo '<select name="dateshow" id="hs-filter-date">';
+			foreach ( $date_options as $key => $value )
+				printf( '<option value="%1$s"%2$s>%3$s</option>', $key, selected( $_REQUEST['dateshow'], $key, false ), $value );
+			echo '</select>';
+
+			submit_button( __( 'Filter', 'aryo-activity-log' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
+		}
+
 		if ( $users ) {
 			if ( ! isset( $_REQUEST['capshow'] ) )
 				$_REQUEST['capshow'] = '';
@@ -293,7 +324,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$output = array();
 			foreach ( $users as $_user ) {
 				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'Guest', 'aryo-activity-log' );
+					$output[0] = __( 'N/A', 'aryo-activity-log' );
 					continue;
 				}
 
@@ -311,17 +342,6 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				echo '</select>';
 			}
 		}
-
-		$types = $wpdb->get_results( $wpdb->prepare(
-			'SELECT DISTINCT %1$s FROM `%2$s`
-				WHERE 1 = 1
-				' . $this->_get_where_by_role() . '
-				GROUP BY `%1$s`
-				ORDER BY `%1$s`
-			;',
-			'object_type',
-			$wpdb->activity_log
-		) );
 
 		if ( $types ) {
 			if ( ! isset( $_REQUEST['typeshow'] ) )
@@ -361,26 +381,6 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-activity-log' ) );
 			echo implode( '', $output );
 			echo '</select>';
-		}
-
-		// Make sure we get items for filter.
-		if ( $users || $types ) {
-			if ( ! isset( $_REQUEST['dateshow'] ) )
-				$_REQUEST['dateshow'] = '';
-			
-			$date_options = array(
-				'' => __( 'All Time', 'aryo-activity-log' ),
-				'today' => __( 'Today', 'aryo-activity-log' ),
-				'yesterday' => __( 'Yesterday', 'aryo-activity-log' ),
-				'week' => __( 'Week', 'aryo-activity-log' ),
-				'month' => __( 'Month', 'aryo-activity-log' ),
-			);
-			echo '<select name="dateshow" id="hs-filter-date">';
-			foreach ( $date_options as $key => $value )
-				printf( '<option value="%1$s"%2$s>%3$s</option>', $key, selected( $_REQUEST['dateshow'], $key, false ), $value );
-			echo '</select>';
-			
-			submit_button( __( 'Filter', 'aryo-activity-log' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
 		}
 
 		echo '</div>';
@@ -479,17 +479,15 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 
 	public function search_box( $text, $input_id ) {
-
 		$search_data = isset( $_REQUEST['s'] ) ? sanitize_text_field( $_REQUEST['s'] ) : '';
 
 		$input_id = $input_id . '-search-input';
 		?>
 		<p class="search-box">
 			<label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
-			<input type="search" id="<?php echo $input_id ?>" name="s" value="<?php echo $search_data; ?>" />
+			<input type="search" id="<?php echo $input_id ?>" name="s" value="<?php echo esc_attr( $search_data ); ?>" />
 			<?php submit_button( $text, 'button', false, false, array('id' => 'search-submit') ); ?>
 		</p>
 	<?php
 	}
-	
 }

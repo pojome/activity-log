@@ -239,8 +239,7 @@ class AAL_Settings {
 		<!-- Create a header in the default WordPress 'wrap' container -->
 		<div class="wrap">
 
-			<div id="icon-themes" class="icon32"></div>
-			<h2 class="aal-page-title"><?php _e( 'Activity Log Settings', 'aryo-activity-log' ); ?></h2>
+			<h1 class="aal-page-title"><?php _e( 'Activity Log Settings', 'aryo-activity-log' ); ?></h1>
 			<?php settings_errors(); ?>
 			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
 
@@ -294,6 +293,10 @@ class AAL_Settings {
 	}
 
 	public function ajax_aal_get_properties() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error();
+		}
+			
 		$action_category = isset( $_REQUEST['action_category'] ) ? $_REQUEST['action_category'] : false;
 
 		$options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $action_category );
