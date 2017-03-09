@@ -2,7 +2,7 @@
 Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: automation, actions, activity, Activity Log, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, bbPress
 Requires at least: 3.5
-Tested up to: 4.5
+Tested up to: 4.7
 Stable tag: 2.3.4
 License: GPLv2 or later
 
