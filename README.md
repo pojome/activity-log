@@ -2,9 +2,9 @@
 
 
 **Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
-**Tags:** actions, activity, Activity Log, activity logs, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, change, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, woocommerce log, woocommerce monitor, woocommerce monitoring, woocommrece security, wordpress activity log, WordPress Admin, wordpress admin monitoring, wordpress audit, wordpress email alerts, wordpress log, wordpress monitor, wordpress monitoring, wordpress multisite, wordpress security, wordpress security alerts, wordpress security audit log, wordpress security monitor, wordpress security plugin, wordpress user tracking  
-**Requires at least:** 3.5  
-**Tested up to:** 4.5  
+**Tags:** automation, actions, activity, Activity Log, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, bbPress  
+**Requires at least:** 4.4  
+**Tested up to:** 4.8  
 **Stable tag:** 2.3.4  
 **License:** GPLv2 or later  
 
