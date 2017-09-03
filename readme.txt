@@ -1,6 +1,6 @@
 === Activity Log ===
 Contributors: pojo.me, KingYes, ariel.k, maor
-Tags: automation, actions, activity, Activity Log, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, bbPress
+Tags: Activity Log, Security Log, User Activity, User Log, Activity, audit log, monitor, security, tracking, woocommerce, bbPress,
 Requires at least: 4.4
 Tested up to: 4.8
 Stable tag: 2.3.4
@@ -17,6 +17,9 @@ Want to monitor and track your site activity? Find out exactly who does what on 
 * Like, if someone is trying to hack your site.
 * Or, when a post was published, and who published it.
 * Or, if a plugin was activated/deactivated.
+* Log suspicious admin activity
+* Securing your site by tracking log of all user activity?
+
 
 Useful, right? Trust us, you won't understand how you managed your website without it. The plugin is also lightning fast and works behind the scenes, so it doesn't affect site and admin performance (For optimal performance, we built the plugin so it runs on a separate table in the database).
 
@@ -52,6 +55,8 @@ If you have tens of users or more, you really can’t know who did what. This pl
 * <em>“Optimized code - The plugin itself is blazing fast and leaves almost no footprint on the server.”</em> - [freshtechtips.com](http://www.freshtechtips.com/2014/01/best-audit-trail-plugins-for-wordpress.html)
 * <em>“The plugin successful for activity log for WordPress.”</em> - [wp-tricks.co.il](http://www.wp-tricks.co.il/2013/08/%D7%99%D7%95%D7%9E%D7%9F-%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA-%D7%9C%D7%95%D7%95%D7%A8%D7%93%D7%A4%D7%A8%D7%A1-aryo-activity-log/)
 * <em>“This is a pretty simple yet quite effective plugin for keeping track of what your admins and users do on your sites.”</em> - [shadowdragonunlimited.com](http://shadowdragonunlimited.com/plugin-of-the-week-9302013-aryo-activity-log/plugin-of-the-week/)
+* <em>“Activity Log lets you track a huge range of activities. Overall, very easy to use and setup.”</em> - [elegantthemes.com](https://www.elegantthemes.com/blog/tips-tricks/5-best-ways-to-monitor-wordpress-activity-via-the-dashboard)
+
 
 <h4>Translators:</h4>
 * German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
