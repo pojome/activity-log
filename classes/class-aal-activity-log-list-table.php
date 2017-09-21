@@ -258,27 +258,25 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		echo '<div class="alignleft actions">';
 
-		$users = $wpdb->get_results( $wpdb->prepare(
-			'SELECT DISTINCT %1$s FROM `%2$s`
+		$users_group_by = 'user_id';
+		$users = $wpdb->get_results(
+			'SELECT DISTINCT `' . $users_group_by . '` FROM `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `%1$s`
-				ORDER BY `%1$s`
-			;',
-			'user_id',
-			$wpdb->activity_log
-		) );
+				GROUP BY `' . $users_group_by . '`
+				ORDER BY `' . $users_group_by . '`
+			;' 
+		);
 
-		$types = $wpdb->get_results( $wpdb->prepare(
-			'SELECT DISTINCT %1$s FROM `%2$s`
+		$types_group_by = 'object_type';
+		$types = $wpdb->get_results( 
+			'SELECT DISTINCT `' . $types_group_by . '` FROM `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `%1$s`
-				ORDER BY `%1$s`
-			;',
-			'object_type',
-			$wpdb->activity_log
-		) );
+				GROUP BY `' . $types_group_by . '`
+				ORDER BY `' . $types_group_by . '`
+			;'
+		);
 
 		// Make sure we get items for filter.
 		if ( $users || $types ) {
@@ -357,17 +355,15 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			echo '</select>';
 		}
 
-
-		$actions = $wpdb->get_results( $wpdb->prepare(
-			'SELECT DISTINCT %1$s FROM `%2$s`
+		$actions_group_by = 'action';
+		$actions = $wpdb->get_results(
+			'SELECT DISTINCT `' . $actions_group_by . '` FROM `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `%1$s`
-				ORDER BY `%1$s`
-			;',
-			'action',
-			$wpdb->activity_log
-		) );
+				GROUP BY `' . $actions_group_by . '`
+				ORDER BY `' . $actions_group_by . '`
+			;'
+		);
 
 		if ( $actions ) {
 			if ( ! isset( $_REQUEST['showaction'] ) )
@@ -432,7 +428,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$start_time = strtotime( '-1 month', $start_time );
 			}
 			
-			$where .= $wpdb->prepare( ' AND `hist_time` > %1$d AND `hist_time` < %2$d', $start_time, $end_time );
+			$where .= $wpdb->prepare( ' AND `hist_time` > %d AND `hist_time` < %d', $start_time, $end_time );
 		}
 
 		if ( isset( $_REQUEST['s'] ) ) {
@@ -443,24 +439,25 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		$offset = ( $this->get_pagenum() - 1 ) * $items_per_page;
 
 		
-		$total_items = $wpdb->get_var( $wpdb->prepare(
-			'SELECT COUNT(`histid`) FROM `%1$s`
+		$total_items = $wpdb->get_var( 
+			'SELECT COUNT(`histid`) FROM `' . $wpdb->activity_log . '`
 				' . $where . '
-					' . $this->_get_where_by_role(),
-			$wpdb->activity_log,
-			$offset,
-			$items_per_page
-		) );
+					' . $this->_get_where_by_role() 
+		);
 		
+		
+		$items_orderby = filter_input(INPUT_GET, 'orderby', FILTER_SANITIZE_STRING);
+		$items_order = strtoupper($_REQUEST['order']);
+		if($items_order !== 'DESC' && $items_order !== 'ASC') {
+			$items_order = 'DESC'; // order by default
+		}
+
 		$this->items = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
+			'SELECT * FROM `' . $wpdb->activity_log . '`
 				' . $where . '
 					' . $this->_get_where_by_role() . '
-					ORDER BY `%2$s` %3$s
-					LIMIT %4$d, %5$d;',
-			$wpdb->activity_log,
-			$_REQUEST['orderby'],
-			$_REQUEST['order'],
+					ORDER BY `' . $items_orderby . '` ' . $items_order . '
+					LIMIT %d, %d;',
 			$offset,
 			$items_per_page
 		) );
