@@ -100,6 +100,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.3.5 =
+* Fix! - Added comparability for WordPress 4.8.2 & 4.7.6
+
 = 2.3.4 =
 * Tweak! - Change Guest user to "N/A"
 
