@@ -17,15 +17,12 @@ class AAL_Test_Base extends WP_UnitTestCase {
 		
 		$row = $wpdb->get_row(
 			$wpdb->prepare(
-				'SELECT * FROM %1$s
-					WHERE `action` = \'%2$s\'
-						AND `object_type` = \'%3$s\'
-						AND `object_subtype` = \'%4$s\'
-						AND `object_name` = \'%5$s\'
+				'SELECT * FROM `' . $wpdb->activity_log . '`
+					WHERE `action` = \'updated\'
+						AND `object_type` = \'Post\'
+						AND `object_subtype` = %s
+						AND `object_name` = %s
 				',
-				$wpdb->activity_log,
-				'updated',
-				'Post',
 				$post->post_type,
 				$post->post_title
 			)
@@ -47,15 +44,12 @@ class AAL_Test_Base extends WP_UnitTestCase {
 
 		$row = $wpdb->get_row(
 			$wpdb->prepare(
-				'SELECT * FROM %1$s
-					WHERE `action` = \'%2$s\'
-						AND `object_type` = \'%3$s\'
-						AND `object_subtype` = \'%4$s\'
-						AND `object_name` = \'%5$s\'
+				'SELECT * FROM `' . $wpdb->activity_log . '`
+					WHERE `action` = \'trashed\'
+						AND `object_type` = \'Post\'
+						AND `object_subtype` = %s
+						AND `object_name` = %s
 				',
-				$wpdb->activity_log,
-				'trashed',
-				'Post',
 				$post->post_type,
 				$post->post_title
 			)
@@ -77,15 +71,12 @@ class AAL_Test_Base extends WP_UnitTestCase {
 
 		$row = $wpdb->get_row(
 			$wpdb->prepare(
-				'SELECT * FROM %1$s
-					WHERE `action` = \'%2$s\'
-						AND `object_type` = \'%3$s\'
-						AND `object_subtype` = \'%4$s\'
-						AND `object_name` = \'%5$s\'
+				'SELECT * FROM `' . $wpdb->activity_log . '`
+					WHERE `action` = \'deleted\'
+						AND `object_type` = \'Post\'
+						AND `object_subtype` = %s
+						AND `object_name` = %s
 				',
-				$wpdb->activity_log,
-				'deleted',
-				'Post',
 				$post->post_type,
 				$post->post_title
 			)

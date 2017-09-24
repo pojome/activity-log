@@ -17,7 +17,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		if ( empty( $this->_allow_caps ) ) {
 			$user = get_user_by( 'id', get_current_user_id() );
 			if ( ! $user )
-				wp_die( 'No allowed here.' );
+				wp_die( 'Not allowed here.' );
 
 			$user_cap   = strtolower( key( $user->caps ) );
 			$allow_caps = array();
@@ -34,7 +34,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$allow_caps = $this->_caps['administrator'];
 
 			if ( empty( $allow_caps ) )
-				wp_die( 'No allowed here.' );
+				wp_die( 'Not allowed here.' );
 			
 			$this->_allow_caps = array_unique( $allow_caps );
 		}
@@ -51,7 +51,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		if ( empty( $allow_modules ) )
-			wp_die( 'No allowed here.' );
+			wp_die( 'Not allowed here.' );
 
 		$allow_modules = array_unique( $allow_modules );
 
@@ -258,27 +258,23 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		echo '<div class="alignleft actions">';
 
-		$users = $wpdb->get_results( $wpdb->prepare(
-			'SELECT DISTINCT %1$s FROM `%2$s`
+		$users = $wpdb->get_results(
+			'SELECT DISTINCT `user_id` FROM `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `%1$s`
-				ORDER BY `%1$s`
-			;',
-			'user_id',
-			$wpdb->activity_log
-		) );
+				GROUP BY `user_id`
+				ORDER BY `user_id`
+			;'
+		);
 
-		$types = $wpdb->get_results( $wpdb->prepare(
-			'SELECT DISTINCT %1$s FROM `%2$s`
+		$types = $wpdb->get_results(
+			'SELECT DISTINCT `object_type` FROM `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `%1$s`
-				ORDER BY `%1$s`
-			;',
-			'object_type',
-			$wpdb->activity_log
-		) );
+				GROUP BY `object_type`
+				ORDER BY `object_type`
+			;'
+		);
 
 		// Make sure we get items for filter.
 		if ( $users || $types ) {
@@ -294,7 +290,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			);
 			echo '<select name="dateshow" id="hs-filter-date">';
 			foreach ( $date_options as $key => $value )
-				printf( '<option value="%1$s"%2$s>%3$s</option>', $key, selected( $_REQUEST['dateshow'], $key, false ), $value );
+				printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['dateshow'], $key, false ), $value );
 			echo '</select>';
 
 			submit_button( __( 'Filter', 'aryo-activity-log' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
@@ -349,7 +345,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			$output = array();
 			foreach ( $types as $type )
-				$output[] = sprintf( '<option value="%1$s"%2$s>%3$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ), __( $type->object_type, 'aryo-activity-log' ) );
+				$output[] = sprintf( '<option value="%s"%s>%s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ), __( $type->object_type, 'aryo-activity-log' ) );
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
 			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-activity-log' ) );
@@ -358,16 +354,14 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 
-		$actions = $wpdb->get_results( $wpdb->prepare(
-			'SELECT DISTINCT %1$s FROM `%2$s`
+		$actions = $wpdb->get_results(
+			'SELECT DISTINCT `action` FROM  `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
-				GROUP BY `%1$s`
-				ORDER BY `%1$s`
-			;',
-			'action',
-			$wpdb->activity_log
-		) );
+				GROUP BY `action`
+				ORDER BY `action`
+			;'
+		);
 
 		if ( $actions ) {
 			if ( ! isset( $_REQUEST['showaction'] ) )
@@ -391,7 +385,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	
 		$items_per_page        = $this->get_items_per_page( 'edit_aal_logs_per_page', 20 );
 		$this->_column_headers = array( $this->get_columns(), get_hidden_columns( $this->screen ), $this->get_sortable_columns() );
-		$where                 = ' WHERE 1=1';
+		$where                 = ' WHERE 1 = 1';
 
 		if ( ! isset( $_REQUEST['order'] ) || ! in_array( $_REQUEST['order'], array( 'desc', 'asc' ) ) ) {
 			$_REQUEST['order'] = 'DESC';
@@ -401,11 +395,11 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 		
 		if ( ! empty( $_REQUEST['typeshow'] ) ) {
-			$where .= $wpdb->prepare( ' AND `object_type` = \'%s\'', $_REQUEST['typeshow'] );
+			$where .= $wpdb->prepare( ' AND `object_type` = %s', $_REQUEST['typeshow'] );
 		}
 
 		if ( isset( $_REQUEST['showaction'] ) && '' !== $_REQUEST['showaction'] ) {
-			$where .= $wpdb->prepare( ' AND `action` = \'%s\'', $_REQUEST['showaction'] );
+			$where .= $wpdb->prepare( ' AND `action` = %s', $_REQUEST['showaction'] );
 		}
 
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
@@ -413,7 +407,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		if ( isset( $_REQUEST['capshow'] ) && '' !== $_REQUEST['capshow'] ) {
-			$where .= $wpdb->prepare( ' AND `user_caps` = \'%s\'', strtolower( $_REQUEST['capshow'] ) );
+			$where .= $wpdb->prepare( ' AND `user_caps` = %s', strtolower( $_REQUEST['capshow'] ) );
 		}
 
 		if ( isset( $_REQUEST['dateshow'] ) && in_array( $_REQUEST['dateshow'], array( 'today', 'yesterday', 'week', 'month' ) ) ) {
@@ -432,35 +426,39 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$start_time = strtotime( '-1 month', $start_time );
 			}
 			
-			$where .= $wpdb->prepare( ' AND `hist_time` > %1$d AND `hist_time` < %2$d', $start_time, $end_time );
+			$where .= $wpdb->prepare( ' AND `hist_time` > %d AND `hist_time` < %d', $start_time, $end_time );
 		}
 
 		if ( isset( $_REQUEST['s'] ) ) {
 			// Search only searches 'description' fields.
-			$where .= $wpdb->prepare( ' AND `object_name` LIKE \'%%%s%%\'', '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%' );
+			$where .= $wpdb->prepare( ' AND `object_name` LIKE %%%s%%', '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%' );
 		}
 
 		$offset = ( $this->get_pagenum() - 1 ) * $items_per_page;
 
 		
-		$total_items = $wpdb->get_var( $wpdb->prepare(
-			'SELECT COUNT(`histid`) FROM `%1$s`
+		$total_items = $wpdb->get_var(
+			'SELECT COUNT(`histid`) FROM  `' . $wpdb->activity_log . '`
 				' . $where . '
-					' . $this->_get_where_by_role(),
-			$wpdb->activity_log,
-			$offset,
-			$items_per_page
-		) );
-		
+					' . $this->_get_where_by_role()
+		);
+
+		$items_orderby = filter_input(INPUT_GET, 'orderby', FILTER_SANITIZE_STRING);
+		if ( empty($items_orderby) ) {
+			$items_orderby = 'hist_time'; // Sort by time by default.
+		}
+
+		$items_order = strtoupper($_REQUEST['order']);
+		if (empty($items_order)) {
+			$items_order = 'DESC'; // Descending order by default.
+		}
+
 		$this->items = $wpdb->get_results( $wpdb->prepare(
-			'SELECT * FROM `%1$s`
+			'SELECT * FROM `' . $wpdb->activity_log . '`
 				' . $where . '
 					' . $this->_get_where_by_role() . '
-					ORDER BY `%2$s` %3$s
-					LIMIT %4$d, %5$d;',
-			$wpdb->activity_log,
-			$_REQUEST['orderby'],
-			$_REQUEST['order'],
+					ORDER BY ' . $items_orderby . ' ' . $items_order . '
+					LIMIT %d, %d;',
 			$offset,
 			$items_per_page
 		) );
