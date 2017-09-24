@@ -443,13 +443,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					' . $this->_get_where_by_role()
 		);
 
-		$items_orderby = filter_input(INPUT_GET, 'orderby', FILTER_SANITIZE_STRING);
-		if ( empty($items_orderby) ) {
+		$items_orderby = filter_input( INPUT_GET, 'orderby', FILTER_SANITIZE_STRING );
+		if ( empty( $items_orderby ) ) {
 			$items_orderby = 'hist_time'; // Sort by time by default.
 		}
 
-		$items_order = strtoupper($_REQUEST['order']);
-		if (empty($items_order)) {
+		$items_order = strtoupper( $_REQUEST['order'] );
+		if ( empty( $items_order ) || ! in_array( $items_order, array( 'DESC', 'ASC' ) ) ) {
 			$items_order = 'DESC'; // Descending order by default.
 		}
 
@@ -465,8 +465,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		$this->set_pagination_args( array(
 			'total_items' => $total_items,
-			'per_page'    => $items_per_page,
-			'total_pages' => ceil( $total_items / $items_per_page )
+			'per_page' => $items_per_page,
+			'total_pages' => ceil( $total_items / $items_per_page ),
 		) );
 	}
 	
