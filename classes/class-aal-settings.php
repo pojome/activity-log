@@ -486,7 +486,7 @@ final class AAL_Settings_Fields {
 						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
 						<?php endforeach; ?>
 					</select>
-					<a href="#" class="aal-new-rule button"><small>+</small> and</a>
+					<a href="#" class="aal-new-rule button"><small>+</small> <?php _e( 'and', 'aryo-activity-log' ); ?></a>
 					<a href="#" class="aal-delete-rule button">&times;</a>
 				</li>
 			<?php endforeach; ?>
