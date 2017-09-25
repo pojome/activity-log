@@ -16,8 +16,9 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	protected function _get_allow_caps() {
 		if ( empty( $this->_allow_caps ) ) {
 			$user = get_user_by( 'id', get_current_user_id() );
-			if ( ! $user )
+			if ( ! $user ) {
 				wp_die( 'Not allowed here.' );
+			}
 
 			$user_cap   = strtolower( key( $user->caps ) );
 			$allow_caps = array();
@@ -25,17 +26,20 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			foreach ( $this->_caps as $key => $cap_allow ) {
 				if ( $key === $user_cap ) {
 					$allow_caps = array_merge( $allow_caps, $cap_allow );
+
 					break;
 				}
 			}
 
 			// TODO: Find better way to Multisite compatibility.
-			if ( is_super_admin() || current_user_can( 'view_all_aryo_activity_log' ) )
+			if ( is_super_admin() || current_user_can( 'view_all_aryo_activity_log' ) ) {
 				$allow_caps = $this->_caps['administrator'];
+			}
 
-			if ( empty( $allow_caps ) )
+			if ( empty( $allow_caps ) ) {
 				wp_die( 'Not allowed here.' );
-			
+			}
+
 			$this->_allow_caps = array_unique( $allow_caps );
 		}
 		return $this->_allow_caps;
@@ -50,8 +54,9 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			}
 		}
 
-		if ( empty( $allow_modules ) )
+		if ( empty( $allow_modules ) ) {
 			wp_die( 'Not allowed here.' );
+		}
 
 		$allow_modules = array_unique( $allow_modules );
 
@@ -431,7 +436,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		if ( isset( $_REQUEST['s'] ) ) {
 			// Search only searches 'description' fields.
-			$where .= $wpdb->prepare( ' AND `object_name` LIKE %%%s%%', '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%' );
+			$where .= $wpdb->prepare( ' AND `object_name` LIKE %s', '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%' );
 		}
 
 		$offset = ( $this->get_pagenum() - 1 ) * $items_per_page;
