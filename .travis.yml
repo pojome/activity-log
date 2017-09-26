@@ -28,8 +28,13 @@ env:
 
 before_script:
     - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-
-#after_success:
-#    - bash <(curl -s https://codecov.io/bash)
+    - export PATH="$HOME/.composer/vendor/bin:$PATH" 
+    - | 
+      if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then 
+        composer global require "phpunit/phpunit=5.7.*" 
+      else 
+        composer global require "phpunit/phpunit=4.8.*" 
+      fi
+    - phpunit --version
 
 script: phpunit --coverage-clover=coverage.xml
