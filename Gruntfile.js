@@ -162,8 +162,8 @@ module.exports = function(grunt) {
 			github: {
 				options: {
 					wordpressPluginSlug: 'aryo-activity-log',
-					travisUrlRepo: 'https://travis-ci.org/KingYes/wordpress-aryo-activity-log',
-					gruntDependencyStatusUrl: 'https://david-dm.org/KingYes/wordpress-aryo-activity-log'
+					travisUrlRepo: 'https://travis-ci.org/pojome/wordpress-aryo-activity-log',
+					gruntDependencyStatusUrl: 'https://david-dm.org/pojome/wordpress-aryo-activity-log'
 				},
 				files: {
 					'README.md': 'readme.txt'
