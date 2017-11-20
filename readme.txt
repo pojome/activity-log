@@ -46,6 +46,8 @@ If you have tens of users or more, you really can’t know who did what. This pl
 
 <strong>New!</strong> You are now able to get email notifications once an event you have defined (via rules) has occurred. This is useful in cases you must know right away when someone does something on your site. We use it to thwart hacker attempts, for example.
 
+<strong>New!</strong> Export your Activity Log data records to CSV. Developers can easily add support for custom data formats with our new dedicated Export API.
+
 <h4>What people are saying</h4>
 * <em>“Best 10 Free WordPress Plugins of the Month – July 2014: Keeping tabs on what your users do with their access to the Dashboard”</em> - [ManageWp.com](https://managewp.com/best-free-wordpress-plugins-july-2014)
 * <em>“Thanks to this step, we’ve discovered that our site was undergoing a brute force attack”</em> - [artdriver.com](http://www.artdriver.com/wordpress-site-hacked-solution-time/)
@@ -97,8 +99,14 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 * This plugin is released under a GPL license.
 
+= Can I export logs? =
+
+* You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
 
 == Changelog ==
+
+= 2.3.7 =
+* New! Export your Activity Log data records to CSV
 
 = 2.3.6 =
 * Fix! - Admin table filters

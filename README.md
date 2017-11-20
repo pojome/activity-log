@@ -1,4 +1,4 @@
-# Activity Log [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
+# Activity Log [![Build Status](https://travis-ci.org/pojome/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/pojome/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/pojome/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/pojome/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 
 **Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
@@ -47,6 +47,8 @@ If you have tens of users or more, you really can’t know who did what. This pl
 * There's more, but you get the point...
 
 <strong>New!</strong> You are now able to get email notifications once an event you have defined (via rules) has occurred. This is useful in cases you must know right away when someone does something on your site. We use it to thwart hacker attempts, for example.
+
+<strong>New!</strong> Export your Activity Log data records to CSV. Developers can easily add support for custom data formats with our new dedicated Export API.
 
 <h4>What people are saying</h4>
 * <em>“Best 10 Free WordPress Plugins of the Month – July 2014: Keeping tabs on what your users do with their access to the Dashboard”</em> - [ManageWp.com](https://managewp.com/best-free-wordpress-plugins-july-2014)
@@ -99,8 +101,14 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 * This plugin is released under a GPL license.
 
+### Can I export logs? ###
+
+* You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
 
 ## Changelog ##
+
+### 2.3.7 ###
+* New! Export your Activity Log data records to CSV
 
 ### 2.3.6 ###
 * Fix! - Admin table filters
