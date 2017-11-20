@@ -23,7 +23,7 @@ class AAL_Settings {
 	}
 	
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/KingYes/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-activity-log' ) );
+		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/pojome/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-activity-log' ) );
 		array_unshift( $links, $settings_link );
 		
 		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=activity-log-settings' ), __( 'Settings', 'aryo-activity-log' ) );

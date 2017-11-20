@@ -232,8 +232,10 @@ class AAL_Admin_Ui {
 	 * @return AAL_Activity_Log_List_Table
 	 */
 	public function get_list_table() {
-		if ( is_null( $this->_list_table ) )
+		if ( is_null( $this->_list_table ) ) {
 			$this->_list_table = new AAL_Activity_Log_List_Table( array( 'screen' => $this->_screens['main'] ) );
+			do_action( 'aal_admin_page_load', $this->_list_table );
+		}
 		
 		return $this->_list_table;
 	}
