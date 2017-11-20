@@ -33,6 +33,9 @@ class AAL_Admin_Ui {
 		
 		<?php // TODO: move to a separate file. ?>
 		<style>
+			#record-actions-submit {
+				margin-top: 10px;
+			}
 			.aal-pt {
 				color: #ffffff;
 				padding: 1px 4px;

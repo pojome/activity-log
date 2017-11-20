@@ -266,7 +266,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			<?php if ( $multiple_exporters = ( count( $actions ) > 1 ) ) : ?>
 			<div class="alignleft actions recordactions">
 				<select name="aal-record-action">
-					<option value=""><?php echo esc_attr__( 'File Format', 'aryo-activity-log' ); ?></option>
+					<option value=""><?php echo esc_attr__( 'Export File Format', 'aryo-activity-log' ); ?></option>
 					<?php foreach ( $actions as $action_key => $action_title ) : ?>
 					<option value="<?php echo esc_attr( $action_key ); ?>"><?php echo esc_html( $action_title ); ?></option>
 					<?php endforeach; ?>
