@@ -17,9 +17,8 @@ class AAL_API {
 		
 		$wpdb->query(
 			$wpdb->prepare(
-				'DELETE FROM `%1$s`
-					WHERE `hist_time` < %2$d',
-				$wpdb->activity_log,
+				'DELETE FROM `' . $wpdb->activity_log . '`
+					WHERE `hist_time` < %d',
 				strtotime( '-' . $logs_lifespan . ' days', current_time( 'timestamp' ) )
 			)
 		);
@@ -60,12 +59,7 @@ class AAL_API {
 	public function erase_all_items() {
 		global $wpdb;
 		
-		$wpdb->query(
-			$wpdb->prepare(
-				'TRUNCATE %1$s',
-				$wpdb->activity_log
-			)
-		);
+		$wpdb->query( 'TRUNCATE `' . $wpdb->activity_log . '`' );
 	}
 
 	/**
@@ -109,17 +103,16 @@ class AAL_API {
 		// Make sure for non duplicate.
 		$check_duplicate = $wpdb->get_row(
 			$wpdb->prepare(
-				'SELECT `histid` FROM %1$s
-					WHERE `user_caps` = \'%2$s\'
-						AND `action` = \'%3$s\'
-						AND `object_type` = \'%4$s\'
-						AND `object_subtype` = \'%5$s\'
-						AND `object_name` = \'%6$s\'
-						AND `user_id` = \'%7$s\'
-						AND `hist_ip` = \'%8$s\'
-						AND `hist_time` = \'%9$s\'
+				'SELECT `histid` FROM `' . $wpdb->activity_log . '`
+					WHERE `user_caps` = %s
+						AND `action` = %s
+						AND `object_type` = %s
+						AND `object_subtype` = %s
+						AND `object_name` = %s
+						AND `user_id` = %s
+						AND `hist_ip` = %s
+						AND `hist_time` = %s
 				;',
-				$wpdb->activity_log,
 				$args['user_caps'],
 				$args['action'],
 				$args['object_type'],

@@ -23,7 +23,7 @@ class AAL_Settings {
 	}
 	
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/KingYes/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-activity-log' ) );
+		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/pojome/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-activity-log' ) );
 		array_unshift( $links, $settings_link );
 		
 		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=activity-log-settings' ), __( 'Settings', 'aryo-activity-log' ) );
@@ -486,7 +486,7 @@ final class AAL_Settings_Fields {
 						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
 						<?php endforeach; ?>
 					</select>
-					<a href="#" class="aal-new-rule button"><small>+</small> and</a>
+					<a href="#" class="aal-new-rule button"><small>+</small> <?php _e( 'and', 'aryo-activity-log' ); ?></a>
 					<a href="#" class="aal-delete-rule button">&times;</a>
 				</li>
 			<?php endforeach; ?>
