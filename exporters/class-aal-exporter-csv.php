@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_Exporter_csv {
     /**
@@ -36,6 +37,7 @@ class AAL_Exporter_csv {
 		}
 
 		echo $output; // @codingStandardsIgnoreLine text-only output
+
 		if ( $is_test_mode_off ) {
 			exit;
 		}

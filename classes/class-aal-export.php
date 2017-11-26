@@ -6,7 +6,7 @@ class AAL_Export {
     
     public function __construct() {
         add_action( 'aal_admin_page_load', array( $this, 'admin_register_exporters' ), 10 );
-        add_action( 'aal_admin_page_load', array( $this, 'admin_capture_action' ),    20 );
+        add_action( 'aal_admin_page_load', array( $this, 'admin_capture_action' ), 20 );
         
         add_filter( 'aal_record_actions', array( $this, 'filter_register_actions' ) );
     }
@@ -24,22 +24,22 @@ class AAL_Export {
         }
         
         if ( empty( $_GET['aal_actions_nonce'] ) ) {
-            return $this->redirect_back();
+            $this->redirect_back();
         }
         
-        if ( empty( $_GET['aal-record-action'] )  || ! wp_verify_nonce( $_GET['aal_actions_nonce'], 'aal_actions_nonce' ) ) {
-            return $this->redirect_back();
+        if ( empty( $_GET['aal-record-action'] ) || ! wp_verify_nonce( $_GET['aal_actions_nonce'], 'aal_actions_nonce' ) ) {
+            $this->redirect_back();
         }
         
-        if ( isset( $_GET['page'] ) && $_GET['page'] != 'activity_log_page' ) {
-            return $this->redirect_back();
+        if ( isset( $_GET['page'] ) && 'activity_log_page' !== $_GET['page'] ) {
+            $this->redirect_back();
         }
         
         $exporter_selected = $_GET['aal-record-action'];
         
         // If exporter doesn't exist or isn't registered, bail
         if ( ! array_key_exists( $exporter_selected, $this->get_exporters() ) ) {
-            return $this->redirect_back();
+            $this->redirect_back();
         }
         
         // Disable row limit
@@ -49,8 +49,8 @@ class AAL_Export {
         $list_table->prepare_items();
         $items = $list_table->items;
         $columns = $list_table->get_columns();
+
         $op = array();
-        
         foreach ( $items as $item ) {
             $op[] = $this->prep_row( $item, $columns, $list_table );
         }
@@ -60,13 +60,18 @@ class AAL_Export {
     }
     
     protected function redirect_back() {
-        wp_redirect( 
-            menu_page_url( 'activity_log_page', false )
-        );
+        wp_redirect( menu_page_url( 'activity_log_page', false ) );
         exit;
     }
-    
-    private function prep_row( $item, $columns, &$list_table ) {
+
+	/**
+	 * @param stdClass $item
+	 * @param array $columns
+	 * @param AAL_Activity_Log_List_Table $list_table
+	 *
+	 * @return array
+	 */
+    private function prep_row( $item, $columns, $list_table ) {
         $row = array();
         
         foreach ( array_keys( $columns ) as $column ) {
@@ -75,22 +80,28 @@ class AAL_Export {
                     $created = date( 'Y-m-d H:i:s', strtotime( $item->hist_time ) );
 					$row[ $column ] = get_date_from_gmt( $created, 'Y/m/d h:i:s A' );
                     break;
+
                 case 'author':
                     $user = get_userdata( $item->user_id );
                     $row[ $column ] = isset( $user->display_name ) ? $user->display_name : 'unknown';
                     break;
+
                 case 'ip':
                     $row[ $column ] = $item->hist_ip;
                     break;
+
                 case 'type':
                     $row[ $column ] = $item->object_type;
                     break;
+
                 case 'label':
                     $row[ $column ] = $item->object_subtype;
                     break;
+
                 case 'action':
-                    $row[ $column ] = $list_table->_get_action_label( $item->action );
+                    $row[ $column ] = $list_table->get_action_label( $item->action );
                     break;
+
                 case 'description':
                     $row[ $column ] = $item->object_name;
                     break;
@@ -108,11 +119,7 @@ class AAL_Export {
         $exporter_instances = array();
         
         foreach ( $builtin_exporters as $exporter ) {
-            include_once sprintf( 
-                '%s/exporters/%s',
-                dirname( ACTIVITY_LOG__FILE__ ),
-                'class-aal-exporter-' . $exporter . '.php'
-            );
+            include_once sprintf( '%s/exporters/%s', dirname( ACTIVITY_LOG__FILE__ ), 'class-aal-exporter-' . $exporter . '.php' );
             
             $classname = sprintf( 'AAL_Exporter_%s', str_replace( '-', '_', $exporter ) );
             if ( ! class_exists( $classname ) ) {
@@ -148,6 +155,8 @@ class AAL_Export {
 	 * Increase throughput
 	 *
 	 * @param int $records_per_page Old limit of records
+     *
+     * @return int
 	 */
 	public function increase_throughput( $records_per_page ) {
 		return PHP_INT_MAX;

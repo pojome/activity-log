@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 abstract class AAL_Exporter {
 	/**
@@ -22,5 +23,5 @@ abstract class AAL_Exporter {
 	 * @param array $columns Column names included in data set.
 	 * @return void
 	 */
-	public abstract function write( $data, $columns );
+	abstract public function write( $data, $columns );
 }
