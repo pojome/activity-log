@@ -4,8 +4,8 @@
 **Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
 **Tags:** automation, actions, activity, Activity Log, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, bbPress  
 **Requires at least:** 4.4  
-**Tested up to:** 4.8  
-**Stable tag:** 2.3.7  
+**Tested up to:** 4.9  
+**Stable tag:** 2.3.6  
 **License:** GPLv2 or later  
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your site, so you can run a safer, more organized WordPress site.
@@ -107,8 +107,8 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
-### 2.3.7 ###
-* New! Export your Activity Log data records to CSV
+### 2.4.0 ###
+* New! Export your Activity Log data records to CSV ([#70](https://github.com/pojome/elementor/issues/70))
 
 ### 2.3.6 ###
 * Fix! - Admin table filters
