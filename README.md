@@ -107,6 +107,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.4.1 ###
+* Fix : Escape title before saving to database
+
 ### 2.4.0 ###
 * New! Export your Activity Log data records to CSV ([#70](https://github.com/pojome/activity-log/issues/70))
 
