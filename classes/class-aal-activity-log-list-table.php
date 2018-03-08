@@ -202,16 +202,16 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 	
 	public function column_description( $item ) {
-		$return = $item->object_name;
+		$return = esc_html( $item->object_name );
 		
 		switch ( $item->object_type ) {
 			case 'Post' :
-				$return = sprintf( '<a href="%s">%s</a>', get_edit_post_link( $item->object_id ), $item->object_name );
+				$return = sprintf( '<a href="%s">%s</a>', get_edit_post_link( $item->object_id ), esc_html( $item->object_name ) );
 				break;
 			
 			case 'Taxonomy' :
 				if ( ! empty( $item->object_id ) )
-					$return = sprintf( '<a href="%s">%s</a>', get_edit_term_link( $item->object_id, $item->object_subtype ), $item->object_name );
+					$return = sprintf( '<a href="%s">%s</a>', get_edit_term_link( $item->object_id, $item->object_subtype ), esc_html( $item->object_name ) );
 				break;
 			
 			case 'Comments' :
@@ -224,7 +224,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				if ( 'all' === $item->object_name ) {
 					$return = __( 'All', 'aryo-activity-log' );
 				} else {
-					$pt     = get_post_type_object( $item->object_name );
+					$pt = get_post_type_object( $item->object_name );
 					$return = ! empty( $pt->label ) ? $pt->label : $item->object_name;
 				}
 				break;
