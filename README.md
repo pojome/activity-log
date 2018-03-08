@@ -1,11 +1,11 @@
-# Activity Log [![Build Status](https://travis-ci.org/KingYes/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/KingYes/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/KingYes/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/KingYes/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
+# Activity Log [![Build Status](https://travis-ci.org/pojome/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/pojome/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/pojome/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/pojome/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 
 **Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
-**Tags:** actions, activity, Activity Log, activity logs, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, change, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, woocommerce log, woocommerce monitor, woocommerce monitoring, woocommrece security, wordpress activity log, WordPress Admin, wordpress admin monitoring, wordpress audit, wordpress email alerts, wordpress log, wordpress monitor, wordpress monitoring, wordpress multisite, wordpress security, wordpress security alerts, wordpress security audit log, wordpress security monitor, wordpress security plugin, wordpress user tracking  
-**Requires at least:** 3.5  
-**Tested up to:** 4.5  
-**Stable tag:** 2.3.4  
+**Tags:** automation, actions, activity, Activity Log, admin, admin actions, administration, analytics, audit, audit log, audit logs, bbPress, changes, dashboard, email notifications, event, event log, log, logger, Logs, monitor, multi-users, multisite, notifications, security, security audit trail, security event log, stats, stream, tracking, troubleshooting, user activity report, user tracking, woocommerce, bbPress  
+**Requires at least:** 4.4  
+**Tested up to:** 4.9  
+**Stable tag:** 2.4.1  
 **License:** GPLv2 or later  
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your site, so you can run a safer, more organized WordPress site.
@@ -48,6 +48,8 @@ If you have tens of users or more, you really can’t know who did what. This pl
 
 <strong>New!</strong> You are now able to get email notifications once an event you have defined (via rules) has occurred. This is useful in cases you must know right away when someone does something on your site. We use it to thwart hacker attempts, for example.
 
+<strong>New!</strong> Export your Activity Log data records to CSV. Developers can easily add support for custom data formats with our new dedicated Export API.
+
 <h4>What people are saying</h4>
 * <em>“Best 10 Free WordPress Plugins of the Month – July 2014: Keeping tabs on what your users do with their access to the Dashboard”</em> - [ManageWp.com](https://managewp.com/best-free-wordpress-plugins-july-2014)
 * <em>“Thanks to this step, we’ve discovered that our site was undergoing a brute force attack”</em> - [artdriver.com](http://www.artdriver.com/wordpress-site-hacked-solution-time/)
@@ -75,7 +77,7 @@ The plugin does not require any kind of setup. It works out of the box (and that
 We’re planning to add a lot more features in the upcoming releases. If you think we’re missing something big time, please post your suggestions in the plugin’s forum.
 
 <h4>Contributions:</h4>
-Would you like to like to contribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/KingYes/wordpress-aryo-activity-log). Also, if you have any notes about the code, please open a ticket on the issue tracker.
+Would you like to like to contribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/pojome/activity-log). Also, if you have any notes about the code, please open a ticket on the issue tracker.
 
 ## Installation ##
 
@@ -99,11 +101,26 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 * This plugin is released under a GPL license.
 
+### Can I export logs? ###
+
+* You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
 
 ## Changelog ##
 
-### 2.3.5 ###
+### 2.4.2 ###
 * New! - Added "Exclude IPs" for exclude selected IPs from log activity - Thanks to [necrox87](https://github.com/necrox87)
+
+### 2.4.1 ###
+* Fix : Escape title before saving to database
+
+### 2.4.0 ###
+* New! Export your Activity Log data records to CSV ([#70](https://github.com/pojome/activity-log/issues/70))
+
+### 2.3.6 ###
+* Fix! - Admin table filters
+
+### 2.3.5 ###
+* Fix! - Added comparability for WordPress 4.8.2 & 4.7.6
 
 ### 2.3.4 ###
 * Tweak! - Change Guest user to "N/A"
@@ -120,8 +137,8 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ### 2.3.0 ###
 * Tweak! - All translates moved to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/aryo-activity-log)
-* Tweak! - Added restore status for Posts ([#46](https://github.com/KingYes/wordpress-aryo-activity-log/issues/46))
-* Tweak! - A11y changes for WordPress 4.4 which requires `h1` tags ([#84](https://github.com/KingYes/wordpress-aryo-activity-log/issues/84))
+* Tweak! - Added restore status for Posts ([#46](https://github.com/pojome/activity-log/issues/46))
+* Tweak! - A11y changes for WordPress 4.4 which requires `h1` tags ([#84](https://github.com/pojome/activity-log/issues/84))
 * Tweak! - Allow some ajax requests just for admin
 
 ### 2.2.12 ###
@@ -146,7 +163,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Tested up to WordPress v4.4
 
 ### 2.2.6 ###
-* Tweak! - Added sort by IP address ([#77](https://github.com/KingYes/wordpress-aryo-activity-log/issues/77))
+* Tweak! - Added sort by IP address ([#77](https://github.com/pojome/activity-log/issues/77))
 * Tweak! - Added more actions/types in notification
 
 ### 2.2.5 ###
@@ -156,7 +173,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Tested up to WordPress v4.3
 
 ### 2.2.4 ###
-* New! - Added translate: Czech (cs_CZ) - Thanks to Martin Kokeš ([#76](https://github.com/KingYes/wordpress-aryo-activity-log/pull/76))
+* New! - Added translate: Czech (cs_CZ) - Thanks to Martin Kokeš ([#76](https://github.com/pojome/activity-log/pull/76))
 
 ### 2.2.3 ###
 * Tweak! - Added more filters in table list columns
@@ -186,7 +203,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * New! Added translate: Persian (fa_IR) - Thanks to [Promising](http://vwp.ir/)
 
 ### 2.1.13 ###
-* New! Added filter by User Roles ([#67](https://github.com/KingYes/wordpress-aryo-activity-log/issues/67))
+* New! Added filter by User Roles ([#67](https://github.com/pojome/activity-log/issues/67))
 
 ### 2.1.12 ###
 * New! Added translate: Turkish (tr_TR) - Thanks to [Ahmet Kolcu](http://ahmetkolcu.org/)
@@ -199,33 +216,33 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * New! Added translate: Portuguese (pt_BR) - Thanks to [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
 
 ### 2.1.9 ###
-* New! Store all WooCommerce settings ([#62](https://github.com/KingYes/wordpress-aryo-activity-log/issues/62))
+* New! Store all WooCommerce settings ([#62](https://github.com/pojome/activity-log/issues/62))
 * Tested up to WordPress v4.0
 
 ### 2.1.8 ###
-* New! Now tracking when plugins installed and updated ([#59](https://github.com/KingYes/wordpress-aryo-activity-log/pull/59) and [#43](https://github.com/KingYes/wordpress-aryo-activity-log/issues/43))
+* New! Now tracking when plugins installed and updated ([#59](https://github.com/pojome/activity-log/pull/59) and [#43](https://github.com/pojome/activity-log/issues/43))
 
 ### 2.1.7 ###
-* New! Now tracking when user download export file from the site ([#58](https://github.com/KingYes/wordpress-aryo-activity-log/issues/58) and [#63](https://github.com/KingYes/wordpress-aryo-activity-log/pull/63))
+* New! Now tracking when user download export file from the site ([#58](https://github.com/pojome/activity-log/issues/58) and [#63](https://github.com/pojome/activity-log/pull/63))
 
 ### 2.1.6 ###
 * Tested up to WordPress v3.9.2
 
 ### 2.1.5 ###
-* New! Now tracking when theme installed, updated, deleted ([#44](https://github.com/KingYes/wordpress-aryo-activity-log/issues/44))
+* New! Now tracking when theme installed, updated, deleted ([#44](https://github.com/pojome/activity-log/issues/44))
 
 ### 2.1.4 ###
-* Fixed! Store real IP address in Proxy too ([#53](https://github.com/KingYes/wordpress-aryo-activity-log/issues/53))
+* Fixed! Store real IP address in Proxy too ([#53](https://github.com/pojome/activity-log/issues/53))
 
 ### 2.1.3 ###
-* New! Added translate: Dutch (nl_NL) - Thanks to [Tom Aalbers](http://www.dtaalbers.com/) ([#55](https://github.com/KingYes/wordpress-aryo-activity-log/issues/55))
+* New! Added translate: Dutch (nl_NL) - Thanks to [Tom Aalbers](http://www.dtaalbers.com/) ([#55](https://github.com/pojome/activity-log/issues/55))
 
 ### 2.1.2 ###
 * Tweak! Update translate: Hebrew (he_IL)
 
 ### 2.1.1 ###
-* New! Track about WordPress core update (manual or auto-updated) ([#41](https://github.com/KingYes/wordpress-aryo-activity-log/issues/41))
-* New! Track post comments (created, approved, unproved, trashed, untrashed, spammed, unspammed, deleted) ([#42](https://github.com/KingYes/wordpress-aryo-activity-log/issues/42))
+* New! Track about WordPress core update (manual or auto-updated) ([#41](https://github.com/pojome/activity-log/issues/41))
+* New! Track post comments (created, approved, unproved, trashed, untrashed, spammed, unspammed, deleted) ([#42](https://github.com/pojome/activity-log/issues/42))
 
 ### 2.1.0 ###
 * New! Personally-tailored notifications that can be triggered by various types of events, users and action type (currently only email notifications are supported)
@@ -236,7 +253,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Tested up to WordPress v3.9.0
 
 ### 2.0.6 ###
-* Fixed! Random fatal error ([topic](https://github.com/KingYes/wordpress-aryo-activity-log/issues/32))
+* Fixed! Random fatal error ([topic](https://github.com/pojome/activity-log/issues/32))
 
 ### 2.0.5 ###
 * New! Register `aal_init_caps` filter.

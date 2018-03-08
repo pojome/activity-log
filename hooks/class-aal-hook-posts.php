@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class AAL_Hook_Posts extends AAL_Hook_Base {
 	
 	protected function _draft_or_post_title( $post = 0 ) {
-		$title = get_the_title( $post );
+		$title = esc_html( get_the_title( $post ) );
 		
 		if ( empty( $title ) )
 			$title = __( '(no title)', 'aryo-activity-log' );

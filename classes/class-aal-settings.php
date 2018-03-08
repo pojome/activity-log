@@ -23,7 +23,7 @@ class AAL_Settings {
 	}
 
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/KingYes/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-activity-log' ) );
+		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/pojome/wordpress-aryo-activity-log', __( 'GitHub', 'aryo-activity-log' ) );
 		array_unshift( $links, $settings_link );
 
 		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=activity-log-settings' ), __( 'Settings', 'aryo-activity-log' ) );
@@ -480,32 +480,32 @@ final class AAL_Settings_Fields {
 		<p class="description"><?php _e( 'A notification will be sent upon a successful match with the following conditions:', 'aryo-activity-log' ); ?></p>
 		<div class="aal-notifier-settings">
 			<ul>
-				<?php foreach ( $rows as $rid => $row ) :
-					$row_key 		= $row['key'];
-					$row_condition 	= isset( $row['condition'] ) ? $row['condition'] : '';
-					$row_value 		= isset( $row['value'] ) ? $row['value'] : '';
-					?>
-					<li data-id="<?php echo $rid; ?>">
-						<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
-							<?php foreach ( $keys as $k => $v ) : ?>
-								<option value="<?php echo $k; ?>" <?php selected( $row_key, $k ); ?>><?php echo $v; ?></option>
-							<?php endforeach; ?>
-						</select>
-						<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
-							<?php foreach ( $conditions as $k => $v ) : ?>
-								<option value="<?php echo $k; ?>" <?php selected( $row_condition, $k ); ?>><?php echo $v; ?></option>
-							<?php endforeach; ?>
-						</select>
-						<?php $value_options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
-						<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
-							<?php foreach ( $value_options as $option_key => $option_value ) : ?>
-								<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
-							<?php endforeach; ?>
-						</select>
-						<a href="#" class="aal-new-rule button"><small>+</small> and</a>
-						<a href="#" class="aal-delete-rule button">&times;</a>
-					</li>
-				<?php endforeach; ?>
+			<?php foreach ( $rows as $rid => $row ) :
+				$row_key 		= $row['key']; 
+				$row_condition 	= isset( $row['condition'] ) ? $row['condition'] : '';
+				$row_value 		= isset( $row['value'] ) ? $row['value'] : '';
+				?>
+				<li data-id="<?php echo $rid; ?>">
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
+						<?php foreach ( $keys as $k => $v ) : ?>
+						<option value="<?php echo $k; ?>" <?php selected( $row_key, $k ); ?>><?php echo $v; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
+						<?php foreach ( $conditions as $k => $v ) : ?>
+						<option value="<?php echo $k; ?>" <?php selected( $row_condition, $k ); ?>><?php echo $v; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<?php $value_options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
+						<?php foreach ( $value_options as $option_key => $option_value ) : ?>
+						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
+						<?php endforeach; ?>
+					</select>
+					<a href="#" class="aal-new-rule button"><small>+</small> <?php _e( 'and', 'aryo-activity-log' ); ?></a>
+					<a href="#" class="aal-delete-rule button">&times;</a>
+				</li>
+			<?php endforeach; ?>
 			</ul>
 		</div>
 		<?php

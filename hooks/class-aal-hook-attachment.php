@@ -11,7 +11,7 @@ class AAL_Hook_Attachment extends AAL_Hook_Base {
 			'object_type'    => 'Attachment',
 			'object_subtype' => $post->post_type,
 			'object_id'      => $attachment_id,
-			'object_name'    => get_the_title( $post->ID ),
+			'object_name'    => esc_html( get_the_title( $post->ID ) ),
 		) );
 	}
 
