@@ -39,6 +39,7 @@ include( 'classes/class-aal-hooks.php' );
 include( 'classes/class-aal-notifications.php' );
 include( 'classes/class-aal-help.php' );
 include( 'classes/class-aal-export.php' );
+include( 'classes/class-aal-privacy.php' );
 include( 'classes/abstract-class-aal-exporter.php' );
 
 // Integrations
@@ -78,6 +79,12 @@ final class AAL_Main {
 	public $api;
 
 	/**
+	 * @var AAL_Privacy
+	 * @since 2.1.0
+	 */
+	private $privacy;
+
+	/**
 	 * Load text domain
 	 */
 	public function load_textdomain() {
@@ -97,6 +104,7 @@ final class AAL_Main {
 		$this->notifications = new AAL_Notifications();
 		$this->help          = new AAL_Help();
 		$this->export        = new AAL_Export();
+		$this->privacy       = new AAL_Privacy();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
