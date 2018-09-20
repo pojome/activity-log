@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Activity Log
-Plugin URI: http://wordpress.org/plugins/aryo-activity-log/
+Plugin URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
 Description: Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site. e.g. post was deleted, plugin was activated, user logged in or logged out - it's all these for you to see.
-Author: Yakir Sitbon, Maor Chasen, Ariel Klikstein
-Author URI: http://pojo.me/
+Author: Activity Log Team
+Author URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
 Version: 2.4.1
 Text Domain: aryo-activity-log
 License: GPLv2 or later
