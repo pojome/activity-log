@@ -16,7 +16,7 @@ class AAL_Privacy {
 
 	public function register_exporter( $exporters ) {
 		$exporters['activity-log'] = array(
-			'exporter_friendly_name' => __( 'Activity Log Plugin' ),
+			'exporter_friendly_name' => __( 'Activity Log Plugin', 'aryo-activity-log' ),
 			'callback' => [ $this, 'wp_exporter' ],
 		);
 		return $exporters;
@@ -50,34 +50,34 @@ class AAL_Privacy {
 		$found_rows = $wpdb->get_var( 'SELECT FOUND_ROWS();' );
 
 		$group_id = 'activity-log';
-		$group_label = __( 'Activity Log' );
+		$group_label = __( 'Activity Log', 'aryo-activity-log' );
 
 		foreach ( $items as $item ) {
 			$item_id = "activity-log-{$item->histid}";
 			$created = date( 'Y-m-d H:i:s', $item->hist_time );
 			$data = [
 				[
-					'name' => __( 'Time' ),
+					'name' => __( 'Time', 'aryo-activity-log' ),
 					'value' => get_date_from_gmt( $created, 'Y/m/d h:i:s A' ),
 				],
 				[
-					'name' => __( 'Action' ),
+					'name' => __( 'Action', 'aryo-activity-log' ),
 					'value' => $this->get_action_label( $item->action ),
 				],
 				[
-					'name' => __( 'Object Type' ),
+					'name' => __( 'Object Type', 'aryo-activity-log' ),
 					'value' => $item->object_type,
 				],
 				[
-					'name' => __( 'Object Subtype' ),
+					'name' => __( 'Object Subtype', 'aryo-activity-log' ),
 					'value' => $item->object_subtype,
 				],
 				[
-					'name' => __( 'Description' ),
+					'name' => __( 'Description', 'aryo-activity-log' ),
 					'value' => $item->object_name,
 				],
 				[
-					'name' => __( 'IP' ),
+					'name' => __( 'IP', 'aryo-activity-log' ),
 					'value' => $item->hist_ip,
 				],
 			];
@@ -103,10 +103,10 @@ class AAL_Privacy {
 			return;
 		}
 
-		$content = sprintf( __( 'If you are a registered user, we save your content activity like create/update/delete posts and comments.' ) );
+		$content = sprintf( __( 'If you are a registered user, we save your content activity like create/update/delete posts and comments.', 'aryo-activity-log' ) );
 
 		wp_add_privacy_policy_content(
-			__( 'Activity Log', '' ),
+			__( 'Activity Log', 'aryo-activity-log' ),
 			wp_kses_post( wpautop( $content, false ) )
 		);
 	}
