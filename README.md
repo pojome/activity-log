@@ -107,6 +107,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.4.2 ###
+* New! - Added "Exclude IPs" for exclude selected IPs from log activity - Thanks to [necrox87](https://github.com/necrox87)
+
 ### 2.4.1 ###
 * Fix : Escape title before saving to database
 

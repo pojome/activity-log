@@ -76,6 +76,10 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 	}
 	
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( 'transition_post_status', array( &$this, 'hooks_transition_post_status' ), 10, 3 );
 		add_action( 'delete_post', array( &$this, 'hooks_delete_post' ) );
 		

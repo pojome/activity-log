@@ -42,6 +42,10 @@ class AAL_Hook_Widgets extends AAL_Hook_Base {
 	}
 	
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_filter( 'widget_update_callback', array( &$this, 'hooks_widget_update_callback' ), 9999, 4 );
 		add_filter( 'sidebar_admin_setup', array( &$this, 'hooks_widget_delete' ) ); // Widget delete.
 		

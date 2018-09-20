@@ -109,6 +109,10 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 	}
 
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( 'activated_plugin', array( &$this, 'hooks_activated_plugin' ) );
 		add_action( 'deactivated_plugin', array( &$this, 'hooks_deactivated_plugin' ) );
 		add_filter( 'wp_redirect', array( &$this, 'hooks_plugin_modify' ), 10, 2 );

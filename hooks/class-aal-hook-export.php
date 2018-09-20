@@ -15,6 +15,10 @@ class AAL_Hook_Export extends AAL_Hook_Base {
 	}
 
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( 'export_wp', array( &$this, 'hooks_export_wp' ) );
 		
 		parent::__construct();

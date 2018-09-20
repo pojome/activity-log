@@ -31,6 +31,10 @@ class AAL_Hook_Menu extends AAL_Hook_Base {
 	}
 	
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( 'wp_update_nav_menu', array( &$this, 'hooks_menu_created_or_updated' ) );
 		add_action( 'wp_create_nav_menu', array( &$this, 'hooks_menu_created_or_updated' ) );
 		add_action( 'delete_nav_menu', array( &$this, 'hooks_menu_deleted' ), 10, 3 );

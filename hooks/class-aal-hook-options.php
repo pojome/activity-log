@@ -94,6 +94,10 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 	}
 
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( 'updated_option', array( &$this, 'hooks_updated_option' ), 10, 3 );
 
 		parent::__construct();

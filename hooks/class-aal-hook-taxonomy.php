@@ -34,6 +34,10 @@ class AAL_Hook_Taxonomy extends AAL_Hook_Base {
 	}
 	
 	public function __construct() {
+		if (!parent::checkIps()) {
+			return false;
+		}
+
 		add_action( 'created_term', array( &$this, 'hooks_created_edited_deleted_term' ), 10, 3 );
 		add_action( 'edited_term', array( &$this, 'hooks_created_edited_deleted_term' ), 10, 3 );
 		add_action( 'delete_term', array( &$this, 'hooks_created_edited_deleted_term' ), 10, 4 );
