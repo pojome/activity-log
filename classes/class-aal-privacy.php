@@ -10,14 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AAL_Privacy {
 
 	public function __construct() {
-		add_filter( 'wp_privacy_personal_data_exporters', [ $this, 'register_exporter' ] );
-		add_action( 'admin_init', [ $this, 'add_privacy_policy_content' ] );
+		add_filter( 'wp_privacy_personal_data_exporters', array( $this, 'register_exporter' ) );
+		add_action( 'admin_init', array( $this, 'add_privacy_policy_content' ) );
 	}
 
 	public function register_exporter( $exporters ) {
 		$exporters['activity-log'] = array(
 			'exporter_friendly_name' => __( 'Activity Log Plugin', 'aryo-activity-log' ),
-			'callback' => [ $this, 'wp_exporter' ],
+			'callback' => array( $this, 'wp_exporter' ),
 		);
 		return $exporters;
 	}
