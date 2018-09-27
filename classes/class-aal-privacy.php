@@ -31,10 +31,10 @@ class AAL_Privacy {
 		$user = get_user_by( 'email', $email_address );
 
 		if ( ! $user ) {
-			return [
-				'data' => [],
+			return array(
+				'data' => array(),
 				'done' => true,
-			];
+			);
 		}
 
 		global $wpdb;
@@ -55,47 +55,47 @@ class AAL_Privacy {
 		foreach ( $items as $item ) {
 			$item_id = "activity-log-{$item->histid}";
 			$created = date( 'Y-m-d H:i:s', $item->hist_time );
-			$data = [
-				[
+			$data = array(
+				array(
 					'name' => __( 'Time', 'aryo-activity-log' ),
 					'value' => get_date_from_gmt( $created, 'Y/m/d h:i:s A' ),
-				],
-				[
+				),
+				array(
 					'name' => __( 'Action', 'aryo-activity-log' ),
 					'value' => $this->get_action_label( $item->action ),
-				],
-				[
+				),
+				array(
 					'name' => __( 'Object Type', 'aryo-activity-log' ),
 					'value' => $item->object_type,
-				],
-				[
+				),
+				array(
 					'name' => __( 'Object Subtype', 'aryo-activity-log' ),
 					'value' => $item->object_subtype,
-				],
-				[
+				),
+				array(
 					'name' => __( 'Description', 'aryo-activity-log' ),
 					'value' => $item->object_name,
-				],
-				[
+				),
+				array(
 					'name' => __( 'IP', 'aryo-activity-log' ),
 					'value' => $item->hist_ip,
-				],
-			];
+				),
+			);
 
-			$export_items[] = [
+			$export_items[] = array(
 				'group_id' => $group_id,
 				'group_label' => $group_label,
 				'item_id' => $item_id,
 				'data' => $data,
-			];
+			);
 		} // End foreach().
 
 		// Tell core if we have more comments to work on still
 		$done = $found_rows < $number;
-		return [
+		return array(
 			'data' => $export_items,
 			'done' => $done,
-		];
+		);
 	}
 
 	public function add_privacy_policy_content() {
