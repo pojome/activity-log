@@ -112,11 +112,14 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.5.1 =
+* Fix! - PHP < 5.4 compatibility ([Topic](https://wordpress.org/support/topic/crashed-site-now-wont-activate/))
+
 = 2.5.0 =
 * New! Added log to Export Personal Data tool for better GDPR Compliance ([Topic](https://wordpress.org/support/topic/activity-log-gdpr-compliance/))
 
 = 2.4.1 =
-* Fix : Escape title before saving to database
+* Fix! - Escape title before saving to database
 
 = 2.4.0 =
 * New! Export your Activity Log data records to CSV ([#70](https://github.com/pojome/activity-log/issues/70))
