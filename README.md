@@ -5,7 +5,7 @@
 **Tags:** Activity Log, Security Log, User Activity, User Log, Activity, audit log, monitor, security, tracking, woocommerce, bbPress,  
 **Requires at least:** 4.4  
 **Tested up to:** 4.9  
-**Stable tag:** 2.5.0  
+**Stable tag:** 2.5.1  
 **License:** GPLv2 or later  
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your site, so you can run a safer, more organized WordPress site.
@@ -114,11 +114,14 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.5.1 ###
+* Fix! - PHP < 5.4 compatibility ([Topic](https://wordpress.org/support/topic/crashed-site-now-wont-activate/))
+
 ### 2.5.0 ###
 * New! Added log to Export Personal Data tool for better GDPR Compliance ([Topic](https://wordpress.org/support/topic/activity-log-gdpr-compliance/))
 
 ### 2.4.1 ###
-* Fix : Escape title before saving to database
+* Fix! - Escape title before saving to database
 
 ### 2.4.0 ###
 * New! Export your Activity Log data records to CSV ([#70](https://github.com/pojome/activity-log/issues/70))
