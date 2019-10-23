@@ -2,7 +2,7 @@
 Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: Activity Log, Security Log, User Activity, User Log, Activity, audit log, monitor, security, tracking, woocommerce, bbPress,
 Requires at least: 4.4
-Tested up to: 5.2
+Tested up to: 5.3
 Stable tag: 2.5.2
 License: GPLv2 or later
 
