@@ -57,6 +57,10 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 
 		$post = get_post( $post_id );
 
+		if ( ! $post ) {
+			return;
+		}
+
 		if ( in_array( $post->post_status, array( 'auto-draft', 'inherit' ) ) )
 			return;
 
