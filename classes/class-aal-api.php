@@ -40,6 +40,7 @@ class AAL_API {
 			'HTTP_FORWARDED_FOR',
 			'HTTP_FORWARDED',
 			'REMOTE_ADDR',
+			'HTTP_CF_CONNECTING_IP',
 		);
 		
 		foreach ( $server_ip_keys as $key ) {
