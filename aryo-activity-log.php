@@ -37,7 +37,6 @@ include( 'classes/class-aal-settings.php' );
 include( 'classes/class-aal-api.php' );
 include( 'classes/class-aal-hooks.php' );
 include( 'classes/class-aal-notifications.php' );
-include( 'classes/class-aal-help.php' );
 include( 'classes/class-aal-export.php' );
 include( 'classes/class-aal-privacy.php' );
 include( 'classes/abstract-class-aal-exporter.php' );
@@ -102,7 +101,6 @@ final class AAL_Main {
 		$this->settings      = new AAL_Settings();
 		$this->api           = new AAL_API();
 		$this->notifications = new AAL_Notifications();
-		$this->help          = new AAL_Help();
 		$this->export        = new AAL_Export();
 		$this->privacy       = new AAL_Privacy();
 
