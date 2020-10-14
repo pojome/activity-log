@@ -34,8 +34,12 @@ class AAL_Hook_User extends AAL_Hook_Base {
 		) );
 	}
 
-	public function hooks_wp_logout() {
+	public function hooks_clear_auth_cookie() {
 		$user = wp_get_current_user();
+
+		if ( empty( $user ) || ! $user->exists() ) {
+			return;
+		}
 
 		aal_insert_log( array(
 			'action'      => 'logged_out',
@@ -69,7 +73,7 @@ class AAL_Hook_User extends AAL_Hook_Base {
 
 	public function __construct() {
 		add_action( 'wp_login', array( &$this, 'hooks_wp_login' ), 10, 2 );
-		add_action( 'wp_logout', array( &$this, 'hooks_wp_logout' ) );
+		add_action( 'clear_auth_cookie', array( &$this, 'hooks_clear_auth_cookie' ) );
 		add_action( 'delete_user', array( &$this, 'hooks_delete_user' ) );
 		add_action( 'user_register', array( &$this, 'hooks_user_register' ) );
 		add_action( 'profile_update', array( &$this, 'hooks_profile_update' ) );
