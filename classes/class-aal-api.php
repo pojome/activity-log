@@ -33,6 +33,8 @@ class AAL_API {
 	 */
 	protected function _get_ip_address() {
 		$server_ip_keys = array(
+			'HTTP_CF_CONNECTING_IP', // CloudFlare
+			'HTTP_TRUE_CLIENT_IP', // CloudFlare Enterprise header
 			'HTTP_CLIENT_IP',
 			'HTTP_X_FORWARDED_FOR',
 			'HTTP_X_FORWARDED',
@@ -40,7 +42,6 @@ class AAL_API {
 			'HTTP_FORWARDED_FOR',
 			'HTTP_FORWARDED',
 			'REMOTE_ADDR',
-			'HTTP_CF_CONNECTING_IP',
 		);
 		
 		foreach ( $server_ip_keys as $key ) {
