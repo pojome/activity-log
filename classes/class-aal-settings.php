@@ -205,6 +205,10 @@ class AAL_Settings {
 
 		$sections = apply_filters( 'aal_setup_sections', $sections );
 
+		if ( 1 >= count( $sections ) ) {
+			return;
+		}
+
 		foreach ( $sections as $section_key => $section_caption ) {
 			$active = $current_section === $section_key ? 'nav-tab-active' : '';
 			$url = add_query_arg( 'aal_section', $section_key );
