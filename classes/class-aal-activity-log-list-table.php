@@ -93,10 +93,19 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			)
 		);
 
+		$default_rules = array( 'administrator', 'editor', 'author', 'guest' );
+
+		global $wp_roles;
+
+		$all_roles = array();
+		foreach ( $wp_roles->roles as $key=>$wp_role ) {
+			$all_roles[] = $key;
+		}
+
 		$this->_caps = apply_filters(
 			'aal_init_caps',
 			array(
-				'administrator' => array( 'administrator', 'editor', 'author', 'guest' ),
+				'administrator' => array_unique( array_merge( $default_rules, $all_roles ) ),
 				'editor'        => array( 'editor', 'author', 'guest' ),
 				'author'        => array( 'author', 'guest' ),
 			)
