@@ -12,13 +12,13 @@
 			AAL.$wrapper = $( ".aal-notifier-settings" );
             AAL.$container = $( "ul", this.$wrapper );
 
-            AAL.counter = AAL.$container.children().size();
+            AAL.counter = AAL.$container.children().length();
 
             // check if there's only one option
             if ( 1 === AAL.counter ) {
                 var $temp_el = AAL.$container.children().first();
                 // check if the "value" select box has no options
-                if ( 0 === $temp_el.find( ".aal-value option" ).size() ) {
+                if ( 0 === $temp_el.find( ".aal-value option" ).length() ) {
                     // click the button with a timeout. Note that this is a hack that will need
                     // to be solved server-side
                     setTimeout( function () {
@@ -37,7 +37,7 @@
 				e.preventDefault();
 
                 // do not delete item if it's the only one left in the list
-                if ( 1 === AAL.$container.children().size() ) {
+                if ( 1 === AAL.$container.children().length() ) {
                     return;
                 }
 
