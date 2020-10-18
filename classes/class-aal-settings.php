@@ -165,7 +165,7 @@ class AAL_Settings {
 							'id'      => 'notification_transport',
 							'page'    => $this->slug,
 							'name' => "{$this->slug}[notification_handlers][{$handler_id}]",
-							'value' => (bool) ( 1 == $enabled_notification_handlers[ $handler_id ] ),
+							'value' => isset( $enabled_notification_handlers[ $handler_id ] ) && ( 1 == $enabled_notification_handlers[ $handler_id ] ),
 						)
 					);
 
@@ -194,8 +194,14 @@ class AAL_Settings {
 		$current_section = $this->get_setup_section();
 		$sections = array(
 			'general'       => __( 'General', 'aryo-activity-log' ),
-			'notifications' => __( 'Notifications', 'aryo-activity-log' ),
 		);
+
+		$enabled_notification_handlers = AAL_Main::instance()->settings->get_option( 'notification_handlers' );
+
+		// Hide notifications tab if not used before..
+		if ( ! empty( $enabled_notification_handlers ) ) {
+			$sections['notifications'] = __( 'Notifications', 'aryo-activity-log' );
+		}
 
 		$sections = apply_filters( 'aal_setup_sections', $sections );
 
