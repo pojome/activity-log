@@ -263,7 +263,7 @@ class AAL_Settings {
 		<script type="text/javascript">
 			jQuery( document ).ready( function( $ ) {
 				$( '#aal-delete-log-activities' ).on( 'click', function( e ) {
-					if ( ! confirm( '<?php echo __( 'Are you sure you want to do this action?', 'aryo-activity-log' ); ?>' ) ) {
+					if ( ! confirm( '<?php echo __( 'Attention: We are going to DELETE ALL ACTIVITIES from the database. Are you sure you want to do that?', 'aryo-activity-log' ); ?>' ) ) {
 						e.preventDefault();
 					}
 				} );
