@@ -113,11 +113,11 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 == Changelog ==
 
 = 2.6.0 - 2020-10-19 =
-* Tweak: Added support for CloudFlare and CloudFlare Enterprise client IP header (#133)
+* Tweak: Added support for CloudFlare and CloudFlare Enterprise client IP header ([#133](https://github.com/pojome/activity-log/issues/133))
 * Tweak: Added browser confirmation to Reset Database option
 * Tweak: Notification tab is now deprecated for new installations
-* Tweak: Added support for displaying custom role activity log (#78, #135, [Topic](https://wordpress.org/support/topic/only-shows-logs-for-admin/), [Topic](https://wordpress.org/support/topic/no-logs-for-most-created-roles/))
-* Fix: Show user data on log-out action (#126, [Topic](https://wordpress.org/support/topic/logout-hook-event/))
+* Tweak: Added support for displaying custom role activity log ([#78](https://github.com/pojome/activity-log/issues/78), [#135](https://github.com/pojome/activity-log/issues/135), [Topic](https://wordpress.org/support/topic/only-shows-logs-for-admin/), [Topic](https://wordpress.org/support/topic/no-logs-for-most-created-roles/))
+* Fix: Show user data on log-out action ([#126](https://github.com/pojome/activity-log/issues/126), [Topic](https://wordpress.org/support/topic/logout-hook-event/))
 * Fix: Removed unused help context in admin to resolve deprecated WP error ([Topic](https://wordpress.org/support/topic/deprecated-function-in-debug-log/))
 * Fix: PHP Notices are thrown when Debug mode is active ([Topic](https://wordpress.org/support/topic/php-errors-infomational/))
 * Fix: Resolve jQuery Deprecation Notice and compatibility with WordPress 5.6+ ([Topic](https://wordpress.org/support/topic/jquery-deprecation-notice-jquery-fn-size/))
