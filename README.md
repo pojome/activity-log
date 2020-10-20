@@ -4,7 +4,7 @@
 **Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
 **Tags:** Activity Log, Security Log, User Activity, User Log, Activity, audit log, monitor, security, tracking, woocommerce, bbPress,  
 **Requires at least:** 4.4  
-**Tested up to:** 5.0  
+**Tested up to:** 5.5  
 **Stable tag:** 2.5.2  
 **License:** GPLv2 or later  
 
@@ -113,6 +113,16 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
 
 ## Changelog ##
+
+### 2.6.0 - 2020-10-19 ###
+* Tweak: Added support for CloudFlare and CloudFlare Enterprise client IP header ([#133](https://github.com/pojome/activity-log/issues/133))
+* Tweak: Added browser confirmation to Reset Database option
+* Tweak: Notification tab is now deprecated for new installations
+* Tweak: Added support for displaying custom role activity log ([#78](https://github.com/pojome/activity-log/issues/78), [#135](https://github.com/pojome/activity-log/issues/135), [Topic](https://wordpress.org/support/topic/only-shows-logs-for-admin/), [Topic](https://wordpress.org/support/topic/no-logs-for-most-created-roles/))
+* Fix: Show user data on log-out action ([#126](https://github.com/pojome/activity-log/issues/126), [Topic](https://wordpress.org/support/topic/logout-hook-event/))
+* Fix: Removed unused help context in admin to resolve deprecated WP error ([Topic](https://wordpress.org/support/topic/deprecated-function-in-debug-log/))
+* Fix: PHP Notices are thrown when Debug mode is active ([Topic](https://wordpress.org/support/topic/php-errors-infomational/))
+* Fix: Resolve jQuery Deprecation Notice and compatibility with WordPress 5.6+ ([Topic](https://wordpress.org/support/topic/jquery-deprecation-notice-jquery-fn-size/))
 
 ### 2.5.2 ###
 * Fix: Conflict with Elementor and WordPress Widgets
