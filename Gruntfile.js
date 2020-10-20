@@ -187,6 +187,7 @@ module.exports = function(grunt) {
 					'!phpunit.xml',
 					'!vendor/**',
 					'!Gruntfile.js',
+					'!package-lock.json',
 					'!package.json',
 					'!.gitignore',
 					'!.gitmodules',
