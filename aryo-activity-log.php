@@ -95,7 +95,7 @@ final class AAL_Main {
 	 */
 	protected function __construct() {
 		global $wpdb;
-		
+
 		$this->ui            = new AAL_Admin_Ui();
 		$this->hooks         = new AAL_Hooks();
 		$this->settings      = new AAL_Settings();
