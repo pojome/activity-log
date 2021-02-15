@@ -112,6 +112,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.6.1 - 2021-02-15 =
+* Fix: Conflict with WooCommerce while you using new editor
+
 = 2.6.0 - 2020-10-19 =
 * Tweak: Added support for CloudFlare and CloudFlare Enterprise client IP header ([#133](https://github.com/pojome/activity-log/issues/133))
 * Tweak: Added browser confirmation to Reset Database option
