@@ -3,7 +3,7 @@ Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: Activity Log, Security Log, User Activity, User Log, Activity, audit log, monitor, security, tracking, woocommerce, bbPress,
 Requires at least: 4.4
 Tested up to: 5.7
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 License: GPLv2 or later
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your site, so you can run a safer, more organized WordPress site.
@@ -111,6 +111,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
 
 == Changelog ==
+
+= 2.6.1 - 2021-02-15 =
+* Fix: Conflict with WooCommerce while you using new editor
 
 = 2.6.0 - 2020-10-19 =
 * Tweak: Added support for CloudFlare and CloudFlare Enterprise client IP header ([#133](https://github.com/pojome/activity-log/issues/133))

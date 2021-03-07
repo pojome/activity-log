@@ -5,7 +5,7 @@ Plugin URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=plugin-ur
 Description: Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site. e.g. post was deleted, plugin was activated, user logged in or logged out - it's all these for you to see.
 Author: Activity Log Team
 Author URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
-Version: 2.6.0
+Version: 2.6.1
 Text Domain: aryo-activity-log
 License: GPLv2 or later
 
@@ -95,7 +95,7 @@ final class AAL_Main {
 	 */
 	protected function __construct() {
 		global $wpdb;
-		
+
 		$this->ui            = new AAL_Admin_Ui();
 		$this->hooks         = new AAL_Hooks();
 		$this->settings      = new AAL_Settings();

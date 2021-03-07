@@ -6,11 +6,12 @@ class AAL_Integration_WooCommerce {
 	private $_wc_options = array();
 
 	public function init() {
-		if ( ! class_exists( 'Woocommerce' ) )
+		if ( ! class_exists( 'Woocommerce' ) ) {
 			return;
+		}
 
-		add_filter( 'aal_whitelist_options', array( &$this, 'wc_aal_whitelist_options' ) );
-		add_filter( 'woocommerce_get_settings_pages', array( &$this, 'wc_get_settings_pages' ), 9999 );
+		add_filter( 'aal_whitelist_options', array( $this, 'wc_aal_whitelist_options' ) );
+		add_filter( 'woocommerce_get_settings_pages', array( $this, 'wc_get_settings_pages' ), 9999 );
 	}
 
 	/**
@@ -27,9 +28,14 @@ class AAL_Integration_WooCommerce {
 			$this->_wc_options = array();
 
 			foreach ( $settings as $setting ) {
+				if ( 'advanced' === $setting->get_id() ) {
+					continue;
+				}
+
 				foreach ( $setting->get_settings() as $option ) {
-					if ( isset( $option['id'] ) && ( ! isset( $option['type'] ) || ! in_array( $option['type'], $wc_exclude_types ) ) )
+					if ( isset( $option['id'] ) && ( ! isset( $option['type'] ) || ! in_array( $option['type'], $wc_exclude_types ) ) ) {
 						$this->_wc_options[] = $option['id'];
+					}
 				}
 			}
 		}
