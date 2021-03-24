@@ -62,6 +62,10 @@ class AAL_Hook_User extends AAL_Hook_Base {
 	}
 
 	public function hooks_wrong_password( $username ) {
+		if ( 'no' === AAL_Main::instance()->settings->get_option( 'logs_failed_login' ) ) {
+			return;
+		}
+
 		aal_insert_log( array(
 			'action'      => 'wrong_password',
 			'object_type' => 'User',

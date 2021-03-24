@@ -68,6 +68,7 @@ class AAL_Settings {
 		if ( ! get_option( $this->slug ) ) {
 			update_option( $this->slug, apply_filters( 'aal_default_options', array(
 				'logs_lifespan' => '30',
+				'logs_failed_login' => 'yes',
 			) ) );
 		}
 
@@ -97,6 +98,23 @@ class AAL_Settings {
 						'type'    => 'number',
 						'sub_desc'    => __( 'days.', 'aryo-activity-log' ),
 						'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'aryo-activity-log' ),
+					)
+				);
+
+				add_settings_field(
+					'logs_failed_login',
+					__( 'Keep Failed Login Logs', 'aryo-activity-log' ),
+					array( 'AAL_Settings_Fields', 'select_field' ),
+					$this->slug,
+					'general_settings_section',
+					array(
+						'id'      => 'logs_failed_login',
+						'page'    => $this->slug,
+						'type'    => 'select',
+						'options' => array(
+							'yes' => __( 'Keep', 'aryo-activity-log' ),
+							'no' => __( "Don't Keep (Not recommended)", 'aryo-activity-log' ),
+						),
 					)
 				);
 
