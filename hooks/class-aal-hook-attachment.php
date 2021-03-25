@@ -24,14 +24,14 @@ class AAL_Hook_Attachment extends AAL_Hook_Base {
 	}
 
 	public function hooks_add_attachment( $attachment_id ) {
-		$this->_add_log_attachment( 'added', $attachment_id );
+		$this->_add_log_attachment( 'uploaded', $attachment_id );
 	}
 	
 	public function __construct() {
 		add_action( 'add_attachment', array( &$this, 'hooks_add_attachment' ) );
 		add_action( 'edit_attachment', array( &$this, 'hooks_edit_attachment' ) );
 		add_action( 'delete_attachment', array( &$this, 'hooks_delete_attachment' ) );
-		
+
 		parent::__construct();
 	}
 

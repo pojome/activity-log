@@ -95,7 +95,7 @@ class AAL_Notifications {
 				'unspammed',
 				'downloaded',
 				'installed',
-				'added',
+				'uploaded',
 				'activated',
 				'deactivated',
 				'accessed',

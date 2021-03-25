@@ -18,7 +18,7 @@ __( 'restored', 'aryo-activity-log' );
 
 // Attachment
 __( 'Attachment', 'aryo-activity-log' );
-__( 'added', 'aryo-activity-log' );
+__( 'uploaded', 'aryo-activity-log' );
 
 // User
 __( 'User', 'aryo-activity-log' );
