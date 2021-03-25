@@ -24,7 +24,9 @@ __( 'added', 'aryo-activity-log' );
 __( 'User', 'aryo-activity-log' );
 __( 'logged_out', 'aryo-activity-log' );
 __( 'logged_in', 'aryo-activity-log' );
-__( 'wrong_password', 'aryo-activity-log' );
+__( 'failed_login', 'aryo-activity-log' );
+__( 'registered', 'aryo-activity-log' );
+__( 'removed', 'aryo-activity-log' );
 
 // Plugin
 __( 'Plugin', 'aryo-activity-log' );

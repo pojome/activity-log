@@ -201,7 +201,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	public function column_label( $item ) {
 		$return = '';
 		if ( ! empty( $item->object_subtype ) ) {
-			$pt     = get_post_type_object( $item->object_subtype );
+			$pt = get_post_type_object( $item->object_subtype );
 			$return = ! empty( $pt->label ) ? $pt->label : $item->object_subtype;
 		}
 
@@ -251,12 +251,14 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				break;
 
 			case 'User' :
-				$user_edit_link = get_edit_user_link($item->object_id );
+				$user_edit_link = get_edit_user_link( $item->object_id );
 				if ( ! empty( $user_edit_link ) ) {
 					$actions['edit'] = sprintf( '<a href="%s">%s</a>', $user_edit_link, __( 'Edit', 'aryo-activity-log' ) );
 				}
 
-				$return = __( $item->object_name, 'aryo-activity-log' );
+				if ( ! empty( $item->object_name ) ) {
+					$return = __( 'Username:', 'aryo-activity-log' ) . ' ' . $item->object_name;
+				}
 				break;
 			
 			case 'Export' :

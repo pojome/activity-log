@@ -102,7 +102,7 @@ class AAL_Notifications {
 				'file_updated',
 				'logged_in',
 				'logged_out',
-				'wrong_password',
+				'failed_login',
 			)
 		);
 		$ready = array();
