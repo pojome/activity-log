@@ -131,8 +131,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'ip'          => __( 'IP', 'aryo-activity-log' ),
 			'type'        => __( 'Topic', 'aryo-activity-log' ),
 			'label'       => __( 'Context', 'aryo-activity-log' ),
-			'action'      => __( 'Action', 'aryo-activity-log' ),
 			'description' => __( 'Meta', 'aryo-activity-log' ),
+			'action'      => __( 'Action', 'aryo-activity-log' ),
 		);
 
 		return $columns;
