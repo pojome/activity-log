@@ -544,7 +544,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					' . $this->_get_where_by_role()
 		);
 
-		$items_orderby = filter_input( INPUT_GET, 'orderby', FILTER_SANITIZE_STRING );
+		$items_orderby = sanitize_sql_orderby( filter_input( INPUT_GET, 'orderby', FILTER_SANITIZE_STRING ) );
 		if ( empty( $items_orderby ) ) {
 			$items_orderby = 'hist_time'; // Sort by time by default.
 		}
