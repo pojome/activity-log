@@ -108,11 +108,11 @@ class AAL_Admin_Ui {
 		?>
 		<style>
 			.notice.aal-notice {
-				border-left-color: #9b0a46 !important;
+				border-left-color: #92003B !important;
 				padding: 20px;
 			}
 			.rtl .notice.aal-notice {
-				border-right-color: #9b0a46 !important;
+				border-right-color: #92003B !important;
 			}
 			.notice.aal-notice .aal-notice-inner {
 				display: table;
@@ -125,9 +125,10 @@ class AAL_Admin_Ui {
 				vertical-align: middle;
 			}
 			.notice.aal-notice .aal-notice-icon {
-				color: #9b0a46;
+				color: #92003B;
 				font-size: 50px;
 				width: 50px;
+				height: 50px;
 			}
 			.notice.aal-notice .aal-notice-content {
 				padding: 0 20px;
@@ -143,10 +144,10 @@ class AAL_Admin_Ui {
 				text-align: center;
 			}
 			.notice.aal-notice .aal-install-now .aal-install-button {
-				background-color: #9b0a46;
+				background-color: #92003B;
 				color: #fff;
-				border-color: #7c1337;
-				box-shadow: 0 1px 0 #7c1337;
+				border-color: #92003B;
+				box-shadow: 0 1px 0 #92003B;
 				padding: 5px 30px;
 				height: auto;
 				line-height: 20px;
@@ -160,10 +161,10 @@ class AAL_Admin_Ui {
 				padding-left: 5px;
 			}
 			.notice.aal-notice .aal-install-now .aal-install-button:hover {
-				background-color: #a0124a;
+				background-color: #92003B;
 			}
 			.notice.aal-notice .aal-install-now .aal-install-button:active {
-				box-shadow: inset 0 1px 0 #7c1337;
+				box-shadow: inset 0 1px 0 #92003B;
 				transform: translateY(1px);
 			}
 			@media (max-width: 767px) {
@@ -186,7 +187,13 @@ class AAL_Admin_Ui {
 		<div class="notice updated is-dismissible aal-notice aal-install-elementor">
 			<div class="aal-notice-inner">
 				<div class="aal-notice-icon">
-					<img src="<?php echo plugins_url( 'assets/images/elementor-logo.png', ACTIVITY_LOG__FILE__ ); ?>" alt="Elementor Logo" />
+					<svg width="50" height="50" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M14.0035 3.98515e-07C8.34084 -0.00134594 3.23499 3.40874 1.06704 8.64C-1.10092 13.8713 0.0960255 19.8934 4.09968 23.898C8.10333 27.9026 14.1252 29.1009 19.3569 26.9342C24.5887 24.7675 28 19.6625 28 13.9998C28 6.26922 21.7341 0.00183839 14.0035 3.98515e-07Z" fill="#92003B"/>
+						<rect x="8.1687" y="8.16504" width="2.3333" height="11.6665" fill="white"/>
+						<rect x="12.8352" y="17.498" width="6.9999" height="2.3333" fill="white"/>
+						<rect x="12.8352" y="12.8315" width="6.9999" height="2.3333" fill="white"/>
+						<rect x="12.8352" y="8.16504" width="6.9999" height="2.3333" fill="white"/>
+					</svg>
 				</div>
 				
 				<div class="aal-notice-content">
