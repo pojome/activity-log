@@ -18,7 +18,7 @@ class AAL_Hook_User extends AAL_Hook_Base {
 		$user = get_user_by( 'id', $user_id );
 
 		aal_insert_log( array(
-			'action' => 'removed',
+			'action' => 'deleted',
 			'object_type' => 'User',
 			'object_subtype' => 'Profile',
 			'object_id' => $user->ID,
