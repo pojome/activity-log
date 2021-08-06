@@ -2,8 +2,8 @@
 Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: Activity Log, Security Log, User Activity, User Log, Activity, audit log, monitor, security, tracking, woocommerce, bbPress,
 Requires at least: 4.4
-Tested up to: 5.7
-Stable tag: 2.6.1
+Tested up to: 5.8
+Stable tag: 2.7.0
 License: GPLv2 or later
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your site, so you can run a safer, more organized WordPress site.
@@ -114,6 +114,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 = 2.7.0 - 2021-05-06 =
 * New: Added an option to skip or keep the failed login logs for better optimization ([#125](https://github.com/pojome/activity-log/issues/125))
+* Fix: Add input sanitization to avoid security issues
 * Tweak: Improved the activity log table with clear labels and re-order columns for better UX
 * Tweak: Changed the wrong_password action to failed_login  in User topic
 * Tweak: Changed the added action to uploaded  in Attachment topic
