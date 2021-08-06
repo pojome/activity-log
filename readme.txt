@@ -112,6 +112,13 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.7.0 - 2021-05-06 =
+* New: Added an option to skip or keep the failed login logs for better optimization ([#125](https://github.com/pojome/activity-log/issues/125))
+* Tweak: Improved the activity log table with clear labels and re-order columns for better UX
+* Tweak: Changed the wrong_password action to failed_login  in User topic
+* Tweak: Changed the added action to uploaded  in Attachment topic
+* Tweak: Changed the created action to registered  in User topic
+
 = 2.6.1 - 2021-02-15 =
 * Fix: Conflict with WooCommerce while you using new editor
 
