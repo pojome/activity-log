@@ -25,18 +25,21 @@ class AAL_Exporter_csv {
 	 */
 	public function write( $data, $columns ) {
 		$is_test_mode_off = ! defined( 'AAL_TESTMODE' ) || ( defined( 'AAL_TESTMODE' ) && ! AAL_TESTMODE );
-		
+
 		if ( $is_test_mode_off ) {
 			header( 'Content-type: text/csv' );
 			header( 'Content-Disposition: attachment; filename="activity-log-export.csv"' );
 		}
 
-		$output = join( ',', array_values( $columns ) ) . "\n";
+		$fp = fopen( 'php://output', 'w' );
+
+		fputcsv( $fp, $columns );
+
 		foreach ( $data as $row ) {
-			$output .= join( ',', $row ) . "\n";
+			fputcsv( $fp, $row );
 		}
 
-		echo $output; // @codingStandardsIgnoreLine text-only output
+		fclose( $fp );
 
 		if ( $is_test_mode_off ) {
 			exit;
