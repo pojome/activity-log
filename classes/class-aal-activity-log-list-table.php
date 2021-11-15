@@ -186,20 +186,24 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		$return = '';
 
 		switch ( $column_name ) {
-			case 'action' :
-				$return = $this->get_action_label( $item->action );
+			case 'action':
+				$return = '<a href="' . $this->get_filtered_link( 'showaction', $item->action ) . '">' . $this->get_action_label( $item->action ) . '</a>';
 				break;
-			case 'date' :
+
+			case 'date':
 				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-activity-log' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
 				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
 				$return .= '<br />' . date( 'H:i:s', $item->hist_time );
 				break;
-			case 'ip' :
-				$return = $item->hist_ip;
+
+			case 'ip':
+				$return = '<a href="' . $this->get_filtered_link( 'filter_ip', $item->hist_ip ) . '">' . $item->hist_ip. '</a>';
 				break;
-			default :
-				if ( isset( $item->$column_name ) )
+
+			default:
+				if ( isset( $item->$column_name ) ) {
 					$return = $item->$column_name;
+				}
 		}
 
 		$return = apply_filters( 'aal_table_list_column_default', $return, $item, $column_name );
@@ -230,6 +234,11 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function column_type( $item ) {
 		$return = __( $item->object_type, 'aryo-activity-log' );
+
+		if ( ! empty( $item->object_type ) ) {
+			$link = $this->get_filtered_link( 'typeshow', $item->object_type );
+			$return = "<a href=\"{$link}\">{$return}</a>";
+		}
 
 		$return = apply_filters( 'aal_table_list_column_type', $return, $item );
 		return $return;
@@ -494,7 +503,6 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			echo '</select>';
 		}
 
-
 		$actions = $wpdb->get_results(
 			'SELECT DISTINCT `action` FROM  `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
@@ -509,8 +517,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$_REQUEST['showaction'] = '';
 
 			$output = array();
-			foreach ( $actions as $type )
-				$output[] = sprintf( '<option value="%s"%s>%s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ), $this->get_action_label( $type->action ) );
+			foreach ( $actions as $action )
+				$output[] = sprintf( '<option value="%s"%s>%s</option>', $action->action, selected( $_REQUEST['showaction'], $action->action, false ), $this->get_action_label( $action->action ) );
 
 			echo '<select name="showaction" id="hs-filter-showaction">';
 			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-activity-log' ) );
@@ -541,6 +549,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		if ( isset( $_REQUEST['showaction'] ) && '' !== $_REQUEST['showaction'] ) {
 			$where .= $wpdb->prepare( ' AND `action` = %s', $_REQUEST['showaction'] );
+		}
+
+		if ( isset( $_REQUEST['filter_ip'] ) && '' !== $_REQUEST['filter_ip'] ) {
+			$where .= $wpdb->prepare( ' AND `hist_ip` = %s', $_REQUEST['filter_ip'] );
 		}
 
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
@@ -628,5 +640,9 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			<?php submit_button( $text, 'button', false, false, array('id' => 'search-submit') ); ?>
 		</p>
 	<?php
+	}
+
+	private function get_filtered_link( $name, $value ) {
+		return add_query_arg( $name, $value, menu_page_url( 'activity_log_page', false ) );
 	}
 }
