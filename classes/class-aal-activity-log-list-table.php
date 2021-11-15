@@ -192,7 +192,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			case 'date':
 				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-activity-log' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
-				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
+
+				$date_formatted = date( 'd/m/Y', $item->hist_time );
+				$return .= '<br /><a href="' . $this->get_filtered_link( 'dateshow', $date_formatted ) . '">' . date( 'd/m/Y', $item->hist_time ) . '</a>';
+
 				$return .= '<br />' . date( 'H:i:s', $item->hist_time );
 				break;
 
@@ -563,23 +566,34 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND `user_caps` = %s', strtolower( $_REQUEST['capshow'] ) );
 		}
 
-		if ( isset( $_REQUEST['dateshow'] ) && in_array( $_REQUEST['dateshow'], array( 'today', 'yesterday', 'week', 'month' ) ) ) {
+		if ( isset( $_REQUEST['dateshow'] ) ) {
 			$current_time = current_time( 'timestamp' );
 
-			// Today
-			$start_time = mktime( 0, 0, 0, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );;
-			$end_time = mktime( 23, 59, 59, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
+			if ( in_array( $_REQUEST['dateshow'], array( 'today', 'yesterday', 'week', 'month' ) ) ) {
+				// Today
+				$start_time = mktime( 0, 0, 0, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
+				$end_time = mktime( 23, 59, 59, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
 
-			if ( 'yesterday' === $_REQUEST['dateshow'] ) {
-				$start_time = strtotime( 'yesterday', $start_time );
-				$end_time = mktime( 23, 59, 59, date( 'm', $start_time ), date( 'd', $start_time ), date( 'Y', $start_time ) );
-			} elseif ( 'week' === $_REQUEST['dateshow'] ) {
-				$start_time = strtotime( '-1 week', $start_time );
-			} elseif ( 'month' === $_REQUEST['dateshow'] ) {
-				$start_time = strtotime( '-1 month', $start_time );
+				if ( 'yesterday' === $_REQUEST['dateshow'] ) {
+					$start_time = strtotime( 'yesterday', $start_time );
+					$end_time = mktime( 23, 59, 59, date( 'm', $start_time ), date( 'd', $start_time ), date( 'Y', $start_time ) );
+				} elseif ( 'week' === $_REQUEST['dateshow'] ) {
+					$start_time = strtotime( '-1 week', $start_time );
+				} elseif ( 'month' === $_REQUEST['dateshow'] ) {
+					$start_time = strtotime( '-1 month', $start_time );
+				}
+			} else {
+				$date_array = explode( '/', $_REQUEST['dateshow'] );
+
+				if ( 3 === count( $date_array ) ) {
+					$start_time = mktime( 0, 0, 0, (int) $date_array[1], (int) $date_array[0], (int) $date_array[2] );
+					$end_time = mktime( 23, 59, 59, (int) $date_array[1], (int) $date_array[0], (int) $date_array[2] );
+				}
 			}
 
-			$where .= $wpdb->prepare( ' AND `hist_time` > %d AND `hist_time` < %d', $start_time, $end_time );
+			if ( ! empty( $start_time ) && ! empty( $end_time ) ) {
+				$where .= $wpdb->prepare( ' AND `hist_time` > %d AND `hist_time` < %d', $start_time, $end_time );
+			}
 		}
 
 		if ( isset( $_REQUEST['s'] ) ) {
