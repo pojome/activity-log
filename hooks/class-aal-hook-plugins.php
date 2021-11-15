@@ -15,7 +15,7 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 		aal_insert_log(
 			array(
 				'action'      => $action,
-				'object_type' => 'Plugin',
+				'object_type' => 'Plugins',
 				'object_id'   => 0,
 				'object_name' => $plugin_name,
 			)
@@ -35,7 +35,7 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 			if ( ( ! empty( $_POST ) && 'update' === $_REQUEST['action'] ) ) {
 				$aal_args = array(
 					'action'         => 'file_updated',
-					'object_type'    => 'Plugin',
+					'object_type'    => 'Plugins',
 					'object_subtype' => 'plugin_unknown',
 					'object_id'      => 0,
 					'object_name'    => 'file_unknown',
@@ -76,7 +76,7 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 			aal_insert_log(
 				array(
 					'action' => 'installed',
-					'object_type' => 'Plugin',
+					'object_type' => 'Plugins',
 					'object_name' => $data['Name'],
 					'object_subtype' => $data['Version'],
 				)
@@ -99,7 +99,7 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 				aal_insert_log(
 					array(
 						'action' => 'updated',
-						'object_type' => 'Plugin',
+						'object_type' => 'Plugins',
 						'object_name' => $data['Name'],
 						'object_subtype' => $data['Version'],
 					)

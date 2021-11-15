@@ -1,14 +1,14 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Theme extends AAL_Hook_Base {
+class AAL_Hook_Themes extends AAL_Hook_Base {
 
 	public function hooks_theme_modify( $location, $status ) {
 		if ( false !== strpos( $location, 'theme-editor.php?file=' ) ) {
 			if ( ! empty( $_POST ) && 'update' === $_POST['action'] ) {
 				$aal_args = array(
 					'action'         => 'file_updated',
-					'object_type'    => 'Theme',
+					'object_type'    => 'Themes',
 					'object_subtype' => 'theme_unknown',
 					'object_id'      => 0,
 					'object_name'    => 'file_unknown',
@@ -32,7 +32,7 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 		aal_insert_log(
 				array(
 				'action'         => 'activated',
-				'object_type'    => 'Theme',
+				'object_type'    => 'Themes',
 				'object_subtype' => $new_theme->get_stylesheet(),
 				'object_id'      => 0,
 				'object_name'    => $new_name,
@@ -43,7 +43,7 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 	public function hooks_theme_customizer_modified( WP_Customize_Manager $obj ) {
 		$aal_args = array(
 			'action'         => 'updated',
-			'object_type'    => 'Theme',
+			'object_type'    => 'Themes',
 			'object_subtype' => $obj->theme()->display( 'Name' ),
 			'object_id'      => 0,
 			'object_name'    => 'Theme Customizer',
@@ -74,7 +74,7 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 		aal_insert_log(
 			array(
 				'action' => 'deleted',
-				'object_type' => 'Theme',
+				'object_type' => 'Themes',
 				'object_name' => $name,
 			)
 		);
@@ -101,7 +101,7 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 			aal_insert_log(
 				array(
 					'action' => 'installed',
-					'object_type' => 'Theme',
+					'object_type' => 'Themes',
 					'object_name' => $name,
 					'object_subtype' => $version,
 				)
@@ -125,7 +125,7 @@ class AAL_Hook_Theme extends AAL_Hook_Base {
 				aal_insert_log(
 					array(
 						'action' => 'updated',
-						'object_type' => 'Theme',
+						'object_type' => 'Themes',
 						'object_name' => $name,
 						'object_subtype' => $version,
 					)
