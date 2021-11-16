@@ -139,6 +139,9 @@ __( 'permalink_structure', 'aryo-activity-log' );
 __( 'category_base', 'aryo-activity-log' );
 __( 'tag_base', 'aryo-activity-log' );
 
+// Privacy
+__( 'wp_page_for_privacy_policy', 'aryo-activity-log' );
+
 // Export
 __( 'Export', 'aryo-activity-log' );
 __( 'downloaded', 'aryo-activity-log' );

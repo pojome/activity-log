@@ -79,6 +79,9 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 			'category_base',
 			'tag_base',
 
+			// Privacy
+			'wp_page_for_privacy_policy',
+
 			// Widgets
 			'sidebars_widgets',
 		) );
