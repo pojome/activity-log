@@ -1,14 +1,14 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_User extends AAL_Hook_Base {
+class AAL_Hook_Users extends AAL_Hook_Base {
 
 	public function hooks_user_register( $user_id ) {
 		$user = get_user_by( 'id', $user_id );
 
 		aal_insert_log( array(
 			'action' => 'registered',
-			'object_type' => 'User',
+			'object_type' => 'Users',
 			'object_subtype' => 'Profile',
 			'object_id' => $user->ID,
 			'object_name' => $user->user_nicename,
@@ -19,7 +19,7 @@ class AAL_Hook_User extends AAL_Hook_Base {
 
 		aal_insert_log( array(
 			'action' => 'deleted',
-			'object_type' => 'User',
+			'object_type' => 'Users',
 			'object_subtype' => 'Profile',
 			'object_id' => $user->ID,
 			'object_name' => $user->user_nicename,
@@ -29,7 +29,7 @@ class AAL_Hook_User extends AAL_Hook_Base {
 	public function hooks_wp_login( $user_login, $user ) {
 		aal_insert_log( array(
 			'action' => 'logged_in',
-			'object_type' => 'User',
+			'object_type' => 'Users',
 			'object_subtype' => 'Session',
 			'user_id' => $user->ID,
 			'object_id' => $user->ID,
@@ -46,7 +46,7 @@ class AAL_Hook_User extends AAL_Hook_Base {
 
 		aal_insert_log( array(
 			'action' => 'logged_out',
-			'object_type' => 'User',
+			'object_type' => 'Users',
 			'object_subtype' => 'Session',
 			'user_id' => $user->ID,
 			'object_id' => $user->ID,
@@ -59,7 +59,7 @@ class AAL_Hook_User extends AAL_Hook_Base {
 
 		aal_insert_log( array(
 			'action' => 'updated',
-			'object_type' => 'User',
+			'object_type' => 'Users',
 			'object_subtype' => 'Profile',
 			'object_id' => $user->ID,
 			'object_name' => $user->user_nicename,
@@ -73,7 +73,7 @@ class AAL_Hook_User extends AAL_Hook_Base {
 
 		aal_insert_log( array(
 			'action' => 'failed_login',
-			'object_type' => 'User',
+			'object_type' => 'Users',
 			'object_subtype' => 'Session',
 			'user_id' => 0,
 			'object_id' => 0,

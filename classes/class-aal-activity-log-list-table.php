@@ -6,13 +6,13 @@ if ( ! class_exists( 'WP_List_Table' ) )
 
 
 class AAL_Activity_Log_List_Table extends WP_List_Table {
-	
+
 	protected $_roles = array();
-	
+
 	protected $_caps = array();
-	
+
 	protected $_allow_caps = array();
-	
+
 	protected function _get_allow_caps() {
 		if ( empty( $this->_allow_caps ) ) {
 			$user = get_user_by( 'id', get_current_user_id() );
@@ -63,14 +63,14 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		$where = array();
 		foreach ( $allow_modules as $type )
 			$where[] .= '`object_type` = \'' . $type . '\'';
-		
+
 		$where_caps = array();
 		foreach ( $this->_get_allow_caps() as $cap )
 			$where_caps[] .= '`user_caps` = \'' . $cap . '\'';
 
 		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ')';
 	}
-	
+
 	public function get_action_label( $action ) {
 		return ucwords( str_replace( '_', ' ', __( $action, 'aryo-activity-log' ) ) );
 	}
@@ -82,18 +82,55 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
 			)
 		);
-		
+
 		$this->_roles = apply_filters(
 			'aal_init_roles',
 			array(
 				// admin
-				'manage_options' => array( 'Core', 'Export', 'Post', 'Taxonomy', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu', 'Comments' ),
+				'manage_options' => array(
+					'Core',
+					'Export',
+					'Posts',
+					'Taxonomies',
+					'Users',
+					'Options',
+					'Attachments',
+					'Plugins',
+					'Widgets',
+					'Themes',
+					'Menus',
+					'Comments',
+
+					// BC
+					'Post',
+					'Taxonomy',
+					'User',
+					'Plugin',
+					'Widget',
+					'Theme',
+					'Menu',
+				),
 				// editor
-				'edit_pages'     => array( 'Post', 'Taxonomy', 'Attachment', 'Comments' ),
+				'edit_pages' => array(
+					'Posts',
+					'Taxonomies',
+					'Attachments',
+					'Comments',
+
+					// BC
+					'Post',
+					'Taxonomy',
+					'Attachment',
+				),
 			)
 		);
 
-		$default_rules = array( 'administrator', 'editor', 'author', 'guest' );
+		$default_rules = array(
+			'administrator',
+			'editor',
+			'author',
+			'guest',
+		);
 
 		global $wp_roles;
 
@@ -106,8 +143,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'aal_init_caps',
 			array(
 				'administrator' => array_unique( array_merge( $default_rules, $all_roles ) ),
-				'editor'        => array( 'editor', 'author', 'guest' ),
-				'author'        => array( 'author', 'guest' ),
+				'editor' => array( 'editor', 'author', 'guest' ),
+				'author' => array( 'author', 'guest' ),
 			)
 		);
 
@@ -137,7 +174,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		return $columns;
 	}
-	
+
 	public function get_sortable_columns() {
 		return array(
 			'ip' => 'hist_ip',
@@ -147,32 +184,39 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function column_default( $item, $column_name ) {
 		$return = '';
-		
+
 		switch ( $column_name ) {
-			case 'action' :
-				$return = $this->get_action_label( $item->action );
+			case 'action':
+				$return = '<a href="' . $this->get_filtered_link( 'showaction', $item->action ) . '">' . $this->get_action_label( $item->action ) . '</a>';
 				break;
-			case 'date' :
+
+			case 'date':
 				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-activity-log' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
-				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
+
+				$date_formatted = date( 'd/m/Y', $item->hist_time );
+				$return .= '<br /><a href="' . $this->get_filtered_link( 'dateshow', $date_formatted ) . '">' . date( 'd/m/Y', $item->hist_time ) . '</a>';
+
 				$return .= '<br />' . date( 'H:i:s', $item->hist_time );
 				break;
-			case 'ip' :
-				$return = $item->hist_ip;
+
+			case 'ip':
+				$return = '<a href="' . $this->get_filtered_link( 'filter_ip', $item->hist_ip ) . '">' . $item->hist_ip. '</a>';
 				break;
-			default :
-				if ( isset( $item->$column_name ) )
+
+			default:
+				if ( isset( $item->$column_name ) ) {
 					$return = $item->$column_name;
+				}
 		}
 
 		$return = apply_filters( 'aal_table_list_column_default', $return, $item, $column_name );
-		
+
 		return $return;
 	}
-	
+
 	public function column_author( $item ) {
 		global $wp_roles;
-		
+
 		if ( ! empty( $item->user_id ) && 0 !== (int) $item->user_id ) {
 			$user = get_user_by( 'id', $item->user_id );
 			if ( $user instanceof WP_User && 0 !== $user->ID ) {
@@ -193,7 +237,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function column_type( $item ) {
 		$return = __( $item->object_type, 'aryo-activity-log' );
-		
+
+		if ( ! empty( $item->object_type ) ) {
+			$link = $this->get_filtered_link( 'typeshow', $item->object_type );
+			$return = "<a href=\"{$link}\">{$return}</a>";
+		}
+
 		$return = apply_filters( 'aal_table_list_column_type', $return, $item );
 		return $return;
 	}
@@ -208,13 +257,14 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		$return = apply_filters( 'aal_table_list_column_label', $return, $item );
 		return $return;
 	}
-	
+
 	public function column_description( $item ) {
 		$return = esc_html( $item->object_name );
 		$actions = [];
-		
+
 		switch ( $item->object_type ) {
-			case 'Post' :
+			case 'Post':
+			case 'Posts':
 				$actions = [
 					'view' => sprintf( '<a href="%s">%s</a>', get_permalink( $item->object_id ), __( 'View', 'aryo-activity-log' ) ),
 					'edit' => sprintf( '<a href="%s">%s</a>', get_edit_post_link( $item->object_id ), __( 'Edit', 'aryo-activity-log' ) ),
@@ -222,8 +272,9 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 				$return = esc_html( $item->object_name );
 				break;
-			
-			case 'Taxonomy' :
+
+			case 'Taxonomy':
+			case 'Taxonomies':
 				if ( ! empty( $item->object_id ) ) {
 					if ( is_taxonomy_viewable( $item->object_subtype ) ) {
 						$term_view_link = get_term_link( absint( $item->object_id ), $item->object_subtype );
@@ -241,8 +292,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					$return = esc_html( $item->object_name );
 				}
 				break;
-			
-			case 'Comments' :
+
+			case 'Comments':
 				if ( ! empty( $item->object_id ) && $comment = get_comment( $item->object_id ) ) {
 					$actions['edit'] = sprintf( '<a href="%s">%s</a>', get_edit_comment_link( $item->object_id ), __( 'Edit', 'aryo-activity-log' ) );
 				}
@@ -250,7 +301,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$return = esc_html( "{$item->object_name} #{$item->object_id}" );
 				break;
 
-			case 'User' :
+			case 'User':
+			case 'Users':
 				$user_edit_link = get_edit_user_link( $item->object_id );
 				if ( ! empty( $user_edit_link ) ) {
 					$actions['edit'] = sprintf( '<a href="%s">%s</a>', $user_edit_link, __( 'Edit', 'aryo-activity-log' ) );
@@ -260,8 +312,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					$return = __( 'Username:', 'aryo-activity-log' ) . ' ' . $item->object_name;
 				}
 				break;
-			
-			case 'Export' :
+
+			case 'Export':
 				if ( 'all' === $item->object_name ) {
 					$return = __( 'All', 'aryo-activity-log' );
 				} else {
@@ -270,12 +322,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				}
 				break;
 
-			case 'Options' :
-			case 'Core' :
+			case 'Options':
+			case 'Core':
 				$return = __( $item->object_name, 'aryo-activity-log' );
 				break;
 		}
-		
+
 		$return = apply_filters( 'aal_table_list_column_description', $return, $item );
 
 		if ( ! empty( $actions ) ) {
@@ -289,10 +341,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			}
 			$return .= '</div>';
 		}
-		
+
 		return $return;
 	}
-	
+
 	public function display_tablenav( $which ) {
 		if ( 'top' == $which ) {
 			$this->search_box( __( 'Search', 'aryo-activity-log' ), 'aal-search' );
@@ -307,7 +359,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		</div>
 		<?php
 	}
-	
+
 	public function extra_tablenav_footer() {
 		/**
 		 * Filter list of record actions
@@ -325,15 +377,15 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<?php else : 
+			<?php else :
 				$action_title = reset( $actions );
 				$action_key = key( $actions );
 			?>
 			<input type="hidden" name="aal-record-action" value="<?php echo esc_attr( $action_key ); ?>">
 			<?php endif; ?>
-			
+
 			<button type="submit" name="aal-record-actions-submit" id="record-actions-submit" class="button button-primary" value="1">
-				<?php 
+				<?php
 				// Is result filtering enabled?
 				if ( array_key_exists( 'aal-filter', $_GET ) ) {
 					echo sprintf( esc_html__( 'Export filtered records as %s', 'aryo-activity-log' ), $action_title );
@@ -342,14 +394,14 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				}
 				?>
 			</button>
-			
+
 			<?php wp_nonce_field( 'aal_actions_nonce', 'aal_actions_nonce' ); ?>
 		<?php
 	}
 
 	public function extra_tablenav( $which ) {
 		global $wpdb;
-		
+
 		if ( 'bottom' === $which ) {
 			$this->extra_tablenav_footer();
 		}
@@ -365,6 +417,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				' . $this->_get_where_by_role() . '
 				GROUP BY `user_id`
 				ORDER BY `user_id`
+				LIMIT 100
 			;'
 		);
 
@@ -414,7 +467,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				}
 				echo '</select>';
 			}
-			
+
 			if ( ! isset( $_REQUEST['usershow'] ) )
 				$_REQUEST['usershow'] = '';
 
@@ -454,7 +507,6 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			echo '</select>';
 		}
 
-
 		$actions = $wpdb->get_results(
 			'SELECT DISTINCT `action` FROM  `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
@@ -469,8 +521,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$_REQUEST['showaction'] = '';
 
 			$output = array();
-			foreach ( $actions as $type )
-				$output[] = sprintf( '<option value="%s"%s>%s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ), $this->get_action_label( $type->action ) );
+			foreach ( $actions as $action )
+				$output[] = sprintf( '<option value="%s"%s>%s</option>', $action->action, selected( $_REQUEST['showaction'], $action->action, false ), $this->get_action_label( $action->action ) );
 
 			echo '<select name="showaction" id="hs-filter-showaction">';
 			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-activity-log' ) );
@@ -480,10 +532,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		echo '</div>';
 	}
-	
+
 	public function prepare_items() {
 		global $wpdb;
-	
+
 		$items_per_page        = $this->get_items_per_page( 'edit_aal_logs_per_page', 20 );
 		$this->_column_headers = array( $this->get_columns(), get_hidden_columns( $this->screen ), $this->get_sortable_columns() );
 		$where                 = ' WHERE 1 = 1';
@@ -494,13 +546,17 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		if ( ! isset( $_REQUEST['orderby'] ) || ! in_array( $_REQUEST['orderby'], array( 'hist_time', 'hist_ip' ) ) ) {
 			$_REQUEST['orderby'] = 'hist_time';
 		}
-		
+
 		if ( ! empty( $_REQUEST['typeshow'] ) ) {
 			$where .= $wpdb->prepare( ' AND `object_type` = %s', $_REQUEST['typeshow'] );
 		}
 
 		if ( isset( $_REQUEST['showaction'] ) && '' !== $_REQUEST['showaction'] ) {
 			$where .= $wpdb->prepare( ' AND `action` = %s', $_REQUEST['showaction'] );
+		}
+
+		if ( isset( $_REQUEST['filter_ip'] ) && '' !== $_REQUEST['filter_ip'] ) {
+			$where .= $wpdb->prepare( ' AND `hist_ip` = %s', $_REQUEST['filter_ip'] );
 		}
 
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
@@ -511,23 +567,34 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND `user_caps` = %s', strtolower( $_REQUEST['capshow'] ) );
 		}
 
-		if ( isset( $_REQUEST['dateshow'] ) && in_array( $_REQUEST['dateshow'], array( 'today', 'yesterday', 'week', 'month' ) ) ) {
+		if ( isset( $_REQUEST['dateshow'] ) ) {
 			$current_time = current_time( 'timestamp' );
 
-			// Today
-			$start_time = mktime( 0, 0, 0, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );;
-			$end_time = mktime( 23, 59, 59, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
-			
-			if ( 'yesterday' === $_REQUEST['dateshow'] ) {
-				$start_time = strtotime( 'yesterday', $start_time );
-				$end_time = mktime( 23, 59, 59, date( 'm', $start_time ), date( 'd', $start_time ), date( 'Y', $start_time ) );
-			} elseif ( 'week' === $_REQUEST['dateshow'] ) {
-				$start_time = strtotime( '-1 week', $start_time );
-			} elseif ( 'month' === $_REQUEST['dateshow'] ) {
-				$start_time = strtotime( '-1 month', $start_time );
+			if ( in_array( $_REQUEST['dateshow'], array( 'today', 'yesterday', 'week', 'month' ) ) ) {
+				// Today
+				$start_time = mktime( 0, 0, 0, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
+				$end_time = mktime( 23, 59, 59, date( 'm', $current_time ), date( 'd', $current_time ), date( 'Y', $current_time ) );
+
+				if ( 'yesterday' === $_REQUEST['dateshow'] ) {
+					$start_time = strtotime( 'yesterday', $start_time );
+					$end_time = mktime( 23, 59, 59, date( 'm', $start_time ), date( 'd', $start_time ), date( 'Y', $start_time ) );
+				} elseif ( 'week' === $_REQUEST['dateshow'] ) {
+					$start_time = strtotime( '-1 week', $start_time );
+				} elseif ( 'month' === $_REQUEST['dateshow'] ) {
+					$start_time = strtotime( '-1 month', $start_time );
+				}
+			} else {
+				$date_array = explode( '/', $_REQUEST['dateshow'] );
+
+				if ( 3 === count( $date_array ) ) {
+					$start_time = mktime( 0, 0, 0, (int) $date_array[1], (int) $date_array[0], (int) $date_array[2] );
+					$end_time = mktime( 23, 59, 59, (int) $date_array[1], (int) $date_array[0], (int) $date_array[2] );
+				}
 			}
-			
-			$where .= $wpdb->prepare( ' AND `hist_time` > %d AND `hist_time` < %d', $start_time, $end_time );
+
+			if ( ! empty( $start_time ) && ! empty( $end_time ) ) {
+				$where .= $wpdb->prepare( ' AND `hist_time` > %d AND `hist_time` < %d', $start_time, $end_time );
+			}
 		}
 
 		if ( isset( $_REQUEST['s'] ) ) {
@@ -537,7 +604,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		$offset = ( $this->get_pagenum() - 1 ) * $items_per_page;
 
-		
+
 		$total_items = $wpdb->get_var(
 			'SELECT COUNT(`histid`) FROM  `' . $wpdb->activity_log . '`
 				' . $where . '
@@ -570,7 +637,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'total_pages' => ceil( $total_items / $items_per_page ),
 		) );
 	}
-	
+
 	public function set_screen_option( $status, $option, $value ) {
 		if ( 'edit_aal_logs_per_page' === $option )
 			return $value;
@@ -588,5 +655,9 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			<?php submit_button( $text, 'button', false, false, array('id' => 'search-submit') ); ?>
 		</p>
 	<?php
+	}
+
+	private function get_filtered_link( $name, $value ) {
+		return add_query_arg( $name, $value, menu_page_url( 'activity_log_page', false ) );
 	}
 }

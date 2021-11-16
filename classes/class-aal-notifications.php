@@ -65,16 +65,25 @@ class AAL_Notifications {
 			array(
 				'Core',
 				'Export',
+				'Posts',
+				'Taxonomies',
+				'Users',
+				'Options',
+				'Attachments',
+				'Plugins',
+				'Widgets',
+				'Themes',
+				'Menus',
+				'Comments',
+
+				// BC
 				'Post',
 				'Taxonomy',
 				'User',
-				'Options',
-				'Attachment',
 				'Plugin',
 				'Widget',
 				'Theme',
 				'Menu',
-				'Comments',
 			)
 		);
 		
