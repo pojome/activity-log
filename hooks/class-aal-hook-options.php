@@ -13,6 +13,7 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 			'admin_email',
 			'users_can_register',
 			'default_role',
+			'WPLANG',
 			'timezone_string',
 			'date_format',
 			'time_format',
