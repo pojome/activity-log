@@ -222,7 +222,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			if ( $user instanceof WP_User && 0 !== $user->ID ) {
 				return sprintf(
 					'<a href="%s">%s <span class="aal-author-name">%s</span></a><br /><small>%s</small>',
-					get_edit_user_link( $user->ID ),
+					$this->get_filtered_link( 'usershow', $user->ID ),
 					get_avatar( $user->ID, 40 ),
 					$user->display_name,
 					isset( $user->roles[0] ) && isset( $wp_roles->role_names[ $user->roles[0] ] ) ? $wp_roles->role_names[ $user->roles[0] ] : __( 'Unknown', 'aryo-activity-log' )
