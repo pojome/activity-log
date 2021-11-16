@@ -109,12 +109,12 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 == Changelog ==
 
 = 2.8.0 - 2021-11-17 =
-New: Added Privacy Settings to records log
-New: Added Site Language to records log
-New: Added a filter link to Topic, IP, Date, User and Action in the log table screen
-Tweak: Aligned Topics to be in plural instead of singular
-Fix: Filter by users dropdown on activity page threw a timeout error in some cases ([#141](https://github.com/pojome/activity-log/issues/141))
-Fix: CSV Export issue with comma separated values ([Topic](https://wordpress.org/support/topic/csv-export-and-comma-seperated-values/))
+* New: Added Privacy Settings to records log
+* New: Added Site Language to records log
+* New: Added a filter link to Topic, IP, Date, User and Action in the log table screen
+* Tweak: Aligned Topics to be in plural instead of singular
+* Fix: Filter by users dropdown on activity page threw a timeout error in some cases ([#141](https://github.com/pojome/activity-log/issues/141))
+* Fix: CSV Export issue with comma separated values ([Topic](https://wordpress.org/support/topic/csv-export-and-comma-seperated-values/))
 
 = 2.7.0 - 2021-05-06 =
 * New: Added an option to skip or keep the failed login logs for better optimization ([#125](https://github.com/pojome/activity-log/issues/125))
