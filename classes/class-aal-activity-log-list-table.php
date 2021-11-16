@@ -530,6 +530,21 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			echo '</select>';
 		}
 
+		$filters = array(
+			'dateshow',
+			'capshow',
+			'usershow',
+			'typeshow',
+			'showaction',
+		);
+
+		foreach ( $filters as $filter ) {
+			if ( ! empty( $_REQUEST[ $filter ] ) ) {
+				echo '<a href="' . $this->get_filtered_link() . '" id="aal-reset-filter"><span class="dashicons dashicons-dismiss"></span>' . __( 'Reset Filters', 'aryo-activity-log' ) . '</a>';
+				break;
+			}
+		}
+
 		echo '</div>';
 	}
 
@@ -657,7 +672,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	<?php
 	}
 
-	private function get_filtered_link( $name, $value ) {
-		return add_query_arg( $name, $value, menu_page_url( 'activity_log_page', false ) );
+	private function get_filtered_link( $name = '', $value = '' ) {
+		$base_page_url = menu_page_url( 'activity_log_page', false );
+
+		if ( empty( $name ) ) {
+			return $base_page_url;
+		}
+
+		return add_query_arg( $name, $value, $base_page_url );
 	}
 }
