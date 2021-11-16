@@ -13,6 +13,7 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 			'admin_email',
 			'users_can_register',
 			'default_role',
+			'WPLANG',
 			'timezone_string',
 			'date_format',
 			'time_format',
@@ -77,6 +78,9 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 			'permalink_structure',
 			'category_base',
 			'tag_base',
+
+			// Privacy
+			'wp_page_for_privacy_policy',
 
 			// Widgets
 			'sidebars_widgets',

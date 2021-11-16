@@ -107,6 +107,26 @@ class AAL_Admin_Ui {
 		$install_url = self_admin_url( 'plugin-install.php?tab=search&s=elementor' );
 		?>
 		<style>
+			body h1.aal-page-title:before {
+				content: "\f321";
+				font: 400 25px/1 dashicons !important;
+				speak: none; /* accessibility thing. do not read the contents of this icon */
+				color: #030303;
+				display: inline-block;
+				padding-inline-end: .2em;
+				vertical-align: -18%;
+			}
+			#aal-reset-filter {
+				display: inline-block;
+				margin-inline-start: 5px;
+				line-height: 30px;
+				text-decoration: none;
+			}
+			#aal-reset-filter .dashicons {
+				font-size: 15px;
+				line-height: 30px;
+				text-decoration: none;
+			}
 			.notice.aal-notice {
 				border-left-color: #92003B !important;
 				padding: 20px;

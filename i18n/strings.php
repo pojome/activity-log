@@ -73,6 +73,7 @@ __( 'home', 'aryo-activity-log' );
 __( 'admin_email', 'aryo-activity-log' );
 __( 'users_can_register', 'aryo-activity-log' );
 __( 'default_role', 'aryo-activity-log' );
+__( 'WPLANG', 'aryo-activity-log' );
 __( 'timezone_string', 'aryo-activity-log' );
 __( 'date_format', 'aryo-activity-log' );
 __( 'time_format', 'aryo-activity-log' );
@@ -137,6 +138,9 @@ __( 'uploads_use_yearmonth_folders', 'aryo-activity-log' );
 __( 'permalink_structure', 'aryo-activity-log' );
 __( 'category_base', 'aryo-activity-log' );
 __( 'tag_base', 'aryo-activity-log' );
+
+// Privacy
+__( 'wp_page_for_privacy_policy', 'aryo-activity-log' );
 
 // Export
 __( 'Export', 'aryo-activity-log' );
