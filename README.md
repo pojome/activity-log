@@ -2,32 +2,35 @@
 
 
 **Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
-**Tags:** Activity Log, Security Log, User Activity, User Log, Activity, audit log, monitor, security, tracking, woocommerce, bbPress,  
+**Tags:** Activity Log, User Activity, User Log, Audit Log, Security, Tracking, WooCommerce, bbPress, GDPR,  
 **Requires at least:** 4.4  
-**Tested up to:** 5.7  
-**Stable tag:** 2.7.0  
+**Tested up to:** 5.8  
+**Stable tag:** 2.8.1  
 **License:** GPLv2 or later  
 
-The #1 Activity Log plugin helps you monitor & log all changes and activities on your site, so you can run a safer, more organized WordPress site.
+The #1 Activity Log plugin helps you monitor & log all changes and activities on your WordPress site, so you can run more securely and organized. Works simple & completely free!
 
 ## Description ##
 
 <strong>A COMPLETE, EASY TO USE & WELL SUPPORTED WORDPRESS ACTIVITY LOG PLUGIN</strong><br />
 
-Want to monitor and track your site activity? Find out exactly who does what on your WordPress website. the Activity Log plugin is like an airplane's black box that logs every activity in WordPress, and lets you see exactly what people are doing on your site.
+Want to monitor and track your WordPress website activity? Find out exactly who does what on your WordPress website. the Activity Log plugin is like an airplane's black box that logs every activity in WordPress admin, and lets you see exactly what users are doing on your WordPress website.
 
 * Like, if someone is trying to hack your site.
 * Or, when a post was published, and who published it.
-* Or, if a plugin was activated/deactivated.
-* Log suspicious admin activity
+* Or, if a plugin/theme was activated/deactivated.
+* Log suspicious admin activity.
 * Securing your site by tracking log of all user activity?
 
-
-Useful, right? Trust us, you won't understand how you managed your website without it. The plugin is also lightning fast and works behind the scenes, so it doesn't affect site and admin performance (For optimal performance, we built the plugin so it runs on a separate table in the database).
+Useful, right? Trust us, you won't understand how you managed your website without it. The plugin is also lightning fast and works behind the scenes, so it doesn't affect site and admin performance. For optimal performance, we built the plugin so it runs on a separate table in the database.
 
 If you have tens of users or more, you really can’t know who did what. This plugin tries to solve this issue by tracking what users do, and displaying it in an easy to use and easy to filter view on the dashboard of your WordPress site.
 
-<h4>With the Activity Log you can log:</h4>
+<strong>Export to CSV</strong> Export your Activity Log data records to CSV. Developers can easily add support for custom data formats with our new dedicated Export API.
+
+<strong>Data Privacy and GDPR Compliance</strong> We provide the tools to help you be GDPR compliant, including Export/Erasure of data via the WordPress Privacy Tools.
+
+<h3>With the Activity Log you can record:</h3>
 * <strong>WordPress</strong> - Core Updates
 * <strong>Posts</strong> - Created, Updated, Deleted
 * <strong>Pages</strong> - Created, Updated, Deleted
@@ -45,15 +48,9 @@ If you have tens of users or more, you really can’t know who did what. This pl
 * <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks
 * <strong>Options</strong> - Can be extend by east filter
 * <strong>Export</strong> - User download export file from the site
-* <strong>WooCommerce</strong> - Monitor all shop options
+* <strong>WooCommerce</strong> - Monitor all shop settings and options
 * <strong>bbPress</strong> - Forums, Topics, Replies, Taxonomies and other actions
 * There's more, but you get the point...
-
-<strong>New!</strong> You are now able to get email notifications once an event you have defined (via rules) has occurred. This is useful in cases you must know right away when someone does something on your site. We use it to thwart hacker attempts, for example.
-
-<strong>New!</strong> Export your Activity Log data records to CSV. Developers can easily add support for custom data formats with our new dedicated Export API.
-
-<strong>New!</strong> Export your Activity Log data records to Export Personal Data tool (WordPress 4.9.6+) for better GDPR Compliance.
 
 <h4>What people are saying</h4>
 * <em>“Best 10 Free WordPress Plugins of the Month – July 2014: Keeping tabs on what your users do with their access to the Dashboard”</em> - [ManageWp.com](https://managewp.com/best-free-wordpress-plugins-july-2014)
@@ -97,7 +94,6 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 1. The log viewer page
 2. The settings page
 3. Screen Options
-4. Interface for defining notification rules
 
 ## Frequently Asked Questions ##
 
@@ -114,16 +110,27 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.8.1 - 2021-12-01 ###
+* Fix: Activity log database table not being dropped after deleting the plugin in multisite installation
+
+### 2.8.0 - 2021-11-17 ###
+* New: Added Privacy Settings to records log
+* New: Added Site Language to records log
+* New: Added a filter link to Topic, IP, Date, User and Action in the log table screen
+* Tweak: Aligned Topics to be in plural instead of singular
+* Fix: Filter by users dropdown on activity page threw a timeout error in some cases ([#141](https://github.com/pojome/activity-log/issues/141))
+* Fix: CSV Export issue with comma separated values ([Topic](https://wordpress.org/support/topic/csv-export-and-comma-seperated-values/))
+
 ### 2.7.0 - 2021-05-06 ###
 * New: Added an option to skip or keep the failed login logs for better optimization ([#125](https://github.com/pojome/activity-log/issues/125))
-* Fix: Add input sanitization to avoid security issues
 * Tweak: Improved the activity log table with clear labels and re-order columns for better UX
-* Tweak: Changed the wrong_password action to failed_login  in User topic
-* Tweak: Changed the added action to uploaded  in Attachment topic
-* Tweak: Changed the created action to registered  in User topic
+* Tweak: Changed the wrong_password action to failed_login in User topic
+* Tweak: Changed the added action to uploaded in Attachment topic
+* Tweak: Changed the created action to registered in User topic
+* Fix: Add input sanitization to avoid security issues
 
 ### 2.6.1 - 2021-02-15 ###
-* Fix: Conflict with WooCommerce while you using new editor
+* Fix: Conflict with WooCommerce while you using new block editor
 
 ### 2.6.0 - 2020-10-19 ###
 * Tweak: Added support for CloudFlare and CloudFlare Enterprise client IP header ([#133](https://github.com/pojome/activity-log/issues/133))
