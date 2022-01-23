@@ -87,11 +87,13 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 			if ( isset( $extra['bulk'] ) && true == $extra['bulk'] ) {
 				$slugs = $extra['plugins'];
 			} else {
-				$slug = ( isset( $upgrader->skin->plugin ) ? $upgrader->skin->plugin : $extra['plugin'] );
-				if ( empty( $slug ))
+				$plugin_slug = isset( $upgrader->skin->plugin ) ? $upgrader->skin->plugin : $extra['plugin'];
+
+				if ( empty( $plugin_slug ) ) {
 					return;
-				
-				$slugs = array( $slug );
+				}
+
+				$slugs = array( $plugin_slug );
 			}
 			
 			foreach ( $slugs as $slug ) {
