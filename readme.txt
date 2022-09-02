@@ -108,6 +108,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.8.4 - 2022-09-04 =
+* Tweak: Added Activity Log setting to records log
+* Tweak: Added encoded value in CSV file ([#165](https://github.com/pojome/activity-log/issues/165))
+
 = 2.8.3 - 2022-03-09 =
 * Tweak: Run Clear old items from DB once daily to avoid unexpected errors ([#156](https://github.com/pojome/activity-log/issues/156))
 
