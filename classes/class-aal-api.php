@@ -3,17 +3,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_API {
 
-	/**
-	 * @since 1.0.0
-	 * 
-	 * @return void
-	 */
-	protected function _delete_old_items() {
+	public function __construct() {
+		add_action( 'aal/maintenance/clear_old_items', [ $this, 'delete_old_items' ] );
+	}
+
+	public function delete_old_items() {
 		global $wpdb;
 		
 		$logs_lifespan = absint( AAL_Main::instance()->settings->get_option( 'logs_lifespan' ) );
-		if ( empty( $logs_lifespan ) )
+		if ( empty( $logs_lifespan ) ) {
 			return;
+		}
 		
 		$wpdb->query(
 			$wpdb->prepare(
@@ -145,8 +145,6 @@ class AAL_API {
 			array( '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d' )
 		);
 
-		// Remove old items.
-		$this->_delete_old_items();
 		do_action( 'aal_insert_log', $args );
 	}
 }

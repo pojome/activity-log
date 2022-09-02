@@ -16,6 +16,9 @@ class AAL_Maintenance {
 		} else {
 			self::_create_tables();
 		}
+
+		wp_clear_scheduled_hook( 'aal/maintenance/clear_old_items' );
+		wp_schedule_event( time(), 'daily', 'aal/maintenance/clear_old_items' );
 	}
 
 	public static function uninstall() {
@@ -31,6 +34,8 @@ class AAL_Maintenance {
 		} else {
 			self::_remove_tables();
 		}
+
+		wp_clear_scheduled_hook( 'aal/maintenance/clear_old_items' );
 	}
 
 	public static function mu_new_blog_installer( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
