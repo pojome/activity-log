@@ -563,23 +563,23 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		if ( ! empty( $_REQUEST['typeshow'] ) ) {
-			$where .= $wpdb->prepare( ' AND `object_type` = %s', $_REQUEST['typeshow'] );
+			$where .= $wpdb->prepare( ' AND `object_type` = %s', sanitize_text_field( $_REQUEST['typeshow'] ) );
 		}
 
 		if ( isset( $_REQUEST['showaction'] ) && '' !== $_REQUEST['showaction'] ) {
-			$where .= $wpdb->prepare( ' AND `action` = %s', $_REQUEST['showaction'] );
+			$where .= $wpdb->prepare( ' AND `action` = %s', sanitize_text_field( $_REQUEST['showaction'] ) );
 		}
 
 		if ( isset( $_REQUEST['filter_ip'] ) && '' !== $_REQUEST['filter_ip'] ) {
-			$where .= $wpdb->prepare( ' AND `hist_ip` = %s', $_REQUEST['filter_ip'] );
+			$where .= $wpdb->prepare( ' AND `hist_ip` = %s', sanitize_text_field( $_REQUEST['filter_ip'] ) );
 		}
 
 		if ( isset( $_REQUEST['usershow'] ) && '' !== $_REQUEST['usershow'] ) {
-			$where .= $wpdb->prepare( ' AND `user_id` = %d', $_REQUEST['usershow'] );
+			$where .= $wpdb->prepare( ' AND `user_id` = %d', sanitize_text_field( $_REQUEST['usershow'] ) );
 		}
 
 		if ( isset( $_REQUEST['capshow'] ) && '' !== $_REQUEST['capshow'] ) {
-			$where .= $wpdb->prepare( ' AND `user_caps` = %s', strtolower( $_REQUEST['capshow'] ) );
+			$where .= $wpdb->prepare( ' AND `user_caps` = %s', strtolower( sanitize_text_field( $_REQUEST['capshow'] ) ) );
 		}
 
 		if ( isset( $_REQUEST['dateshow'] ) ) {
