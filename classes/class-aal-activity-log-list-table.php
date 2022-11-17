@@ -200,7 +200,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				break;
 
 			case 'ip':
-				$return = '<a href="' . $this->get_filtered_link( 'filter_ip', $item->hist_ip ) . '">' . $item->hist_ip. '</a>';
+				$return = '<a href="' . $this->get_filtered_link( 'filter_ip', $item->hist_ip ) . '">' . esc_html( $item->hist_ip ) . '</a>';
 				break;
 
 			default:
