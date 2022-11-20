@@ -194,9 +194,9 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-activity-log' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
 
 				$date_formatted = date( 'd/m/Y', $item->hist_time );
-				$return .= '<br /><a href="' . $this->get_filtered_link( 'dateshow', $date_formatted ) . '">' . date( 'd/m/Y', $item->hist_time ) . '</a>';
+				$return .= '<br /><a href="' . $this->get_filtered_link( 'dateshow', $date_formatted ) . '">' . date_i18n( get_option( 'date_format' ), $item->hist_time ) . '</a>';
 
-				$return .= '<br />' . date( 'H:i:s', $item->hist_time );
+				$return .= '<br />' . date_i18n( get_option( 'time_format' ), $item->hist_time );
 				break;
 
 			case 'ip':
