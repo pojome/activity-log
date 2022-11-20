@@ -29,9 +29,9 @@ class AAL_Hook_Widgets extends AAL_Hook_Base {
 				aal_insert_log( array(
 					'action'         => 'deleted',
 					'object_type'    => 'Widget',
-					'object_subtype' => strtolower( $_REQUEST['sidebar'] ),
+					'object_subtype' => strtolower( sanitize_text_field( $_REQUEST['sidebar'] ) ),
 					'object_id'      => 0,
-					'object_name'    => $_REQUEST['id_base'],
+					'object_name'    => sanitize_text_field( $_REQUEST['id_base'] ),
 				) );
 			}
 		}

@@ -41,6 +41,8 @@ class AAL_Export {
         if ( ! array_key_exists( $exporter_selected, $this->get_exporters() ) ) {
             $this->redirect_back();
         }
+
+	    $this->insert_export_log();
         
         // Disable row limit
         add_filter( 'edit_aal_logs_per_page', array( $this, 'increase_throughput' ) );
@@ -110,6 +112,15 @@ class AAL_Export {
         
         return $row;
     }
+
+	private function insert_export_log() {
+		aal_insert_log( array(
+			'action' => 'exported',
+			'object_type' => 'Options',
+			'object_name' => 'exported',
+			'object_subtype' => 'Activity Log',
+		) );
+	}
     
     public function admin_register_exporters() {
         $builtin_exporters = array(

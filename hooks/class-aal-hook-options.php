@@ -96,12 +96,13 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 		$this->insert_log( $option );
 	}
 
-	private function insert_log( $option_name ) {
+	private function insert_log( $option_name, $context = '' ) {
 		// TODO: need to think about save old & new values.
 		aal_insert_log( array(
 			'action' => 'updated',
 			'object_type' => 'Options',
 			'object_name' => $option_name,
+			'object_subtype' => $context,
 		) );
 	}
 
@@ -113,7 +114,7 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 				continue;
 			}
 
-			$this->insert_log( $option_key );
+			$this->insert_log( $option_key, 'Activity Log' );
 		}
 	}
 
