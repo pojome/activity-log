@@ -108,6 +108,11 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.8.5 - 2022-11-21 =
+* Tweak: Now the date/time format is displayed according to the site settings ([Topic](https://wordpress.org/support/topic/date-format-question-2/))
+* Fix: Added compatibility for PHP 8.1 ([Topic](https://wordpress.org/support/topic/deprecated-filter_sanitize_string-preg_match-and-strtolower-in-php-8-1/))
+* Fix: Add input sanitization to avoid security issues
+
 = 2.8.4 - 2022-09-04 =
 * Tweak: Added Activity Log setting to records log
 * Tweak: Added encoded value in CSV file ([#165](https://github.com/pojome/activity-log/issues/165))
