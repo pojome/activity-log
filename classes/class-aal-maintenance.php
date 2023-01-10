@@ -55,6 +55,8 @@ class AAL_Maintenance {
 	protected static function _create_tables() {
 		global $wpdb;
 
+		$charset_collate = $wpdb->get_charset_collate();
+
 		$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}aryo_activity_log` (
 					  `histid` int(11) NOT NULL AUTO_INCREMENT,
 					  `user_caps` varchar(70) NOT NULL DEFAULT 'guest',
@@ -66,8 +68,16 @@ class AAL_Maintenance {
 					  `user_id` int(11) NOT NULL DEFAULT '0',
 					  `hist_ip` varchar(55) NOT NULL DEFAULT '127.0.0.1',
 					  `hist_time` int(11) NOT NULL DEFAULT '0',
-					  PRIMARY KEY (`histid`)
-				) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+					  PRIMARY KEY (`histid`),
+						KEY `user_caps` (`user_caps`),
+						KEY `action` (`action`),
+						KEY `object_type` (`object_type`),
+						KEY `object_subtype` (`object_subtype`),
+						KEY `object_name` (`object_name`),
+						KEY `user_id` (`user_id`),
+						KEY `hist_ip` (`hist_ip`),
+						KEY `hist_time` (`hist_time`)
+				) $charset_collate;";
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
