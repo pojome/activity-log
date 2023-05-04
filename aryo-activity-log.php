@@ -78,10 +78,9 @@ final class AAL_Main {
 	public $api;
 
 	/**
-	 * @var AAL_Privacy
-	 * @since 2.1.0
+	 * @var \AAL_Notifications
 	 */
-	private $privacy;
+	public $notifications;
 
 	/**
 	 * Load text domain
@@ -101,12 +100,13 @@ final class AAL_Main {
 		$this->settings      = new AAL_Settings();
 		$this->api           = new AAL_API();
 		$this->notifications = new AAL_Notifications();
-		$this->export        = new AAL_Export();
-		$this->privacy       = new AAL_Privacy();
+
+		new AAL_Export();
+		new AAL_Privacy();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
-		
+
 		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
 	}
 
