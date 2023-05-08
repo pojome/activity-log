@@ -2,8 +2,8 @@
 Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: Activity Log, User Activity, User Log, Audit Log, Security, Tracking, WooCommerce, bbPress, GDPR,
 Requires at least: 4.4
-Tested up to: 6.1
-Stable tag: 2.8.5
+Tested up to: 6.2
+Stable tag: 2.8.6
 License: GPLv2 or later
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your WordPress site, so you can run more securely and organized. Works simple & completely free!
@@ -109,7 +109,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 == Changelog ==
 
 = 2.8.6 - 2023-05-08 =
-* Tweak: Added indexes to DB for new installations for better performance
+* Tweak: Improved database performance for new installations by adding indexes
 * Fix: Added compatibility for PHP 8.1 ([#180](https://github.com/pojome/activity-log/issues/180))
 
 = 2.8.5 - 2022-11-21 =
