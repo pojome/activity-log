@@ -108,6 +108,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.8.6 - 2023-05-08 =
+* Tweak: Added indexes to DB for new installations for better performance
+* Fix: Added compatibility for PHP 8.1 ([#180](https://github.com/pojome/activity-log/issues/180))
+
 = 2.8.5 - 2022-11-21 =
 * Tweak: Now the date/time format is displayed according to the site settings ([Topic](https://wordpress.org/support/topic/date-format-question-2/))
 * Fix: Added compatibility for PHP 8.1 ([Topic](https://wordpress.org/support/topic/deprecated-filter_sanitize_string-preg_match-and-strtolower-in-php-8-1/))
@@ -206,10 +210,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Tested up to WordPress v4.4.2
 
 = 2.2.9 =
-* Tweak! Update Freemius SDK 
+* Tweak! Update Freemius SDK
 
 = 2.2.8 =
-* Tweak! Update Freemius SDK 
+* Tweak! Update Freemius SDK
 
 = 2.2.7 =
 * Added! - Freemius Insights platform to improve plugin UX
@@ -372,7 +376,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Added Multisite compatibility.
 * Added Options hooks (limit list, you can extend by simple filter).
 * Added Menu hooks.
-* Tweak - Ensure no duplicate logs.. 
+* Tweak - Ensure no duplicate logs..
 
 = 1.0.2 =
 * Forget remove old .pot file
