@@ -23,7 +23,7 @@ class AAL_API {
 			)
 		);
 	}
-	
+
 	/**
 	 * Get real address
 	 *
