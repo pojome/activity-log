@@ -110,10 +110,10 @@ class AAL_API {
 				$args['hist_time']
 			)
 		);
-
+		
 		if ( $check_duplicate ) {
-            return;
-        }
+			return;
+		}
 
 		$wpdb->insert(
 			$wpdb->activity_log,
@@ -133,34 +133,34 @@ class AAL_API {
 
 		do_action( 'aal_insert_log', $args );
 	}
-
-    private function setup_userdata( $args ) {
-        $user = false;
-
-        if ( function_exists( 'get_user_by' ) ) {
-            $user = get_user_by('id', get_current_user_id());
-        }
-
-        if ( $user ) {
-            $args['user_caps'] = strtolower( key( $user->caps ) );
-            if ( empty( $args['user_id'] ) ) {
-                $args['user_id'] = $user->ID;
-            }
-        } else {
-            $args['user_caps'] = 'guest';
-            if ( empty( $args['user_id'] ) ) {
-                $args['user_id'] = 0;
-            }
-        }
-
-        // TODO: Find better way to Multisite compatibility.
-        // Fallback for multisite with bbPress
-        if ( empty( $args['user_caps'] ) || 'bbp_participant' === $args['user_caps'] ) {
-            $args['user_caps'] = 'administrator';
-        }
-
-        return $args;
-    }
+	
+	private function setup_userdata( $args ) {
+		$user = false;
+		
+		if ( function_exists( 'get_user_by' ) ) {
+			$user = get_user_by( 'id', get_current_user_id() );
+		}
+		
+		if ( $user ) {
+			$args['user_caps'] = strtolower( key( $user->caps ) );
+			if ( empty( $args['user_id'] ) ) {
+				$args['user_id'] = $user->ID;
+			}
+		} else {
+			$args['user_caps'] = 'guest';
+			if ( empty( $args['user_id'] ) ) {
+				$args['user_id'] = 0;
+			}
+		}
+		
+		// TODO: Find better way to Multisite compatibility.
+		// Fallback for multisite with bbPress
+		if ( empty( $args['user_caps'] ) || 'bbp_participant' === $args['user_caps'] ) {
+			$args['user_caps'] = 'administrator';
+		}
+		
+		return $args;
+	}
 }
 
 /**
