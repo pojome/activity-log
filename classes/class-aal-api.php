@@ -1,5 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class AAL_API {
 
@@ -84,8 +86,8 @@ class AAL_API {
 				'hist_time'      => current_time( 'timestamp' ),
 			)
 		);
-
-        $args = $this->setup_userdata( $args );
+		
+		$args = $this->setup_userdata( $args );
 
 		// Make sure for non duplicate.
 		$check_duplicate = $wpdb->get_row(
