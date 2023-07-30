@@ -4,8 +4,8 @@
 **Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
 **Tags:** Activity Log, User Activity, User Log, Audit Log, Security, Tracking, WooCommerce, bbPress, GDPR,  
 **Requires at least:** 4.4  
-**Tested up to:** 6.1  
-**Stable tag:** 2.8.5  
+**Tested up to:** 6.2  
+**Stable tag:** 2.8.6  
 **License:** GPLv2 or later  
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your WordPress site, so you can run more securely and organized. Works simple & completely free!
@@ -110,6 +110,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 ## Changelog ##
 
+### 2.8.6 - 2023-05-08 ###
+* Tweak: Improved database performance for new installations by adding indexes
+* Fix: Added compatibility for PHP 8.1 ([#180](https://github.com/pojome/activity-log/issues/180))
+
 ### 2.8.5 - 2022-11-21 ###
 * Tweak: Now the date/time format is displayed according to the site settings ([Topic](https://wordpress.org/support/topic/date-format-question-2/))
 * Fix: Added compatibility for PHP 8.1 ([Topic](https://wordpress.org/support/topic/deprecated-filter_sanitize_string-preg_match-and-strtolower-in-php-8-1/))
@@ -208,10 +212,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Tested up to WordPress v4.4.2
 
 ### 2.2.9 ###
-* Tweak! Update Freemius SDK 
+* Tweak! Update Freemius SDK
 
 ### 2.2.8 ###
-* Tweak! Update Freemius SDK 
+* Tweak! Update Freemius SDK
 
 ### 2.2.7 ###
 * Added! - Freemius Insights platform to improve plugin UX
@@ -374,7 +378,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Added Multisite compatibility.
 * Added Options hooks (limit list, you can extend by simple filter).
 * Added Menu hooks.
-* Tweak - Ensure no duplicate logs.. 
+* Tweak - Ensure no duplicate logs..
 
 ### 1.0.2 ###
 * Forget remove old .pot file

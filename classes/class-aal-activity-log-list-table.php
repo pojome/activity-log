@@ -177,7 +177,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function get_sortable_columns() {
 		return array(
-			'ip' => 'hist_ip',
+			'ip' => array( 'hist_ip', 'desc' ),
 			'date' => array( 'hist_time', true ),
 		);
 	}
