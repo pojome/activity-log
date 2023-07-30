@@ -7,14 +7,14 @@ class AAL_Admin_Ui {
 	 * @var AAL_Activity_Log_List_Table
 	 */
 	protected $_list_table = null;
-	
+
 	protected $_screens = array();
 
 	public function create_admin_menu() {
-		$menu_capability = current_user_can( 'view_all_aryo_activity_log' ) ? 'view_all_aryo_activity_log' : 'edit_pages';
-		
+		$menu_capability = current_user_can( 'view_all_aryo_activity_log' ) ? 'view_all_aryo_activity_log' : apply_filters( 'aal_menu_page_capability', 'edit_pages');
+
 		$this->_screens['main'] = add_menu_page( _x( 'Activity Log', 'Page and Menu Title', 'aryo-activity-log' ), _x( 'Activity Log', 'Page and Menu Title', 'aryo-activity-log' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
-		
+
 		// Just make sure we are create instance.
 		add_action( 'load-' . $this->_screens['main'], array( &$this, 'get_list_table' ) );
 	}
@@ -30,7 +30,7 @@ class AAL_Admin_Ui {
 				<?php $this->get_list_table()->display(); ?>
 			</form>
 		</div>
-		
+
 		<?php // TODO: move to a separate file. ?>
 		<style>
 			#record-actions-submit {
@@ -95,7 +95,7 @@ class AAL_Admin_Ui {
 		</style>
 		<?php
 	}
-	
+
 	public function admin_header() {
 		// TODO: move to a separate file.
 		?><style>
@@ -105,7 +105,7 @@ class AAL_Admin_Ui {
 		</style>
 	<?php
 	}
-	
+
 	public function ajax_aal_install_elementor_set_admin_notice_viewed() {
 		update_user_meta( get_current_user_id(), '_aal_elementor_install_notice', 'true' );
 	}
@@ -113,11 +113,11 @@ class AAL_Admin_Ui {
 	public function admin_notices() {
 		if ( ! current_user_can( 'install_plugins' ) || $this->_is_elementor_installed() )
 			return;
-		
+
 
 		if ( 'true' === get_user_meta( get_current_user_id(), '_aal_elementor_install_notice', true ) )
 			return;
-		
+
 		if ( ! in_array( get_current_screen()->id, array( 'toplevel_page_activity_log_page', 'dashboard', 'plugins', 'plugins-network' ) ) ) {
 			return;
 		}
@@ -235,7 +235,7 @@ class AAL_Admin_Ui {
 						<rect x="12.8352" y="8.16504" width="6.9999" height="2.3333" fill="white"/>
 					</svg>
 				</div>
-				
+
 				<div class="aal-notice-content">
 					<h3><?php _e( 'Do You Like Activity Log? You\'ll Love Elementor!', 'aryo-activity-log' ); ?></h3>
 					<p><?php _e( 'Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design. The most advanced frontend drag & drop page builder.', 'aryo-activity-log' ); ?>
@@ -263,14 +263,14 @@ class AAL_Admin_Ui {
 			} );</script>
 		<?php
 	}
-	
+
 	public function __construct() {
 		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ), 20 );
 		add_action( 'admin_head', array( &$this, 'admin_header' ) );
 		add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
 		add_action( 'wp_ajax_aal_install_elementor_set_admin_notice_viewed', array( &$this, 'ajax_aal_install_elementor_set_admin_notice_viewed' ) );
 	}
-	
+
 	private function _is_elementor_installed() {
 		$file_path = 'elementor/elementor.php';
 		$installed_plugins = get_plugins();
@@ -286,7 +286,7 @@ class AAL_Admin_Ui {
 			$this->_list_table = new AAL_Activity_Log_List_Table( array( 'screen' => $this->_screens['main'] ) );
 			do_action( 'aal_admin_page_load', $this->_list_table );
 		}
-		
+
 		return $this->_list_table;
 	}
 }
