@@ -18,7 +18,6 @@ class AAL_Maintenance {
 		}
 
 		wp_clear_scheduled_hook( 'aal/maintenance/clear_old_items' );
-		wp_schedule_event( time(), 'daily', 'aal/maintenance/clear_old_items' );
 	}
 
 	public static function uninstall() {
