@@ -363,9 +363,9 @@ final class AAL_Settings_Fields {
 		if ( empty( $args['html'] ) )
 			return;
 		
-		echo $args['html'];
+		echo wp_kses_post( $args['html'] );
 		if ( ! empty( $args['desc'] ) ) : ?>
-			<p class="description"><?php echo $args['desc']; ?></p>
+			<p class="description"><?php echo wp_kses_post( $args['desc'] ); ?></p>
 		<?php endif;
 	}
 	
@@ -382,7 +382,7 @@ final class AAL_Settings_Fields {
 		?>
 		<input type="text" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" />
 		<?php if ( ! empty( $desc ) ) : ?>
-		<p class="description"><?php echo $desc; ?></p>
+		<p class="description"><?php echo wp_kses_post( $desc ); ?></p>
 		<?php endif;
 	}
 
@@ -403,7 +403,7 @@ final class AAL_Settings_Fields {
 		<textarea id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $name ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" rows="<?php echo absint( $args['rows'] ); ?>" cols="<?php echo absint( $args['cols'] ); ?>"><?php echo esc_textarea( $value ); ?></textarea>
 
 		<?php if ( ! empty( $desc ) ) : ?>
-			<p class="description"><?php echo $desc; ?></p>
+			<p class="description"><?php echo wp_kses_post( $desc ); ?></p>
 		<?php endif;
 	}
 	
@@ -421,10 +421,10 @@ final class AAL_Settings_Fields {
 			return;
 
 		?>
-		<input type="number" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" min="<?php echo $args['min']; ?>" step="<?php echo $args['step']; ?>" />
-		<?php if ( ! empty( $args['sub_desc'] ) ) echo $args['sub_desc']; ?>
+		<input type="number" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>" class="<?php echo implode( ' ', $args['classes'] ); ?>" min="<?php echo esc_attr( $args['min'] ); ?>" step="<?php echo esc_attr( $args['step'] ); ?>" />
+		<?php if ( ! empty( $args['sub_desc'] ) ) echo wp_kses_post( $args['sub_desc'] ); ?>
 		<?php if ( ! empty( $args['desc'] ) ) : ?>
-			<p class="description"><?php echo $args['desc']; ?></p>
+			<p class="description"><?php echo wp_kses_post( $args['desc'] ); ?></p>
 		<?php endif;
 	}
 
@@ -444,7 +444,7 @@ final class AAL_Settings_Fields {
 			<?php endforeach; ?>
 		</select>
 		<?php if ( ! empty( $desc ) ) : ?>
-		<p class="description"><?php echo $desc; ?></p>
+		<p class="description"><?php echo wp_kses_post( $desc ); ?></p>
 		<?php endif; ?>
 		<?php
 	}
@@ -458,7 +458,7 @@ final class AAL_Settings_Fields {
 		<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="0" <?php checked( $value, false ); ?>> <?php _e( 'No', 'aryo-activity-log' ); ?></label>
 
 		<?php if ( isset( $args['description'] ) ) : ?>
-		<p class="description"><?php echo $args['description']; ?></p>
+		<p class="description"><?php echo wp_kses_post( $args['description'] ); ?></p>
 		<?php endif; ?>
 		<?php
 	}
@@ -497,19 +497,19 @@ final class AAL_Settings_Fields {
 				$row_condition 	= isset( $row['condition'] ) ? $row['condition'] : '';
 				$row_value 		= isset( $row['value'] ) ? $row['value'] : '';
 				?>
-				<li data-id="<?php echo $rid; ?>">
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
+				<li data-id="<?php echo esc_attr( $rid ); ?>">
+					<select name="<?php echo esc_attr( $common_name ); ?>[<?php echo esc_attr( $rid ); ?>][key]" class="aal-category">
 						<?php foreach ( $keys as $k => $v ) : ?>
-						<option value="<?php echo $k; ?>" <?php selected( $row_key, $k ); ?>><?php echo $v; ?></option>
+						<option value="<?php echo esc_attr( $k ); ?>" <?php selected( $row_key, $k ); ?>><?php echo esc_attr( $v ); ?></option>
 						<?php endforeach; ?>
 					</select>
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
+					<select name="<?php echo esc_attr( $common_name ); ?>[<?php echo esc_attr( $rid ); ?>][condition]" class="aal-condition">
 						<?php foreach ( $conditions as $k => $v ) : ?>
-						<option value="<?php echo $k; ?>" <?php selected( $row_condition, $k ); ?>><?php echo $v; ?></option>
+						<option value="<?php echo esc_attr( $k ); ?>" <?php selected( $row_condition, $k ); ?>><?php echo esc_html( $v ); ?></option>
 						<?php endforeach; ?>
 					</select>
 					<?php $value_options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
+					<select name="<?php echo esc_attr( $common_name ); ?>[<?php echo esc_attr( $rid ); ?>][value]" class="aal-value">
 						<?php foreach ( $value_options as $option_key => $option_value ) : ?>
 						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
 						<?php endforeach; ?>

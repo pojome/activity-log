@@ -16,6 +16,8 @@ class AAL_Exporter_csv {
 	 */
 	public $id = 'csv';
 
+	const FORMULAS_START_CHARACTERS = [ '=', '-', '+', '@', "\t", "\r" ];
+
 	/**
 	 * Writes CSV data for download
 	 *
@@ -36,7 +38,8 @@ class AAL_Exporter_csv {
 		fputcsv( $fp, $columns );
 
 		foreach ( $data as $row ) {
-			fputcsv( $fp, $row );
+			$encoded_row = $this->get_encoded_row( $row );
+			fputcsv( $fp, $encoded_row );
 		}
 
 		fclose( $fp );
@@ -44,5 +47,20 @@ class AAL_Exporter_csv {
 		if ( $is_test_mode_off ) {
 			exit;
 		}
+	}
+
+	private function get_encoded_row( $row ) {
+		$result = [];
+
+		foreach ( $row as $key => $value ) {
+			$encoded_value = $value;
+			if ( in_array( substr( (string) $value, 0, 1 ), self::FORMULAS_START_CHARACTERS, true ) ) {
+				$encoded_value = "'" . $value;
+			}
+
+			$result[ $key ] = $encoded_value;
+		}
+
+		return $result;
 	}
 }

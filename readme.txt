@@ -2,8 +2,8 @@
 Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: Activity Log, User Activity, User Log, Audit Log, Security, Tracking, WooCommerce, bbPress, GDPR,
 Requires at least: 4.4
-Tested up to: 5.8
-Stable tag: 2.8.1
+Tested up to: 6.2
+Stable tag: 2.8.6
 License: GPLv2 or later
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your WordPress site, so you can run more securely and organized. Works simple & completely free!
@@ -108,6 +108,30 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.8.7 - 2023-07-30 =
+* Tweak: Remove Elementor Promotion from Activity Log plugin
+* Tweak: Added support for non-standard WordPress loading ([Topic](https://wordpress.org/support/topic/plugin-breaks-site-migration/))
+* Fix: Logs kept for longer than settings ([Topic](https://wordpress.org/support/topic/logs-kept-for-longer-than-settings/), [#178](https://github.com/pojome/activity-log/issues/178))
+
+= 2.8.6 - 2023-05-08 =
+* Tweak: Improved database performance for new installations by adding indexes
+* Fix: Added compatibility for PHP 8.1 ([#180](https://github.com/pojome/activity-log/issues/180))
+
+= 2.8.5 - 2022-11-21 =
+* Tweak: Now the date/time format is displayed according to the site settings ([Topic](https://wordpress.org/support/topic/date-format-question-2/))
+* Fix: Added compatibility for PHP 8.1 ([Topic](https://wordpress.org/support/topic/deprecated-filter_sanitize_string-preg_match-and-strtolower-in-php-8-1/))
+* Fix: Add input sanitization to avoid security issues
+
+= 2.8.4 - 2022-09-04 =
+* Tweak: Added Activity Log setting to records log
+* Tweak: Added encoded value in CSV file ([#165](https://github.com/pojome/activity-log/issues/165))
+
+= 2.8.3 - 2022-03-09 =
+* Tweak: Run Clear old items from DB once daily to avoid unexpected errors ([#156](https://github.com/pojome/activity-log/issues/156))
+
+= 2.8.2 - 2022-01-25 =
+* Fix: Auto-updates of core, plugins and themes are not registered to the log ([#155](https://github.com/pojome/activity-log/issues/155), props [@nicomollet](https://github.com/nicomollet))
+
 = 2.8.1 - 2021-12-01 =
 * Fix: Activity log database table not being dropped after deleting the plugin in multisite installation
 
@@ -191,10 +215,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Tested up to WordPress v4.4.2
 
 = 2.2.9 =
-* Tweak! Update Freemius SDK 
+* Tweak! Update Freemius SDK
 
 = 2.2.8 =
-* Tweak! Update Freemius SDK 
+* Tweak! Update Freemius SDK
 
 = 2.2.7 =
 * Added! - Freemius Insights platform to improve plugin UX
@@ -357,7 +381,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * Added Multisite compatibility.
 * Added Options hooks (limit list, you can extend by simple filter).
 * Added Menu hooks.
-* Tweak - Ensure no duplicate logs.. 
+* Tweak - Ensure no duplicate logs..
 
 = 1.0.2 =
 * Forget remove old .pot file
