@@ -2,7 +2,7 @@
 /*
 Plugin Name: Activity Log
 Plugin URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
-Description: Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site. e.g. post was deleted, plugin was activated, user logged in or logged out - it's all these for you to see.
+Description: Activity Log acts like a black-box for your WordPress site so you can monitor and track all activity on your website, like post deletions, plugin activations, user logins, suspicious activity and more - it’s all here for you to see!
 Author: Activity Log Team
 Author URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
 Version: 2.8.6
