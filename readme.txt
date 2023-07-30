@@ -108,6 +108,11 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.8.7 - 2023-07-30 =
+* Tweak: Remove Elementor Promotion from Activity Log plugin
+* Tweak: Added support for non-standard WordPress loading ([Topic](https://wordpress.org/support/topic/plugin-breaks-site-migration/))
+* Fix: Logs kept for longer than settings ([Topic](https://wordpress.org/support/topic/logs-kept-for-longer-than-settings/), [#178](https://github.com/pojome/activity-log/issues/178))
+
 = 2.8.6 - 2023-05-08 =
 * Tweak: Improved database performance for new installations by adding indexes
 * Fix: Added compatibility for PHP 8.1 ([#180](https://github.com/pojome/activity-log/issues/180))
