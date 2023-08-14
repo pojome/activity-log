@@ -139,6 +139,7 @@ class AAL_Settings {
 							'HTTP_FORWARDED_FOR' => '$_SERVER[\'HTTP_FORWARDED_FOR\']',
 							'HTTP_FORWARDED' => '$_SERVER[\'HTTP_FORWARDED\']',
 						),
+						'desc' => __( 'Select the source of the visitor IP address. For example, if you are using Cloudflare, select HTTP_CF_CONNECTING_IP.', 'aryo-activity-log' ),
 					)
 				);
 
