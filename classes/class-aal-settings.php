@@ -118,6 +118,30 @@ class AAL_Settings {
 					)
 				);
 
+				add_settings_field(
+					'log_visitor_ip_source',
+					__( 'Visitor IP Detected', 'aryo-activity-log' ),
+					array( 'AAL_Settings_Fields', 'select_field' ),
+					$this->slug,
+					'general_settings_section',
+					array(
+						'id'      => 'log_visitor_ip_source',
+						'page'    => $this->slug,
+						'type'    => 'select',
+						'options' => array(
+							'REMOTE_ADDR' => '$_SERVER[\'REMOTE_ADDR\']',
+							'HTTP_CF_CONNECTING_IP' => '$_SERVER[\'HTTP_CF_CONNECTING_IP\']',
+							'HTTP_TRUE_CLIENT_IP' => '$_SERVER[\'HTTP_TRUE_CLIENT_IP\']',
+							'HTTP_CLIENT_IP' => '$_SERVER[\'HTTP_CLIENT_IP\']',
+							'HTTP_X_FORWARDED_FOR' => '$_SERVER[\'HTTP_X_FORWARDED_FOR\']',
+							'HTTP_X_FORWARDED' => '$_SERVER[\'HTTP_X_FORWARDED\']',
+							'HTTP_X_CLUSTER_CLIENT_IP' => '$_SERVER[\'HTTP_X_CLUSTER_CLIENT_IP\']',
+							'HTTP_FORWARDED_FOR' => '$_SERVER[\'HTTP_FORWARDED_FOR\']',
+							'HTTP_FORWARDED' => '$_SERVER[\'HTTP_FORWARDED\']',
+						),
+					)
+				);
+
 				if ( apply_filters( 'aal_allow_option_erase_logs', true ) ) {
 					add_settings_field(
 						'raw_delete_log_activities',
@@ -308,7 +332,7 @@ class AAL_Settings {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error();
 		}
-			
+		
 		$action_category = isset( $_REQUEST['action_category'] ) ? $_REQUEST['action_category'] : false;
 		
 		$options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $action_category );
@@ -327,7 +351,7 @@ class AAL_Settings {
 	
 	/**
 	 * Returns all options
-	 * 
+	 *
 	 * @since 2.0.7
 	 * @return array
 	 */
@@ -493,7 +517,7 @@ final class AAL_Settings_Fields {
 		<div class="aal-notifier-settings">
 			<ul>
 			<?php foreach ( $rows as $rid => $row ) :
-				$row_key 		= $row['key']; 
+				$row_key 		= $row['key'];
 				$row_condition 	= isset( $row['condition'] ) ? $row['condition'] : '';
 				$row_value 		= isset( $row['value'] ) ? $row['value'] : '';
 				?>

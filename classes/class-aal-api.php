@@ -40,11 +40,24 @@ class AAL_API {
 	 * @return string real address IP
 	 */
 	protected function _get_ip_address() {
-        $remote_address = apply_filters( 'aal_get_ip_address', $_SERVER['REMOTE_ADDR'] );
-        if ( ! empty( $remote_address ) && filter_var( $remote_address, FILTER_VALIDATE_IP ) ) {
-            return $remote_address;
-        }
-        return '127.0.0.1';
+		$header_key = AAL_Main::instance()->settings->get_option( 'log_visitor_ip_source' );
+		
+		if ( empty( $header_key ) ) {
+			$header_key = 'REMOTE_ADDR';
+		}
+		
+		$visitor_ip_address = '';
+		if ( ! empty( $_SERVER[ $header_key ] ) ) {
+			$visitor_ip_address = $_SERVER[ $header_key ];
+		}
+
+		$remote_address = apply_filters( 'aal_get_ip_address', $visitor_ip_address );
+		
+		if ( ! empty( $remote_address ) && filter_var( $remote_address, FILTER_VALIDATE_IP ) ) {
+			return $remote_address;
+		}
+		
+		return '127.0.0.1';
 	}
 
 	/**
