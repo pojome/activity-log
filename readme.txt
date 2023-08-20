@@ -108,6 +108,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.8.8 - 2023-08-20 =
+* Tweak: Added aal_export_csv_separator filter to change the separator in CSV export ([Topic](https://wordpress.org/support/topic/change-separator-in-class-aal-exporter-csv-php/))
+* Tweak: Added Visitor IP Detected to prevent IP manipulations in log
+
 = 2.8.7 - 2023-07-30 =
 * Tweak: Remove Elementor Promotion from Activity Log plugin
 * Tweak: Added support for non-standard WordPress loading ([Topic](https://wordpress.org/support/topic/plugin-breaks-site-migration/))
