@@ -9,7 +9,7 @@ class AAL_API {
 		add_action( 'admin_init', [ $this, 'maybe_add_schedule_delete_old_items' ] );
 		add_action( 'aal/maintenance/clear_old_items', [ $this, 'delete_old_items' ] );
 	}
-	
+
 	public function maybe_add_schedule_delete_old_items() {
 		if ( ! wp_next_scheduled( 'aal/maintenance/clear_old_items' ) ) {
 			wp_schedule_event( time(), 'daily', 'aal/maintenance/clear_old_items' );
@@ -40,25 +40,23 @@ class AAL_API {
 	 * @return string real address IP
 	 */
 	protected function _get_ip_address() {
-		$server_ip_keys = array(
-			'HTTP_CF_CONNECTING_IP', // CloudFlare
-			'HTTP_TRUE_CLIENT_IP', // CloudFlare Enterprise header
-			'HTTP_CLIENT_IP',
-			'HTTP_X_FORWARDED_FOR',
-			'HTTP_X_FORWARDED',
-			'HTTP_X_CLUSTER_CLIENT_IP',
-			'HTTP_FORWARDED_FOR',
-			'HTTP_FORWARDED',
-			'REMOTE_ADDR',
-		);
-
-		foreach ( $server_ip_keys as $key ) {
-			if ( isset( $_SERVER[ $key ] ) && filter_var( $_SERVER[ $key ], FILTER_VALIDATE_IP ) ) {
-				return $_SERVER[ $key ];
-			}
+		$header_key = AAL_Main::instance()->settings->get_option( 'log_visitor_ip_source' );
+		
+		if ( empty( $header_key ) ) {
+			$header_key = 'REMOTE_ADDR';
+		}
+		
+		$visitor_ip_address = '';
+		if ( ! empty( $_SERVER[ $header_key ] ) ) {
+			$visitor_ip_address = $_SERVER[ $header_key ];
 		}
 
-		// Fallback local ip.
+		$remote_address = apply_filters( 'aal_get_ip_address', $visitor_ip_address );
+		
+		if ( ! empty( $remote_address ) && filter_var( $remote_address, FILTER_VALIDATE_IP ) ) {
+			return $remote_address;
+		}
+		
 		return '127.0.0.1';
 	}
 
@@ -93,7 +91,7 @@ class AAL_API {
 				'hist_time'      => current_time( 'timestamp' ),
 			)
 		);
-		
+
 		$args = $this->setup_userdata( $args );
 
 		// Make sure for non duplicate.
@@ -119,7 +117,7 @@ class AAL_API {
 				$args['hist_time']
 			)
 		);
-		
+
 		if ( $check_duplicate ) {
 			return;
 		}
@@ -142,14 +140,14 @@ class AAL_API {
 
 		do_action( 'aal_insert_log', $args );
 	}
-	
+
 	private function setup_userdata( $args ) {
 		$user = false;
-		
+
 		if ( function_exists( 'get_user_by' ) ) {
 			$user = get_user_by( 'id', get_current_user_id() );
 		}
-		
+
 		if ( $user ) {
 			$args['user_caps'] = strtolower( key( $user->caps ) );
 			if ( empty( $args['user_id'] ) ) {
@@ -161,13 +159,13 @@ class AAL_API {
 				$args['user_id'] = 0;
 			}
 		}
-		
+
 		// TODO: Find better way to Multisite compatibility.
 		// Fallback for multisite with bbPress
 		if ( empty( $args['user_caps'] ) || 'bbp_participant' === $args['user_caps'] ) {
 			$args['user_caps'] = 'administrator';
 		}
-		
+
 		return $args;
 	}
 }
