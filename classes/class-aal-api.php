@@ -6,7 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AAL_API {
 
 	public function __construct() {
+		add_action( 'admin_init', [ $this, 'maybe_add_schedule_delete_old_items' ] );
 		add_action( 'aal/maintenance/clear_old_items', [ $this, 'delete_old_items' ] );
+	}
+	
+	public function maybe_add_schedule_delete_old_items() {
+		if ( ! wp_next_scheduled( 'aal/maintenance/clear_old_items' ) ) {
+			wp_schedule_event( time(), 'daily', 'aal/maintenance/clear_old_items' );
+		}
 	}
 
 	public function delete_old_items() {

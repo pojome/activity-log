@@ -34,12 +34,14 @@ class AAL_Exporter_csv {
 		}
 
 		$fp = fopen( 'php://output', 'w' );
+		
+		$separator = apply_filters( 'aal_export_csv_separator', ',' );
 
-		fputcsv( $fp, $columns );
+		fputcsv( $fp, $columns, $separator );
 
 		foreach ( $data as $row ) {
 			$encoded_row = $this->get_encoded_row( $row );
-			fputcsv( $fp, $encoded_row );
+			fputcsv( $fp, $encoded_row, $separator );
 		}
 
 		fclose( $fp );
