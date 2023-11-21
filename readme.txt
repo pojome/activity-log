@@ -3,7 +3,7 @@ Contributors: pojo.me, KingYes, ariel.k, maor
 Tags: Activity Log, User Activity, User Log, Audit Log, Security, Tracking, WooCommerce, bbPress, GDPR,
 Requires at least: 4.4
 Tested up to: 6.3
-Stable tag: 2.8.7
+Stable tag: 2.8.8
 License: GPLv2 or later
 
 The #1 Activity Log plugin helps you monitor & log all changes and activities on your WordPress site, so you can run more securely and organized. Works simple & completely free!
@@ -107,6 +107,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
 
 == Changelog ==
+
+= 2.8.8 - 2023-08-20 =
+* Tweak: Added aal_export_csv_separator filter to change the separator in CSV export ([Topic](https://wordpress.org/support/topic/change-separator-in-class-aal-exporter-csv-php/))
+* Tweak: Added Visitor IP Detected to prevent IP manipulations in log
 
 = 2.8.7 - 2023-07-30 =
 * Tweak: Remove Elementor Promotion from Activity Log plugin

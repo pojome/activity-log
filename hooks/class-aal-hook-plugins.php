@@ -4,12 +4,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class AAL_Hook_Plugins extends AAL_Hook_Base {
 
 	protected function _add_log_plugin( $action, $plugin_name ) {
+		$plugin_version = '';
+
 		// Get plugin name if is a path
 		if ( false !== strpos( $plugin_name, '/' ) ) {
 			$plugin_dir  = explode( '/', $plugin_name );
 			$plugin_data = array_values( get_plugins( '/' . $plugin_dir[0] ) );
 			$plugin_data = array_shift( $plugin_data );
 			$plugin_name = $plugin_data['Name'];
+
+			if ( ! empty( $plugin_data['Version'] ) ) {
+				$plugin_version = $plugin_data['Version'];
+			}
 		}
 
 		aal_insert_log(
@@ -18,6 +24,7 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 				'object_type' => 'Plugins',
 				'object_id'   => 0,
 				'object_name' => $plugin_name,
+				'object_subtype' => $plugin_version,
 			)
 		);
 	}
@@ -28,6 +35,10 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 
 	public function hooks_activated_plugin( $plugin_name ) {
 		$this->_add_log_plugin( 'activated', $plugin_name );
+	}
+	
+	public function hooks_delete_plugin( $plugin_file ) {
+		$this->_add_log_plugin( 'deleted', $plugin_file );
 	}
 
 	public function hooks_plugin_modify( $location, $status ) {
@@ -112,11 +123,14 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 	}
 
 	public function __construct() {
-		add_action( 'activated_plugin', array( &$this, 'hooks_activated_plugin' ) );
-		add_action( 'deactivated_plugin', array( &$this, 'hooks_deactivated_plugin' ) );
-		add_filter( 'wp_redirect', array( &$this, 'hooks_plugin_modify' ), 10, 2 );
+		add_action( 'activated_plugin', array( $this, 'hooks_activated_plugin' ) );
+		add_action( 'deactivated_plugin', array( $this, 'hooks_deactivated_plugin' ) );
+		
+		add_action( 'delete_plugin', array( $this, 'hooks_delete_plugin' ) );
 
-		add_action( 'upgrader_process_complete', array( &$this, 'hooks_plugin_install_or_update' ), 10, 2 );
+		add_filter( 'wp_redirect', array( $this, 'hooks_plugin_modify' ), 10, 2 );
+		
+		add_action( 'upgrader_process_complete', array( $this, 'hooks_plugin_install_or_update' ), 10, 2 );
 
 		parent::__construct();
 	}
