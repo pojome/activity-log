@@ -138,8 +138,11 @@ class AAL_Settings {
 							'HTTP_X_CLUSTER_CLIENT_IP' => 'HTTP_X_CLUSTER_CLIENT_IP',
 							'HTTP_FORWARDED_FOR' => 'HTTP_FORWARDED_FOR',
 							'HTTP_FORWARDED' => 'HTTP_FORWARDED',
+                            'no-collect-ip' => __( 'Do not collect IP', 'aryo-activity-log' ),
 						),
-						'desc' => __( 'Select the source of the visitor IP address. For example, if you are using Cloudflare, select HTTP_CF_CONNECTING_IP.', 'aryo-activity-log' ),
+						'desc' => __( 'Select the source of the visitor IP address. For example, if you are using Cloudflare, select <code>HTTP_CF_CONNECTING_IP</code>.', 'aryo-activity-log' )
+                                . '<br />'
+                                . __( '<strong>Please note:</strong> if you choose "Do not collect IP", the IP column will be hidden in the log.', 'aryo-activity-log' ),
 					)
 				);
 

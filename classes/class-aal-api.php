@@ -46,6 +46,10 @@ class AAL_API {
 			$header_key = 'REMOTE_ADDR';
 		}
 		
+		if ( 'no-collect-ip' === $header_key ) {
+			return '';
+		}
+		
 		$visitor_ip_address = '';
 		if ( ! empty( $_SERVER[ $header_key ] ) ) {
 			$visitor_ip_address = $_SERVER[ $header_key ];
