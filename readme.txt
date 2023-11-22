@@ -108,6 +108,10 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.9.0 - 2023-11-22 =
+* New: Added log when plugin is deleted ([Topic](https://wordpress.org/support/topic/log-remove-plugin/))
+* Tweak: Added an option to "Do not collect IP" in the log ([#195](https://github.com/pojome/activity-log/issues/195))
+
 = 2.8.8 - 2023-08-20 =
 * Tweak: Added aal_export_csv_separator filter to change the separator in CSV export ([Topic](https://wordpress.org/support/topic/change-separator-in-class-aal-exporter-csv-php/))
 * Tweak: Added Visitor IP Detected to prevent IP manipulations in log
