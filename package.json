@@ -3,7 +3,7 @@
 	"slug": "aryo-activity-log",
 	"homepage": "http://pojo.me/",
 	"description": "Activity Log",
-	"version": "2.9.0",
+	"version": "2.9.1",
 	"devDependencies": {
 		"grunt": "~0.4.5",
 		"grunt-checktextdomain": "~1.0.0",
