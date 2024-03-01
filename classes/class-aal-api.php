@@ -126,7 +126,7 @@ class AAL_API {
 			return;
 		}
 
-		$should_skip_insert = apply_filters( 'aal_should_skip_insert_log', false, $args );
+		$should_skip_insert = apply_filters( 'aal_skip_insert_log', false, $args );
 
 		if ( $should_skip_insert ) {
 			return;
