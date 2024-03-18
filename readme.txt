@@ -108,6 +108,9 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 
 == Changelog ==
 
+= 2.9.2 - 2024-03-18 =
+* Tweak: Added an `aal_skip_insert_log` filter to skip record on demand ([Topic](https://wordpress.org/support/topic/exclude-specific-post-types-from-logging/))
+
 = 2.9.1 - 2024-02-21 =
 * Tweak: Temporarily removed WC integration while working on updated support in the future
 
