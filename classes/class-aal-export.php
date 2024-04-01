@@ -79,8 +79,7 @@ class AAL_Export {
         foreach ( array_keys( $columns ) as $column ) {
             switch ( $column ) {
                 case 'date':
-	                $created = date_i18n( get_option( 'date_format' ), $item->hist_time ) . ' ' . date_i18n( get_option( 'time_format' ), $item->hist_time );
-					$row[ $column ] = $created;
+					$row[ $column ] = date_i18n( get_option( 'date_format' ), $item->hist_time ) . ' ' . date_i18n( get_option( 'time_format' ), $item->hist_time );;
                     break;
 
                 case 'author':
