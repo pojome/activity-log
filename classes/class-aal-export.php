@@ -79,8 +79,8 @@ class AAL_Export {
         foreach ( array_keys( $columns ) as $column ) {
             switch ( $column ) {
                 case 'date':
-                    $created = date( 'Y-m-d H:i:s', $item->hist_time );
-					$row[ $column ] = get_date_from_gmt( $created, 'Y/m/d h:i:s A' );
+	                $created = date_i18n( get_option( 'date_format' ), $item->hist_time ) . ' ' . date_i18n( get_option( 'time_format' ), $item->hist_time );
+					$row[ $column ] = $created;
                     break;
 
                 case 'author':
