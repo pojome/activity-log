@@ -2,13 +2,12 @@
 /*
 Plugin Name: Activity Log
 Plugin URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
-Description: Activity Log acts like a black-box for your WordPress site so you can monitor and track all activity on your website, like post deletions, plugin activations, user logins, suspicious activity and more - it’s all here for you to see!
+Description: This top rated Activity Log plugin helps you monitor & log all changes and actions on your WordPress site, so you can remain secure and organized.
 Author: Activity Log Team
 Author URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
 Version: 2.9.2
 Text Domain: aryo-activity-log
 License: GPLv2 or later
-
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
