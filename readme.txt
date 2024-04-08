@@ -1,7 +1,8 @@
 === Activity Log - Monitor & Record User Changes ===
-Contributors: pojo.me, KingYes, ariel.k, maor
+Contributors: elemntor, KingYes, ariel.k, maor
 Tags: Activity Log, User Log, Audit Log, Security, Email Log,
 Requires at least: 6.0
+Requires PHP: 7.0
 Tested up to: 6.5
 Stable tag: 2.9.2
 License: GPLv2 or later
@@ -84,7 +85,7 @@ We understand the importance of maintaining a clean and efficient database envir
 * <em>“Activity Log lets you track a huge range of activities. Overall, very easy to use and setup”</em> - [ElegantThemes.com](https://www.elegantthemes.com/blog/tips-tricks/5-best-ways-to-monitor-wordpress-activity-via-the-dashboard)
 
 <h3>Contributions:</h3>
-<strong>Would you like to contribute to this plugin?</strong> You’re more than welcome to submit your pull requests on the [GitHub repo]((https://github.com/pojome/activity-log)). And, if you have any notes about the code, please open a ticket on the issue tracker.
+<strong>Would you like to contribute to this plugin?</strong> You’re more than welcome to submit your pull requests on the [GitHub repo](https://github.com/pojome/activity-log). And, if you have any notes about the code, please open a ticket on the issue tracker.
 
 == Installation ==
 
@@ -101,7 +102,7 @@ We understand the importance of maintaining a clean and efficient database envir
 == Frequently Asked Questions ==
 
 = Requirements =
-* __Requires PHP5__ for list management functionality.
+* __Requires PHP 7.0__ for list management functionality.
 
 = What is the plugin license? =
 
