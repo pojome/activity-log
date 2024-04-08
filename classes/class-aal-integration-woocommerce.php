@@ -54,4 +54,4 @@ class AAL_Integration_WooCommerce {
 	}
 
 }
-new AAL_Integration_WooCommerce();
+//new AAL_Integration_WooCommerce();

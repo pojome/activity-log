@@ -16,19 +16,15 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		if ( 'auto-draft' === $old_status && ( 'auto-draft' !== $new_status && 'inherit' !== $new_status ) ) {
 			// page created
 			$action = 'created';
-		}
-		elseif ( 'auto-draft' === $new_status || ( 'new' === $old_status && 'inherit' === $new_status ) ) {
+		} elseif ( 'auto-draft' === $new_status || ( 'new' === $old_status && 'inherit' === $new_status ) ) {
 			// nvm.. ignore it.
 			return;
-		}
-		elseif ( 'trash' === $new_status ) {
+		} elseif ( 'trash' === $new_status ) {
 			// page was deleted.
 			$action = 'trashed';
-		}
-		elseif ( 'trash' === $old_status ) {
+		} elseif ( 'trash' === $old_status ) {
 			$action = 'restored';
-		}
-		else {
+		} else {
 			// page updated. I guess.
 			$action = 'updated';
 		}
@@ -43,7 +39,7 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		aal_insert_log(
 			array(
 				'action' => $action,
-				'object_type' => 'Post',
+				'object_type' => 'Posts',
 				'object_subtype' => $post->post_type,
 				'object_id' => $post->ID,
 				'object_name' => $this->_draft_or_post_title( $post->ID ),
@@ -71,7 +67,7 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		aal_insert_log(
 			array(
 				'action' => 'deleted',
-				'object_type' => 'Post',
+				'object_type' => 'Posts',
 				'object_subtype' => $post->post_type,
 				'object_id' => $post->ID,
 				'object_name' => $this->_draft_or_post_title( $post->ID ),

@@ -13,6 +13,7 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 			'admin_email',
 			'users_can_register',
 			'default_role',
+			'WPLANG',
 			'timezone_string',
 			'date_format',
 			'time_format',
@@ -78,23 +79,48 @@ class AAL_Hook_Options extends AAL_Hook_Base {
 			'category_base',
 			'tag_base',
 
+			// Privacy
+			'wp_page_for_privacy_policy',
+
 			// Widgets
 			'sidebars_widgets',
+
+			// AAL
+			'logs_lifespan',
 		) );
 
-		if ( ! in_array( $option, $whitelist_options ) )
+		if ( ! in_array( $option, $whitelist_options ) ) {
 			return;
+		}
 
+		$this->insert_log( $option );
+	}
+
+	private function insert_log( $option_name, $context = '' ) {
 		// TODO: need to think about save old & new values.
 		aal_insert_log( array(
-			'action'         => 'updated',
-			'object_type'    => 'Options',
-			'object_name'    => $option,
+			'action' => 'updated',
+			'object_type' => 'Options',
+			'object_name' => $option_name,
+			'object_subtype' => $context,
 		) );
+	}
+
+	public function hooks_aal_options( $old_values, $new_values ) {
+		foreach ( (array) $old_values as $option_key => $old_value ) {
+			$is_new_value = ! empty( $new_values[ $option_key ] ) && $new_values[ $option_key ] !== $old_value;
+
+			if ( ! $is_new_value ) {
+				continue;
+			}
+
+			$this->insert_log( $option_key, 'Activity Log' );
+		}
 	}
 
 	public function __construct() {
 		add_action( 'updated_option', array( &$this, 'hooks_updated_option' ), 10, 3 );
+		add_action( 'update_option_activity-log-settings', array( $this, 'hooks_aal_options' ), 10, 2 );
 
 		parent::__construct();
 	}

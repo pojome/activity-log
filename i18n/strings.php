@@ -8,51 +8,58 @@ __( 'Get aware of any activities that are taking place on your dashboard! Imagin
 __( 'Administrator', 'aryo-activity-log' );
 __( 'Editor', 'aryo-activity-log' );
 
-// Post
-__( 'Post', 'aryo-activity-log' );
+// Posts
+__( 'Posts', 'aryo-activity-log' );
 __( 'created', 'aryo-activity-log' );
 __( 'updated', 'aryo-activity-log' );
 __( 'deleted', 'aryo-activity-log' );
 __( 'trashed', 'aryo-activity-log' );
 __( 'restored', 'aryo-activity-log' );
 
-// Attachment
-__( 'Attachment', 'aryo-activity-log' );
-__( 'added', 'aryo-activity-log' );
+// Attachments
+__( 'Attachments', 'aryo-activity-log' );
+__( 'uploaded', 'aryo-activity-log' );
 
-// User
-__( 'User', 'aryo-activity-log' );
+// Users
+__( 'Users', 'aryo-activity-log' );
 __( 'logged_out', 'aryo-activity-log' );
 __( 'logged_in', 'aryo-activity-log' );
-__( 'wrong_password', 'aryo-activity-log' );
+__( 'failed_login', 'aryo-activity-log' );
+__( 'registered', 'aryo-activity-log' );
+__( 'removed', 'aryo-activity-log' );
 
 // Plugin
-__( 'Plugin', 'aryo-activity-log' );
+__( 'Plugins', 'aryo-activity-log' );
 __( 'activated', 'aryo-activity-log' );
 __( 'deactivated', 'aryo-activity-log' );
 __( 'installed', 'aryo-activity-log' );
 __( 'File Updated', 'aryo-activity-log' );
 
-// Theme
-__( 'Theme', 'aryo-activity-log' );
+// Themes
+__( 'Themes', 'aryo-activity-log' );
 __( 'Theme Customizer', 'aryo-activity-log' );
 
-// Widget
-__( 'Widget', 'aryo-activity-log' );
+// Widgets
+__( 'Widgets', 'aryo-activity-log' );
 
 // Options
 __( 'Options', 'aryo-activity-log' );
 
-// Menu
-__( 'Menu', 'aryo-activity-log' );
+// Menus
+__( 'Menus', 'aryo-activity-log' );
 
-// Taxonomy
-__( 'Taxonomy', 'aryo-activity-log' );
+// Taxonomies
+__( 'Taxonomies', 'aryo-activity-log' );
 
 // Core
 __( 'Core', 'aryo-activity-log' );
 __( 'WordPress Updated', 'aryo-activity-log' );
 __( 'WordPress Auto Updated', 'aryo-activity-log' );
+
+// Emails
+__( 'Emails', 'aryo-activity-log' );
+__( 'sent', 'aryo-activity-log' );
+__( 'failed', 'aryo-activity-log' );
 
 // Comments
 __( 'Comments', 'aryo-activity-log' );
@@ -63,8 +70,6 @@ __( 'untrashed', 'aryo-activity-log' );
 __( 'spammed', 'aryo-activity-log' );
 __( 'unspammed', 'aryo-activity-log' );
 
-
-
 // Translate Options?
 __( 'blogname', 'aryo-activity-log' );
 __( 'blogdescription', 'aryo-activity-log' );
@@ -73,6 +78,7 @@ __( 'home', 'aryo-activity-log' );
 __( 'admin_email', 'aryo-activity-log' );
 __( 'users_can_register', 'aryo-activity-log' );
 __( 'default_role', 'aryo-activity-log' );
+__( 'WPLANG', 'aryo-activity-log' );
 __( 'timezone_string', 'aryo-activity-log' );
 __( 'date_format', 'aryo-activity-log' );
 __( 'time_format', 'aryo-activity-log' );
@@ -138,6 +144,19 @@ __( 'permalink_structure', 'aryo-activity-log' );
 __( 'category_base', 'aryo-activity-log' );
 __( 'tag_base', 'aryo-activity-log' );
 
+// Privacy
+__( 'wp_page_for_privacy_policy', 'aryo-activity-log' );
+
 // Export
 __( 'Export', 'aryo-activity-log' );
 __( 'downloaded', 'aryo-activity-log' );
+
+// BC:
+__( 'Post', 'aryo-activity-log' );
+__( 'Attachment', 'aryo-activity-log' );
+__( 'User', 'aryo-activity-log' );
+__( 'Plugin', 'aryo-activity-log' );
+__( 'Theme', 'aryo-activity-log' );
+__( 'Widget', 'aryo-activity-log' );
+__( 'Menu', 'aryo-activity-log' );
+__( 'Taxonomy', 'aryo-activity-log' );

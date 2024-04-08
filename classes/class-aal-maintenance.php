@@ -7,60 +7,54 @@ class AAL_Maintenance {
 		global $wpdb;
 
 		if ( function_exists( 'is_multisite') && is_multisite() && $network_wide ) {
-			$old_blog_id = $wpdb->blogid;
-
 			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs}" );
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				self::_create_tables();
+				restore_current_blog();
 			}
-
-			switch_to_blog( $old_blog_id );
 		} else {
 			self::_create_tables();
 		}
+
+		wp_clear_scheduled_hook( 'aal/maintenance/clear_old_items' );
 	}
 
-	public static function uninstall( $network_deactivating ) {
+	public static function uninstall() {
 		global $wpdb;
 
-		if ( function_exists( 'is_multisite') && is_multisite() && $network_deactivating ) {
-			$old_blog_id = $wpdb->blogid;
-
+		if ( function_exists( 'is_multisite') && is_multisite() ) {
 			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs};" );
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				self::_remove_tables();
+				restore_current_blog();
 			}
-
-			switch_to_blog( $old_blog_id );
 		} else {
 			self::_remove_tables();
 		}
+
+		wp_clear_scheduled_hook( 'aal/maintenance/clear_old_items' );
 	}
 
 	public static function mu_new_blog_installer( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
-		global $wpdb;
-
 		if ( is_plugin_active_for_network( ACTIVITY_LOG_BASE ) ) {
-			$old_blog_id = $wpdb->blogid;
 			switch_to_blog( $blog_id );
 			self::_create_tables();
-			switch_to_blog( $old_blog_id );
+			restore_current_blog();
 		}
 	}
 
 	public static function mu_delete_blog( $blog_id, $drop ) {
-		global $wpdb;
-
-		$old_blog_id = $wpdb->blogid;
 		switch_to_blog( $blog_id );
 		self::_remove_tables();
-		switch_to_blog( $old_blog_id );
+		restore_current_blog();
 	}
 
 	protected static function _create_tables() {
 		global $wpdb;
+
+		$charset_collate = $wpdb->get_charset_collate();
 
 		$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}aryo_activity_log` (
 					  `histid` int(11) NOT NULL AUTO_INCREMENT,
@@ -73,8 +67,16 @@ class AAL_Maintenance {
 					  `user_id` int(11) NOT NULL DEFAULT '0',
 					  `hist_ip` varchar(55) NOT NULL DEFAULT '127.0.0.1',
 					  `hist_time` int(11) NOT NULL DEFAULT '0',
-					  PRIMARY KEY (`histid`)
-				) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+					  PRIMARY KEY (`histid`),
+						KEY `user_caps` (`user_caps`),
+						KEY `action` (`action`),
+						KEY `object_type` (`object_type`),
+						KEY `object_subtype` (`object_subtype`),
+						KEY `object_name` (`object_name`),
+						KEY `user_id` (`user_id`),
+						KEY `hist_ip` (`hist_ip`),
+						KEY `hist_time` (`hist_time`)
+				) $charset_collate;";
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );

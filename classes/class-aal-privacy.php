@@ -65,15 +65,15 @@ class AAL_Privacy {
 					'value' => $this->get_action_label( $item->action ),
 				),
 				array(
-					'name' => __( 'Object Type', 'aryo-activity-log' ),
+					'name' => __( 'Topic', 'aryo-activity-log' ),
 					'value' => $item->object_type,
 				),
 				array(
-					'name' => __( 'Object Subtype', 'aryo-activity-log' ),
+					'name' => __( 'Context', 'aryo-activity-log' ),
 					'value' => $item->object_subtype,
 				),
 				array(
-					'name' => __( 'Description', 'aryo-activity-log' ),
+					'name' => __( 'Meta', 'aryo-activity-log' ),
 					'value' => $item->object_name,
 				),
 				array(
