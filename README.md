@@ -1,87 +1,93 @@
-# Activity Log [![Build Status](https://travis-ci.org/pojome/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/pojome/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/pojome/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/pojome/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
+# Activity Log - Monitor & Record User Changes [![Build Status](https://travis-ci.org/pojome/wordpress-aryo-activity-log.svg?branch=master)](https://travis-ci.org/pojome/wordpress-aryo-activity-log) [![Dependency Status](https://david-dm.org/pojome/wordpress-aryo-activity-log/dev-status.svg)](https://david-dm.org/pojome/wordpress-aryo-activity-log#info=devDependencies) [![WordPress](https://img.shields.io/wordpress/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/r/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/v/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![WordPress](https://img.shields.io/wordpress/plugin/dt/aryo-activity-log.svg?style=flat-square)](https://wordpress.org/plugins/aryo-activity-log/) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 
-**Contributors:** [pojo.me](https://profiles.wordpress.org/pojo.me), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
-**Tags:** Activity Log, User Activity, User Log, Audit Log, Security, Tracking, WooCommerce, bbPress, GDPR,  
-**Requires at least:** 4.4  
+**Contributors:** [elemntor](https://profiles.wordpress.org/elemntor), [KingYes](https://profiles.wordpress.org/KingYes), [ariel.k](https://profiles.wordpress.org/ariel.k), [maor](https://profiles.wordpress.org/maor)  
+**Tags:** Activity Log, User Log, Audit Log, Security, Email Log,  
+**Requires at least:** 6.0  
+**Requires PHP:** 7.0  
 **Tested up to:** 6.5  
-**Stable tag:** 2.9.2  
+**Stable tag:** 2.9.3  
 **License:** GPLv2 or later  
 
-The #1 Activity Log plugin helps you monitor & log all changes and activities on your WordPress site, so you can run more securely and organized. Works simple & completely free!
+This top rated Activity Log plugin helps you monitor & log all changes and actions on your WordPress site, so you can remain secure and organized.
 
 ## Description ##
 
-<strong>A COMPLETE, EASY TO USE & WELL SUPPORTED WORDPRESS ACTIVITY LOG PLUGIN</strong><br />
+<strong>AN EASY TO USE & FULLY SUPPORTED WORDPRESS ACTIVITY LOG PLUGIN</strong><br />
 
-Want to monitor and track your WordPress website activity? Find out exactly who does what on your WordPress website. the Activity Log plugin is like an airplane's black box that logs every activity in WordPress admin, and lets you see exactly what users are doing on your WordPress website.
+Want to monitor and track your WordPress website activity? Find out exactly who does what on your WordPress website with this plugin. Activity Log is like an airplane’s black box that logs every action in the WordPress admin, and lets you see exactly what users are doing on your WordPress website.
 
-* Like, if someone is trying to hack your site.
-* Or, when a post was published, and who published it.
-* Or, if a plugin/theme was activated/deactivated.
-* Log suspicious admin activity.
-* Securing your site by tracking log of all user activity?
+* If someone is trying to hack your site
+* When a post was published, and who published it
+* If a plugin/theme was activated/deactivated
+* Suspicious admin activity
 
-Useful, right? Trust us, you won't understand how you managed your website without it. The plugin is also lightning fast and works behind the scenes, so it doesn't affect site and admin performance. For optimal performance, we built the plugin so it runs on a separate table in the database.
+It’s so essential; you’ll wonder how you ever managed your website without it. The plugin is also lightning fast and works behind the scenes, so it doesn\’t affect site and admin performance. For optimal performance, we built the plugin so that it runs on a separate table in the database.
 
-If you have tens of users or more, you really can’t know who did what. This plugin tries to solve this issue by tracking what users do, and displaying it in an easy to use and easy to filter view on the dashboard of your WordPress site.
+If you have more than a handful of users, keeping track of who did what is virtually impossible. This plugin solves that issue by tracking what actions were initiated by which users, and displaying it in an easy-to-use and easy-to-filter view on the dashboard of your WordPress site.
 
-<strong>Export to CSV</strong> Export your Activity Log data records to CSV. Developers can easily add support for custom data formats with our new dedicated Export API.
+<strong>New! Introducing Email Logging</strong> - Capture all emails sent from your WordPress site for streamlined debugging and compliance. Gain better visibility into email communication, aiding both troubleshooting and record-keeping. This is particularly beneficial for WooCommerce stores, allowing you to easily track sent emails alongside other critical site events.
 
-<strong>Data Privacy and GDPR Compliance</strong> We provide the tools to help you be GDPR compliant, including Export/Erasure of data via the WordPress Privacy Tools.
+<strong>Export to CSV</strong> - Export your Activity Log data records to CSV. Developers can easily add support for custom data formats with our new dedicated Export API.
+
+<strong>Data Privacy and GDPR Compliance</strong> - We provide the tools to help you adhere to GDPR compliance standards, including Export/Erasure of data via the WordPress Privacy Tools.
 
 <h3>With the Activity Log you can record:</h3>
-* <strong>WordPress</strong> - Core Updates
-* <strong>Posts</strong> - Created, Updated, Deleted
-* <strong>Pages</strong> - Created, Updated, Deleted
-* <strong>Custom Post Type</strong> - Created, Updated, Deleted
-* <strong>Tags</strong> - Created, Edited, Deleted
-* <strong>Categories</strong> - Created, Edited, Deleted
-* <strong>Taxonomies</strong> - Created, Edited, Deleted
-* <strong>Comments</strong> - Created, Approved, Unproved, Trashed, Untrashed, Spammed, Unspammed, Deleted
-* <strong>Media</strong> - Uploaded, Edited, Deleted
-* <strong>Users</strong> - Login, Logout, Login has failed, Update profile, Registered and Deleted
-* <strong>Plugins</strong> - Installed, Updated, Activated, Deactivated, Changed
-* <strong>Themes</strong> - Installed, Updated, Deleted, Activated, Changed (Editor and Customizer)
-* <strong>Widgets</strong> - Added to a sidebar / Deleted from a sidebar, Order widgets
-* <strong>Menus</strong> - A menu is being Created, Updated, Deleted
-* <strong>Setting</strong> - General, Writing, Reading, Discussion, Media, Permalinks
-* <strong>Options</strong> - Can be extend by east filter
-* <strong>Export</strong> - User download export file from the site
-* <strong>WooCommerce</strong> - Monitor all shop settings and options
-* <strong>bbPress</strong> - Forums, Topics, Replies, Taxonomies and other actions
-* There's more, but you get the point...
 
-<h4>What people are saying</h4>
-* <em>“Best 10 Free WordPress Plugins of the Month – July 2014: Keeping tabs on what your users do with their access to the Dashboard”</em> - [ManageWp.com](https://managewp.com/best-free-wordpress-plugins-july-2014)
-* <em>“Thanks to this step, we’ve discovered that our site was undergoing a brute force attack”</em> - [artdriver.com](http://www.artdriver.com/wordpress-site-hacked-solution-time/)
-* <em>“Optimized code - The plugin itself is blazing fast and leaves almost no footprint on the server.”</em> - [freshtechtips.com](http://www.freshtechtips.com/2014/01/best-audit-trail-plugins-for-wordpress.html)
-* <em>“The plugin successful for activity log for WordPress.”</em> - [wp-tricks.co.il](http://www.wp-tricks.co.il/2013/08/%D7%99%D7%95%D7%9E%D7%9F-%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA-%D7%9C%D7%95%D7%95%D7%A8%D7%93%D7%A4%D7%A8%D7%A1-aryo-activity-log/)
-* <em>“This is a pretty simple yet quite effective plugin for keeping track of what your admins and users do on your sites.”</em> - [shadowdragonunlimited.com](http://shadowdragonunlimited.com/plugin-of-the-week-9302013-aryo-activity-log/plugin-of-the-week/)
-* <em>“Activity Log lets you track a huge range of activities. Overall, very easy to use and setup.”</em> - [elegantthemes.com](https://www.elegantthemes.com/blog/tips-tricks/5-best-ways-to-monitor-wordpress-activity-via-the-dashboard)
+* <strong>WordPress</strong> - Core updates
+* <strong>Posts</strong> - Created, updated, deleted
+* <strong>Pages</strong> - Created, updated, deleted
+* <strong>Custom Post Type</strong> - Created, updated, deleted
+* <strong>Tags</strong> - Created, updated, deleted
+* <strong>Categories</strong> - Created, updated, deleted
+* <strong>Taxonomies</strong> - Created, updated, deleted
+* <strong>Menus</strong> - Created, updated, deleted
+* <strong>Media</strong> - Created, updated, deleted
+* <strong>Comments</strong> - Created, approved, unapproved, trashed, untrashed, spammed, unspammed, deleted
+* <strong>Users</strong> - Login, logout, login failed, update profile, registered, deleted
+* <strong>Plugins</strong> - Installed, updated, activated, deactivated, changed
+* <strong>Themes</strong> - Installed, updated, deleted, activated, changed (Editor and Customizer)
+* <strong>Widgets</strong> - Added to sidebar, deleted from sidebar, order widgets
+* <strong>Setting</strong> - General, writing, reading, discussion, media, permalinks
+* <strong>Options</strong> - Extended custom settings for 3rd party plugins
+* <strong>Export</strong> - Exported activity log file
+* <strong>WooCommerce</strong> - Track products, orders, customers, and more
+* <strong>bbPress</strong> - Forums, topics, replies, taxonomies, and other actions
+* <strong>Emails sent from WordPress site</strong> - Sending successful, sending failed
+* There’s more, of course, but you get the point...
+
+For each event recorded by the activity log, the following details are also logged:
+
+* Date and time of occurrence
+* User and user role responsible for the change
+* Source IP address from which the change originated
+* Affected object where the change occurred
+
+The plugin doesn\’t require any kind of setup; it works right out of the box (just another reason people love it)!
+
+<h3>Data Storage and Performance Optimization</h3>
+
+In order to ensure optimal performance of your website, all events and logs data are stored in a dedicated custom table within your WordPress database. This approach significantly reduces the impact on your website's performance, ensuring seamless operation even during peak traffic periods.
+
+<h3>Uninstall Clean-up</h3>
+
+We understand the importance of maintaining a clean and efficient database environment. That's why our plugin features an uninstall hook that seamlessly removes all traces of its presence from your website when uninstalling. This meticulous clean-up process ensures that your database remains lean and clutter-free even after our plugin has been removed.
+
+<strong>With our optimized data storage, thorough logging, and meticulous clean-up process, you can trust that our plugin will enhance the functionality and security of your WordPress site without compromising its performance.</strong>
 
 
-<h4>Translators:</h4>
-* German (de_DE) - [Robert Harm](http://www.mapsmarker.com/)
-* Dutch (nl_NL) - [Tom Aalbers](http://www.dtaalbers.com/)
-* Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
-* Danish (da_DK) - [Morten Dalgaard Johansen](http://www.iosoftgame.com/)
-* Hebrew (he_IL) + RTL Support - [Pojo.me](http://pojo.me/)
-* Armenia (hy_AM) - Hayk Jomardyan
-* Brazilian Portuguese (pt_BR) - [Criação de Sites](http://www.techload.com.br/criacao-de-sites-ribeirao-preto)
-* Turkish (tr_TR) - [Ahmet Kolcu](http://ahmetkolcu.org)
-* Persian (fa_IR) - [Promising](http://vwp.ir/)
-* Russian (ru_RU) - Oleg Reznikov
-* Polish (pl_PL) - Maciej Gryniuk
-* Czech (cs_CZ) - Martin Kokeš
-* Finnish (fi) - Nazq
+<h3>What users have to say</h3>
 
-The plugin does not require any kind of setup. It works out of the box (and that’s another reason people love it).
+* <em>“Its tools, particularly for data privacy and GDPR compliance, make it indispensable for websites operating within European Union boundaries or dealing with EU citizens’ data”</em> - [HubSpot.com](https://blog.hubspot.com/website/8-best-plugins-tracking-user-activity-wordpress)
+* <em>“If you’re after a competent WP security audit log plugin with all the basic features you need, Activity Log is it!”</em> - [WPAstra.com](https://wpastra.com/plugins/wordpress-activity-log-plugins/)
+* <em>“Activity Log features a remarkably straightforward dashboard interface, providing administrators with an at-a-glance understanding of site interactions”</em> - [Malcare.com](https://www.malcare.com/blog/wordpress-activity-log/)
+* <em>“Best 10 Free WordPress Plugins of the Month: Keeping tabs on what your users do with their access to the Dashboard”</em> - [ManageWP.com](https://managewp.com/best-free-wordpress-plugins-july-2014)
+* <em>“Thanks to this step, we’ve discovered that our site was undergoing a brute force attack”</em> - [Artdriver.com](https://artdriver.com/blog/wordpress-site-hacked-solution-time)
+* <em>“Optimized code – The plugin itself is blazing fast and leaves almost no footprint on the server”</em> - [FreshTechTips.com](https://www.freshtechtips.com/2014/01/best-audit-trail-plugins-for-wordpress.html)
+* <em>“Activity Log lets you track a huge range of activities. Overall, very easy to use and setup”</em> - [ElegantThemes.com](https://www.elegantthemes.com/blog/tips-tricks/5-best-ways-to-monitor-wordpress-activity-via-the-dashboard)
 
-We’re planning to add a lot more features in the upcoming releases. If you think we’re missing something big time, please post your suggestions in the plugin’s forum.
-
-<h4>Contributions:</h4>
-Would you like to like to contribute to Activity Log? You are more than welcome to submit your pull requests on the [GitHub repo](https://github.com/pojome/activity-log). Also, if you have any notes about the code, please open a ticket on the issue tracker.
+<h3>Contributions:</h3>
+<strong>Would you like to contribute to this plugin?</strong> You’re more than welcome to submit your pull requests on the [GitHub repo](https://github.com/pojome/activity-log). And, if you have any notes about the code, please open a ticket on the issue tracker.
 
 ## Installation ##
 
@@ -98,7 +104,7 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 ## Frequently Asked Questions ##
 
 ### Requirements ###
-* __Requires PHP5__ for list management functionality.
+* __Requires PHP 7.0__ for list management functionality.
 
 ### What is the plugin license? ###
 
@@ -109,6 +115,11 @@ Would you like to like to contribute to Activity Log? You are more than welcome 
 * You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
 
 ## Changelog ##
+
+### 2.10.0 - 2024-04-08 ###
+* New: Introducing Email Logging - Capture all emails sent from your WordPress site
+* Tweak: Added filter to change menu page capability ([#205](https://github.com/pojome/activity-log/pull/205))
+* Tweak: Set the date display on CSV export file according to WordPress settings ([#204](https://github.com/pojome/activity-log/pull/204))
 
 ### 2.9.2 - 2024-03-18 ###
 * Tweak: Added an `aal_skip_insert_log` filter to skip record on demand ([Topic](https://wordpress.org/support/topic/exclude-specific-post-types-from-logging/))
