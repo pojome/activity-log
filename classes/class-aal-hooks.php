@@ -21,7 +21,8 @@ class AAL_Hooks {
 		include( plugin_dir_path( ACTIVITY_LOG__FILE__ ) . '/hooks/class-aal-hook-core.php' );
 		include( plugin_dir_path( ACTIVITY_LOG__FILE__ ) . '/hooks/class-aal-hook-export.php' );
 		include( plugin_dir_path( ACTIVITY_LOG__FILE__ ) . '/hooks/class-aal-hook-comments.php' );
-		
+		include( plugin_dir_path( ACTIVITY_LOG__FILE__ ) . '/hooks/class-aal-hook-emails.php' );
+
 		new AAL_Hook_Users();
 		new AAL_Hook_Attachments();
 		new AAL_Hook_Menus();
@@ -34,5 +35,6 @@ class AAL_Hooks {
 		new AAL_Hook_Core();
 		new AAL_Hook_Export();
 		new AAL_Hook_Comments();
+		new AAL_Hook_Emails();
 	}
 }

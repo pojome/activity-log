@@ -93,6 +93,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					'Posts',
 					'Taxonomies',
 					'Users',
+					'Emails',
 					'Options',
 					'Attachments',
 					'Plugins',
@@ -171,14 +172,14 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'description' => __( 'Meta', 'aryo-activity-log' ),
 			'action'      => __( 'Action', 'aryo-activity-log' ),
 		);
-        
+
         if ( ! $this->is_store_ip_address() ) {
             unset( $columns['ip'] );
         }
 
 		return $columns;
 	}
-    
+
     private function is_store_ip_address() {
         return 'no-collect-ip' !== AAL_Main::instance()->settings->get_option( 'log_visitor_ip_source' );
     }
@@ -684,7 +685,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 
 	private function get_filtered_link( $name = '', $value = '' ) {
-		$base_page_url = menu_page_url( 'activity_log_page', false );
+		$base_page_url = menu_page_url( 'activity-log-page', false );
 
 		if ( empty( $name ) ) {
 			return $base_page_url;
