@@ -13,7 +13,7 @@ class AAL_Hook_Emails extends AAL_Hook_Base {
 		$caller_source = $this->get_caller_source();
 
 		aal_insert_log( array(
-			'action' => 'email_sent',
+			'action' => 'sent',
 			'object_type' => 'Emails',
 			'object_name' => $mail_data['subject'],
 			'object_subtype' => $caller_source,
@@ -113,7 +113,7 @@ class AAL_Hook_Emails extends AAL_Hook_Base {
 		$caller_source = $this->get_caller_source();
 
 		aal_insert_log( array(
-			'action' => 'email_failed',
+			'action' => 'failed',
 			'object_type' => 'Emails',
 			'object_name' => $error->get_error_message(),
 			'object_subtype' => $caller_source,

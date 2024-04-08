@@ -58,7 +58,8 @@ __( 'WordPress Auto Updated', 'aryo-activity-log' );
 
 // Emails
 __( 'Emails', 'aryo-activity-log' );
-__( 'email_sent', 'aryo-activity-log' );
+__( 'sent', 'aryo-activity-log' );
+__( 'failed', 'aryo-activity-log' );
 
 // Comments
 __( 'Comments', 'aryo-activity-log' );
