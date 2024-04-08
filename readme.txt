@@ -114,6 +114,11 @@ We understand the importance of maintaining a clean and efficient database envir
 
 == Changelog ==
 
+= 2.10.0 - 2024-04-08 =
+* New: Introducing Email Logging - Capture all emails sent from your WordPress site
+* Tweak: Added filter to change menu page capability ([#205](https://github.com/pojome/activity-log/pull/205))
+* Tweak: Set the date display on CSV export file according to WordPress settings ([#204](https://github.com/pojome/activity-log/pull/204))
+
 = 2.9.2 - 2024-03-18 =
 * Tweak: Added an `aal_skip_insert_log` filter to skip record on demand ([Topic](https://wordpress.org/support/topic/exclude-specific-post-types-from-logging/))
 
