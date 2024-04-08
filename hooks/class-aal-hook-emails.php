@@ -86,10 +86,6 @@ class AAL_Hook_Emails extends AAL_Hook_Base {
 	}
 
 	private function get_wp_core_name_by_file( $file ) {
-		if ( ! defined( 'ABSPATH' ) ) {
-			return '';
-		}
-
 		$core_directories = [
 			ABSPATH . WPINC,
 			ABSPATH . 'wp-admin',
