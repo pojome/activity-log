@@ -35,7 +35,7 @@ class AAL_Export {
 			$this->redirect_back();
 		}
 
-		if ( isset( $_GET['page'] ) && 'activity_log_page' !== $_GET['page'] ) {
+		if ( isset( $_GET['page'] ) && 'activity-log-page' !== $_GET['page'] ) {
 			$this->redirect_back();
 		}
 
@@ -66,7 +66,7 @@ class AAL_Export {
 	}
 
 	protected function redirect_back() {
-		wp_redirect( menu_page_url( 'activity_log_page', false ) );
+		wp_redirect( menu_page_url( 'activity-log-page', false ) );
 		exit;
 	}
 

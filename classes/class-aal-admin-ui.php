@@ -13,7 +13,7 @@ class AAL_Admin_Ui {
 	public function create_admin_menu() {
 		$menu_capability = current_user_can( 'view_all_aryo_activity_log' ) ? 'view_all_aryo_activity_log' : apply_filters( 'aal_menu_page_capability', 'edit_pages' );
 
-		$this->_screens['main'] = add_menu_page( _x( 'Activity Log', 'Page and Menu Title', 'aryo-activity-log' ), _x( 'Activity Log', 'Page and Menu Title', 'aryo-activity-log' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
+		$this->_screens['main'] = add_menu_page( _x( 'Activity Log', 'Page and Menu Title', 'aryo-activity-log' ), _x( 'Activity Log', 'Page and Menu Title', 'aryo-activity-log' ), $menu_capability, 'activity-log-page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
 
 		// Just make sure we are create instance.
 		add_action( 'load-' . $this->_screens['main'], array( &$this, 'get_list_table' ) );
@@ -45,13 +45,13 @@ class AAL_Admin_Ui {
 				background: #808080;
 				font-family: inherit;
 			}
-			.toplevel_page_activity_log_page .manage-column {
+			.toplevel_page_activity-log-page .manage-column {
 				width: auto;
 			}
-			.toplevel_page_activity_log_page .column-description {
+			.toplevel_page_activity-log-page .column-description {
 				width: 20%;
 			}
-			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image:before {
+			#adminmenu #toplevel_page_activity-log-page div.wp-menu-image:before {
 				content: "\f321";
 			}
 			h1.aal-page-title:before {
@@ -75,20 +75,20 @@ class AAL_Admin_Ui {
 				text-decoration: none;
 			}
 			@media (max-width: 767px) {
-				.toplevel_page_activity_log_page .manage-column {
+				.toplevel_page_activity-log-page .manage-column {
 					width: auto;
 				}
-				.toplevel_page_activity_log_page .column-date,
-				.toplevel_page_activity_log_page .column-author {
+				.toplevel_page_activity-log-page .column-date,
+				.toplevel_page_activity-log-page .column-author {
 					display: table-cell;
 					width: auto;
 				}
-				.toplevel_page_activity_log_page .column-ip,
-				.toplevel_page_activity_log_page .column-description,
-				.toplevel_page_activity_log_page .column-label {
+				.toplevel_page_activity-log-page .column-ip,
+				.toplevel_page_activity-log-page .column-description,
+				.toplevel_page_activity-log-page .column-label {
 					display: none;
 				}
-				.toplevel_page_activity_log_page .column-author .avatar {
+				.toplevel_page_activity-log-page .column-author .avatar {
 					display: none;
 				}
 			}
@@ -99,7 +99,7 @@ class AAL_Admin_Ui {
 	public function admin_header() {
 		// TODO: move to a separate file.
 		?><style>
-			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image:before {
+			#adminmenu #toplevel_page_activity-log-page div.wp-menu-image:before {
 				content: "\f321";
 			}
 		</style>
