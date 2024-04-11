@@ -98,6 +98,12 @@ class AAL_API {
 
 		$args = $this->setup_userdata( $args );
 
+		$should_skip_insert = apply_filters( 'aal_skip_insert_log', false, $args );
+
+		if ( $should_skip_insert ) {
+			return;
+		}
+
 		// Make sure for non duplicate.
 		$check_duplicate = $wpdb->get_row(
 			$wpdb->prepare(
@@ -123,12 +129,6 @@ class AAL_API {
 		);
 
 		if ( $check_duplicate ) {
-			return;
-		}
-
-		$should_skip_insert = apply_filters( 'aal_skip_insert_log', false, $args );
-
-		if ( $should_skip_insert ) {
 			return;
 		}
 
