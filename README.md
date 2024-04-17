@@ -6,7 +6,7 @@
 **Requires at least:** 6.0  
 **Requires PHP:** 7.0  
 **Tested up to:** 6.5  
-**Stable tag:** 2.10.0  
+**Stable tag:** 2.10.1  
 **License:** GPLv2 or later  
 
 This top rated Activity Log plugin helps you monitor & log all changes and actions on your WordPress site, so you can remain secure and organized.
@@ -115,6 +115,9 @@ We understand the importance of maintaining a clean and efficient database envir
 * You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
 
 ## Changelog ##
+
+### 2.10.1 - 2024-04-17 ###
+* Tweak: Add option to not keep email logs ([Topic](https://wordpress.org/support/topic/activity-log-email-off-on-option/))
 
 ### 2.10.0 - 2024-04-08 ###
 * New: Introducing Email Logging - Capture all emails sent from your WordPress site
