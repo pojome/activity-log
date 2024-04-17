@@ -114,6 +114,9 @@ We understand the importance of maintaining a clean and efficient database envir
 
 == Changelog ==
 
+= 2.10.1 - 2024-04-17 =
+* Tweak: Add option to not keep email logs ([Topic](https://wordpress.org/support/topic/activity-log-email-off-on-option/))
+
 = 2.10.0 - 2024-04-08 =
 * New: Introducing Email Logging - Capture all emails sent from your WordPress site
 * Tweak: Added filter to change menu page capability ([#205](https://github.com/pojome/activity-log/pull/205))
