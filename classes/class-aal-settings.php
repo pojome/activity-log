@@ -69,6 +69,7 @@ class AAL_Settings {
 			update_option( $this->slug, apply_filters( 'aal_default_options', array(
 				'logs_lifespan' => '30',
 				'logs_failed_login' => 'yes',
+				'logs_email' => 'yes',
 			) ) );
 		}
 
@@ -114,6 +115,23 @@ class AAL_Settings {
 						'options' => array(
 							'yes' => __( 'Keep', 'aryo-activity-log' ),
 							'no' => __( "Don't Keep (Not recommended)", 'aryo-activity-log' ),
+						),
+					)
+				);
+
+				add_settings_field(
+					'logs_email',
+					__( 'Keep Email Logs', 'aryo-activity-log' ),
+					array( 'AAL_Settings_Fields', 'select_field' ),
+					$this->slug,
+					'general_settings_section',
+					array(
+						'id'      => 'logs_email',
+						'page'    => $this->slug,
+						'type'    => 'select',
+						'options' => array(
+							'yes' => __( 'Keep', 'aryo-activity-log' ),
+							'no' => __( "Don't Keep", 'aryo-activity-log' ),
 						),
 					)
 				);

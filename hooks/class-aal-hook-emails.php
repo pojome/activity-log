@@ -6,6 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AAL_Hook_Emails extends AAL_Hook_Base {
 
 	public function hooks_wp_mail_succeeded( $mail_data ) {
+		if ( 'no' === AAL_Main::instance()->settings->get_option( 'logs_email' ) ) {
+			return;
+		}
+
 		if ( empty( $mail_data['subject'] ) ) {
 			$mail_data['subject'] = '[no subject]';
 		}
@@ -106,6 +110,10 @@ class AAL_Hook_Emails extends AAL_Hook_Base {
 	 * @return void
 	 */
 	public function hooks_wp_mail_failed( $error ) {
+		if ( 'no' === AAL_Main::instance()->settings->get_option( 'logs_email' ) ) {
+			return;
+		}
+
 		$caller_source = $this->get_caller_source();
 
 		aal_insert_log( array(
