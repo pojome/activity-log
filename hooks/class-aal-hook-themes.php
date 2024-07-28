@@ -30,7 +30,7 @@ class AAL_Hook_Themes extends AAL_Hook_Base {
 
 	public function hooks_switch_theme( $new_name, WP_Theme $new_theme ) {
 		aal_insert_log(
-				array(
+			array(
 				'action'         => 'activated',
 				'object_type'    => 'Themes',
 				'object_subtype' => $new_theme->get_stylesheet(),
@@ -134,6 +134,36 @@ class AAL_Hook_Themes extends AAL_Hook_Base {
 		}
 	}
 
+	private function add_log_theme( $action, $theme_slug ) {
+		$theme = wp_get_theme( $theme_slug );
+
+		$name = isset( $theme['Name'] ) ? $theme['Name'] : $theme_slug;
+		$version = isset( $theme['Version'] ) ? $theme['Version'] : '';
+
+		aal_insert_log(
+			array(
+				'action' => $action,
+				'object_type' => 'Themes',
+				'object_name' => $name,
+				'object_subtype' => $version,
+			)
+		);
+
+	}
+
+	public function hooks_auto_update_settings( $option, $value, $old_value ) {
+		$enabled_themes = array_diff( $value, $old_value );
+		$disabled_themes = array_diff( $old_value, $value );
+
+		foreach ( $disabled_themes as $theme ) {
+			$this->add_log_theme( 'auto_update_disabled', $theme );
+		}
+
+		foreach ( $enabled_themes as $theme ) {
+			$this->add_log_theme( 'auto_update_enabled', $theme );
+		}
+	}
+
 	public function __construct() {
 		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
 		add_action( 'switch_theme', array( &$this, 'hooks_switch_theme' ), 10, 2 );
@@ -143,6 +173,8 @@ class AAL_Hook_Themes extends AAL_Hook_Base {
 		// Theme customizer
 		add_action( 'customize_save', array( &$this, 'hooks_theme_customizer_modified' ) );
 		//add_action( 'customize_preview_init', array( &$this, 'hooks_theme_customizer_modified' ) );
+
+		add_action( 'update_site_option_auto_update_themes', [ $this, 'hooks_auto_update_settings' ], 10, 3 );
 
 		parent::__construct();
 	}
