@@ -58,7 +58,7 @@ __( 'Taxonomies', 'aryo-activity-log' );
 __( 'Core', 'aryo-activity-log' );
 __( 'WordPress Updated', 'aryo-activity-log' );
 __( 'WordPress Auto Updated', 'aryo-activity-log' );
-__( 'Major Update', 'aryo-activity-log' );
+__( 'All New Versions', 'aryo-activity-log' );
 
 // Emails
 __( 'Emails', 'aryo-activity-log' );

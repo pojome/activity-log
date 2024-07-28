@@ -34,7 +34,7 @@ class AAL_Hook_Core extends AAL_Hook_Base {
 			array(
 				'action' => $action,
 				'object_type' => 'Core',
-				'object_name' => 'Major Update'
+				'object_name' => 'All New Versions'
 			)
 		);
 	}
