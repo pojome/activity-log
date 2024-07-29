@@ -114,6 +114,11 @@ We understand the importance of maintaining a clean and efficient database envir
 
 == Changelog ==
 
+= 2.11.0 - 2024-07-29 =
+* New: Added logging for enabling and disabling automatic theme updates
+* New: Added logging for enabling and disabling automatic plugin updates
+* New: Added logging for enabling and disabling automatic core updates
+
 = 2.10.1 - 2024-04-17 =
 * Tweak: Add option to not keep email logs ([Topic](https://wordpress.org/support/topic/activity-log-email-off-on-option/))
 
@@ -387,7 +392,6 @@ We understand the importance of maintaining a clean and efficient database envir
 * Keep your log for any time your wants
 * Delete Log Activities from Database.
 * Bugs fixed
-
 
 = 1.0.8 =
 * Added translate: Serbo-Croatian (sr_RS) - Thanks to [Borisa Djuraskovic](http://www.webhostinghub.com/).
