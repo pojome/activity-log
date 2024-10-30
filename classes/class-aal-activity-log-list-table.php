@@ -13,6 +13,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	protected $_allow_caps = array();
 
+	protected $data_types = array();
+
 	protected function _get_allow_caps() {
 		if ( empty( $this->_allow_caps ) ) {
 			$user = get_user_by( 'id', get_current_user_id() );
@@ -189,6 +191,90 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'ip' => array( 'hist_ip', 'desc' ),
 			'date' => array( 'hist_time', true ),
 		);
+	}
+
+	public function display_rows() {
+		foreach ( $this->items as $item ) {
+			$this->single_row( $item );
+
+			$this->maybe_promotion_row( $item->object_type );
+		}
+	}
+
+	private function maybe_promotion_row( $object_type ) {
+		static $promotion_printed = [
+			'emails' => false,
+		];
+
+		$object_type = strtolower( $object_type );
+
+		if ( ! isset( $promotion_printed[ $object_type ] ) || $promotion_printed[ $object_type ] ) {
+			return;
+		}
+
+		$promotion_printed[ $object_type ] = true;
+
+		$promotion_html = $this->get_promotion_html_by_object_type( $object_type );
+
+		if ( empty( $promotion_html ) ) {
+			return;
+		}
+
+		printf(
+			'<tr class="aal-table-promotion-row" data-promotion-id="%s"><td colspan="' . count( $this->get_columns() ) . '">%s</td></tr>',
+			esc_attr( $object_type ),
+			$promotion_html
+		);
+	}
+
+	private function is_plugin_installed( $plugin_slug ) {
+		$plugins = get_plugins();
+
+		return isset( $plugins[ $plugin_slug ] );
+	}
+
+	private function get_promotion_html_by_object_type( $object_type ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			return false;
+		}
+
+		if ( 'emails' === $object_type ) {
+			$plugin_file_path = 'site-mailer/site-mailer.php';
+			$plugin_slug = 'site-mailer';
+
+			$cta_data = $this->get_plugin_cta_data( $plugin_slug, $plugin_file_path );
+			if ( empty( $cta_data ) ) {
+				return false;
+			}
+
+			return sprintf(
+				'<div class="aal-promotion">%s <a href="%s">%s</a><a href="#">X</a></div>',
+				esc_html__( 'Ensure your emails avoid the spam folder! Use Site Mailer for improved email deliverability, detailed email logs, and an easy setup.', 'aryo-activity-log' ),
+				$cta_data['url'],
+				$cta_data['text']
+			);
+		}
+
+		return false;
+	}
+
+	private function get_plugin_cta_data( $plugin_slug, $plugin_file_path ) {
+		if ( is_plugin_active( $plugin_file_path ) ) {
+			return false;
+		}
+
+		if ( $this->is_plugin_installed( $plugin_file_path ) ) {
+			$url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin_file_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_file_path );
+			$cta_text = esc_html__( 'Activate Plugin', 'elementor' );
+		} else {
+			$url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $plugin_slug ), 'install-plugin_' . $plugin_slug );
+			$cta_text = esc_html__( 'Install Plugin', 'elementor' );
+		}
+
+		return [
+			'url' => $url,
+			'text' => $cta_text,
+		];
 	}
 
 	public function column_default( $item, $column_name ) {
@@ -430,7 +516,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			;'
 		);
 
-		$types = $wpdb->get_results(
+		$this->data_types = $wpdb->get_col(
 			'SELECT DISTINCT `object_type` FROM `' . $wpdb->activity_log . '`
 				WHERE 1 = 1
 				' . $this->_get_where_by_role() . '
@@ -440,7 +526,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		);
 
 		// Make sure we get items for filter.
-		if ( $users || $types ) {
+		if ( $users || $this->data_types ) {
 			if ( ! isset( $_REQUEST['dateshow'] ) )
 				$_REQUEST['dateshow'] = '';
 
@@ -502,13 +588,20 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			}
 		}
 
-		if ( $types ) {
-			if ( ! isset( $_REQUEST['typeshow'] ) )
+		if ( $this->data_types ) {
+			if ( ! isset( $_REQUEST['typeshow'] ) ) {
 				$_REQUEST['typeshow'] = '';
+			}
 
 			$output = array();
-			foreach ( $types as $type )
-				$output[] = sprintf( '<option value="%s"%s>%s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ), __( $type->object_type, 'aryo-activity-log' ) );
+			foreach ( $this->data_types as $object_type ) {
+				$output[] = sprintf(
+					'<option value="%s"%s>%s</option>',
+					$object_type,
+					selected( $_REQUEST['typeshow'], $object_type, false ),
+					__( $object_type, 'aryo-activity-log' )
+				);
+			}
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
 			printf( '<option value="">%s</option>', __( 'All Topics', 'aryo-activity-log' ) );
