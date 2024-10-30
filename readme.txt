@@ -3,7 +3,7 @@ Contributors: elemntor, KingYes, ariel.k, maor
 Tags: Activity Log, User Log, Audit Log, Security, Email Log,
 Requires at least: 6.0
 Requires PHP: 7.0
-Tested up to: 6.5
+Tested up to: 6.7
 Stable tag: 2.11.0
 License: GPLv2 or later
 
