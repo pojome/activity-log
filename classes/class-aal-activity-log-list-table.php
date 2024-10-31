@@ -221,20 +221,19 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		printf(
-			'<tr class="aal-table-promotion-row" data-promotion-id="%s"><td colspan="' . count( $this->get_columns() ) . '">%s</td></tr>',
+			'<tr class="aal-table-promotion-row" data-promotion-id="%s" data-nonce="%s"><td colspan="' . count( $this->get_columns() ) . '">%s</td></tr>',
 			esc_attr( $object_type ),
+			wp_create_nonce( 'aal_promotion' ),
 			$promotion_html
 		);
 	}
 
-	private function is_plugin_installed( $plugin_slug ) {
-		$plugins = get_plugins();
-
-		return isset( $plugins[ $plugin_slug ] );
-	}
-
 	private function get_promotion_html_by_object_type( $object_type ) {
 		if ( ! current_user_can( 'install_plugins' ) ) {
+			return false;
+		}
+
+		if ( $this->is_user_promotion_viewed( $object_type ) ) {
 			return false;
 		}
 
@@ -248,7 +247,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			}
 
 			return sprintf(
-				'<div class="aal-promotion">%s <a href="%s">%s</a><a href="#">X</a></div>',
+				'<div class="aal-promotion">%s <a class="aal-promotion-cta" href="%s">%s</a><button class="aal-promotion-dismiss">Close</button></div>',
 				esc_html__( 'Ensure your emails avoid the spam folder! Use Site Mailer for improved email deliverability, detailed email logs, and an easy setup.', 'aryo-activity-log' ),
 				$cta_data['url'],
 				$cta_data['text']
@@ -256,6 +255,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		return false;
+	}
+
+	private function is_user_promotion_viewed( $promotion_id ) {
+		$is_viewed = get_user_meta( get_current_user_id(), "_aal_promotion_{$promotion_id}_notice_viewed", true );
+
+		return ! empty( $is_viewed );
 	}
 
 	private function get_plugin_cta_data( $plugin_slug, $plugin_file_path ) {
@@ -275,6 +280,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'url' => $url,
 			'text' => $cta_text,
 		];
+	}
+
+	private function is_plugin_installed( $plugin_slug ) {
+		$plugins = get_plugins();
+
+		return isset( $plugins[ $plugin_slug ] );
 	}
 
 	public function column_default( $item, $column_name ) {

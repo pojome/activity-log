@@ -93,6 +93,34 @@ class AAL_Admin_Ui {
 				}
 			}
 		</style>
+		<script>
+			jQuery( document ).ready( ( $ ) => {
+				const aalPromotionWrapSelector = 'tr.aal-table-promotion-row';
+				$( '.aal-promotion-dismiss', aalPromotionWrapSelector ).on( 'click', function( event ) {
+					event.preventDefault();
+
+					const $promotionWrap = $( this ).closest( aalPromotionWrapSelector );
+
+					$promotionWrap.hide();
+
+					$.post( ajaxurl, {
+						action: 'aal_promotion_dismiss',
+						promotion_id: $promotionWrap.data( 'promotion-id' ),
+						nonce: $promotionWrap.data( 'nonce' ),
+					} );
+				} );
+
+				$( '.aal-promotion-cta', aalPromotionWrapSelector ).on( 'click', function( event ) {
+					const $promotionWrap = $( this ).closest( aalPromotionWrapSelector );
+
+					$.post( ajaxurl, {
+						action: 'aal_promotion_campaign',
+						promotion_id: $promotionWrap.data( 'promotion-id' ),
+						nonce: $promotionWrap.data( 'nonce' ),
+					} );
+				} );
+			} );
+		</script>
 		<?php
 	}
 
@@ -109,6 +137,9 @@ class AAL_Admin_Ui {
 	public function __construct() {
 		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ), 20 );
 		add_action( 'admin_head', array( &$this, 'admin_header' ) );
+
+		add_action( 'wp_ajax_aal_promotion_dismiss', [ $this, 'ajax_aal_promotion_dismiss' ] );
+		add_action( 'wp_ajax_aal_promotion_campaign', [ $this, 'ajax_aal_promotion_campaign' ] );
 	}
 
 	/**
@@ -121,5 +152,43 @@ class AAL_Admin_Ui {
 		}
 
 		return $this->_list_table;
+	}
+
+	public function ajax_aal_promotion_dismiss() {
+		if ( empty( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'aal_promotion' ) ) {
+			wp_send_json_error();
+		}
+
+		if ( empty( $_POST['promotion_id'] ) ) {
+			wp_send_json_error();
+		}
+
+		$promotion_id = sanitize_key( $_POST['promotion_id'] );
+
+		update_user_meta( get_current_user_id(), "_aal_promotion_{$promotion_id}_notice_viewed", 'true'  );
+
+		wp_send_json_success();
+	}
+
+	public function ajax_aal_promotion_campaign() {
+		if ( empty( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'aal_promotion' ) ) {
+			wp_send_json_error();
+		}
+
+		if ( empty( $_POST['promotion_id'] ) ) {
+			wp_send_json_error();
+		}
+
+		if ( 'emails' === $_POST['promotion_id'] ) {
+			$campaign_data = [
+				'source' => 'sm-aal-install',
+				'campaign' => 'sm-plg',
+				'medium' => 'wp-dash',
+			];
+
+			set_transient( 'elementor_site_mailer_campaign', $campaign_data, 30 * DAY_IN_SECONDS );
+		}
+
+		wp_send_json_success();
 	}
 }
