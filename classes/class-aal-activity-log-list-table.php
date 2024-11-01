@@ -221,10 +221,11 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		printf(
-			'<tr class="aal-table-promotion-row" data-promotion-id="%s" data-nonce="%s"><td colspan="' . count( $this->get_columns() ) . '">%s</td></tr>',
+			'<tr class="aal-table-promotion-row" data-promotion-id="%s" data-nonce="%s"><td colspan="' . count( $this->get_columns() ) . '">%s%s</td></tr>',
 			esc_attr( $object_type ),
 			wp_create_nonce( 'aal_promotion' ),
-			$promotion_html
+			$promotion_html,
+			'<button class="aal-promotion-dismiss">Close</button>'
 		);
 	}
 
@@ -246,9 +247,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				return false;
 			}
 
+			$title = sprintf( '<strong>%s</strong>', esc_html__( 'Ensure your emails avoid the spam folder!', 'aryo-activity-log' ) );
+			$body = esc_html__( 'Use Site Mailer for improved email deliverability, detailed email logs, and an easy setup.', 'aryo-activity-log' );
+
 			return sprintf(
-				'<div class="aal-promotion">%s <a class="aal-promotion-cta" href="%s">%s</a><button class="aal-promotion-dismiss">Close</button></div>',
-				esc_html__( 'Ensure your emails avoid the spam folder! Use Site Mailer for improved email deliverability, detailed email logs, and an easy setup.', 'aryo-activity-log' ),
+				'<div class="aal-promotion">%s %s<a class="aal-promotion-cta" href="%s">%s</a></div>',
+				$title,
+				$body,
 				$cta_data['url'],
 				$cta_data['text']
 			);
