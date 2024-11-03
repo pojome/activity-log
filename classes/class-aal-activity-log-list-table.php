@@ -204,6 +204,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	private function maybe_promotion_row( $object_type ) {
 		static $promotion_printed = [
 			'emails' => false,
+			'attachments' => false,
 		];
 
 		$object_type = strtolower( $object_type );
@@ -241,6 +242,27 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		if ( 'emails' === $object_type ) {
 			$plugin_file_path = 'site-mailer/site-mailer.php';
 			$plugin_slug = 'site-mailer';
+
+			$cta_data = $this->get_plugin_cta_data( $plugin_slug, $plugin_file_path );
+			if ( empty( $cta_data ) ) {
+				return false;
+			}
+
+			$title = sprintf( '<strong>%s</strong>', esc_html__( 'Ensure your emails avoid the spam folder!', 'aryo-activity-log' ) );
+			$body = esc_html__( 'Use Site Mailer for improved email deliverability, detailed email logs, and an easy setup.', 'aryo-activity-log' );
+
+			return sprintf(
+				'<div class="aal-promotion">%s %s<a class="aal-promotion-cta" href="%s">%s</a></div>',
+				$title,
+				$body,
+				$cta_data['url'],
+				$cta_data['text']
+			);
+		}
+
+		if ( 'attachments' === $object_type ) {
+			$plugin_file_path = 'image-optimization/image-optimization.php';
+			$plugin_slug = 'image-optimization';
 
 			$cta_data = $this->get_plugin_cta_data( $plugin_slug, $plugin_file_path );
 			if ( empty( $cta_data ) ) {
