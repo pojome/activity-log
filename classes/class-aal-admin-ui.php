@@ -83,6 +83,7 @@ class AAL_Admin_Ui {
 				align-items: center;
 				justify-content: space-between;
 				padding: 20px;
+				background: white;
 				border: 1px solid #4C43E5;
 				border-inline-start-width: 3px;
 			}
