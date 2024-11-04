@@ -63,12 +63,14 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		$allow_modules = array_unique( $allow_modules );
 
 		$where = array();
-		foreach ( $allow_modules as $type )
+		foreach ( $allow_modules as $type ) {
 			$where[] .= '`object_type` = \'' . $type . '\'';
+		}
 
 		$where_caps = array();
-		foreach ( $this->_get_allow_caps() as $cap )
+		foreach ( $this->_get_allow_caps() as $cap ) {
 			$where_caps[] .= '`user_caps` = \'' . $cap . '\'';
+		}
 
 		return 'AND (' . implode( ' OR ', $where ) . ') AND (' . implode( ' OR ', $where_caps ) . ')';
 	}
@@ -758,8 +760,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		}
 
 		if ( isset( $_REQUEST['s'] ) ) {
-			// Search only searches 'description' fields.
-			$where .= $wpdb->prepare( ' AND `object_name` LIKE %s', '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%' );
+			$search_esc_like = '%' . $wpdb->esc_like( $_REQUEST['s'] ) . '%';
+			$where .= $wpdb->prepare( ' AND (`object_name` LIKE %s OR `object_subtype` LIKE %s)', $search_esc_like, $search_esc_like );
 		}
 
 		$offset = ( $this->get_pagenum() - 1 ) * $items_per_page;
