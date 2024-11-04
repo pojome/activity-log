@@ -269,8 +269,8 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				return false;
 			}
 
-			$title = sprintf( '<strong>%s</strong>', esc_html__( 'Ensure your emails avoid the spam folder!', 'aryo-activity-log' ) );
-			$body = esc_html__( 'Use Site Mailer for improved email deliverability, detailed email logs, and an easy setup.', 'aryo-activity-log' );
+			$title = sprintf( '<strong>%s</strong>', esc_html__( 'Optimize Your Images for a Faster Website!', 'aryo-activity-log' ) );
+			$body = esc_html__( 'Reduce image sizes without losing quality and improve your site speed.', 'aryo-activity-log' );
 
 			return sprintf(
 				'<div class="aal-promotion">%s %s<a class="aal-promotion-cta" href="%s">%s</a></div>',
