@@ -189,6 +189,16 @@ class AAL_Admin_Ui {
 			set_transient( 'elementor_site_mailer_campaign', $campaign_data, 30 * DAY_IN_SECONDS );
 		}
 
+		if ( 'media' === $_POST['promotion_id'] ) {
+			$campaign_data = [
+				'source' => 'io-aal-install',
+				'campaign' => 'io-plg',
+				'medium' => 'wp-dash',
+			];
+
+			set_transient( 'elementor_image_optimization_campaign', $campaign_data, 30 * DAY_IN_SECONDS );
+		}
+
 		wp_send_json_success();
 	}
 }
