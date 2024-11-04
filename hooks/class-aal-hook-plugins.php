@@ -122,6 +122,19 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 		}
 	}
 
+	public function hooks_auto_update_settings( $option, $value, $old_value ) {
+		$enabled_plugins = array_diff( $value, $old_value );
+		$disabled_plugins = array_diff( $old_value, $value );
+
+		foreach ( $disabled_plugins as $plugin ) {
+			$this->_add_log_plugin( 'auto_update_disabled', $plugin );
+		}
+
+		foreach ( $enabled_plugins as $plugin ) {
+			$this->_add_log_plugin( 'auto_update_enabled', $plugin );
+		}
+	}
+
 	public function __construct() {
 		add_action( 'activated_plugin', array( $this, 'hooks_activated_plugin' ) );
 		add_action( 'deactivated_plugin', array( $this, 'hooks_deactivated_plugin' ) );
@@ -131,6 +144,8 @@ class AAL_Hook_Plugins extends AAL_Hook_Base {
 		add_filter( 'wp_redirect', array( $this, 'hooks_plugin_modify' ), 10, 2 );
 		
 		add_action( 'upgrader_process_complete', array( $this, 'hooks_plugin_install_or_update' ), 10, 2 );
+
+		add_action( 'update_site_option_auto_update_plugins', [ $this, 'hooks_auto_update_settings' ], 10, 3 );
 
 		parent::__construct();
 	}
