@@ -101,6 +101,7 @@ class AAL_Admin_Ui {
 				padding: 0;
 				background: none;
 				cursor: pointer;
+				color: #7c7c7c;
 			}
 			.aal-promotion-dismiss::before {
 				content: '\f335';
