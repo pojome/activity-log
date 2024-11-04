@@ -74,6 +74,44 @@ class AAL_Admin_Ui {
 				line-height: 30px;
 				text-decoration: none;
 			}
+			.aal-table-promotion-row td {
+				padding: 0;
+			}
+			.aal-table-promotion-inner {
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 20px;
+				border: 1px solid #4C43E5;
+				border-inline-start-width: 3px;
+			}
+			.aal-promotion-cta {
+				margin-inline-start: 5px;
+				font-weight: bold;
+				color: #4C43E5;
+			}
+			.aal-promotion-dismiss {
+				display: flex;
+				align-items: center;
+				transition: all .1s ease-in-out;
+				border: none;
+				margin: 0;
+				padding: 0;
+				background: none;
+				cursor: pointer;
+			}
+			.aal-promotion-dismiss::before {
+				content: '\f335';
+				display: block;
+				font: normal 20px/20px dashicons;
+				height: 20px;
+				width: 20px;
+				text-align: center;
+			}
+			.aal-promotion-dismiss:hover {
+				color: #4C43E5;
+			}
 			@media (max-width: 767px) {
 				.toplevel_page_activity-log-page .manage-column {
 					width: auto;

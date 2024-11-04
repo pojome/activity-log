@@ -221,12 +221,17 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			return;
 		}
 
+		$dismiss_button = sprintf(
+			'<button class="aal-promotion-dismiss">%s</button>',
+			esc_html__( 'Dismiss', 'aryo-activity-log' )
+		);
+
 		printf(
-			'<tr class="aal-table-promotion-row" data-promotion-id="%s" data-nonce="%s"><td colspan="' . count( $this->get_columns() ) . '">%s%s</td></tr>',
+			'<tr class="aal-table-promotion-row" data-promotion-id="%s" data-nonce="%s"><td colspan="' . count( $this->get_columns() ) . '"><div class="aal-table-promotion-inner">%s%s</div></td></tr>',
 			esc_attr( $object_type ),
 			wp_create_nonce( 'aal_promotion' ),
 			$promotion_html,
-			'<button class="aal-promotion-dismiss">Close</button>'
+			$dismiss_button
 		);
 	}
 
