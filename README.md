@@ -5,8 +5,8 @@
 **Tags:** Activity Log, User Log, Audit Log, Security, Email Log,  
 **Requires at least:** 6.0  
 **Requires PHP:** 7.0  
-**Tested up to:** 6.5  
-**Stable tag:** 2.11.0  
+**Tested up to:** 6.7  
+**Stable tag:** 2.11.1  
 **License:** GPLv2 or later  
 
 This top rated Activity Log plugin helps you monitor & log all changes and actions on your WordPress site, so you can remain secure and organized.
@@ -104,17 +104,24 @@ We understand the importance of maintaining a clean and efficient database envir
 ## Frequently Asked Questions ##
 
 ### Requirements ###
-* __Requires PHP 7.0__ for list management functionality.
+__Requires PHP 7.0__ for list management functionality.
 
 ### What is the plugin license? ###
 
-* This plugin is released under a GPL license.
+This plugin is released under a GPL license.
 
 ### Can I export logs? ###
 
-* You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
+You can easily export logs with Activity Log. We also support exporting filtered results. Filter by the time the action took place, roles, users, options, action type, and more.
+
+### How can I report security bugs? ###
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/aryo-activity-log).
 
 ## Changelog ##
+
+### 2.11.1 - 2024-11-05 ###
+* Tweak: Added ability to search in context column
 
 ### 2.11.0 - 2024-07-29 ###
 * New: Added logging for enabling and disabling automatic theme updates
@@ -122,7 +129,7 @@ We understand the importance of maintaining a clean and efficient database envir
 * New: Added logging for enabling and disabling automatic core updates
 
 ### 2.10.1 - 2024-04-17 ###
-* Tweak: Add option to not keep email logs ([Topic](https://wordpress.org/support/topic/activity-log-email-off-on-option/))
+* Tweak: Added option to not keep email logs ([Topic](https://wordpress.org/support/topic/activity-log-email-off-on-option/))
 
 ### 2.10.0 - 2024-04-08 ###
 * New: Introducing Email Logging - Capture all emails sent from your WordPress site
@@ -155,7 +162,7 @@ We understand the importance of maintaining a clean and efficient database envir
 ### 2.8.5 - 2022-11-21 ###
 * Tweak: Now the date/time format is displayed according to the site settings ([Topic](https://wordpress.org/support/topic/date-format-question-2/))
 * Fix: Added compatibility for PHP 8.1 ([Topic](https://wordpress.org/support/topic/deprecated-filter_sanitize_string-preg_match-and-strtolower-in-php-8-1/))
-* Fix: Add input sanitization to avoid security issues
+* Fix: Added input sanitization to avoid security issues
 
 ### 2.8.4 - 2022-09-04 ###
 * Tweak: Added Activity Log setting to records log
