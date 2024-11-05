@@ -304,10 +304,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 		if ( $this->is_plugin_installed( $plugin_file_path ) ) {
 			$url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin_file_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_file_path );
-			$cta_text = esc_html__( 'Activate Plugin', 'elementor' );
+			$cta_text = esc_html__( 'Activate Plugin', 'aryo-activity-log' );
 		} else {
 			$url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $plugin_slug ), 'install-plugin_' . $plugin_slug );
-			$cta_text = esc_html__( 'Install Plugin', 'elementor' );
+			$cta_text = esc_html__( 'Install Plugin', 'aryo-activity-log' );
 		}
 
 		return [
