@@ -3,31 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class AAL_Hook_Themes extends AAL_Hook_Base {
 
-	public function hooks_theme_modify( $location, $status ) {
-		if ( false !== strpos( $location, 'theme-editor.php?file=' ) ) {
-			if ( ! empty( $_POST ) && 'update' === $_POST['action'] ) {
-				$aal_args = array(
-					'action'         => 'file_updated',
-					'object_type'    => 'Themes',
-					'object_subtype' => 'theme_unknown',
-					'object_id'      => 0,
-					'object_name'    => 'file_unknown',
-				);
-
-				if ( ! empty( $_POST['file'] ) )
-					$aal_args['object_name'] = $_POST['file'];
-
-				if ( ! empty( $_POST['theme'] ) )
-					$aal_args['object_subtype'] = $_POST['theme'];
-
-				aal_insert_log( $aal_args );
-			}
-		}
-
-		// We are need return the instance, for complete the filter.
-		return $location;
-	}
-
 	public function hooks_switch_theme( $new_name, WP_Theme $new_theme ) {
 		aal_insert_log(
 			array(
@@ -165,7 +140,6 @@ class AAL_Hook_Themes extends AAL_Hook_Base {
 	}
 
 	public function __construct() {
-		add_filter( 'wp_redirect', array( &$this, 'hooks_theme_modify' ), 10, 2 );
 		add_action( 'switch_theme', array( &$this, 'hooks_switch_theme' ), 10, 2 );
 		add_action( 'delete_site_transient_update_themes', array( &$this, 'hooks_theme_deleted' ) );
 		add_action( 'upgrader_process_complete', array( &$this, 'hooks_theme_install_or_update' ), 10, 2 );
