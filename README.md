@@ -6,7 +6,7 @@
 **Requires at least:** 6.0  
 **Requires PHP:** 7.0  
 **Tested up to:** 6.7  
-**Stable tag:** 2.11.1  
+**Stable tag:** 2.11.2  
 **License:** GPLv2 or later  
 
 This top rated Activity Log plugin helps you monitor & log all changes and actions on your WordPress site, so you can remain secure and organized.
@@ -116,9 +116,12 @@ You can easily export logs with Activity Log. We also support exporting filtered
 
 ### How can I report security bugs? ###
 
-You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/aryo-activity-log).
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability](https://patchstack.com/database/vdp/aryo-activity-log).
 
 ## Changelog ##
+
+### 2.11.2 - 2024-11-12 ###
+* Security Fix: Improved code security enforcement in theme/plugin file editor
 
 ### 2.11.1 - 2024-11-05 ###
 * Tweak: Added ability to search in context column
