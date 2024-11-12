@@ -118,6 +118,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
+= 2.11.2 - 2024-11-12 =
+* Security Fix: Improved code security enforcement in theme/plugin file editor
+
 = 2.11.1 - 2024-11-05 =
 * Tweak: Added ability to search in context column
 
